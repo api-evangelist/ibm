@@ -1,0 +1,56 @@
+{
+    "name": "IBM",
+    "description": "<p>IBM is a global technology and innovation company headquartered in Armonk, NY. It is the largest technology and consulting employer in the world, with more than 400,000 employees serving clients in 170 countries. IBM offers a wide range of technology and consulting services; a broad portfolio of middleware for collaboration, predictive analytics, software development and systems management; and the world's most advanced servers and supercomputers. Utilizing its business consulting, technology and R&amp;D expertise, IBM helps clients become \"smarter\" as the planet becomes more digitally interconnected.<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1255-cloudant.jpg",
+    "tags": [
+        "databases",
+        "have api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/ibm\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "IBM",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1255-cloudant.jpg",
+            "humanURL": "https:\/\/www.ibm.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/ibm-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "http:\/\/www.ibm.com\/blogs\/think"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/IBM"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/ibm.com"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/www.ibm.com"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/ibm"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/IBM"
+        }
+    ]
+}

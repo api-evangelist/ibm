@@ -1,0 +1,152 @@
+name: IBM APIs
+description: A collection of IBM's public APIs and developer resources
+image: https://www.ibm.com/brand/experience-guides/developer/b1db1ae501d522a1a4b49613fe07c9f1/01_8-bar-positive.svg
+url: https://developer.ibm.com
+created: '2024'
+modified: '2024'
+apis:
+- name: IBM Watson Assistant
+  description: Build conversational interfaces into any application, device, or channel
+  image: https://www.ibm.com/content/dam/connectedassets-adobe-cms/worldwide-content/creative-assets/s-migr/ul/g/8f/c4/watson-assistant.component.complex-narrative-xl-retina.ts=1686660742804.png/content/adobe-cms/us/en/products/watson-assistant/jcr:content/root/table_of_contents/body/content_section_styled/content-section-body/complex_narrative/items/content_group/image
+  humanURL: https://www.ibm.com/products/watson-assistant
+  baseURL: https://api.us-south.assistant.watson.cloud.ibm.com
+  tags:
+  - Artificial Intelligence
+  - Chatbots
+  - Conversational AI
+  - NLP
+  properties:
+  - type: documentation
+    url: https://cloud.ibm.com/apidocs/assistant/assistant-v2
+  - type: openapi
+    url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/assistant/assistant-v2.json
+  - type: authentication
+    url: https://cloud.ibm.com/docs/watson?topic=watson-iam
+- name: IBM Watson Natural Language Understanding
+  description: Analyze text to extract metadata from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, and semantic roles
+  humanURL: https://www.ibm.com/cloud/watson-natural-language-understanding
+  baseURL: https://api.us-south.natural-language-understanding.watson.cloud.ibm.com
+  tags:
+  - Natural Language Processing
+  - Text Analysis
+  - AI
+  - Machine Learning
+  properties:
+  - type: documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: openapi
+    url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/natural-language-understanding/natural-language-understanding.json
+  - type: pricing
+    url: https://www.ibm.com/cloud/watson-natural-language-understanding/pricing
+- name: IBM Watson Language Translator
+  description: Translate text from one language to another
+  humanURL: https://www.ibm.com/cloud/watson-language-translator
+  baseURL: https://api.us-south.language-translator.watson.cloud.ibm.com
+  tags:
+  - Translation
+  - Language
+  - AI
+  properties:
+  - type: documentation
+    url: https://cloud.ibm.com/apidocs/language-translator
+  - type: openapi
+    url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/language-translator/language-translator.json
+- name: IBM Watson Speech to Text
+  description: Convert audio voice into written text
+  humanURL: https://www.ibm.com/cloud/watson-speech-to-text
+  baseURL: https://api.us-south.speech-to-text.watson.cloud.ibm.com
+  tags:
+  - Speech Recognition
+  - Audio
+  - Transcription
+  - AI
+  properties:
+  - type: documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: openapi
+    url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/speech-to-text/speech-to-text.json
+- name: IBM Watson Text to Speech
+  description: Convert written text into natural-sounding audio in a variety of languages and voices
+  humanURL: https://www.ibm.com/cloud/watson-text-to-speech
+  baseURL: https://api.us-south.text-to-speech.watson.cloud.ibm.com
+  tags:
+  - Text to Speech
+  - Audio Generation
+  - Voice Synthesis
+  - AI
+  properties:
+  - type: documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: openapi
+    url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/text-to-speech/text-to-speech.json
+- name: IBM Cloud Object Storage
+  description: Store and access unstructured data with built-in high-speed file transfer
+  humanURL: https://www.ibm.com/cloud/object-storage
+  baseURL: https://s3.us.cloud-object-storage.appdomain.cloud
+  tags:
+  - Storage
+  - Cloud Storage
+  - Object Storage
+  - S3 Compatible
+  properties:
+  - type: documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage/api-reference
+  - type: pricing
+    url: https://www.ibm.com/cloud/object-storage/pricing
+- name: IBM Cloud Databases for PostgreSQL
+  description: Managed PostgreSQL database service
+  humanURL: https://www.ibm.com/cloud/databases-for-postgresql
+  baseURL: https://api.us-south.databases.cloud.ibm.com
+  tags:
+  - Database
+  - PostgreSQL
+  - Managed Database
+  - Cloud
+  properties:
+  - type: documentation
+    url: https://cloud.ibm.com/apidocs/cloud-databases-api
+  - type: getting-started
+    url: https://cloud.ibm.com/docs/databases-for-postgresql
+- name: IBM Cloud Code Engine
+  description: Run containerized workloads without managing servers
+  humanURL: https://www.ibm.com/cloud/code-engine
+  baseURL: https://api.us-south.codeengine.cloud.ibm.com
+  tags:
+  - Serverless
+  - Containers
+  - Cloud Native
+  - Platform
+  properties:
+  - type: documentation
+    url: https://cloud.ibm.com/apidocs/codeengine
+  - type: cli
+    url: https://cloud.ibm.com/docs/codeengine?topic=codeengine-cli
+common:
+- type: Portal
+  url: https://developer.ibm.com
+- type: Authentication
+  url: https://cloud.ibm.com/docs/account?topic=account-iamoverview
+- type: Getting Started
+  url: https://cloud.ibm.com/docs
+- type: SDKs
+  url: https://github.com/watson-developer-cloud
+- type: Status
+  url: https://cloud.ibm.com/status
+- type: Support
+  url: https://www.ibm.com/cloud/support
+- type: Terms of Service
+  url: https://www.ibm.com/terms
+- type: Privacy Policy
+  url: https://www.ibm.com/privacy
+maintainers:
+- FN: IBM Cloud
+  email: cloud@ibm.com
+  url: https://www.ibm.com/cloud
+tags:
+- Artificial Intelligence
+- Cloud Computing
+- Enterprise
+- Watson
+- Databases
+- Storage
+- Serverless

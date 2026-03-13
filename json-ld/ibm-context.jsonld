@@ -1,0 +1,355 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ibm": "https://cloud.ibm.com/schema/",
+    "iam": "https://cloud.ibm.com/schema/iam/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+
+    "id": "@id",
+    "type": "@type",
+
+    "CloudResource": {
+      "@id": "ibm:CloudResource",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "crn": {
+          "@id": "ibm:crn",
+          "@type": "xsd:string"
+        },
+        "accountId": {
+          "@id": "ibm:accountId",
+          "@type": "xsd:string"
+        },
+        "resourceGroupId": {
+          "@id": "ibm:resourceGroupId",
+          "@type": "xsd:string"
+        },
+        "region": {
+          "@id": "ibm:region",
+          "@type": "xsd:string"
+        },
+        "state": {
+          "@id": "ibm:state",
+          "@type": "xsd:string"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updatedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "createdBy": {
+          "@id": "ibm:createdBy",
+          "@type": "@id"
+        },
+        "tags": {
+          "@id": "ibm:tags",
+          "@container": "@set"
+        },
+        "locked": {
+          "@id": "ibm:locked",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "ResourceInstance": {
+      "@id": "ibm:ResourceInstance",
+      "@context": {
+        "guid": {
+          "@id": "ibm:guid",
+          "@type": "xsd:string"
+        },
+        "resourcePlanId": {
+          "@id": "ibm:resourcePlanId",
+          "@type": "xsd:string"
+        },
+        "targetCrn": {
+          "@id": "ibm:targetCrn",
+          "@type": "xsd:string"
+        },
+        "dashboardUrl": {
+          "@id": "ibm:dashboardUrl",
+          "@type": "xsd:anyURI"
+        },
+        "allowCleanup": {
+          "@id": "ibm:allowCleanup",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "ResourceGroup": {
+      "@id": "ibm:ResourceGroup",
+      "@context": {
+        "isDefault": {
+          "@id": "ibm:isDefault",
+          "@type": "xsd:boolean"
+        },
+        "quotaId": {
+          "@id": "ibm:quotaId",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Account": {
+      "@id": "ibm:Account",
+      "@context": {
+        "ownerIamId": {
+          "@id": "ibm:ownerIamId",
+          "@type": "xsd:string"
+        },
+        "accountType": {
+          "@id": "ibm:accountType",
+          "@type": "xsd:string"
+        },
+        "enterpriseId": {
+          "@id": "ibm:enterpriseId",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "ServiceId": {
+      "@id": "iam:ServiceId",
+      "@context": {
+        "entityTag": {
+          "@id": "iam:entityTag",
+          "@type": "xsd:string"
+        },
+        "uniqueInstanceCrns": {
+          "@id": "iam:uniqueInstanceCrns",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "ApiKey": {
+      "@id": "iam:ApiKey",
+      "@context": {
+        "iamId": {
+          "@id": "iam:iamId",
+          "@type": "xsd:string"
+        },
+        "disabled": {
+          "@id": "iam:disabled",
+          "@type": "xsd:boolean"
+        },
+        "supportSessions": {
+          "@id": "iam:supportSessions",
+          "@type": "xsd:boolean"
+        },
+        "actionWhenLeaked": {
+          "@id": "iam:actionWhenLeaked",
+          "@type": "xsd:string"
+        },
+        "expiresAt": {
+          "@id": "iam:expiresAt",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "TrustedProfile": {
+      "@id": "iam:TrustedProfile",
+      "@context": {
+        "iamId": {
+          "@id": "iam:iamId",
+          "@type": "xsd:string"
+        },
+        "templateId": {
+          "@id": "iam:templateId",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "ClaimRule": {
+      "@id": "iam:ClaimRule",
+      "@context": {
+        "ruleType": {
+          "@id": "iam:ruleType",
+          "@type": "xsd:string"
+        },
+        "conditions": {
+          "@id": "iam:conditions",
+          "@container": "@set"
+        },
+        "realmName": {
+          "@id": "iam:realmName",
+          "@type": "xsd:string"
+        },
+        "crType": {
+          "@id": "iam:crType",
+          "@type": "xsd:string"
+        },
+        "expiration": {
+          "@id": "iam:expiration",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "AccessPolicy": {
+      "@id": "iam:AccessPolicy",
+      "@context": {
+        "policyType": {
+          "@id": "iam:policyType",
+          "@type": "xsd:string"
+        },
+        "subjects": {
+          "@id": "iam:subjects",
+          "@container": "@set"
+        },
+        "roles": {
+          "@id": "iam:roles",
+          "@container": "@set"
+        },
+        "resources": {
+          "@id": "iam:resources",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "PolicySubject": {
+      "@id": "iam:PolicySubject",
+      "@context": {
+        "attributes": {
+          "@id": "iam:subjectAttributes",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "PolicyRole": {
+      "@id": "iam:PolicyRole",
+      "@context": {
+        "roleId": {
+          "@id": "iam:roleId",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "PolicyResource": {
+      "@id": "iam:PolicyResource",
+      "@context": {
+        "attributes": {
+          "@id": "iam:resourceAttributes",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Role": {
+      "@id": "iam:Role",
+      "@context": {
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "actions": {
+          "@id": "iam:actions",
+          "@container": "@set"
+        },
+        "serviceName": {
+          "@id": "iam:serviceName",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "AccessGroup": {
+      "@id": "iam:AccessGroup",
+      "@context": {
+        "isFederated": {
+          "@id": "iam:isFederated",
+          "@type": "xsd:boolean"
+        },
+        "membershipType": {
+          "@id": "iam:membershipType",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "AccessToken": {
+      "@id": "iam:AccessToken",
+      "@context": {
+        "accessToken": {
+          "@id": "iam:accessToken",
+          "@type": "xsd:string"
+        },
+        "refreshToken": {
+          "@id": "iam:refreshToken",
+          "@type": "xsd:string"
+        },
+        "tokenType": {
+          "@id": "iam:tokenType",
+          "@type": "xsd:string"
+        },
+        "expiresIn": {
+          "@id": "iam:expiresIn",
+          "@type": "xsd:integer"
+        },
+        "expiration": {
+          "@id": "iam:expiration",
+          "@type": "xsd:integer"
+        },
+        "scope": {
+          "@id": "iam:scope",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Tag": {
+      "@id": "ibm:Tag",
+      "@context": {
+        "tagName": {
+          "@id": "ibm:tagName",
+          "@type": "xsd:string"
+        },
+        "tagType": {
+          "@id": "ibm:tagType",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "crn": {
+      "@id": "ibm:crn",
+      "@type": "xsd:string"
+    },
+    "accountId": {
+      "@id": "ibm:accountId",
+      "@type": "xsd:string"
+    },
+    "createdAt": {
+      "@id": "dcterms:created",
+      "@type": "xsd:dateTime"
+    },
+    "modifiedAt": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

@@ -1,0 +1,969 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.ibm.com/cloud/ibm-cloud-resource-schema.json",
+  "title": "IBM Cloud Resource Schema",
+  "description": "Core data models for IBM Cloud resources, identities, and access management objects. These schemas define the structure of resources managed through IBM Cloud IAM and resource management APIs.",
+  "type": "object",
+  "$defs": {
+    "CRN": {
+      "title": "Cloud Resource Name",
+      "description": "A Cloud Resource Name (CRN) is a globally unique identifier for IBM Cloud resources, following the format crn:version:cname:ctype:service-name:location:scope:service-instance:resource-type:resource.",
+      "type": "string",
+      "pattern": "^crn:v[0-9]+:[a-z0-9-]*:[a-z0-9-]*:[a-z0-9-]*:[a-z0-9-]*:[a-z0-9-/]*:[a-z0-9-]*:[a-z0-9-]*:.*$"
+    },
+    "AccountId": {
+      "title": "IBM Cloud Account ID",
+      "description": "A unique identifier for an IBM Cloud account.",
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "IamId": {
+      "title": "IAM Identity ID",
+      "description": "A unique identifier for an IAM identity such as a user, service ID, or trusted profile.",
+      "type": "string",
+      "examples": [
+        "IBMid-123456",
+        "iam-ServiceId-abc123",
+        "iam-Profile-def456"
+      ]
+    },
+    "Timestamp": {
+      "title": "ISO 8601 Timestamp",
+      "description": "A date and time value in ISO 8601 format.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "ResourceInstance": {
+      "title": "Resource Instance",
+      "description": "An IBM Cloud resource instance represents a provisioned service or infrastructure resource within an account.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "account_id",
+        "resource_plan_id",
+        "region_id",
+        "state"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the resource instance."
+        },
+        "guid": {
+          "type": "string",
+          "description": "The globally unique identifier of the resource instance.",
+          "format": "uuid"
+        },
+        "url": {
+          "type": "string",
+          "description": "The relative URL of the resource instance.",
+          "format": "uri-reference"
+        },
+        "crn": {
+          "$ref": "#/$defs/CRN",
+          "description": "The Cloud Resource Name for this resource instance."
+        },
+        "name": {
+          "type": "string",
+          "description": "The human-readable name of the resource instance."
+        },
+        "account_id": {
+          "$ref": "#/$defs/AccountId",
+          "description": "The account that owns this resource instance."
+        },
+        "resource_group_id": {
+          "type": "string",
+          "description": "The ID of the resource group containing this instance."
+        },
+        "resource_group_crn": {
+          "$ref": "#/$defs/CRN",
+          "description": "The CRN of the resource group."
+        },
+        "resource_id": {
+          "type": "string",
+          "description": "The unique ID of the offering."
+        },
+        "resource_plan_id": {
+          "type": "string",
+          "description": "The unique ID of the plan associated with the offering."
+        },
+        "target_crn": {
+          "$ref": "#/$defs/CRN",
+          "description": "The full deployment CRN for the resource."
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Configuration parameters for the resource instance.",
+          "additionalProperties": true
+        },
+        "allow_cleanup": {
+          "type": "boolean",
+          "description": "Whether the resource instance is subject to automatic cleanup."
+        },
+        "state": {
+          "type": "string",
+          "description": "The current state of the resource instance.",
+          "enum": [
+            "active",
+            "inactive",
+            "failed",
+            "pending_reclamation",
+            "provisioning",
+            "pre_provisioning",
+            "removed"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the resource instance.",
+          "enum": [
+            "service_instance",
+            "alias",
+            "binding",
+            "key"
+          ]
+        },
+        "region_id": {
+          "type": "string",
+          "description": "The region or location where the resource is deployed."
+        },
+        "dashboard_url": {
+          "type": "string",
+          "description": "The URL of the resource instance dashboard.",
+          "format": "uri"
+        },
+        "last_operation": {
+          "$ref": "#/$defs/LastOperation",
+          "description": "The status of the last operation on this resource."
+        },
+        "created_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the resource was created."
+        },
+        "created_by": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the user who created the resource."
+        },
+        "updated_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the resource was last updated."
+        },
+        "updated_by": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the user who last updated the resource."
+        },
+        "deleted_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the resource was deleted."
+        },
+        "deleted_by": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the user who deleted the resource."
+        },
+        "locked": {
+          "type": "boolean",
+          "description": "Whether the resource instance is locked against modification."
+        },
+        "tags": {
+          "type": "array",
+          "description": "User-defined tags attached to the resource.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "access_tags": {
+          "type": "array",
+          "description": "Access management tags attached to the resource.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extensions": {
+          "type": "object",
+          "description": "Service-specific extension properties.",
+          "additionalProperties": true
+        }
+      }
+    },
+    "LastOperation": {
+      "title": "Last Operation",
+      "description": "The status of the most recent asynchronous operation performed on a resource instance.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of the last operation.",
+          "enum": [
+            "create",
+            "update",
+            "delete"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "description": "The state of the last operation.",
+          "enum": [
+            "in progress",
+            "succeeded",
+            "failed"
+          ]
+        },
+        "sub_type": {
+          "type": "string",
+          "description": "The sub-type of the last operation."
+        },
+        "async": {
+          "type": "boolean",
+          "description": "Whether the operation was asynchronous."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the last operation result."
+        },
+        "reason_code": {
+          "type": "string",
+          "description": "The reason code if the operation failed."
+        },
+        "poll_after": {
+          "type": "number",
+          "description": "Seconds to wait before polling for operation status."
+        },
+        "cancelable": {
+          "type": "boolean",
+          "description": "Whether the operation can be cancelled."
+        },
+        "poll": {
+          "type": "boolean",
+          "description": "Whether the status should be polled."
+        }
+      }
+    },
+    "ResourceGroup": {
+      "title": "Resource Group",
+      "description": "A resource group is a logical container for organizing and managing IBM Cloud resources within an account.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "account_id",
+        "state"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the resource group."
+        },
+        "crn": {
+          "$ref": "#/$defs/CRN",
+          "description": "The Cloud Resource Name for this resource group."
+        },
+        "account_id": {
+          "$ref": "#/$defs/AccountId",
+          "description": "The account that owns this resource group."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource group."
+        },
+        "state": {
+          "type": "string",
+          "description": "The current state of the resource group.",
+          "enum": [
+            "ACTIVE",
+            "SUSPENDED"
+          ]
+        },
+        "default": {
+          "type": "boolean",
+          "description": "Whether this is the default resource group for the account."
+        },
+        "quota_id": {
+          "type": "string",
+          "description": "The quota ID associated with the resource group."
+        },
+        "quota_url": {
+          "type": "string",
+          "description": "The URL to retrieve the quota details.",
+          "format": "uri-reference"
+        },
+        "payment_methods_url": {
+          "type": "string",
+          "description": "The URL to retrieve payment methods.",
+          "format": "uri-reference"
+        },
+        "teams_url": {
+          "type": "string",
+          "description": "The URL to retrieve teams.",
+          "format": "uri-reference"
+        },
+        "created_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the resource group was created."
+        },
+        "updated_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the resource group was last updated."
+        }
+      }
+    },
+    "ServiceId": {
+      "title": "Service ID",
+      "description": "A service ID represents an identity for an application or service that authenticates with IBM Cloud using API keys.",
+      "type": "object",
+      "required": [
+        "id",
+        "account_id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the service ID."
+        },
+        "entity_tag": {
+          "type": "string",
+          "description": "The entity tag for optimistic concurrency control."
+        },
+        "crn": {
+          "$ref": "#/$defs/CRN",
+          "description": "The Cloud Resource Name for this service ID."
+        },
+        "locked": {
+          "type": "boolean",
+          "description": "Whether the service ID is locked against modification."
+        },
+        "created_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the service ID was created."
+        },
+        "modified_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the service ID was last modified."
+        },
+        "account_id": {
+          "$ref": "#/$defs/AccountId",
+          "description": "The account that owns this service ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the service ID."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the service ID."
+        },
+        "unique_instance_crns": {
+          "type": "array",
+          "description": "CRNs that restrict the scope of the service ID to specific resource instances.",
+          "items": {
+            "$ref": "#/$defs/CRN"
+          }
+        }
+      }
+    },
+    "ApiKey": {
+      "title": "API Key",
+      "description": "An IAM API key used to authenticate a user or service ID with IBM Cloud services.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "iam_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the API key."
+        },
+        "entity_tag": {
+          "type": "string",
+          "description": "The entity tag for optimistic concurrency control."
+        },
+        "crn": {
+          "$ref": "#/$defs/CRN",
+          "description": "The Cloud Resource Name for this API key."
+        },
+        "locked": {
+          "type": "boolean",
+          "description": "Whether the API key is locked against modification."
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Whether the API key is disabled for authentication."
+        },
+        "created_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the API key was created."
+        },
+        "created_by": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the user who created the API key."
+        },
+        "modified_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the API key was last modified."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the API key."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the API key."
+        },
+        "iam_id": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID associated with this API key."
+        },
+        "account_id": {
+          "$ref": "#/$defs/AccountId",
+          "description": "The account this API key belongs to."
+        },
+        "support_sessions": {
+          "type": "boolean",
+          "description": "Whether sessions are supported for this API key."
+        },
+        "action_when_leaked": {
+          "type": "string",
+          "description": "Action to perform when the API key is leaked."
+        },
+        "expires_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Expiration date and time for the API key."
+        }
+      }
+    },
+    "TrustedProfile": {
+      "title": "Trusted Profile",
+      "description": "A trusted profile allows federated users and compute resources to assume an identity with specific access rights on IBM Cloud.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "account_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the trusted profile."
+        },
+        "entity_tag": {
+          "type": "string",
+          "description": "The entity tag for optimistic concurrency control."
+        },
+        "crn": {
+          "$ref": "#/$defs/CRN",
+          "description": "The Cloud Resource Name for this trusted profile."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the trusted profile."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the trusted profile."
+        },
+        "created_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the profile was created."
+        },
+        "modified_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the profile was last modified."
+        },
+        "iam_id": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the trusted profile."
+        },
+        "account_id": {
+          "$ref": "#/$defs/AccountId",
+          "description": "The account that owns this trusted profile."
+        },
+        "template_id": {
+          "type": "string",
+          "description": "The ID of the template this profile was created from."
+        }
+      }
+    },
+    "AccessPolicy": {
+      "title": "Access Policy",
+      "description": "An IAM access policy that grants a subject a set of roles on a resource or set of resources in IBM Cloud.",
+      "type": "object",
+      "required": [
+        "type",
+        "subjects",
+        "roles",
+        "resources"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the policy."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the policy.",
+          "enum": [
+            "access",
+            "authorization"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the policy."
+        },
+        "subjects": {
+          "type": "array",
+          "description": "The subjects the policy applies to.",
+          "items": {
+            "$ref": "#/$defs/PolicySubject"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "description": "The roles granted by the policy.",
+          "items": {
+            "$ref": "#/$defs/PolicyRole"
+          }
+        },
+        "resources": {
+          "type": "array",
+          "description": "The resources the policy applies to.",
+          "items": {
+            "$ref": "#/$defs/PolicyResource"
+          }
+        },
+        "state": {
+          "type": "string",
+          "description": "The current state of the policy.",
+          "enum": [
+            "active",
+            "deleted"
+          ]
+        },
+        "href": {
+          "type": "string",
+          "description": "The URL of the policy.",
+          "format": "uri-reference"
+        },
+        "created_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the policy was created."
+        },
+        "created_by_id": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the user who created the policy."
+        },
+        "last_modified_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the policy was last modified."
+        },
+        "last_modified_by_id": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the user who last modified the policy."
+        }
+      }
+    },
+    "PolicySubject": {
+      "title": "Policy Subject",
+      "description": "A subject in a policy that identifies who the policy applies to, such as a user, service ID, or access group.",
+      "type": "object",
+      "required": [
+        "attributes"
+      ],
+      "properties": {
+        "attributes": {
+          "type": "array",
+          "description": "The attributes that identify the subject.",
+          "items": {
+            "$ref": "#/$defs/PolicyAttribute"
+          }
+        }
+      }
+    },
+    "PolicyRole": {
+      "title": "Policy Role",
+      "description": "A role assigned in a policy, identified by its CRN.",
+      "type": "object",
+      "required": [
+        "role_id"
+      ],
+      "properties": {
+        "role_id": {
+          "type": "string",
+          "description": "The CRN of the role."
+        },
+        "display_name": {
+          "type": "string",
+          "description": "The display name of the role."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the role."
+        }
+      }
+    },
+    "PolicyResource": {
+      "title": "Policy Resource",
+      "description": "A resource in a policy that identifies what the policy grants access to.",
+      "type": "object",
+      "required": [
+        "attributes"
+      ],
+      "properties": {
+        "attributes": {
+          "type": "array",
+          "description": "The attributes that identify the resource.",
+          "items": {
+            "$ref": "#/$defs/PolicyAttribute"
+          }
+        }
+      }
+    },
+    "PolicyAttribute": {
+      "title": "Policy Attribute",
+      "description": "An attribute used to identify a subject or resource in a policy, consisting of a name-value pair with an optional comparison operator.",
+      "type": "object",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The attribute name, such as accountId, serviceName, or iam_id."
+        },
+        "value": {
+          "type": "string",
+          "description": "The attribute value."
+        },
+        "operator": {
+          "type": "string",
+          "description": "The comparison operator.",
+          "enum": [
+            "stringEquals",
+            "stringMatch",
+            "stringExists"
+          ]
+        }
+      }
+    },
+    "Role": {
+      "title": "IAM Role",
+      "description": "An IAM role that defines a set of actions a subject can perform on a resource. Roles can be system-defined, service-defined, or custom.",
+      "type": "object",
+      "required": [
+        "display_name",
+        "actions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the role."
+        },
+        "display_name": {
+          "type": "string",
+          "description": "The display name of the role."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the role."
+        },
+        "actions": {
+          "type": "array",
+          "description": "The list of actions granted by this role.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "crn": {
+          "$ref": "#/$defs/CRN",
+          "description": "The CRN of the role."
+        },
+        "name": {
+          "type": "string",
+          "description": "The programmatic name identifier of the role."
+        },
+        "account_id": {
+          "$ref": "#/$defs/AccountId",
+          "description": "The account ID for custom roles."
+        },
+        "service_name": {
+          "type": "string",
+          "description": "The service this role applies to."
+        },
+        "created_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the role was created."
+        },
+        "last_modified_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the role was last modified."
+        }
+      }
+    },
+    "AccessGroup": {
+      "title": "Access Group",
+      "description": "An access group organizes users and service IDs into a group for simplified access management in IBM Cloud.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "account_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the access group."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the access group."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the access group."
+        },
+        "account_id": {
+          "$ref": "#/$defs/AccountId",
+          "description": "The account that owns this access group."
+        },
+        "created_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the access group was created."
+        },
+        "created_by_id": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the user who created the access group."
+        },
+        "last_modified_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the access group was last modified."
+        },
+        "last_modified_by_id": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the user who last modified the access group."
+        },
+        "href": {
+          "type": "string",
+          "description": "The URL of the access group.",
+          "format": "uri-reference"
+        },
+        "is_federated": {
+          "type": "boolean",
+          "description": "Whether the access group is federated."
+        },
+        "membership_type": {
+          "type": "string",
+          "description": "The type of membership for the group.",
+          "enum": [
+            "static",
+            "dynamic"
+          ]
+        }
+      }
+    },
+    "Tag": {
+      "title": "Resource Tag",
+      "description": "A tag attached to an IBM Cloud resource for organization, access control, or cost tracking.",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The tag name. User tags follow the format key:value. Access tags follow the format key:value with restricted characters."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the tag.",
+          "enum": [
+            "user",
+            "access",
+            "service"
+          ]
+        }
+      }
+    },
+    "Account": {
+      "title": "IBM Cloud Account",
+      "description": "An IBM Cloud account that serves as the billing and access management boundary for cloud resources.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "state"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/AccountId",
+          "description": "The unique identifier of the account."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the account."
+        },
+        "state": {
+          "type": "string",
+          "description": "The current state of the account.",
+          "enum": [
+            "ACTIVE",
+            "SUSPENDED",
+            "CLOSED",
+            "PENDING"
+          ]
+        },
+        "owner_iam_id": {
+          "$ref": "#/$defs/IamId",
+          "description": "The IAM ID of the account owner."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of account.",
+          "enum": [
+            "TRIAL",
+            "STANDARD",
+            "ENTERPRISE",
+            "LITE",
+            "SUBSCRIPTION",
+            "PAY_AS_YOU_GO"
+          ]
+        },
+        "enterprise_id": {
+          "type": "string",
+          "description": "The enterprise ID if this account belongs to an enterprise."
+        },
+        "enterprise_account_id": {
+          "$ref": "#/$defs/AccountId",
+          "description": "The enterprise account ID if applicable."
+        },
+        "enterprise_path": {
+          "type": "string",
+          "description": "The path in the enterprise hierarchy."
+        },
+        "created_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the account was created."
+        },
+        "updated_at": {
+          "$ref": "#/$defs/Timestamp",
+          "description": "Timestamp when the account was last updated."
+        }
+      }
+    },
+    "PaginatedResponse": {
+      "title": "Paginated Response",
+      "description": "Standard pagination wrapper used across IBM Cloud APIs for list operations.",
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer",
+          "description": "The offset of the current page."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "The number of results per page."
+        },
+        "total_count": {
+          "type": "integer",
+          "description": "The total number of results."
+        },
+        "first": {
+          "type": "string",
+          "description": "URL to the first page of results.",
+          "format": "uri-reference"
+        },
+        "previous": {
+          "type": "string",
+          "description": "URL to the previous page of results.",
+          "format": "uri-reference"
+        },
+        "next": {
+          "type": "string",
+          "description": "URL to the next page of results.",
+          "format": "uri-reference"
+        },
+        "last": {
+          "type": "string",
+          "description": "URL to the last page of results.",
+          "format": "uri-reference"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "title": "Error Response",
+      "description": "Standard error response returned by IBM Cloud APIs when a request fails.",
+      "type": "object",
+      "required": [
+        "status_code",
+        "errors"
+      ],
+      "properties": {
+        "status_code": {
+          "type": "integer",
+          "description": "The HTTP status code."
+        },
+        "errors": {
+          "type": "array",
+          "description": "The list of errors.",
+          "items": {
+            "$ref": "#/$defs/Error"
+          }
+        },
+        "trace": {
+          "type": "string",
+          "description": "A trace identifier for debugging."
+        }
+      }
+    },
+    "Error": {
+      "title": "Error",
+      "description": "An individual error within an error response.",
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "A machine-readable error code."
+        },
+        "message": {
+          "type": "string",
+          "description": "A human-readable error message."
+        },
+        "details": {
+          "type": "string",
+          "description": "Additional details about the error."
+        },
+        "more_info": {
+          "type": "string",
+          "description": "A URL to documentation about the error.",
+          "format": "uri"
+        },
+        "target": {
+          "type": "object",
+          "description": "The target of the error.",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "The type of the error target.",
+              "enum": [
+                "field",
+                "parameter",
+                "header"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the problematic field, parameter, or header."
+            }
+          }
+        }
+      }
+    }
+  }
+}

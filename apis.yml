@@ -1,8 +1,7 @@
 name: IBM
 description: >-
   A collection of IBM's public APIs and developer resources.
-image: 
-  https://www.ibm.com/brand/experience-guides/developer/b1db1ae501d522a1a4b49613fe07c9f1/01_8-bar-positive.svg
+image: https://www.ibm.com/brand/experience-guides/developer/b1db1ae501d522a1a4b49613fe07c9f1/01_8-bar-positive.svg
 url: https://developer.ibm.com
 created: '2024'
 modified: '2026-03-16'
@@ -10,8 +9,7 @@ apis:
   - name: IBM Watson Assistant
     description: >-
       Build conversational interfaces into any application, device, or channel.
-    image: 
-      https://www.ibm.com/content/dam/connectedassets-adobe-cms/worldwide-content/creative-assets/s-migr/ul/g/8f/c4/watson-assistant.component.complex-narrative-xl-retina.ts=1686660742804.png/content/adobe-cms/us/en/products/watson-assistant/jcr:content/root/table_of_contents/body/content_section_styled/content-section-body/complex_narrative/items/content_group/image
+    image: https://www.ibm.com/content/dam/connectedassets-adobe-cms/worldwide-content/creative-assets/s-migr/ul/g/8f/c4/watson-assistant.component.complex-narrative-xl-retina.ts=1686660742804.png/content/adobe-cms/us/en/products/watson-assistant/jcr:content/root/table_of_contents/body/content_section_styled/content-section-body/complex_narrative/items/content_group/image
     humanURL: https://www.ibm.com/products/watson-assistant
     baseURL: https://api.us-south.assistant.watson.cloud.ibm.com
     tags:
@@ -23,34 +21,29 @@ apis:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/assistant/assistant-v2
       - type: openapi
-        url: 
-          https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/assistant/assistant-v2.json
+        url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/assistant/assistant-v2.json
       - type: authentication
         url: https://cloud.ibm.com/docs/watson?topic=watson-iam
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
+        url: https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
   - name: IBM Watson Natural Language Understanding
     description: >-
       Analyze text to extract metadata from content such as concepts, entities, keywords,
       categories, sentiment, emotion, relations, and semantic roles.
     humanURL: https://www.ibm.com/cloud/watson-natural-language-understanding
-    baseURL: 
-      https://api.us-south.natural-language-understanding.watson.cloud.ibm.com
+    baseURL: https://api.us-south.natural-language-understanding.watson.cloud.ibm.com
     tags:
-      - Natural Language Processing
-      - Text Analysis
       - AI
       - Machine Learning
+      - Natural Language Processing
+      - Text Analysis
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/natural-language-understanding
       - type: openapi
-        url: 
-          https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/natural-language-understanding/natural-language-understanding.json
+        url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/natural-language-understanding/natural-language-understanding.json
       - type: pricing
-        url: 
-          https://www.ibm.com/cloud/watson-natural-language-understanding/pricing
+        url: https://www.ibm.com/cloud/watson-natural-language-understanding/pricing
       - type: getting-started
         url: https://cloud.ibm.com/docs/natural-language-understanding
   - name: IBM Watson Language Translator
@@ -59,15 +52,14 @@ apis:
     humanURL: https://www.ibm.com/cloud/watson-language-translator
     baseURL: https://api.us-south.language-translator.watson.cloud.ibm.com
     tags:
-      - Translation
-      - Language
       - AI
+      - Language
+      - Translation
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/language-translator
       - type: openapi
-        url: 
-          https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/language-translator/language-translator.json
+        url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/language-translator/language-translator.json
       - type: getting-started
         url: https://cloud.ibm.com/docs/language-translator
   - name: IBM Watson Speech to Text
@@ -76,16 +68,15 @@ apis:
     humanURL: https://www.ibm.com/cloud/watson-speech-to-text
     baseURL: https://api.us-south.speech-to-text.watson.cloud.ibm.com
     tags:
-      - Speech Recognition
-      - Audio
-      - Transcription
       - AI
+      - Audio
+      - Speech Recognition
+      - Transcription
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/speech-to-text
       - type: openapi
-        url: 
-          https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/speech-to-text/speech-to-text.json
+        url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/speech-to-text/speech-to-text.json
       - type: getting-started
         url: https://cloud.ibm.com/docs/speech-to-text
   - name: IBM Watson Text to Speech
@@ -95,16 +86,15 @@ apis:
     humanURL: https://www.ibm.com/cloud/watson-text-to-speech
     baseURL: https://api.us-south.text-to-speech.watson.cloud.ibm.com
     tags:
-      - Text to Speech
-      - Audio Generation
-      - Voice Synthesis
       - AI
+      - Audio Generation
+      - Text to Speech
+      - Voice Synthesis
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/text-to-speech
       - type: openapi
-        url: 
-          https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/text-to-speech/text-to-speech.json
+        url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/text-to-speech/text-to-speech.json
       - type: getting-started
         url: https://cloud.ibm.com/docs/text-to-speech
   - name: IBM Cloud Object Storage
@@ -113,10 +103,10 @@ apis:
     humanURL: https://www.ibm.com/cloud/object-storage
     baseURL: https://s3.us.cloud-object-storage.appdomain.cloud
     tags:
-      - Storage
       - Cloud Storage
       - Object Storage
       - S3 Compatible
+      - Storage
     properties:
       - type: documentation
         url: https://cloud.ibm.com/docs/cloud-object-storage/api-reference
@@ -130,10 +120,10 @@ apis:
     humanURL: https://www.ibm.com/cloud/databases-for-postgresql
     baseURL: https://api.us-south.databases.cloud.ibm.com
     tags:
-      - Database
-      - PostgreSQL
-      - Managed Database
       - Cloud
+      - Database
+      - Managed Database
+      - PostgreSQL
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/cloud-databases-api
@@ -145,18 +135,17 @@ apis:
     humanURL: https://www.ibm.com/cloud/code-engine
     baseURL: https://api.us-south.codeengine.cloud.ibm.com
     tags:
-      - Serverless
-      - Containers
       - Cloud Native
+      - Containers
       - Platform
+      - Serverless
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/codeengine
       - type: cli
         url: https://cloud.ibm.com/docs/codeengine?topic=codeengine-cli
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/codeengine?topic=codeengine-getting-started
+        url: https://cloud.ibm.com/docs/codeengine?topic=codeengine-getting-started
   - name: IBM watsonx.ai
     description: >-
       Run text inference, prompt tuning, and more on large language models using the
@@ -165,10 +154,10 @@ apis:
     baseURL: https://us-south.ml.cloud.ibm.com
     tags:
       - Artificial Intelligence
+      - Foundation Models
       - Generative AI
       - Large Language Models
       - Machine Learning
-      - Foundation Models
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/watsonx-ai
@@ -183,11 +172,11 @@ apis:
     humanURL: https://www.ibm.com/products/watsonx-governance
     baseURL: https://us-south.ml.cloud.ibm.com
     tags:
-      - Artificial Intelligence
       - AI Governance
+      - Artificial Intelligence
+      - Compliance
       - Model Monitoring
       - Trust
-      - Compliance
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/ai-openscale
@@ -202,9 +191,9 @@ apis:
     humanURL: https://www.ibm.com/products/watson-discovery
     baseURL: https://api.us-south.discovery.watson.cloud.ibm.com
     tags:
+      - AI
       - Cognitive Search
       - Content Analytics
-      - AI
       - Document Understanding
     properties:
       - type: documentation
@@ -218,11 +207,11 @@ apis:
     humanURL: https://www.ibm.com/products/vpc
     baseURL: https://us-south.iaas.cloud.ibm.com
     tags:
+      - Cloud
+      - Compute
+      - Infrastructure
       - Networking
       - VPC
-      - Infrastructure
-      - Compute
-      - Cloud
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/vpc/latest
@@ -235,18 +224,17 @@ apis:
     humanURL: https://www.ibm.com/products/kubernetes-service
     baseURL: https://containers.cloud.ibm.com
     tags:
-      - Kubernetes
-      - Containers
-      - Orchestration
       - Cloud Native
+      - Containers
+      - Kubernetes
+      - Orchestration
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/kubernetes
       - type: pricing
         url: https://www.ibm.com/cloud/kubernetes-service/pricing
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/containers?topic=containers-getting-started
+        url: https://cloud.ibm.com/docs/containers?topic=containers-getting-started
   - name: IBM Key Protect
     description: >-
       Provision and manage encrypted keys for data-at-rest protection across IBM Cloud
@@ -254,10 +242,10 @@ apis:
     humanURL: https://www.ibm.com/products/key-protect
     baseURL: https://us-south.kms.cloud.ibm.com
     tags:
-      - Security
+      - Data Protection
       - Encryption
       - Key Management
-      - Data Protection
+      - Security
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/key-protect
@@ -270,10 +258,10 @@ apis:
     humanURL: https://cloud.ibm.com/docs/account?topic=account-iamoverview
     baseURL: https://iam.cloud.ibm.com
     tags:
-      - Identity
       - Access Management
-      - Security
       - Authentication
+      - Identity
+      - Security
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/iam-identity-token-api
@@ -292,9 +280,9 @@ apis:
     humanURL: https://www.ibm.com/products/secrets-manager
     baseURL: https://us-south.secrets-manager.appdomain.cloud
     tags:
-      - Security
-      - Secrets
       - Credentials
+      - Secrets
+      - Security
       - Vault
     properties:
       - type: documentation
@@ -308,10 +296,10 @@ apis:
     humanURL: https://www.ibm.com/products/event-notifications
     baseURL: https://us-south.event-notifications.cloud.ibm.com
     tags:
-      - Events
-      - Notifications
-      - Messaging
       - Alerts
+      - Events
+      - Messaging
+      - Notifications
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/event-notifications
@@ -324,16 +312,15 @@ apis:
     humanURL: https://www.ibm.com/products/container-registry
     baseURL: https://us.icr.io
     tags:
-      - Containers
       - Container Registry
+      - Containers
       - Docker
       - Images
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/container-registry
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/Registry?topic=Registry-registry_overview
+        url: https://cloud.ibm.com/docs/Registry?topic=Registry-registry_overview
   - name: IBM Cloud Schematics
     description: >-
       Use Terraform and Ansible to automate the provisioning and configuration management
@@ -341,16 +328,15 @@ apis:
     humanURL: https://www.ibm.com/products/schematics
     baseURL: https://us-south.schematics.cloud.ibm.com
     tags:
-      - Infrastructure as Code
-      - Terraform
       - Automation
+      - Infrastructure as Code
       - Provisioning
+      - Terraform
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/schematics/schematics
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/schematics?topic=schematics-getting-started
+        url: https://cloud.ibm.com/docs/schematics?topic=schematics-getting-started
   - name: IBM Cloud Internet Services
     description: >-
       Provide DDoS protection, global load balancing, DNS management, WAF, and CDN
@@ -361,8 +347,8 @@ apis:
       - CDN
       - DDoS Protection
       - DNS
-      - Web Application Firewall
       - Security
+      - Web Application Firewall
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/cis
@@ -376,15 +362,14 @@ apis:
     baseURL: https://us-south.cloudantnosqldb.appdomain.cloud
     tags:
       - Database
-      - NoSQL
       - Document Database
       - JSON
+      - NoSQL
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/cloudant
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant
+        url: https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant
   - name: IBM Event Streams
     description: >-
       Fully managed Apache Kafka service for high-throughput event streaming, event
@@ -392,16 +377,15 @@ apis:
     humanURL: https://www.ibm.com/products/event-automation
     baseURL: https://us-south.event-streams.cloud.ibm.com
     tags:
-      - Event Streaming
       - Apache Kafka
+      - Event Streaming
       - Messaging
       - Pub/Sub
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/event-streams/adminrest
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-getting-started
+        url: https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-getting-started
   - name: IBM Cloud Security and Compliance Center
     description: >-
       Assess, monitor, and remediate security and compliance posture for cloud resources
@@ -409,16 +393,15 @@ apis:
     humanURL: https://www.ibm.com/products/security-and-compliance-center
     baseURL: https://us-south.compliance.cloud.ibm.com
     tags:
-      - Security
       - Compliance
       - Governance
       - Risk Management
+      - Security
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/security-compliance
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/security-compliance?topic=security-compliance-getting-started
+        url: https://cloud.ibm.com/docs/security-compliance?topic=security-compliance-getting-started
   - name: IBM Cloud Functions
     description: >-
       Run lightweight code that executes application logic in a scalable way using
@@ -426,10 +409,10 @@ apis:
     humanURL: https://cloud.ibm.com/functions
     baseURL: https://us-south.functions.cloud.ibm.com
     tags:
-      - Serverless
-      - Functions as a Service
-      - Event-Driven
       - Apache OpenWhisk
+      - Event-Driven
+      - Functions as a Service
+      - Serverless
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/functions
@@ -442,8 +425,8 @@ apis:
     baseURL: https://api.dns-svcs.cloud.ibm.com
     tags:
       - DNS
-      - Networking
       - Domain Management
+      - Networking
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/dns-svcs
@@ -456,10 +439,10 @@ apis:
     humanURL: https://www.ibm.com/products/cloud-monitoring
     baseURL: https://us-south.monitoring.cloud.ibm.com
     tags:
+      - Alerting
+      - Metrics
       - Monitoring
       - Observability
-      - Metrics
-      - Alerting
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/monitor
@@ -472,9 +455,9 @@ apis:
     humanURL: https://cloud.ibm.com/catalog/services/cloud-logs
     baseURL: https://us-south.logs.cloud.ibm.com
     tags:
+      - Log Analysis
       - Logging
       - Observability
-      - Log Analysis
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/logs-service-api
@@ -487,9 +470,9 @@ apis:
     humanURL: https://cloud.ibm.com/catalog/services/activity-tracker
     baseURL: https://us-south.atracker.cloud.ibm.com
     tags:
+      - Activity Tracking
       - Auditing
       - Compliance
-      - Activity Tracking
       - Observability
     properties:
       - type: documentation
@@ -519,10 +502,10 @@ apis:
     humanURL: https://www.ibm.com/products/transit-gateway
     baseURL: https://transit.cloud.ibm.com
     tags:
-      - Networking
       - Connectivity
-      - Transit Gateway
       - Hybrid Cloud
+      - Networking
+      - Transit Gateway
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/transit-gateway
@@ -535,13 +518,12 @@ apis:
     humanURL: https://cloud.ibm.com/docs/account?topic=account-manage_resource
     baseURL: https://resource-controller.cloud.ibm.com
     tags:
-      - Resource Management
-      - Provisioning
       - Cloud Management
+      - Provisioning
+      - Resource Management
     properties:
       - type: documentation
-        url: 
-          https://cloud.ibm.com/apidocs/resource-controller/resource-controller
+        url: https://cloud.ibm.com/apidocs/resource-controller/resource-controller
   - name: IBM Cloud Global Search
     description: >-
       Search for cloud resources across the IBM Cloud platform using resource attributes
@@ -549,9 +531,9 @@ apis:
     humanURL: https://cloud.ibm.com/docs/account?topic=account-tag
     baseURL: https://api.global-search-tagging.cloud.ibm.com
     tags:
-      - Search
-      - Resource Discovery
       - Cloud Management
+      - Resource Discovery
+      - Search
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/search
@@ -562,9 +544,9 @@ apis:
     humanURL: https://cloud.ibm.com/docs/account?topic=account-tag
     baseURL: https://tags.global-search-tagging.cloud.ibm.com
     tags:
-      - Tagging
-      - Resource Management
       - Organization
+      - Resource Management
+      - Tagging
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/tagging
@@ -576,9 +558,9 @@ apis:
     baseURL: https://iam.cloud.ibm.com
     tags:
       - Access Control
+      - IAM
       - Policies
       - Security
-      - IAM
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/iam-policy-management
@@ -596,9 +578,9 @@ apis:
     baseURL: https://iam.cloud.ibm.com
     tags:
       - Access Groups
+      - Access Management
       - IAM
       - Security
-      - Access Management
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/iam-access-groups
@@ -615,11 +597,11 @@ apis:
     humanURL: https://www.ibm.com/products/power-virtual-server
     baseURL: https://us-south.power-iaas.cloud.ibm.com
     tags:
+      - AIX
+      - IBM I
+      - Infrastructure
       - Power Systems
       - Virtual Server
-      - AIX
-      - IBM i
-      - Infrastructure
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/power-cloud
@@ -632,9 +614,9 @@ apis:
     humanURL: https://cloud.ibm.com/docs/account?topic=account-enterprise
     baseURL: https://enterprise.cloud.ibm.com
     tags:
-      - Enterprise
       - Account Management
       - Billing
+      - Enterprise
       - Multi-Account
     properties:
       - type: documentation
@@ -643,20 +625,18 @@ apis:
     description: >-
       Configure, deploy, and govern infrastructure as code resources at scale using
       projects for managed deployments.
-    humanURL: 
-      https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects
+    humanURL: https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects
     baseURL: https://projects.api.cloud.ibm.com
     tags:
-      - Infrastructure as Code
-      - Governance
-      - Deployment
       - Configuration
+      - Deployment
+      - Governance
+      - Infrastructure as Code
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/projects
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects
+        url: https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects
   - name: IBM watsonx.data
     description: >-
       Collect, store, query, and analyze structured and unstructured enterprise data
@@ -664,10 +644,10 @@ apis:
     humanURL: https://www.ibm.com/products/watsonx-data
     baseURL: https://us-south.lakehouse.cloud.ibm.com
     tags:
+      - AI Data
+      - Analytics
       - Data Lakehouse
       - Data Management
-      - Analytics
-      - AI Data
       - Open Source
     properties:
       - type: documentation
@@ -683,16 +663,15 @@ apis:
     humanURL: https://www.ibm.com/products/api-connect
     baseURL: https://api.us-south.apiconnect.cloud.ibm.com
     tags:
-      - API Management
       - API Gateway
+      - API Management
       - API Security
       - Developer Portal
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/apiconnect/apic-management-api
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/apiconnect?topic=apiconnect-getting-started
+        url: https://cloud.ibm.com/docs/apiconnect?topic=apiconnect-getting-started
   - name: IBM Cloud Direct Link
     description: >-
       Establish private, high-speed connectivity between on-premises networks and
@@ -700,16 +679,15 @@ apis:
     humanURL: https://www.ibm.com/products/direct-link
     baseURL: https://directlink.cloud.ibm.com
     tags:
-      - Networking
       - Connectivity
       - Hybrid Cloud
+      - Networking
       - Private Network
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/direct_link
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/dl?topic=dl-get-started-with-ibm-cloud-dl
+        url: https://cloud.ibm.com/docs/dl?topic=dl-get-started-with-ibm-cloud-dl
   - name: IBM Cloud Continuous Delivery Toolchain
     description: >-
       Create and manage toolchains that integrate development, deployment, and operations
@@ -717,35 +695,32 @@ apis:
     humanURL: https://www.ibm.com/products/continuous-delivery
     baseURL: https://api.us-south.devops.cloud.ibm.com
     tags:
-      - DevOps
-      - Continuous Delivery
-      - Toolchain
       - CI/CD
+      - Continuous Delivery
+      - DevOps
+      - Toolchain
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/toolchain
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-getting-started
+        url: https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-getting-started
   - name: IBM Cloud Tekton Pipeline
     description: >-
       Create and manage Tekton-based continuous integration and continuous delivery
       pipelines within Kubernetes clusters.
-    humanURL: 
-      https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines
+    humanURL: https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines
     baseURL: https://api.us-south.devops.cloud.ibm.com
     tags:
       - CI/CD
-      - Tekton
-      - Pipelines
-      - Kubernetes
       - DevOps
+      - Kubernetes
+      - Pipelines
+      - Tekton
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/tekton-pipeline
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines
+        url: https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines
   - name: IBM Cloud User Management
     description: >-
       Manage users within an IBM Cloud account including inviting, retrieving, updating,
@@ -753,10 +728,10 @@ apis:
     humanURL: https://cloud.ibm.com/docs/account?topic=account-iamuserinv
     baseURL: https://user-management.cloud.ibm.com
     tags:
-      - User Management
-      - IAM
       - Account Management
+      - IAM
       - Identity
+      - User Management
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/user-management
@@ -764,14 +739,13 @@ apis:
     description: >-
       Retrieve usage details and costs for IBM Cloud resources in an account reported
       by the month in which they were incurred.
-    humanURL: 
-      https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-viewingusage
+    humanURL: https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-viewingusage
     baseURL: https://billing.cloud.ibm.com
     tags:
       - Billing
-      - Usage
       - Cost Management
       - Reporting
+      - Usage
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/metering-reporting
@@ -783,8 +757,8 @@ apis:
     baseURL: https://globalcatalog.cloud.ibm.com
     tags:
       - Catalog
-      - Resource Management
       - Product Catalog
+      - Resource Management
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/resource-catalog/global-catalog
@@ -796,8 +770,8 @@ apis:
     baseURL: https://cm.globalcatalog.cloud.ibm.com
     tags:
       - Catalog Management
-      - Private Catalog
       - Governance
+      - Private Catalog
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
@@ -805,20 +779,18 @@ apis:
     description: >-
       Create and manage network zones and context-based restriction rules to control
       access to IBM Cloud resources based on network context.
-    humanURL: 
-      https://cloud.ibm.com/docs/account?topic=account-context-restrictions-whatis
+    humanURL: https://cloud.ibm.com/docs/account?topic=account-context-restrictions-whatis
     baseURL: https://cbr.cloud.ibm.com
     tags:
-      - Security
       - Access Control
       - Network Security
       - Restrictions
+      - Security
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/context-based-restrictions
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/account?topic=account-context-restrictions-create
+        url: https://cloud.ibm.com/docs/account?topic=account-context-restrictions-create
   - name: IBM Cloud Databases for Redis
     description: >-
       Fully managed Redis in-memory data store for caching, session management, and
@@ -826,15 +798,14 @@ apis:
     humanURL: https://www.ibm.com/products/databases-for-redis
     baseURL: https://api.us-south.databases.cloud.ibm.com
     tags:
-      - Database
-      - Redis
-      - In-Memory
       - Caching
+      - Database
+      - In-Memory
       - Managed Database
+      - Redis
     properties:
       - type: documentation
-        url: 
-          https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
+        url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
       - type: getting-started
         url: https://cloud.ibm.com/docs/databases-for-redis
   - name: IBM Cloud Databases for MongoDB
@@ -845,17 +816,15 @@ apis:
     baseURL: https://api.us-south.databases.cloud.ibm.com
     tags:
       - Database
-      - MongoDB
-      - NoSQL
       - Document Database
       - Managed Database
+      - MongoDB
+      - NoSQL
     properties:
       - type: documentation
-        url: 
-          https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
+        url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
       - type: getting-started
-        url: 
-          https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started-new
+        url: https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started-new
   - name: IBM Cloud Databases for Elasticsearch
     description: >-
       Fully managed Elasticsearch service for full-text search, log analytics, and
@@ -865,27 +834,25 @@ apis:
     tags:
       - Database
       - Elasticsearch
-      - Search
       - Log Analytics
       - Managed Database
+      - Search
     properties:
       - type: documentation
-        url: 
-          https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
+        url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
       - type: getting-started
         url: https://cloud.ibm.com/docs/databases-for-elasticsearch
   - name: IBM Cloud Enterprise Billing Units
     description: >-
       Manage billing units, billing options, and credit pools for IBM Cloud enterprise
       accounts.
-    humanURL: 
-      https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-viewingusage
+    humanURL: https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-viewingusage
     baseURL: https://billing.cloud.ibm.com
     tags:
       - Billing
-      - Enterprise
-      - Credit Management
       - Cost Management
+      - Credit Management
+      - Enterprise
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/enterprise-apis/billing-unit
@@ -893,18 +860,16 @@ apis:
     description: >-
       Access usage reports for entities managed by an IBM Cloud enterprise including
       enterprises, account groups, and accounts.
-    humanURL: 
-      https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-viewingusage
+    humanURL: https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-viewingusage
     baseURL: https://enterprise.cloud.ibm.com
     tags:
-      - Usage Reports
-      - Enterprise
       - Analytics
       - Cost Management
+      - Enterprise
+      - Usage Reports
     properties:
       - type: documentation
-        url: 
-          https://cloud.ibm.com/apidocs/enterprise-apis/resource-usage-reports
+        url: https://cloud.ibm.com/apidocs/enterprise-apis/resource-usage-reports
   - name: IBM Cloud VMware Solutions
     description: >-
       Deploy and manage VMware workloads on IBM Cloud infrastructure with automated
@@ -912,10 +877,10 @@ apis:
     humanURL: https://www.ibm.com/products/vmware
     baseURL: https://api.us-south.vmware.cloud.ibm.com
     tags:
-      - VMware
-      - Virtualization
-      - Infrastructure
       - Hybrid Cloud
+      - Infrastructure
+      - Virtualization
+      - VMware
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/vmware-solutions
@@ -928,17 +893,16 @@ apis:
     humanURL: https://www.ibm.com/products/watsonx-ai
     baseURL: https://us-south.ml.cloud.ibm.com
     tags:
-      - Machine Learning
       - AI
-      - Model Training
-      - Model Deployment
       - Data Science
+      - Machine Learning
+      - Model Deployment
+      - Model Training
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/machine-learning
       - type: getting-started
-        url: 
-          https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-api.html?context=wx
+        url: https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-api.html?context=wx
   - name: IBM Knowledge Catalog
     description: >-
       Discover, catalog, categorize, and govern data assets and AI models with an
@@ -946,10 +910,10 @@ apis:
     humanURL: https://www.ibm.com/products/knowledge-catalog
     baseURL: https://api.dataplatform.cloud.ibm.com
     tags:
-      - Data Governance
-      - Data Catalog
-      - Metadata Management
       - AI Governance
+      - Data Catalog
+      - Data Governance
+      - Metadata Management
     properties:
       - type: documentation
         url: https://cloud.ibm.com/apidocs/knowledge-catalog
@@ -1007,23 +971,23 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 tags:
-  - Artificial Intelligence
-  - Cloud Computing
-  - Enterprise
-  - Watson
-  - Databases
-  - Storage
-  - Serverless
-  - Networking
-  - Security
-  - Containers
-  - Observability
-  - Generative AI
-  - Infrastructure
-  - DevOps
   - API Management
-  - Data Governance
-  - Machine Learning
-  - Hybrid Cloud
-  - watsonx
+  - Artificial Intelligence
   - Billing
+  - Cloud Computing
+  - Containers
+  - Data Governance
+  - Databases
+  - DevOps
+  - Enterprise
+  - Generative AI
+  - Hybrid Cloud
+  - Infrastructure
+  - Machine Learning
+  - Networking
+  - Observability
+  - Security
+  - Serverless
+  - Storage
+  - Watson
+  - Watsonx

@@ -16,7 +16,7 @@ apis:
       - Conversational AI
       - NLP
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/assistant/assistant-v2
       - type: openapi
         url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/assistant/assistant-v2.json
@@ -35,7 +35,7 @@ apis:
       - Natural Language Processing
       - Text Analysis
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/natural-language-understanding
       - type: openapi
         url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/natural-language-understanding/natural-language-understanding.json
@@ -52,7 +52,7 @@ apis:
       - Language
       - Translation
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/language-translator
       - type: openapi
         url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/language-translator/language-translator.json
@@ -68,7 +68,7 @@ apis:
       - Speech Recognition
       - Transcription
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/speech-to-text
       - type: openapi
         url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/speech-to-text/speech-to-text.json
@@ -84,7 +84,7 @@ apis:
       - Text to Speech
       - Voice Synthesis
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/text-to-speech
       - type: openapi
         url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/text-to-speech/text-to-speech.json
@@ -100,7 +100,7 @@ apis:
       - S3 Compatible
       - Storage
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/docs/cloud-object-storage/api-reference
       - type: pricing
         url: https://www.ibm.com/cloud/object-storage/pricing
@@ -116,7 +116,7 @@ apis:
       - Managed Database
       - PostgreSQL
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/cloud-databases-api
       - type: getting-started
         url: https://cloud.ibm.com/docs/databases-for-postgresql
@@ -130,7 +130,7 @@ apis:
       - Platform
       - Serverless
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/codeengine
       - type: cli
         url: https://cloud.ibm.com/docs/codeengine?topic=codeengine-cli
@@ -148,7 +148,7 @@ apis:
       - Large Language Models
       - Machine Learning
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/watsonx-ai
       - type: pricing
         url: https://www.ibm.com/products/watsonx-ai/pricing
@@ -166,7 +166,7 @@ apis:
       - Model Monitoring
       - Trust
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/ai-openscale
       - type: pricing
         url: https://www.ibm.com/products/watsonx-governance/pricing
@@ -183,7 +183,7 @@ apis:
       - Content Analytics
       - Document Understanding
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/discovery-data
       - type: getting-started
         url: https://cloud.ibm.com/docs/discovery-data
@@ -199,7 +199,7 @@ apis:
       - Networking
       - VPC
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/vpc/latest
       - type: getting-started
         url: https://cloud.ibm.com/docs/vpc
@@ -214,7 +214,7 @@ apis:
       - Kubernetes
       - Orchestration
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/kubernetes
       - type: pricing
         url: https://www.ibm.com/cloud/kubernetes-service/pricing
@@ -230,7 +230,7 @@ apis:
       - Key Management
       - Security
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/key-protect
       - type: getting-started
         url: https://cloud.ibm.com/docs/key-protect
@@ -245,7 +245,7 @@ apis:
       - Identity
       - Security
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/iam-identity-token-api
       - type: getting-started
         url: https://cloud.ibm.com/docs/account?topic=account-iamoverview
@@ -266,7 +266,7 @@ apis:
       - Security
       - Vault
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/secrets-manager/secrets-manager-v2
       - type: getting-started
         url: https://cloud.ibm.com/docs/secrets-manager
@@ -281,7 +281,7 @@ apis:
       - Messaging
       - Notifications
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/event-notifications
       - type: getting-started
         url: https://cloud.ibm.com/docs/event-notifications
@@ -296,7 +296,7 @@ apis:
       - Docker
       - Images
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/container-registry
       - type: getting-started
         url: https://cloud.ibm.com/docs/Registry?topic=Registry-registry_overview
@@ -311,7 +311,7 @@ apis:
       - Provisioning
       - Terraform
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/schematics/schematics
       - type: getting-started
         url: https://cloud.ibm.com/docs/schematics?topic=schematics-getting-started
@@ -327,7 +327,7 @@ apis:
       - Security
       - Web Application Firewall
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/cis
       - type: getting-started
         url: https://cloud.ibm.com/docs/cis
@@ -342,7 +342,7 @@ apis:
       - JSON
       - NoSQL
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/cloudant
       - type: getting-started
         url: https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant
@@ -357,7 +357,7 @@ apis:
       - Messaging
       - Pub/Sub
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/event-streams/adminrest
       - type: getting-started
         url: https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-getting-started
@@ -372,7 +372,7 @@ apis:
       - Risk Management
       - Security
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/security-compliance
       - type: getting-started
         url: https://cloud.ibm.com/docs/security-compliance?topic=security-compliance-getting-started
@@ -387,7 +387,7 @@ apis:
       - Functions as a Service
       - Serverless
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/functions
       - type: getting-started
         url: https://cloud.ibm.com/docs/openwhisk
@@ -400,7 +400,7 @@ apis:
       - Domain Management
       - Networking
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/dns-svcs
       - type: getting-started
         url: https://cloud.ibm.com/docs/dns-svcs?topic=dns-svcs-getting-started
@@ -415,7 +415,7 @@ apis:
       - Monitoring
       - Observability
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/monitor
       - type: getting-started
         url: https://cloud.ibm.com/docs/monitoring
@@ -429,7 +429,7 @@ apis:
       - Logging
       - Observability
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/logs-service-api
       - type: getting-started
         url: https://cloud.ibm.com/docs/cloud-logs
@@ -444,7 +444,7 @@ apis:
       - Compliance
       - Observability
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/atracker
       - type: getting-started
         url: https://cloud.ibm.com/docs/activity-tracker
@@ -459,7 +459,7 @@ apis:
       - Identity
       - Security
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/app-id/management
       - type: getting-started
         url: https://cloud.ibm.com/docs/appid
@@ -474,7 +474,7 @@ apis:
       - Networking
       - Transit Gateway
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/transit-gateway
       - type: getting-started
         url: https://cloud.ibm.com/docs/transit-gateway
@@ -488,7 +488,7 @@ apis:
       - Provisioning
       - Resource Management
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/resource-controller/resource-controller
   - name: IBM Cloud Global Search
     description: Search for cloud resources across the IBM Cloud platform using resource attributes and
@@ -500,7 +500,7 @@ apis:
       - Resource Discovery
       - Search
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/search
   - name: IBM Cloud Global Tagging
     description: Create, delete, search, attach, or detach tags to organize and manage IBM Cloud resources.
@@ -511,7 +511,7 @@ apis:
       - Resource Management
       - Tagging
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/tagging
   - name: IBM IAM Policy Management
     description: Create and manage access policies that control what actions users can perform on IBM
@@ -524,7 +524,7 @@ apis:
       - Policies
       - Security
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/iam-policy-management
       - type: openapi
         url: openapi/ibm-cloud-iam.yml
@@ -543,7 +543,7 @@ apis:
       - IAM
       - Security
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/iam-access-groups
       - type: openapi
         url: openapi/ibm-cloud-iam.yml
@@ -563,7 +563,7 @@ apis:
       - Power Systems
       - Virtual Server
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/power-cloud
       - type: getting-started
         url: https://cloud.ibm.com/docs/power-iaas
@@ -578,7 +578,7 @@ apis:
       - Enterprise
       - Multi-Account
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/enterprise-apis/enterprise
   - name: IBM Cloud Projects
     description: Configure, deploy, and govern infrastructure as code resources at scale using projects
@@ -591,7 +591,7 @@ apis:
       - Governance
       - Infrastructure as Code
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/projects
       - type: getting-started
         url: https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects
@@ -607,7 +607,7 @@ apis:
       - Data Management
       - Open Source
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/watsonxdata-software
       - type: pricing
         url: https://www.ibm.com/products/watsonx-data/pricing
@@ -624,7 +624,7 @@ apis:
       - API Security
       - Developer Portal
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/apiconnect/apic-management-api
       - type: getting-started
         url: https://cloud.ibm.com/docs/apiconnect?topic=apiconnect-getting-started
@@ -639,7 +639,7 @@ apis:
       - Networking
       - Private Network
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/direct_link
       - type: getting-started
         url: https://cloud.ibm.com/docs/dl?topic=dl-get-started-with-ibm-cloud-dl
@@ -654,7 +654,7 @@ apis:
       - DevOps
       - Toolchain
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/toolchain
       - type: getting-started
         url: https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-getting-started
@@ -670,7 +670,7 @@ apis:
       - Pipelines
       - Tekton
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/tekton-pipeline
       - type: getting-started
         url: https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines
@@ -685,7 +685,7 @@ apis:
       - Identity
       - User Management
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/user-management
   - name: IBM Cloud Usage Reports
     description: Retrieve usage details and costs for IBM Cloud resources in an account reported by the
@@ -698,7 +698,7 @@ apis:
       - Reporting
       - Usage
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/metering-reporting
   - name: IBM Cloud Global Catalog
     description: Manage the system of record for IBM Cloud products across geographies including compute,
@@ -710,7 +710,7 @@ apis:
       - Product Catalog
       - Resource Management
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/resource-catalog/global-catalog
   - name: IBM Cloud Catalog Management
     description: Define how users in an account interact with the IBM Cloud catalog and manage private
@@ -722,7 +722,7 @@ apis:
       - Governance
       - Private Catalog
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
   - name: IBM Cloud Context-based Restrictions
     description: Create and manage network zones and context-based restriction rules to control access
@@ -735,7 +735,7 @@ apis:
       - Restrictions
       - Security
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/context-based-restrictions
       - type: getting-started
         url: https://cloud.ibm.com/docs/account?topic=account-context-restrictions-create
@@ -751,7 +751,7 @@ apis:
       - Managed Database
       - Redis
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
       - type: getting-started
         url: https://cloud.ibm.com/docs/databases-for-redis
@@ -767,7 +767,7 @@ apis:
       - MongoDB
       - NoSQL
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
       - type: getting-started
         url: https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started-new
@@ -783,7 +783,7 @@ apis:
       - Managed Database
       - Search
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
       - type: getting-started
         url: https://cloud.ibm.com/docs/databases-for-elasticsearch
@@ -797,7 +797,7 @@ apis:
       - Credit Management
       - Enterprise
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/enterprise-apis/billing-unit
   - name: IBM Cloud Enterprise Usage Reports
     description: Access usage reports for entities managed by an IBM Cloud enterprise including enterprises,
@@ -810,7 +810,7 @@ apis:
       - Enterprise
       - Usage Reports
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/enterprise-apis/resource-usage-reports
   - name: IBM Cloud VMware Solutions
     description: Deploy and manage VMware workloads on IBM Cloud infrastructure with automated provisioning
@@ -823,7 +823,7 @@ apis:
       - Virtualization
       - VMware
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/vmware-solutions
       - type: getting-started
         url: https://cloud.ibm.com/docs/vmwaresolutions
@@ -839,7 +839,7 @@ apis:
       - Model Deployment
       - Model Training
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/machine-learning
       - type: getting-started
         url: https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-api.html?context=wx
@@ -854,26 +854,26 @@ apis:
       - Data Governance
       - Metadata Management
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://cloud.ibm.com/apidocs/knowledge-catalog
 common:
   - type: Portal
     url: https://developer.ibm.com
   - type: Authentication
     url: https://cloud.ibm.com/docs/account?topic=account-iamoverview
-  - type: Getting Started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs
   - type: SDKs
     url: https://github.com/watson-developer-cloud
-  - type: Status
+  - type: StatusPage
     url: https://cloud.ibm.com/status
   - type: Support
     url: https://www.ibm.com/cloud/support
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.ibm.com/terms
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.ibm.com/privacy
-  - type: Sign Up
+  - type: SignUp
     url: https://cloud.ibm.com/registration
   - type: Pricing
     url: https://www.ibm.com/cloud/pricing
@@ -881,7 +881,7 @@ common:
     url: https://developer.ibm.com/blogs/
   - type: Tutorials
     url: https://developer.ibm.com/tutorials/
-  - type: Change Log
+  - type: ChangeLog
     url: https://cloud.ibm.com/docs/overview?topic=overview-whatsnew
   - type: Community
     url: https://community.ibm.com/community/user/home
@@ -889,7 +889,7 @@ common:
     url: https://cloud.ibm.com/apidocs
   - type: CLI
     url: https://cloud.ibm.com/docs/cli
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/IBM
   - type: Free Tier
     url: https://www.ibm.com/products/cloud/free

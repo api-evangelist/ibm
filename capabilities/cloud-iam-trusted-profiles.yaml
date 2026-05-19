@@ -1,0 +1,252 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: IBM Cloud IAM API — Trusted Profiles
+  description: 'IBM Cloud IAM API — Trusted Profiles. 5 operations. Lead operation: List trusted profiles. Self-contained
+    Naftiko capability covering one Ibm business surface.'
+  tags:
+  - Ibm
+  - Trusted Profiles
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-iam-trusted-profiles
+    baseUri: https://iam.cloud.ibm.com
+    description: IBM Cloud IAM API — Trusted Profiles business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-profiles
+      path: /v1/profiles
+      operations:
+      - name: listprofiles
+        method: GET
+        description: List trusted profiles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: account_id
+          in: query
+          type: string
+          description: The account ID to list trusted profiles for.
+          required: true
+        - name: name
+          in: query
+          type: string
+          description: Filter profiles by name.
+        - name: pagesize
+          in: query
+          type: integer
+          description: Number of results per page.
+        - name: pagetoken
+          in: query
+          type: string
+          description: Page token from a previous request.
+        - name: sort
+          in: query
+          type: string
+          description: Field to sort by.
+        - name: order
+          in: query
+          type: string
+          description: Sort order.
+        - name: include_history
+          in: query
+          type: boolean
+          description: Include the history of the profiles.
+      - name: createprofile
+        method: POST
+        description: Create a trusted profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-profiles-profile-id
+      path: /v1/profiles/{profile-id}
+      operations:
+      - name: getprofile
+        method: GET
+        description: Get a trusted profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: include_activity
+          in: query
+          type: boolean
+          description: Include the activity of the profile.
+      - name: updateprofile
+        method: PUT
+        description: Update a trusted profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteprofile
+        method: DELETE
+        description: Delete a trusted profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.IBM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-iam-trusted-profiles-rest
+    port: 8080
+    description: REST adapter for IBM Cloud IAM API — Trusted Profiles. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/profiles
+      name: v1-profiles
+      description: REST surface for v1-profiles.
+      operations:
+      - method: GET
+        name: listprofiles
+        description: List trusted profiles
+        call: cloud-iam-trusted-profiles.listprofiles
+        with:
+          account_id: rest.account_id
+          name: rest.name
+          pagesize: rest.pagesize
+          pagetoken: rest.pagetoken
+          sort: rest.sort
+          order: rest.order
+          include_history: rest.include_history
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createprofile
+        description: Create a trusted profile
+        call: cloud-iam-trusted-profiles.createprofile
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/profiles/{profile-id}
+      name: v1-profiles-profile-id
+      description: REST surface for v1-profiles-profile-id.
+      operations:
+      - method: GET
+        name: getprofile
+        description: Get a trusted profile
+        call: cloud-iam-trusted-profiles.getprofile
+        with:
+          include_activity: rest.include_activity
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateprofile
+        description: Update a trusted profile
+        call: cloud-iam-trusted-profiles.updateprofile
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprofile
+        description: Delete a trusted profile
+        call: cloud-iam-trusted-profiles.deleteprofile
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-iam-trusted-profiles-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for IBM Cloud IAM API — Trusted Profiles. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-trusted-profiles
+      description: List trusted profiles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-iam-trusted-profiles.listprofiles
+      with:
+        account_id: tools.account_id
+        name: tools.name
+        pagesize: tools.pagesize
+        pagetoken: tools.pagetoken
+        sort: tools.sort
+        order: tools.order
+        include_history: tools.include_history
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-trusted-profile
+      description: Create a trusted profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-iam-trusted-profiles.createprofile
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-trusted-profile
+      description: Get a trusted profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-iam-trusted-profiles.getprofile
+      with:
+        include_activity: tools.include_activity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-trusted-profile
+      description: Update a trusted profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloud-iam-trusted-profiles.updateprofile
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-trusted-profile
+      description: Delete a trusted profile
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-iam-trusted-profiles.deleteprofile
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,284 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: IBM Cloud IAM API — Policies
+  description: 'IBM Cloud IAM API — Policies. 6 operations. Lead operation: List access policies. Self-contained Naftiko capability
+    covering one Ibm business surface.'
+  tags:
+  - Ibm
+  - Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-iam-policies
+    baseUri: https://iam.cloud.ibm.com
+    description: IBM Cloud IAM API — Policies business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-policies
+      path: /v1/policies
+      operations:
+      - name: listpolicies
+        method: GET
+        description: List access policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: account_id
+          in: query
+          type: string
+          description: The account ID to list policies for.
+          required: true
+        - name: iam_id
+          in: query
+          type: string
+          description: Filter by the IAM ID of the subject.
+        - name: access_group_id
+          in: query
+          type: string
+          description: Filter by access group ID.
+        - name: type
+          in: query
+          type: string
+          description: Filter by policy type.
+        - name: service_type
+          in: query
+          type: string
+          description: Filter by service type.
+        - name: state
+          in: query
+          type: string
+          description: Filter by policy state.
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of policies to return.
+        - name: start
+          in: query
+          type: string
+          description: Pagination start token.
+      - name: createpolicy
+        method: POST
+        description: Create an access policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-policies-policy_id
+      path: /v1/policies/{policy_id}
+      operations:
+      - name: getpolicy
+        method: GET
+        description: Get an access policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: replacepolicy
+        method: PUT
+        description: Replace an access policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletepolicy
+        method: DELETE
+        description: Delete an access policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatepolicystate
+        method: PATCH
+        description: Update policy state
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.IBM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-iam-policies-rest
+    port: 8080
+    description: REST adapter for IBM Cloud IAM API — Policies. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/policies
+      name: v1-policies
+      description: REST surface for v1-policies.
+      operations:
+      - method: GET
+        name: listpolicies
+        description: List access policies
+        call: cloud-iam-policies.listpolicies
+        with:
+          account_id: rest.account_id
+          iam_id: rest.iam_id
+          access_group_id: rest.access_group_id
+          type: rest.type
+          service_type: rest.service_type
+          state: rest.state
+          limit: rest.limit
+          start: rest.start
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpolicy
+        description: Create an access policy
+        call: cloud-iam-policies.createpolicy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/policies/{policy-id}
+      name: v1-policies-policy-id
+      description: REST surface for v1-policies-policy_id.
+      operations:
+      - method: GET
+        name: getpolicy
+        description: Get an access policy
+        call: cloud-iam-policies.getpolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: replacepolicy
+        description: Replace an access policy
+        call: cloud-iam-policies.replacepolicy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletepolicy
+        description: Delete an access policy
+        call: cloud-iam-policies.deletepolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatepolicystate
+        description: Update policy state
+        call: cloud-iam-policies.updatepolicystate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-iam-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for IBM Cloud IAM API — Policies. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-access-policies
+      description: List access policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-iam-policies.listpolicies
+      with:
+        account_id: tools.account_id
+        iam_id: tools.iam_id
+        access_group_id: tools.access_group_id
+        type: tools.type
+        service_type: tools.service_type
+        state: tools.state
+        limit: tools.limit
+        start: tools.start
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-access-policy
+      description: Create an access policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-iam-policies.createpolicy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-access-policy
+      description: Get an access policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-iam-policies.getpolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: replace-access-policy
+      description: Replace an access policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloud-iam-policies.replacepolicy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-access-policy
+      description: Delete an access policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-iam-policies.deletepolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-policy-state
+      description: Update policy state
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloud-iam-policies.updatepolicystate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

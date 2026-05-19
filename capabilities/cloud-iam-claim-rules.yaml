@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: IBM Cloud IAM API — Claim Rules
+  description: 'IBM Cloud IAM API — Claim Rules. 5 operations. Lead operation: List claim rules for a trusted profile. Self-contained
+    Naftiko capability covering one Ibm business surface.'
+  tags:
+  - Ibm
+  - Claim Rules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-iam-claim-rules
+    baseUri: https://iam.cloud.ibm.com
+    description: IBM Cloud IAM API — Claim Rules business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-profiles-profile-id-rules
+      path: /v1/profiles/{profile-id}/rules
+      operations:
+      - name: listclaimrules
+        method: GET
+        description: List claim rules for a trusted profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createclaimrule
+        method: POST
+        description: Create a claim rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-profiles-profile-id-rules-rule-id
+      path: /v1/profiles/{profile-id}/rules/{rule-id}
+      operations:
+      - name: getclaimrule
+        method: GET
+        description: Get a claim rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateclaimrule
+        method: PUT
+        description: Update a claim rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteclaimrule
+        method: DELETE
+        description: Delete a claim rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.IBM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-iam-claim-rules-rest
+    port: 8080
+    description: REST adapter for IBM Cloud IAM API — Claim Rules. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/profiles/{profile-id}/rules
+      name: v1-profiles-profile-id-rules
+      description: REST surface for v1-profiles-profile-id-rules.
+      operations:
+      - method: GET
+        name: listclaimrules
+        description: List claim rules for a trusted profile
+        call: cloud-iam-claim-rules.listclaimrules
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createclaimrule
+        description: Create a claim rule
+        call: cloud-iam-claim-rules.createclaimrule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/profiles/{profile-id}/rules/{rule-id}
+      name: v1-profiles-profile-id-rules-rule-id
+      description: REST surface for v1-profiles-profile-id-rules-rule-id.
+      operations:
+      - method: GET
+        name: getclaimrule
+        description: Get a claim rule
+        call: cloud-iam-claim-rules.getclaimrule
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateclaimrule
+        description: Update a claim rule
+        call: cloud-iam-claim-rules.updateclaimrule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteclaimrule
+        description: Delete a claim rule
+        call: cloud-iam-claim-rules.deleteclaimrule
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-iam-claim-rules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for IBM Cloud IAM API — Claim Rules. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-claim-rules-trusted-profile
+      description: List claim rules for a trusted profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-iam-claim-rules.listclaimrules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-claim-rule
+      description: Create a claim rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-iam-claim-rules.createclaimrule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-claim-rule
+      description: Get a claim rule
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-iam-claim-rules.getclaimrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-claim-rule
+      description: Update a claim rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloud-iam-claim-rules.updateclaimrule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-claim-rule
+      description: Delete a claim rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-iam-claim-rules.deleteclaimrule
+      outputParameters:
+      - type: object
+        mapping: $.

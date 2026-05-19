@@ -1,0 +1,308 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: IBM Cloud IAM API — Service IDs
+  description: 'IBM Cloud IAM API — Service IDs. 7 operations. Lead operation: List service IDs. Self-contained Naftiko capability
+    covering one Ibm business surface.'
+  tags:
+  - Ibm
+  - Service IDs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-iam-service-ids
+    baseUri: https://iam.cloud.ibm.com
+    description: IBM Cloud IAM API — Service IDs business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-serviceids
+      path: /v1/serviceids/
+      operations:
+      - name: listserviceids
+        method: GET
+        description: List service IDs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: account_id
+          in: query
+          type: string
+          description: The account ID of the service IDs to query.
+        - name: name
+          in: query
+          type: string
+          description: Filter service IDs by name.
+        - name: pagesize
+          in: query
+          type: integer
+          description: Number of results per page.
+        - name: pagetoken
+          in: query
+          type: string
+          description: Page token from a previous request for pagination.
+        - name: sort
+          in: query
+          type: string
+          description: Field to sort results by.
+        - name: order
+          in: query
+          type: string
+          description: Sort order.
+      - name: createserviceid
+        method: POST
+        description: Create a service ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-serviceids-id
+      path: /v1/serviceids/{id}
+      operations:
+      - name: getserviceid
+        method: GET
+        description: Get a service ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: include_history
+          in: query
+          type: boolean
+          description: Include the history of the service ID.
+        - name: include_activity
+          in: query
+          type: boolean
+          description: Include the activity of the service ID.
+      - name: updateserviceid
+        method: PUT
+        description: Update a service ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteserviceid
+        method: DELETE
+        description: Delete a service ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-serviceids-id-lock
+      path: /v1/serviceids/{id}/lock
+      operations:
+      - name: lockserviceid
+        method: POST
+        description: Lock a service ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: unlockserviceid
+        method: DELETE
+        description: Unlock a service ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.IBM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-iam-service-ids-rest
+    port: 8080
+    description: REST adapter for IBM Cloud IAM API — Service IDs. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/serviceids
+      name: v1-serviceids
+      description: REST surface for v1-serviceids.
+      operations:
+      - method: GET
+        name: listserviceids
+        description: List service IDs
+        call: cloud-iam-service-ids.listserviceids
+        with:
+          account_id: rest.account_id
+          name: rest.name
+          pagesize: rest.pagesize
+          pagetoken: rest.pagetoken
+          sort: rest.sort
+          order: rest.order
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createserviceid
+        description: Create a service ID
+        call: cloud-iam-service-ids.createserviceid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/serviceids/{id}
+      name: v1-serviceids-id
+      description: REST surface for v1-serviceids-id.
+      operations:
+      - method: GET
+        name: getserviceid
+        description: Get a service ID
+        call: cloud-iam-service-ids.getserviceid
+        with:
+          include_history: rest.include_history
+          include_activity: rest.include_activity
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateserviceid
+        description: Update a service ID
+        call: cloud-iam-service-ids.updateserviceid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteserviceid
+        description: Delete a service ID
+        call: cloud-iam-service-ids.deleteserviceid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/serviceids/{id}/lock
+      name: v1-serviceids-id-lock
+      description: REST surface for v1-serviceids-id-lock.
+      operations:
+      - method: POST
+        name: lockserviceid
+        description: Lock a service ID
+        call: cloud-iam-service-ids.lockserviceid
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: unlockserviceid
+        description: Unlock a service ID
+        call: cloud-iam-service-ids.unlockserviceid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-iam-service-ids-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for IBM Cloud IAM API — Service IDs. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-service-ids
+      description: List service IDs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-iam-service-ids.listserviceids
+      with:
+        account_id: tools.account_id
+        name: tools.name
+        pagesize: tools.pagesize
+        pagetoken: tools.pagetoken
+        sort: tools.sort
+        order: tools.order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-service-id
+      description: Create a service ID
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-iam-service-ids.createserviceid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-service-id
+      description: Get a service ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-iam-service-ids.getserviceid
+      with:
+        include_history: tools.include_history
+        include_activity: tools.include_activity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-service-id
+      description: Update a service ID
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloud-iam-service-ids.updateserviceid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-service-id
+      description: Delete a service ID
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-iam-service-ids.deleteserviceid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lock-service-id
+      description: Lock a service ID
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-iam-service-ids.lockserviceid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unlock-service-id
+      description: Unlock a service ID
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-iam-service-ids.unlockserviceid
+      outputParameters:
+      - type: object
+        mapping: $.

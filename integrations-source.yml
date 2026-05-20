@@ -1,0 +1,260 @@
+# Curated IBM Cloud integrations. Each entry becomes one Naftiko capability YAML in integrations/.
+# Domain: IBM Cloud IAM (the substrate for IBM Cloud, watsonx, API Connect, Event Streams, Cloud Object Storage, etc.).
+# Each capability pairs an IBM Cloud IAM operation (real path from temp/ibm/openapi/ibm-cloud-iam.yml)
+# with an external partner so an AI agent can call the joined flow as a single tool.
+
+# ITSM (1)
+- partner: servicenow
+  name: Open a ServiceNow incident when an IBM Cloud service ID is created
+  category: ITSM
+  use_case: When a new IBM Cloud IAM Service ID is provisioned, automatically open a ServiceNow incident ticket so the platform team can audit, classify, and approve the workload identity.
+  partner_baseUri: https://yourinstance.service-now.com
+  partner_api: ServiceNow Table API
+  provider_ops:
+    - method: GET
+      path: /v1/serviceids/
+      name: listServiceIds
+      description: List IBM Cloud IAM Service IDs to detect newly-created workload identities.
+    - method: GET
+      path: /v1/serviceids/{id}
+      name: getServiceId
+      description: Fetch the IBM Cloud Service ID being audited.
+  partner_ops:
+    - method: POST
+      path: /api/now/table/incident
+      name: createIncident
+    - method: PATCH
+      path: /api/now/table/incident/{sys_id}
+      name: updateIncident
+
+# Observability (1)
+- partner: splunk
+  name: Stream IBM Cloud IAM policy changes into Splunk
+  category: Observability
+  use_case: Forward IBM Cloud IAM Policy create/update/delete events to Splunk HEC so the SecOps team can detect privilege escalation across IBM Cloud, watsonx, and API Connect.
+  partner_baseUri: https://splunk.example.com
+  partner_api: Splunk HTTP Event Collector
+  provider_ops:
+    - method: GET
+      path: /v1/policies
+      name: listPolicies
+      description: List IBM Cloud IAM policies to baseline current privilege grants.
+    - method: GET
+      path: /v1/policies/{policy_id}
+      name: getPolicy
+      description: Retrieve the IBM Cloud policy under audit.
+  partner_ops:
+    - method: POST
+      path: /services/collector/event
+      name: postEvent
+
+# Notifications (1)
+- partner: slack
+  name: Alert Slack on IBM Cloud IAM API key creation
+  category: Notifications
+  use_case: Post a Slack message when an IBM Cloud IAM API key is created, locked, or disabled so platform engineers can act on suspicious credential activity without leaving chat.
+  partner_baseUri: https://hooks.slack.com
+  partner_api: Slack Incoming Webhooks
+  provider_ops:
+    - method: GET
+      path: /v1/apikeys
+      name: listApiKeys
+      description: List IBM Cloud IAM API keys to enrich the alert with current owner and account context.
+    - method: GET
+      path: /v1/apikeys/{id}
+      name: getApiKey
+      description: Fetch the IBM Cloud API key that changed.
+  partner_ops:
+    - method: POST
+      path: /services/{T}/{B}/{X}
+      name: postMessage
+
+# DevOps (1)
+- partner: github
+  name: Rotate IBM Cloud IAM API keys from a GitHub Actions workflow
+  category: DevOps
+  use_case: Drive scheduled IBM Cloud IAM API key rotation from a GitHub Actions workflow — create a new key, write it to a GitHub Actions secret, then disable the old one.
+  partner_baseUri: https://api.github.com
+  partner_api: GitHub REST API
+  provider_ops:
+    - method: POST
+      path: /v1/apikeys
+      name: createApiKey
+      description: Create a fresh IBM Cloud IAM API key for the rotation.
+    - method: POST
+      path: /v1/apikeys/{id}/disable
+      name: disableApiKey
+      description: Disable the prior IBM Cloud API key once the new one is in use.
+  partner_ops:
+    - method: PUT
+      path: /repos/{owner}/{repo}/actions/secrets/{secret_name}
+      name: putRepoSecret
+    - method: POST
+      path: /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+      name: dispatchWorkflow
+
+# AI (1)
+- partner: anthropic
+  name: Complement watsonx with Anthropic Claude via shared IBM Cloud identity
+  category: AI
+  use_case: Mint an IBM Cloud IAM token for watsonx access, then hand control to Anthropic Claude for tasks where Claude is the stronger model — letting agents fluidly route between watsonx.ai and Claude under one identity.
+  partner_baseUri: https://api.anthropic.com
+  partner_api: Anthropic Messages API
+  provider_ops:
+    - method: POST
+      path: /identity/token
+      name: createAccessToken
+      description: Mint an IBM Cloud IAM access token so the agent can call watsonx.ai for IBM-native model inference.
+  partner_ops:
+    - method: POST
+      path: /v1/messages
+      name: createMessage
+
+# Streaming (1)
+- partner: kafka
+  name: Gate IBM Event Streams (Kafka) producers with IAM trusted profiles
+  category: Streaming
+  use_case: Issue a short-lived IBM Cloud IAM trusted-profile token, then use it to authorize an Event Streams (Kafka) producer call — so workloads outside IBM Cloud can publish to Event Streams without long-lived keys.
+  partner_baseUri: https://kafka-rest.eventstreams.cloud.ibm.com
+  partner_api: IBM Event Streams Kafka REST Proxy
+  provider_ops:
+    - method: GET
+      path: /v1/profiles
+      name: listTrustedProfiles
+      description: List IBM Cloud IAM trusted profiles to pick the right workload identity.
+    - method: POST
+      path: /identity/token
+      name: createAccessToken
+      description: Exchange the trusted profile for a short-lived IBM Cloud access token.
+  partner_ops:
+    - method: POST
+      path: /topics/{topic_name}/records
+      name: produceRecord
+
+# Data warehouse (1)
+- partner: snowflake
+  name: Federate IBM Cloud workloads into Snowflake via IAM service IDs
+  category: Data warehouse
+  use_case: Provision an IBM Cloud IAM Service ID + policy to read from Cloud Object Storage, then register that identity as a Snowflake external stage so warehouse pipelines pull from IBM-hosted data with no shared secrets.
+  partner_baseUri: https://account.snowflakecomputing.com
+  partner_api: Snowflake SQL API
+  provider_ops:
+    - method: POST
+      path: /v1/serviceids/
+      name: createServiceId
+      description: Create the IBM Cloud Service ID that Snowflake will assume for COS reads.
+    - method: POST
+      path: /v1/policies
+      name: createPolicy
+      description: Attach a read-only IBM Cloud policy scoped to the Snowflake-bound bucket.
+  partner_ops:
+    - method: POST
+      path: /api/v2/statements
+      name: submitStatement
+
+# BI (1)
+- partner: tableau
+  name: Embed IBM Cloud cost + IAM posture in Tableau dashboards
+  category: BI
+  use_case: Pull IBM Cloud IAM roles and policy inventory and publish them as a Tableau data source so FinOps and SecOps can see entitlement sprawl alongside spend.
+  partner_baseUri: https://yourpod.online.tableau.com
+  partner_api: Tableau REST API
+  provider_ops:
+    - method: GET
+      path: /v2/roles
+      name: listRoles
+      description: List IBM Cloud IAM custom and system roles to expose in Tableau.
+    - method: GET
+      path: /v1/policies
+      name: listPolicies
+      description: List IBM Cloud IAM policies so dashboards can chart entitlement breadth per account.
+  partner_ops:
+    - method: POST
+      path: /api/3.21/sites/{site_id}/datasources
+      name: publishDataSource
+
+# CRM (1)
+- partner: salesforce
+  name: Link IBM Cloud accounts to Salesforce as customer entitlements
+  category: CRM
+  use_case: When an IBM Cloud IAM Service ID is provisioned for a customer environment, mirror it into Salesforce as a custom Entitlement record on the matching Account so CSMs can see live IBM Cloud usage in CRM.
+  partner_baseUri: https://yourinstance.my.salesforce.com
+  partner_api: Salesforce REST API
+  provider_ops:
+    - method: GET
+      path: /v1/serviceids/
+      name: listServiceIds
+      description: List IBM Cloud IAM Service IDs to map to Salesforce customer accounts.
+  partner_ops:
+    - method: POST
+      path: /services/data/v60.0/sobjects/Entitlement
+      name: createEntitlement
+    - method: PATCH
+      path: /services/data/v60.0/sobjects/Account/{id}
+      name: updateAccount
+
+# ERP (1)
+- partner: sap
+  name: Authorize SAP S/4HANA jobs against IBM Cloud IAM trusted profiles
+  category: ERP
+  use_case: When an SAP S/4HANA batch job needs to read from IBM Cloud Object Storage or watsonx.data, exchange an SAP Cloud Identity assertion for an IBM Cloud trusted-profile token instead of provisioning a long-lived API key.
+  partner_baseUri: https://my-sap-system.s4hana.cloud.sap
+  partner_api: SAP S/4HANA Cloud API
+  provider_ops:
+    - method: GET
+      path: /v1/profiles
+      name: listTrustedProfiles
+      description: List IBM Cloud IAM trusted profiles available to SAP workloads.
+    - method: POST
+      path: /v1/profiles/{profile-id}/rules
+      name: createTrustedProfileRule
+      description: Add an IBM Cloud trusted-profile claim rule that accepts the SAP-issued JWT.
+  partner_ops:
+    - method: POST
+      path: /sap/opu/odata/sap/API_PRODUCTION_ORDER_2_SRV/A_ProductionOrder
+      name: createProductionOrder
+
+# HCM (1)
+- partner: workday
+  name: Drive IBM Cloud IAM lifecycle from Workday joiner / mover / leaver events
+  category: HCM
+  use_case: When Workday emits a worker termination event, automatically lock and then delete the matching IBM Cloud IAM API keys so departing employees lose IBM Cloud access on day one.
+  partner_baseUri: https://wd2-impl-services1.workday.com
+  partner_api: Workday Human Resources REST API
+  provider_ops:
+    - method: POST
+      path: /v1/apikeys/{id}/lock
+      name: lockApiKey
+      description: Lock the departing worker's IBM Cloud IAM API key to halt access immediately.
+    - method: DELETE
+      path: /v1/apikeys/{id}
+      name: deleteApiKey
+      description: Delete the IBM Cloud IAM API key once HR has confirmed the leaver event.
+  partner_ops:
+    - method: GET
+      path: /ccx/api/v1/workers
+      name: listWorkers
+    - method: GET
+      path: /ccx/api/v1/workers/{id}
+      name: getWorker
+
+# BI / analytics (1)
+- partner: power-bi
+  name: Surface IBM Cloud IAM posture in Microsoft Power BI
+  category: BI
+  use_case: Push IBM Cloud IAM policy and service-ID inventory into a Power BI streaming dataset so CISOs can monitor IBM Cloud entitlement drift inside the same Power BI workspace they already use for Microsoft 365.
+  partner_baseUri: https://api.powerbi.com
+  partner_api: Microsoft Power BI REST API
+  provider_ops:
+    - method: GET
+      path: /v1/policies
+      name: listPolicies
+      description: List IBM Cloud IAM policies to push into Power BI as posture rows.
+    - method: GET
+      path: /v1/serviceids/
+      name: listServiceIds
+      description: List IBM Cloud IAM Service IDs to expose in Power BI.
+  partner_ops:
+    - method: POST
+      path: /v1.0/myorg/datasets/{datasetKey}/tables/{tableName}/rows
+      name: pushRows

@@ -1,0 +1,164 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Rotate IBM Cloud IAM API keys from a GitHub Actions workflow
+  description: Drive scheduled IBM Cloud IAM API key rotation from a GitHub Actions workflow — create a new key, write it to a GitHub Actions secret, then disable the old one.
+  tags:
+  - IBM
+  - Integration
+  - DevOps
+  - github
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    GITHUB_API_KEY: GITHUB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-apikeys
+      path: /v1/apikeys
+      operations:
+      - name: createapikey
+        method: POST
+        description: Create a fresh IBM Cloud IAM API key for the rotation.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-apikeys-id-disable
+      path: /v1/apikeys/{id}/disable
+      operations:
+      - name: disableapikey
+        method: POST
+        description: Disable the prior IBM Cloud API key once the new one is in use.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: github
+    baseUri: https://api.github.com
+    description: GitHub REST API operations consumed by this integration.
+    resources:
+    - name: repos-owner-repo-actions-secrets-secret-name
+      path: /repos/{owner}/{repo}/actions/secrets/{secret_name}
+      operations:
+      - name: putreposecret
+        method: PUT
+        description: 'GitHub REST API: putRepoSecret'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: owner
+          in: path
+          type: string
+          description: Path parameter owner.
+          required: true
+        - name: repo
+          in: path
+          type: string
+          description: Path parameter repo.
+          required: true
+        - name: secret_name
+          in: path
+          type: string
+          description: Path parameter secret_name.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: repos-owner-repo-actions-workflows-workflow-id-dispatches
+      path: /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+      operations:
+      - name: dispatchworkflow
+        method: POST
+        description: 'GitHub REST API: dispatchWorkflow'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: owner
+          in: path
+          type: string
+          description: Path parameter owner.
+          required: true
+        - name: repo
+          in: path
+          type: string
+          description: Path parameter repo.
+          required: true
+        - name: workflow_id
+          in: path
+          type: string
+          description: Path parameter workflow_id.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-github-mcp
+    description: MCP adapter for the ibm-github integration.
+    tools:
+    - name: ibm_github
+      description: Execute the ibm github integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-github-rest
+    port: 8080
+    description: REST adapter for the ibm-github integration.
+    resources:
+    - path: /ibm-github
+      name: ibm-github
+      description: REST surface for the ibm-github integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-github integration.
+        call: ibm_github
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

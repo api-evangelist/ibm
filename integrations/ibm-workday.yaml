@@ -1,0 +1,129 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Drive IBM Cloud IAM lifecycle from Workday joiner / mover / leaver events
+  description: When Workday emits a worker termination event, automatically lock and then delete the matching IBM Cloud IAM API keys so departing employees lose IBM Cloud access on day one.
+  tags:
+  - IBM
+  - Integration
+  - HCM
+  - workday
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-apikeys-id-lock
+      path: /v1/apikeys/{id}/lock
+      operations:
+      - name: lockapikey
+        method: POST
+        description: Lock the departing worker's IBM Cloud IAM API key to halt access immediately.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-apikeys-id
+      path: /v1/apikeys/{id}
+      operations:
+      - name: deleteapikey
+        method: DELETE
+        description: Delete the IBM Cloud IAM API key once HR has confirmed the leaver event.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+  - type: http
+    namespace: workday
+    baseUri: https://wd2-impl-services1.workday.com
+    description: Workday Human Resources REST API operations consumed by this integration.
+    resources:
+    - name: ccx-api-v1-workers
+      path: /ccx/api/v1/workers
+      operations:
+      - name: listworkers
+        method: GET
+        description: 'Workday Human Resources REST API: listWorkers'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: ccx-api-v1-workers-id
+      path: /ccx/api/v1/workers/{id}
+      operations:
+      - name: getworker
+        method: GET
+        description: 'Workday Human Resources REST API: getWorker'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-workday-mcp
+    description: MCP adapter for the ibm-workday integration.
+    tools:
+    - name: ibm_workday
+      description: Execute the ibm workday integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-workday-rest
+    port: 8080
+    description: REST adapter for the ibm-workday integration.
+    resources:
+    - path: /ibm-workday
+      name: ibm-workday
+      description: REST surface for the ibm-workday integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-workday integration.
+        call: ibm_workday
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

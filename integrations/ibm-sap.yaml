@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Authorize SAP S/4HANA jobs against IBM Cloud IAM trusted profiles
+  description: When an SAP S/4HANA batch job needs to read from IBM Cloud Object Storage or watsonx.data, exchange an SAP Cloud Identity assertion for an IBM Cloud trusted-profile token instead of provisioning a long-lived API key.
+  tags:
+  - IBM
+  - Integration
+  - ERP
+  - sap
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    SAP_API_KEY: SAP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-profiles
+      path: /v1/profiles
+      operations:
+      - name: listtrustedprofiles
+        method: GET
+        description: List IBM Cloud IAM trusted profiles available to SAP workloads.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: v1-profiles-profile-id-rules
+      path: /v1/profiles/{profile-id}/rules
+      operations:
+      - name: createtrustedprofilerule
+        method: POST
+        description: Add an IBM Cloud trusted-profile claim rule that accepts the SAP-issued JWT.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: profile-id
+          in: path
+          type: string
+          description: Path parameter profile-id.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: sap
+    baseUri: https://my-sap-system.s4hana.cloud.sap
+    description: SAP S/4HANA Cloud API operations consumed by this integration.
+    resources:
+    - name: sap-opu-odata-sap-api-production-order-2-srv-a-productionord
+      path: /sap/opu/odata/sap/API_PRODUCTION_ORDER_2_SRV/A_ProductionOrder
+      operations:
+      - name: createproductionorder
+        method: POST
+        description: 'SAP S/4HANA Cloud API: createProductionOrder'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-sap-mcp
+    description: MCP adapter for the ibm-sap integration.
+    tools:
+    - name: ibm_sap
+      description: Execute the ibm sap integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-sap-rest
+    port: 8080
+    description: REST adapter for the ibm-sap integration.
+    resources:
+    - path: /ibm-sap
+      name: ibm-sap
+      description: REST surface for the ibm-sap integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-sap integration.
+        call: ibm_sap
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

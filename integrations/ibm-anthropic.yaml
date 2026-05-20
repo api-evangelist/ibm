@@ -1,0 +1,95 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Complement watsonx with Anthropic Claude via shared IBM Cloud identity
+  description: Mint an IBM Cloud IAM token for watsonx access, then hand control to Anthropic Claude for tasks where Claude is the stronger model — letting agents fluidly route between watsonx.ai and Claude under one identity.
+  tags:
+  - IBM
+  - Integration
+  - AI
+  - anthropic
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    ANTHROPIC_API_KEY: ANTHROPIC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: identity-token
+      path: /identity/token
+      operations:
+      - name: createaccesstoken
+        method: POST
+        description: Mint an IBM Cloud IAM access token so the agent can call watsonx.ai for IBM-native model inference.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: anthropic
+    baseUri: https://api.anthropic.com
+    description: Anthropic Messages API operations consumed by this integration.
+    resources:
+    - name: v1-messages
+      path: /v1/messages
+      operations:
+      - name: createmessage
+        method: POST
+        description: 'Anthropic Messages API: createMessage'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-anthropic-mcp
+    description: MCP adapter for the ibm-anthropic integration.
+    tools:
+    - name: ibm_anthropic
+      description: Execute the ibm anthropic integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-anthropic-rest
+    port: 8080
+    description: REST adapter for the ibm-anthropic integration.
+    resources:
+    - path: /ibm-anthropic
+      name: ibm-anthropic
+      description: REST surface for the ibm-anthropic integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-anthropic integration.
+        call: ibm_anthropic
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

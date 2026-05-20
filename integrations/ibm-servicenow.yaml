@@ -1,0 +1,129 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Open a ServiceNow incident when an IBM Cloud service ID is created
+  description: When a new IBM Cloud IAM Service ID is provisioned, automatically open a ServiceNow incident ticket so the platform team can audit, classify, and approve the workload identity.
+  tags:
+  - IBM
+  - Integration
+  - ITSM
+  - servicenow
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    SERVICENOW_API_KEY: SERVICENOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-serviceids
+      path: /v1/serviceids/
+      operations:
+      - name: listserviceids
+        method: GET
+        description: List IBM Cloud IAM Service IDs to detect newly-created workload identities.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: v1-serviceids-id
+      path: /v1/serviceids/{id}
+      operations:
+      - name: getserviceid
+        method: GET
+        description: Fetch the IBM Cloud Service ID being audited.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+  - type: http
+    namespace: servicenow
+    baseUri: https://yourinstance.service-now.com
+    description: ServiceNow Table API operations consumed by this integration.
+    resources:
+    - name: api-now-table-incident
+      path: /api/now/table/incident
+      operations:
+      - name: createincident
+        method: POST
+        description: 'ServiceNow Table API: createIncident'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-now-table-incident-sys-id
+      path: /api/now/table/incident/{sys_id}
+      operations:
+      - name: updateincident
+        method: PATCH
+        description: 'ServiceNow Table API: updateIncident'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sys_id
+          in: path
+          type: string
+          description: Path parameter sys_id.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-servicenow-mcp
+    description: MCP adapter for the ibm-servicenow integration.
+    tools:
+    - name: ibm_servicenow
+      description: Execute the ibm servicenow integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-servicenow-rest
+    port: 8080
+    description: REST adapter for the ibm-servicenow integration.
+    resources:
+    - path: /ibm-servicenow
+      name: ibm-servicenow
+      description: REST surface for the ibm-servicenow integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-servicenow integration.
+        call: ibm_servicenow
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

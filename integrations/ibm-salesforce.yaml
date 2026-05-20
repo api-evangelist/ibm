@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Link IBM Cloud accounts to Salesforce as customer entitlements
+  description: When an IBM Cloud IAM Service ID is provisioned for a customer environment, mirror it into Salesforce as a custom Entitlement record on the matching Account so CSMs can see live IBM Cloud usage in CRM.
+  tags:
+  - IBM
+  - Integration
+  - CRM
+  - salesforce
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    SALESFORCE_API_KEY: SALESFORCE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-serviceids
+      path: /v1/serviceids/
+      operations:
+      - name: listserviceids
+        method: GET
+        description: List IBM Cloud IAM Service IDs to map to Salesforce customer accounts.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  - type: http
+    namespace: salesforce
+    baseUri: https://yourinstance.my.salesforce.com
+    description: Salesforce REST API operations consumed by this integration.
+    resources:
+    - name: services-data-v60-0-sobjects-entitlement
+      path: /services/data/v60.0/sobjects/Entitlement
+      operations:
+      - name: createentitlement
+        method: POST
+        description: 'Salesforce REST API: createEntitlement'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: services-data-v60-0-sobjects-account-id
+      path: /services/data/v60.0/sobjects/Account/{id}
+      operations:
+      - name: updateaccount
+        method: PATCH
+        description: 'Salesforce REST API: updateAccount'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-salesforce-mcp
+    description: MCP adapter for the ibm-salesforce integration.
+    tools:
+    - name: ibm_salesforce
+      description: Execute the ibm salesforce integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-salesforce-rest
+    port: 8080
+    description: REST adapter for the ibm-salesforce integration.
+    resources:
+    - path: /ibm-salesforce
+      name: ibm-salesforce
+      description: REST surface for the ibm-salesforce integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-salesforce integration.
+        call: ibm_salesforce
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

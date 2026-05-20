@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Federate IBM Cloud workloads into Snowflake via IAM service IDs
+  description: Provision an IBM Cloud IAM Service ID + policy to read from Cloud Object Storage, then register that identity as a Snowflake external stage so warehouse pipelines pull from IBM-hosted data with no shared secrets.
+  tags:
+  - IBM
+  - Integration
+  - Data warehouse
+  - snowflake
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    SNOWFLAKE_API_KEY: SNOWFLAKE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-serviceids
+      path: /v1/serviceids/
+      operations:
+      - name: createserviceid
+        method: POST
+        description: Create the IBM Cloud Service ID that Snowflake will assume for COS reads.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-policies
+      path: /v1/policies
+      operations:
+      - name: createpolicy
+        method: POST
+        description: Attach a read-only IBM Cloud policy scoped to the Snowflake-bound bucket.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: snowflake
+    baseUri: https://account.snowflakecomputing.com
+    description: Snowflake SQL API operations consumed by this integration.
+    resources:
+    - name: api-v2-statements
+      path: /api/v2/statements
+      operations:
+      - name: submitstatement
+        method: POST
+        description: 'Snowflake SQL API: submitStatement'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-snowflake-mcp
+    description: MCP adapter for the ibm-snowflake integration.
+    tools:
+    - name: ibm_snowflake
+      description: Execute the ibm snowflake integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-snowflake-rest
+    port: 8080
+    description: REST adapter for the ibm-snowflake integration.
+    resources:
+    - path: /ibm-snowflake
+      name: ibm-snowflake
+      description: REST surface for the ibm-snowflake integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-snowflake integration.
+        call: ibm_snowflake
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

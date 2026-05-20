@@ -1,0 +1,107 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stream IBM Cloud IAM policy changes into Splunk
+  description: Forward IBM Cloud IAM Policy create/update/delete events to Splunk HEC so the SecOps team can detect privilege escalation across IBM Cloud, watsonx, and API Connect.
+  tags:
+  - IBM
+  - Integration
+  - Observability
+  - splunk
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    SPLUNK_API_KEY: SPLUNK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-policies
+      path: /v1/policies
+      operations:
+      - name: listpolicies
+        method: GET
+        description: List IBM Cloud IAM policies to baseline current privilege grants.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: v1-policies-policy-id
+      path: /v1/policies/{policy_id}
+      operations:
+      - name: getpolicy
+        method: GET
+        description: Retrieve the IBM Cloud policy under audit.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: policy_id
+          in: path
+          type: string
+          description: Path parameter policy_id.
+          required: true
+  - type: http
+    namespace: splunk
+    baseUri: https://splunk.example.com
+    description: Splunk HTTP Event Collector operations consumed by this integration.
+    resources:
+    - name: services-collector-event
+      path: /services/collector/event
+      operations:
+      - name: postevent
+        method: POST
+        description: 'Splunk HTTP Event Collector: postEvent'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-splunk-mcp
+    description: MCP adapter for the ibm-splunk integration.
+    tools:
+    - name: ibm_splunk
+      description: Execute the ibm splunk integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-splunk-rest
+    port: 8080
+    description: REST adapter for the ibm-splunk integration.
+    resources:
+    - path: /ibm-splunk
+      name: ibm-splunk
+      description: REST surface for the ibm-splunk integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-splunk integration.
+        call: ibm_splunk
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

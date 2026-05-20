@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Alert Slack on IBM Cloud IAM API key creation
+  description: Post a Slack message when an IBM Cloud IAM API key is created, locked, or disabled so platform engineers can act on suspicious credential activity without leaving chat.
+  tags:
+  - IBM
+  - Integration
+  - Notifications
+  - slack
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    SLACK_API_KEY: SLACK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-apikeys
+      path: /v1/apikeys
+      operations:
+      - name: listapikeys
+        method: GET
+        description: List IBM Cloud IAM API keys to enrich the alert with current owner and account context.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: v1-apikeys-id
+      path: /v1/apikeys/{id}
+      operations:
+      - name: getapikey
+        method: GET
+        description: Fetch the IBM Cloud API key that changed.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+  - type: http
+    namespace: slack
+    baseUri: https://hooks.slack.com
+    description: Slack Incoming Webhooks operations consumed by this integration.
+    resources:
+    - name: services-t-b-x
+      path: /services/{T}/{B}/{X}
+      operations:
+      - name: postmessage
+        method: POST
+        description: 'Slack Incoming Webhooks: postMessage'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: T
+          in: path
+          type: string
+          description: Path parameter T.
+          required: true
+        - name: B
+          in: path
+          type: string
+          description: Path parameter B.
+          required: true
+        - name: X
+          in: path
+          type: string
+          description: Path parameter X.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-slack-mcp
+    description: MCP adapter for the ibm-slack integration.
+    tools:
+    - name: ibm_slack
+      description: Execute the ibm slack integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-slack-rest
+    port: 8080
+    description: REST adapter for the ibm-slack integration.
+    resources:
+    - path: /ibm-slack
+      name: ibm-slack
+      description: REST surface for the ibm-slack integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-slack integration.
+        call: ibm_slack
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

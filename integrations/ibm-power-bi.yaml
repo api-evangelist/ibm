@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Surface IBM Cloud IAM posture in Microsoft Power BI
+  description: Push IBM Cloud IAM policy and service-ID inventory into a Power BI streaming dataset so CISOs can monitor IBM Cloud entitlement drift inside the same Power BI workspace they already use for Microsoft 365.
+  tags:
+  - IBM
+  - Integration
+  - BI
+  - power-bi
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    POWER_BI_API_KEY: POWER_BI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-policies
+      path: /v1/policies
+      operations:
+      - name: listpolicies
+        method: GET
+        description: List IBM Cloud IAM policies to push into Power BI as posture rows.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: v1-serviceids
+      path: /v1/serviceids/
+      operations:
+      - name: listserviceids
+        method: GET
+        description: List IBM Cloud IAM Service IDs to expose in Power BI.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  - type: http
+    namespace: power-bi
+    baseUri: https://api.powerbi.com
+    description: Microsoft Power BI REST API operations consumed by this integration.
+    resources:
+    - name: v1-0-myorg-datasets-datasetkey-tables-tablename-rows
+      path: /v1.0/myorg/datasets/{datasetKey}/tables/{tableName}/rows
+      operations:
+      - name: pushrows
+        method: POST
+        description: 'Microsoft Power BI REST API: pushRows'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: datasetKey
+          in: path
+          type: string
+          description: Path parameter datasetKey.
+          required: true
+        - name: tableName
+          in: path
+          type: string
+          description: Path parameter tableName.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-power-bi-mcp
+    description: MCP adapter for the ibm-power-bi integration.
+    tools:
+    - name: ibm_power_bi
+      description: Execute the ibm power bi integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-power-bi-rest
+    port: 8080
+    description: REST adapter for the ibm-power-bi integration.
+    resources:
+    - path: /ibm-power-bi
+      name: ibm-power-bi
+      description: REST surface for the ibm-power-bi integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-power-bi integration.
+        call: ibm_power_bi
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

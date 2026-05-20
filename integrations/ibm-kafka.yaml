@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gate IBM Event Streams (Kafka) producers with IAM trusted profiles
+  description: Issue a short-lived IBM Cloud IAM trusted-profile token, then use it to authorize an Event Streams (Kafka) producer call — so workloads outside IBM Cloud can publish to Event Streams without long-lived keys.
+  tags:
+  - IBM
+  - Integration
+  - Streaming
+  - kafka
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    IBM_API_KEY: IBM_API_KEY
+    KAFKA_API_KEY: KAFKA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ibm
+    baseUri: https://cloud.ibm.com
+    description: IBM API operations consumed by this integration.
+    resources:
+    - name: v1-profiles
+      path: /v1/profiles
+      operations:
+      - name: listtrustedprofiles
+        method: GET
+        description: List IBM Cloud IAM trusted profiles to pick the right workload identity.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: identity-token
+      path: /identity/token
+      operations:
+      - name: createaccesstoken
+        method: POST
+        description: Exchange the trusted profile for a short-lived IBM Cloud access token.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: kafka
+    baseUri: https://kafka-rest.eventstreams.cloud.ibm.com
+    description: IBM Event Streams Kafka REST Proxy operations consumed by this integration.
+    resources:
+    - name: topics-topic-name-records
+      path: /topics/{topic_name}/records
+      operations:
+      - name: producerecord
+        method: POST
+        description: 'IBM Event Streams Kafka REST Proxy: produceRecord'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: topic_name
+          in: path
+          type: string
+          description: Path parameter topic_name.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: ibm-kafka-mcp
+    description: MCP adapter for the ibm-kafka integration.
+    tools:
+    - name: ibm_kafka
+      description: Execute the ibm kafka integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: ibm-kafka-rest
+    port: 8080
+    description: REST adapter for the ibm-kafka integration.
+    resources:
+    - path: /ibm-kafka
+      name: ibm-kafka
+      description: REST surface for the ibm-kafka integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the ibm-kafka integration.
+        call: ibm_kafka
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

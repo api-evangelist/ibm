@@ -1,0 +1,2098 @@
+"""
+IBM Cloud + Watson GraphQL Schema
+Covers Watson AI services, IBM Cloud infrastructure, IAM, storage, databases,
+networking, observability, and enterprise management.
+"""
+
+# ─── Scalars ──────────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+scalar Upload
+
+# ─── Enums ────────────────────────────────────────────────────────────────────
+
+enum ResourceState {
+  ACTIVE
+  INACTIVE
+  PENDING
+  FAILED
+  PROVISIONING
+  DEPROVISIONING
+  REMOVED
+}
+
+enum IAMPolicyType {
+  ACCESS
+  AUTHORIZATION
+  SERVICE_TO_SERVICE
+}
+
+enum NetworkProtocol {
+  TCP
+  UDP
+  ICMP
+  ALL
+}
+
+enum LoadBalancerAlgorithm {
+  ROUND_ROBIN
+  WEIGHTED_ROUND_ROBIN
+  LEAST_CONNECTIONS
+}
+
+enum DatabaseType {
+  POSTGRESQL
+  MONGODB
+  REDIS
+  ELASTICSEARCH
+  DB2
+  CLOUDANT
+}
+
+enum ModelFamily {
+  GRANITE
+  LLAMA
+  MISTRAL
+  CODELLAMA
+  FLAN_T5
+  MPT
+}
+
+# ─── IAM / Identity ───────────────────────────────────────────────────────────
+
+type Account {
+  id: ID!
+  name: String!
+  owner: User
+  resourceGroups: [ResourceGroup!]!
+  users: [User!]!
+  serviceIDs: [ServiceID!]!
+  apiKeys: [APIKey!]!
+  iamPolicies: [IAMPolicy!]!
+  accessGroups: [AccessGroup!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type User {
+  id: ID!
+  email: String!
+  firstName: String
+  lastName: String
+  state: String
+  iamID: String
+  phonenumber: String
+  altphonenumber: String
+  roles: [RBACRole!]!
+  accessGroups: [AccessGroup!]!
+  createdAt: DateTime!
+}
+
+type ServiceID {
+  id: ID!
+  name: String!
+  description: String
+  crn: String!
+  account: Account!
+  apiKeys: [APIKey!]!
+  iamPolicies: [IAMPolicy!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type APIKey {
+  id: ID!
+  name: String!
+  description: String
+  crn: String
+  iam_id: String
+  locked: Boolean!
+  createdAt: DateTime!
+  createdBy: String
+}
+
+type Token {
+  accessToken: String!
+  refreshToken: String
+  tokenType: String!
+  expiresIn: Int!
+  expiration: Int!
+  scope: String
+}
+
+type IAMPolicy {
+  id: ID!
+  type: IAMPolicyType!
+  description: String
+  subjects: [PolicySubject!]!
+  roles: [PolicyRole!]!
+  resources: [PolicyResource!]!
+  href: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PolicySubject {
+  attributes: [PolicyAttribute!]!
+}
+
+type PolicyRole {
+  roleId: String!
+  displayName: String
+}
+
+type PolicyResource {
+  attributes: [PolicyAttribute!]!
+}
+
+type PolicyAttribute {
+  name: String!
+  value: String!
+  operator: String
+}
+
+type RBACRole {
+  id: ID!
+  name: String!
+  displayName: String!
+  description: String
+  crn: String!
+}
+
+type AccessGroup {
+  id: ID!
+  name: String!
+  description: String
+  accountId: String!
+  members: [AccessGroupMember!]!
+  rules: [AccessGroupRule!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type AccessGroupMember {
+  id: ID!
+  type: String!
+  email: String
+  iamID: String
+  href: String
+  createdAt: DateTime!
+}
+
+type AccessGroupRule {
+  id: ID!
+  name: String!
+  expiration: Int!
+  realmName: String!
+  conditions: [AccessGroupRuleCondition!]!
+}
+
+type AccessGroupRuleCondition {
+  claim: String!
+  operator: String!
+  value: String!
+}
+
+type TrustedProfile {
+  id: ID!
+  name: String!
+  description: String
+  crn: String!
+  accountId: String!
+  links: [ProfileLink!]!
+  createdAt: DateTime!
+}
+
+type ProfileLink {
+  id: ID!
+  crType: String!
+  link: JSON
+  createdAt: DateTime!
+}
+
+# ─── Resource Management ──────────────────────────────────────────────────────
+
+type ResourceGroup {
+  id: ID!
+  name: String!
+  crn: String
+  accountId: String!
+  state: String
+  default: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ResourceInstance {
+  id: ID!
+  guid: String!
+  url: String
+  name: String!
+  crn: String!
+  state: ResourceState!
+  serviceId: String!
+  planId: String!
+  resourceGroup: ResourceGroup
+  region: String
+  credentials: ResourceKey
+  tags: [Tag!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+
+type ResourceKey {
+  id: ID!
+  guid: String!
+  name: String!
+  crn: String!
+  credentials: JSON!
+  iamCompatible: Boolean
+  resourceInstanceId: String!
+  createdAt: DateTime!
+}
+
+type Tag {
+  name: String!
+  type: String
+}
+
+type ServiceDefinition {
+  id: ID!
+  name: String!
+  active: Boolean!
+  description: String
+  bindable: Boolean!
+  planUpdateable: Boolean
+  tags: [String!]
+  metadata: JSON
+}
+
+type PlanSpecification {
+  id: ID!
+  name: String!
+  description: String
+  free: Boolean!
+  bindable: Boolean
+  metadata: JSON
+  serviceId: String!
+}
+
+type Catalog {
+  id: ID!
+  name: String!
+  kind: String!
+  overview: JSON
+  images: JSON
+  tags: [String!]
+  active: Boolean!
+  url: String
+  metadata: JSON
+}
+
+# ─── VPC / Networking ─────────────────────────────────────────────────────────
+
+type VPC {
+  id: ID!
+  name: String!
+  crn: String!
+  status: String!
+  region: String!
+  resourceGroup: ResourceGroup
+  classicAccess: Boolean!
+  defaultNetworkACL: NetworkACL
+  defaultSecurityGroup: SecurityGroup
+  subnets: [Subnet!]!
+  instances: [Instance!]!
+  floatingIPs: [FloatingIP!]!
+  loadBalancers: [LoadBalancer!]!
+  createdAt: DateTime!
+}
+
+type Subnet {
+  id: ID!
+  name: String!
+  crn: String!
+  status: String!
+  vpc: VPC!
+  zone: Zone!
+  ipv4CIDRBlock: String!
+  availableIpv4AddressCount: Int!
+  totalIpv4AddressCount: Int!
+  networkACL: NetworkACL
+  publicGateway: PublicGateway
+  resourceGroup: ResourceGroup
+  createdAt: DateTime!
+}
+
+type Zone {
+  name: String!
+  href: String!
+  region: String!
+  status: String!
+}
+
+type Instance {
+  id: ID!
+  name: String!
+  crn: String!
+  status: String!
+  vpc: VPC!
+  zone: Zone!
+  image: Image!
+  profile: InstanceProfile!
+  primaryNetworkInterface: NetworkInterface
+  networkInterfaces: [NetworkInterface!]!
+  securityGroups: [SecurityGroup!]!
+  volumeAttachments: [VolumeAttachment!]!
+  resourceGroup: ResourceGroup
+  startedAt: DateTime
+  createdAt: DateTime!
+}
+
+type Image {
+  id: ID!
+  name: String!
+  crn: String!
+  status: String!
+  operatingSystem: OperatingSystem
+  href: String!
+  visibility: String!
+  minDiskSize: Int
+  minRam: Int
+  createdAt: DateTime!
+}
+
+type OperatingSystem {
+  name: String!
+  displayName: String!
+  family: String!
+  vendor: String!
+  version: String!
+  architecture: String!
+  href: String!
+}
+
+type InstanceProfile {
+  name: String!
+  family: String
+  vcpuCount: Int
+  memory: Int
+  href: String!
+}
+
+type NetworkInterface {
+  id: ID!
+  name: String!
+  primaryIpv4Address: String
+  subnet: Subnet
+  securityGroups: [SecurityGroup!]!
+  status: String!
+}
+
+type SecurityGroup {
+  id: ID!
+  name: String!
+  crn: String!
+  vpc: VPC!
+  rules: [SecurityGroupRule!]!
+  resourceGroup: ResourceGroup
+  createdAt: DateTime!
+}
+
+type SecurityGroupRule {
+  id: ID!
+  direction: String!
+  protocol: NetworkProtocol
+  portMin: Int
+  portMax: Int
+  remote: JSON
+  ipVersion: String!
+}
+
+type NetworkACL {
+  id: ID!
+  name: String!
+  crn: String!
+  vpc: VPC!
+  rules: [NetworkACLRule!]!
+  subnets: [Subnet!]!
+  resourceGroup: ResourceGroup
+  createdAt: DateTime!
+}
+
+type NetworkACLRule {
+  id: ID!
+  name: String!
+  action: String!
+  direction: String!
+  protocol: String
+  source: String!
+  destination: String!
+  priority: Int!
+}
+
+type PublicGateway {
+  id: ID!
+  name: String!
+  crn: String!
+  status: String!
+  vpc: VPC!
+  zone: Zone!
+  floatingIP: FloatingIP
+  resourceGroup: ResourceGroup
+  createdAt: DateTime!
+}
+
+type FloatingIP {
+  id: ID!
+  address: String!
+  name: String!
+  crn: String!
+  status: String!
+  target: JSON
+  zone: Zone!
+  resourceGroup: ResourceGroup
+  createdAt: DateTime!
+}
+
+type LoadBalancer {
+  id: ID!
+  name: String!
+  crn: String!
+  hostname: String!
+  isPublic: Boolean!
+  status: String!
+  subnets: [Subnet!]!
+  securityGroups: [SecurityGroup!]!
+  pools: [LBPool!]!
+  listeners: [LBListener!]!
+  operatingStatus: String!
+  resourceGroup: ResourceGroup
+  createdAt: DateTime!
+}
+
+type LBPool {
+  id: ID!
+  name: String!
+  algorithm: LoadBalancerAlgorithm!
+  protocol: String!
+  healthMonitor: LBHealthMonitor
+  members: [LBMember!]!
+  sessionPersistence: JSON
+}
+
+type LBListener {
+  id: ID!
+  port: Int!
+  protocol: String!
+  defaultPool: LBPool
+  certificateInstance: JSON
+  policies: [LBListenerPolicy!]!
+}
+
+type LBListenerPolicy {
+  id: ID!
+  name: String!
+  priority: Int!
+  action: String!
+  rules: [LBListenerPolicyRule!]!
+  target: JSON
+}
+
+type LBListenerPolicyRule {
+  id: ID!
+  type: String!
+  condition: String!
+  value: String!
+  field: String
+}
+
+type LBMember {
+  id: ID!
+  port: Int!
+  address: String!
+  weight: Int
+  health: String!
+}
+
+type LBHealthMonitor {
+  type: String!
+  delay: Int!
+  maxRetries: Int!
+  timeout: Int!
+  urlPath: String
+  port: Int
+}
+
+type VolumeAttachment {
+  id: ID!
+  name: String!
+  deleteVolumeOnInstanceDelete: Boolean!
+  device: JSON
+  volume: Volume
+  status: String!
+}
+
+type Volume {
+  id: ID!
+  name: String!
+  crn: String!
+  status: String!
+  capacity: Int!
+  iops: Int!
+  profile: VolumeProfile!
+  zone: Zone!
+  encryption: String!
+  resourceGroup: ResourceGroup
+  createdAt: DateTime!
+}
+
+type VolumeProfile {
+  name: String!
+  family: String
+  href: String!
+}
+
+# ─── Object Storage (COS) ─────────────────────────────────────────────────────
+
+type COSBucket {
+  name: String!
+  region: String!
+  storageClass: String!
+  objectCount: Int
+  byteCount: Int
+  fireRulesEnabled: Boolean
+  versioning: BucketVersioning
+  lifecycle: [BucketLifecycleRule!]
+  corsRules: [CORSRule!]
+  replicationRules: [ReplicationRule!]
+  createdAt: DateTime!
+}
+
+type BucketVersioning {
+  status: String!
+  mfaDelete: String
+}
+
+type BucketLifecycleRule {
+  id: String!
+  status: String!
+  filter: JSON
+  expirationDays: Int
+  transitions: [LifecycleTransition!]
+}
+
+type LifecycleTransition {
+  days: Int!
+  storageClass: String!
+}
+
+type CORSRule {
+  allowedOrigins: [String!]!
+  allowedMethods: [String!]!
+  allowedHeaders: [String!]
+  exposeHeaders: [String!]
+  maxAgeSeconds: Int
+}
+
+type ReplicationRule {
+  id: String!
+  status: String!
+  destination: ReplicationDestination!
+  filter: JSON
+}
+
+type ReplicationDestination {
+  bucket: String!
+  storageClass: String
+}
+
+type COSObject {
+  key: String!
+  lastModified: DateTime!
+  etag: String!
+  size: Int!
+  storageClass: String!
+  owner: String
+  contentType: String
+}
+
+# ─── Databases ────────────────────────────────────────────────────────────────
+
+type DatabaseInstance {
+  id: ID!
+  name: String!
+  type: DatabaseType!
+  status: ResourceState!
+  version: String!
+  platform: String!
+  members: [DatabaseMember!]!
+  connectionStrings: DatabaseConnections
+  backups: [DatabaseBackup!]!
+  autoscaling: DatabaseAutoscaling
+  groups: [DatabaseGroup!]!
+  resourceGroup: ResourceGroup
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type DatabaseMember {
+  id: String!
+  type: String!
+  host: String!
+  port: Int!
+  sslPort: Int
+}
+
+type DatabaseConnections {
+  direct: ConnectionStringSet
+  cli: ConnectionStringSet
+}
+
+type ConnectionStringSet {
+  type: String!
+  scheme: String!
+  hosts: [ConnectionHost!]!
+  path: String
+  queryOptions: JSON
+  authentication: JSON
+  certificate: ConnectionCertificate
+  ssl: Boolean
+}
+
+type ConnectionHost {
+  hostname: String!
+  port: Int!
+}
+
+type ConnectionCertificate {
+  name: String!
+  certificate_base64: String!
+}
+
+type DatabaseBackup {
+  id: ID!
+  deploymentId: String!
+  type: String!
+  status: String!
+  isRestorable: Boolean!
+  download: JSON
+  createdAt: DateTime!
+}
+
+type DatabaseAutoscaling {
+  disk: AutoscalingDisk
+  memory: AutoscalingMemory
+  cpu: AutoscalingCPU
+}
+
+type AutoscalingDisk {
+  scalers: JSON
+  rate: JSON
+}
+
+type AutoscalingMemory {
+  scalers: JSON
+  rate: JSON
+}
+
+type AutoscalingCPU {
+  scalers: JSON
+  rate: JSON
+}
+
+type DatabaseGroup {
+  id: String!
+  members: DatabaseGroupMembers
+  memory: DatabaseGroupResource
+  disk: DatabaseGroupResource
+  cpu: DatabaseGroupResource
+}
+
+type DatabaseGroupMembers {
+  allocationCount: Int!
+  minimumCount: Int
+  maximumCount: Int
+  stepSizeCount: Int
+}
+
+type DatabaseGroupResource {
+  allocationMb: Int
+  minimumMb: Int
+  maximumMb: Int
+  stepSizeMb: Int
+  isAdjustable: Boolean
+  canScaleDown: Boolean
+}
+
+# ─── Cloudant ─────────────────────────────────────────────────────────────────
+
+type CloudantDatabase {
+  db_name: String!
+  doc_count: Int!
+  doc_del_count: Int!
+  update_seq: String
+  purge_seq: String
+  compact_running: Boolean!
+  disk_size: Int
+  data_size: Int
+  sizes: CloudantSizes
+  cluster: CloudantCluster
+}
+
+type CloudantSizes {
+  file: Int
+  external: Int
+  active: Int
+}
+
+type CloudantCluster {
+  n: Int
+  q: Int
+  r: Int
+  w: Int
+}
+
+type CloudantDocument {
+  _id: String!
+  _rev: String!
+  data: JSON
+  attachments: JSON
+}
+
+# ─── Event Streams (Kafka) ────────────────────────────────────────────────────
+
+type KafkaTopic {
+  name: String!
+  partitions: Int!
+  replicationFactor: Int!
+  retentionMs: Int
+  cleanupPolicy: String
+  configs: JSON
+}
+
+type KafkaConsumerGroup {
+  groupId: String!
+  state: String!
+  members: [KafkaConsumerMember!]!
+  offsets: [KafkaConsumerOffset!]!
+}
+
+type KafkaConsumerMember {
+  memberId: String!
+  clientId: String!
+  host: String!
+  assignments: [JSON!]
+}
+
+type KafkaConsumerOffset {
+  topic: String!
+  partition: Int!
+  offset: Int!
+  logEndOffset: Int
+  lag: Int
+}
+
+# ─── Watson Assistant ─────────────────────────────────────────────────────────
+
+type Message {
+  id: ID!
+  sessionId: String!
+  input: MessageInput
+  output: OutputData!
+  context: Context
+  userId: String
+  createdAt: DateTime!
+}
+
+type MessageInput {
+  messageType: String!
+  text: String
+  intents: [Intent!]
+  entities: [Entity!]
+  suggestionId: String
+  options: JSON
+}
+
+type OutputData {
+  generic: [ResponseGeneric!]!
+  intents: [Intent!]!
+  entities: [Entity!]!
+  actions: [JSON!]
+  debug: JSON
+}
+
+type ResponseGeneric {
+  responseType: String!
+  text: String
+  time: Int
+  typing: Boolean
+  source: String
+  header: String
+  results: [JSON!]
+  options: [JSON!]
+}
+
+type Intent {
+  intent: String!
+  confidence: Float!
+}
+
+type DialogNode {
+  dialogNodeId: String!
+  description: String
+  conditions: String
+  parent: String
+  previousSibling: String
+  output: JSON
+  context: JSON
+  metadata: JSON
+  type: String!
+  eventName: String
+  title: String
+  nextStep: JSON
+}
+
+type Context {
+  global: ContextGlobal
+  skills: JSON
+  integrations: JSON
+}
+
+type ContextGlobal {
+  system: ContextSystem
+  sessionId: String!
+}
+
+type ContextSystem {
+  turnCount: Int
+  userId: String
+  timezone: String
+  locale: String
+}
+
+type AssistantSession {
+  sessionId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  expiresAt: DateTime
+}
+
+# ─── Watson NLU ───────────────────────────────────────────────────────────────
+
+type NLUResult {
+  language: String!
+  analyzedText: AnalyzedText
+  retrievedUrl: String
+  usage: NLUUsage!
+  concepts: [ConceptsResult!]
+  entities: [EntitiesResult!]
+  keywords: [KeywordsResult!]
+  categories: [CategoriesResult!]
+  emotion: EmotionResult
+  metadata: NLUMetadata
+  relations: [RelationsResult!]
+  semanticRoles: [SemanticRolesResult!]
+  sentiment: SentimentResult
+  syntax: SyntaxResult
+}
+
+type AnalyzedText {
+  text: String!
+  language: String
+  tokens: [SyntaxToken!]
+}
+
+type NLUUsage {
+  textUnits: Int!
+  textCharacters: Int!
+  features: Int!
+}
+
+type ConceptsResult {
+  text: String!
+  relevance: Float!
+  dbpediaResource: String
+}
+
+type EntitiesResult {
+  type: String!
+  text: String!
+  relevance: Float!
+  confidence: Float
+  mentions: [EntityMention!]
+  count: Int!
+  emotion: EmotionScores
+  sentiment: SentimentScore
+  disambiguation: EntityDisambiguation
+}
+
+type EntityMention {
+  text: String!
+  location: [Int!]!
+  confidence: Float
+}
+
+type EntityDisambiguation {
+  subtype: [String!]
+  name: String
+  dbpediaResource: String
+}
+
+type KeywordsResult {
+  count: Int
+  relevance: Float!
+  text: String!
+  emotion: EmotionScores
+  sentiment: SentimentScore
+}
+
+type CategoriesResult {
+  score: Float!
+  label: String!
+  explanation: CategoriesModelExplanation
+}
+
+type CategoriesModelExplanation {
+  relevantText: [CategoriesRelevantText!]
+}
+
+type CategoriesRelevantText {
+  text: String!
+}
+
+type EmotionResult {
+  document: DocumentEmotionResults
+  targets: [TargetedEmotionResults!]
+}
+
+type DocumentEmotionResults {
+  emotion: EmotionScores!
+}
+
+type TargetedEmotionResults {
+  text: String!
+  emotion: EmotionScores!
+}
+
+type EmotionScores {
+  anger: Float!
+  disgust: Float!
+  fear: Float!
+  joy: Float!
+  sadness: Float!
+}
+
+type NLUMetadata {
+  authors: [Author!]
+  publicationDate: String
+  title: String
+  image: String
+  feeds: [Feed!]
+}
+
+type Author {
+  name: String!
+}
+
+type Feed {
+  link: String!
+}
+
+type RelationsResult {
+  score: Float!
+  sentence: String
+  type: String!
+  arguments: [RelationArgument!]!
+}
+
+type RelationArgument {
+  entities: [RelationEntity!]!
+  location: [Int!]
+  text: String!
+}
+
+type RelationEntity {
+  text: String!
+  type: String!
+}
+
+type SemanticRolesResult {
+  sentence: String!
+  subject: SemanticRolesResultSubject
+  action: SemanticRolesResultAction
+  object: SemanticRolesResultObject
+}
+
+type SemanticRolesResultSubject {
+  text: String!
+  entities: [EntitiesResult!]
+  keywords: [KeywordsResult!]
+}
+
+type SemanticRolesResultAction {
+  text: String!
+  normalized: String
+  verb: SemanticRolesVerb
+}
+
+type SemanticRolesVerb {
+  text: String!
+  tense: String
+}
+
+type SemanticRolesResultObject {
+  text: String!
+  keywords: [KeywordsResult!]
+}
+
+type SentimentResult {
+  document: SentimentScore
+  targets: [TargetedSentimentResults!]
+}
+
+type SentimentScore {
+  score: Float!
+  label: String!
+  mixed: Boolean
+}
+
+type TargetedSentimentResults {
+  text: String!
+  score: Float!
+  label: String!
+}
+
+type SyntaxResult {
+  tokens: [SyntaxToken!]
+  sentences: [SyntaxSentence!]
+}
+
+type SyntaxToken {
+  text: String!
+  partOfSpeech: String
+  location: [Int!]!
+  lemma: String
+}
+
+type SyntaxSentence {
+  text: String!
+  location: [Int!]!
+}
+
+type TextFeatures {
+  classifications: ClassificationsOptions
+  concepts: ConceptsOptions
+  emotion: EmotionOptions
+  entities: EntitiesOptions
+  keywords: KeywordsOptions
+  metadata: Boolean
+  relations: RelationsOptions
+  semanticRoles: SemanticRolesOptions
+  sentiment: SentimentOptions
+  syntax: SyntaxOptions
+}
+
+type ClassificationsOptions {
+  model: String
+}
+
+type ConceptsOptions {
+  limit: Int
+}
+
+type EmotionOptions {
+  document: Boolean
+  targets: [String!]
+}
+
+type EntitiesOptions {
+  limit: Int
+  mentions: Boolean
+  model: String
+  sentiment: Boolean
+  emotion: Boolean
+}
+
+type KeywordsOptions {
+  limit: Int
+  sentiment: Boolean
+  emotion: Boolean
+}
+
+type RelationsOptions {
+  model: String
+}
+
+type SemanticRolesOptions {
+  entities: Boolean
+  keywords: Boolean
+  limit: Int
+}
+
+type SentimentOptions {
+  document: Boolean
+  targets: [String!]
+  model: String
+}
+
+type SyntaxOptions {
+  tokens: SyntaxOptionsTokens
+  sentences: Boolean
+}
+
+type SyntaxOptionsTokens {
+  lemma: Boolean
+  partOfSpeech: Boolean
+}
+
+# ─── Speech to Text ───────────────────────────────────────────────────────────
+
+type SpeechRecognitionResult {
+  resultIndex: Int!
+  results: [SpeechRecognitionAlternativeResult!]!
+  speakerLabels: [SpeakerLabel!]
+  processingMetrics: ProcessingMetrics
+  audioMetrics: AudioMetrics
+  warnings: [String!]
+}
+
+type SpeechRecognitionAlternativeResult {
+  alternatives: [SpeechAlternative!]!
+  final: Boolean!
+  endTime: Float
+  resultIndex: Int
+  wordAlternatives: [WordAlternative!]
+}
+
+type SpeechAlternative {
+  transcript: String!
+  confidence: Float
+  timestamps: [[JSON!]!]
+  wordConfidence: [[JSON!]!]
+}
+
+type SpeakerLabel {
+  from: Float!
+  to: Float!
+  speaker: Int!
+  confidence: Float!
+  final: Boolean!
+}
+
+type WordAlternative {
+  startTime: Float!
+  endTime: Float!
+  alternatives: [WordAlternativeItem!]!
+}
+
+type WordAlternativeItem {
+  confidence: Float!
+  word: String!
+}
+
+type ProcessingMetrics {
+  processedAudio: ProcessedAudio!
+  wallClockSinceFirstByteReceived: Float!
+  periodic: Boolean!
+}
+
+type ProcessedAudio {
+  received: Float!
+  seenByEngine: Float!
+  transcription: Float!
+  speakerLabels: Float!
+}
+
+type AudioMetrics {
+  samplingInterval: Float!
+  accumulated: AudioMetricsDetails!
+}
+
+type AudioMetricsDetails {
+  final: Boolean!
+  endTime: Float!
+  signalToNoiseRatio: Float
+  speechRatio: Float!
+  highFrequencyLoss: Float!
+  directCurrentOffset: [AudioMetricHistogramBin!]!
+  clippingRate: [AudioMetricHistogramBin!]!
+  speechLevel: [AudioMetricHistogramBin!]!
+  noiseLevel: [AudioMetricHistogramBin!]!
+}
+
+type AudioMetricHistogramBin {
+  begin: Float!
+  end: Float!
+  count: Int!
+}
+
+# ─── Watson Discovery ─────────────────────────────────────────────────────────
+
+type DiscoveryProject {
+  projectId: String!
+  name: String!
+  type: String!
+  collections: [DiscoveryCollection!]!
+  relevancyTrainingStatus: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type DiscoveryCollection {
+  collectionId: String!
+  name: String!
+  description: String
+  status: String!
+  documentCounts: DocumentCounts!
+  dataSchema: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type DocumentCounts {
+  available: Int!
+  processing: Int!
+  failed: Int!
+  pending: Int!
+}
+
+type DiscoveryQueryResult {
+  matchingResults: Int!
+  results: [DiscoveryDocument!]!
+  aggregations: [QueryAggregation!]
+  retrievalDetails: JSON
+  suggestedQuery: String
+  suggestedRefinements: [JSON!]
+  tableResults: [JSON!]
+  passages: [QueryResultPassage!]
+}
+
+type DiscoveryDocument {
+  documentId: String!
+  result_metadata: JSON
+  extracted_metadata: JSON
+  text: String
+  html: String
+  title: String
+  url: String
+}
+
+type QueryAggregation {
+  type: String!
+  results: [AggregationResult!]
+  matching_results: Int
+  field: String
+  interval: String
+}
+
+type AggregationResult {
+  key: String
+  matching_results: Int!
+  relevancy: Float
+  total_matching_documents: Int
+  estimated_matching_results: Int
+  aggregations: [QueryAggregation!]
+}
+
+type QueryResultPassage {
+  passageText: String!
+  passageScore: Float
+  documentId: String
+  collectionId: String
+  startOffset: Int
+  endOffset: Int
+  field: String
+  answers: [ResultPassageAnswer!]
+}
+
+type ResultPassageAnswer {
+  answerText: String!
+  startOffset: Int
+  endOffset: Int
+  confidence: Float
+}
+
+# ─── watsonx.ai ───────────────────────────────────────────────────────────────
+
+type WatsonxModel {
+  modelId: String!
+  label: String!
+  provider: String!
+  source: String!
+  functions: [String!]!
+  shortDescription: String
+  longDescription: String
+  inputTier: String
+  outputTier: String
+  numberParams: String
+  minShotSize: Int
+  taskIds: [String!]!
+  tags: [String!]!
+  modelLimits: WatsonxModelLimits
+  family: ModelFamily
+}
+
+type WatsonxModelLimits {
+  maxSequenceLength: Int!
+  maxOutputTokens: Int!
+}
+
+type WatsonxTextGenerationResult {
+  modelId: String!
+  modelVersion: String
+  createdAt: DateTime!
+  results: [WatsonxGeneratedTextResult!]!
+  system: JSON
+}
+
+type WatsonxGeneratedTextResult {
+  generatedText: String!
+  generatedTokenCount: Int!
+  inputTokenCount: Int!
+  stopReason: String!
+  tokens: [TokenInfo!]
+  inputTokens: [TokenInfo!]
+}
+
+type TokenInfo {
+  id: Int!
+  text: String!
+  logprob: Float
+}
+
+type WatsonxPrompt {
+  id: ID!
+  name: String!
+  description: String
+  modelId: String!
+  input: String!
+  parameters: WatsonxParameters
+  projectId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type WatsonxParameters {
+  decodingMethod: String
+  maxNewTokens: Int
+  minNewTokens: Int
+  stopSequences: [String!]
+  repetitionPenalty: Float
+  temperature: Float
+  topK: Int
+  topP: Float
+  randomSeed: Int
+  truncateInputTokens: Int
+  returnOptions: WatsonxReturnOptions
+}
+
+type WatsonxReturnOptions {
+  inputText: Boolean
+  generatedTokens: Boolean
+  inputTokens: Boolean
+  tokenLogprobs: Boolean
+  tokenRankings: Boolean
+  topNTokens: Int
+}
+
+type WatsonxEmbeddingResult {
+  modelId: String!
+  createdAt: DateTime!
+  results: [EmbeddingResult!]!
+  inputParameterCount: Int!
+}
+
+type EmbeddingResult {
+  embedding: [Float!]!
+  inputTokenCount: Int!
+}
+
+# ─── watsonx.governance (OpenScale) ──────────────────────────────────────────
+
+type AIFairnessMonitor {
+  monitorInstanceId: String!
+  datamart_id: String!
+  status: String!
+  parameters: JSON
+  thresholds: [FairnessThreshold!]!
+  scheduledAt: DateTime
+  lastRunAt: DateTime
+}
+
+type FairnessThreshold {
+  metric_id: String!
+  type: String!
+  value: Float!
+  applies_to: [JSON!]
+}
+
+type ModelQualityMonitor {
+  monitorInstanceId: String!
+  status: String!
+  parameters: JSON
+  thresholds: [QualityThreshold!]!
+}
+
+type QualityThreshold {
+  metric_id: String!
+  type: String!
+  value: Float!
+}
+
+# ─── Security & Compliance ────────────────────────────────────────────────────
+
+type ComplianceProfile {
+  id: ID!
+  profileName: String!
+  profileDescription: String
+  profileType: String!
+  profileVersion: String!
+  versionGroupLabel: String
+  controls: [ComplianceControl!]!
+  defaultParameters: [DefaultParameter!]!
+  createdBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ComplianceControl {
+  controlId: String!
+  controlName: String!
+  controlDescription: String
+  controlCategory: String
+  specifications: [ControlSpecification!]!
+}
+
+type ControlSpecification {
+  controlSpecificationId: String!
+  responsibility: String!
+  componentId: String!
+  componentName: String!
+  environment: String!
+  controlSpecificationDescription: String!
+  assessments: [Assessment!]!
+}
+
+type Assessment {
+  assessmentId: String!
+  assessmentType: String!
+  assessmentMethod: String!
+  assessmentDescription: String!
+  parameterCount: Int!
+  parameters: [Parameter!]!
+}
+
+type Parameter {
+  parameterName: String!
+  parameterDisplayName: String!
+  parameterType: String!
+}
+
+type DefaultParameter {
+  assessmentType: String
+  assessmentId: String
+  parameterName: String!
+  parameterDefaultValue: String!
+  parameterDisplayName: String
+  parameterType: String
+}
+
+type EncryptionKey {
+  id: ID!
+  type: String!
+  name: String!
+  description: String
+  state: Int!
+  crn: String!
+  algorithmType: String!
+  algorithmBitSize: Int!
+  keyVersion: KeyVersion!
+  extractable: Boolean!
+  imported: Boolean!
+  createdBy: String!
+  createdAt: DateTime!
+  lastUpdateDate: DateTime
+  expirationDate: DateTime
+}
+
+type KeyVersion {
+  id: String!
+  creationDate: DateTime!
+}
+
+type Secret {
+  id: ID!
+  secretType: String!
+  name: String!
+  description: String
+  labels: [String!]
+  state: Int!
+  stateDescription: String
+  createdBy: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  expiresAt: DateTime
+  payloadAvailable: Boolean!
+  locksTotal: Int
+  versions: [SecretVersion!]
+}
+
+type SecretVersion {
+  id: ID!
+  secretId: String!
+  createdBy: String!
+  createdAt: DateTime!
+  expiresAt: DateTime
+  payloadAvailable: Boolean!
+  validityPeriodUnit: String
+  validity: JSON
+}
+
+# ─── Observability ────────────────────────────────────────────────────────────
+
+type MonitoringAlert {
+  id: ID!
+  name: String!
+  description: String
+  version: Int!
+  severity: Int!
+  timespan: Int!
+  condition: JSON!
+  notificationChannels: [JSON!]!
+  enabled: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type LogEntry {
+  id: ID!
+  timestamp: DateTime!
+  severity: String!
+  jsonPayload: JSON
+  textPayload: String
+  logName: String!
+  resource: LogResource
+  labels: JSON
+  insertId: String
+}
+
+type LogResource {
+  type: String!
+  labels: JSON!
+}
+
+type ActivityTrackerEvent {
+  id: ID!
+  action: String!
+  outcome: String!
+  reason: ActivityEventReason
+  initiator: ActivityEventInitiator!
+  target: ActivityEventTarget!
+  requestData: JSON
+  responseData: JSON
+  severity: String!
+  createdAt: DateTime!
+}
+
+type ActivityEventReason {
+  reasonCode: Int
+  reasonType: String
+}
+
+type ActivityEventInitiator {
+  id: String!
+  name: String!
+  typeURI: String!
+  credential: JSON
+  host: JSON
+  agent: JSON
+}
+
+type ActivityEventTarget {
+  id: String!
+  name: String!
+  typeURI: String!
+  host: JSON
+  resourceGroupId: String
+}
+
+# ─── Container Registry ────────────────────────────────────────────────────────
+
+type ContainerRepository {
+  name: String!
+  namespace: String!
+  status: String
+  created: DateTime
+  updated: DateTime
+}
+
+type ContainerImage {
+  id: String!
+  repoTags: [String!]!
+  repoDigests: [String!]
+  created: DateTime
+  size: Int
+  virtualSize: Int
+  labels: JSON
+  manifestType: String
+}
+
+type ImageVulnerabilityAssessment {
+  requestedAt: DateTime!
+  scanStatus: String!
+  scanStatusDescription: String
+  imageDigest: String!
+  imageName: String!
+  vulnerabilities: [ImageVulnerability!]!
+  configuration: [ConfigurationIssue!]!
+  exemptstatus: String
+}
+
+type ImageVulnerability {
+  vulnerabilityId: String!
+  hasConfigIssues: Boolean!
+  hasFix: Boolean!
+  fixedByVersion: String
+  packageName: String!
+  packageVersion: String!
+  severity: String!
+  description: String
+  link: String
+}
+
+type ConfigurationIssue {
+  configurationId: String!
+  description: String
+  resolvedBy: String
+  severity: String!
+}
+
+# ─── Serverless / Code Engine ─────────────────────────────────────────────────
+
+type CodeEngineProject {
+  id: ID!
+  name: String!
+  status: String!
+  region: String!
+  resourceGroupId: String
+  crn: String!
+  href: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CodeEngineApp {
+  id: ID!
+  name: String!
+  status: String!
+  image: String!
+  imagePort: Int
+  imagePullPolicy: String
+  revisions: [AppRevision!]!
+  instances: [AppInstance!]!
+  minScale: Int
+  maxScale: Int
+  scaleConcurrency: Int
+  scaleCpuLimit: String
+  scaleMemoryLimit: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type AppRevision {
+  id: ID!
+  name: String!
+  status: String!
+  image: String!
+  createdAt: DateTime!
+}
+
+type AppInstance {
+  id: ID!
+  name: String!
+  status: String!
+  startedAt: DateTime
+  restartCount: Int
+}
+
+type CodeEngineJob {
+  id: ID!
+  name: String!
+  image: String!
+  runs: [JobRun!]!
+  scaleCpuLimit: String
+  scaleMemoryLimit: String
+  scaleRetrylimit: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type JobRun {
+  id: ID!
+  name: String!
+  status: String!
+  imageDigest: String
+  startedAt: DateTime
+  completedAt: DateTime
+  instances: [JobRunInstance!]!
+}
+
+type JobRunInstance {
+  id: ID!
+  name: String!
+  status: String!
+  startedAt: DateTime
+  completedAt: DateTime
+  retryCount: Int
+}
+
+# ─── Enterprise / Billing ──────────────────────────────────────────────────────
+
+type Enterprise {
+  id: ID!
+  crn: String!
+  name: String!
+  domain: String
+  state: String!
+  primaryContactEmail: String
+  primaryContactIamId: String
+  primaryContactUserId: String
+  accountGroups: [EnterpriseAccountGroup!]!
+  accounts: [EnterpriseAccount!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type EnterpriseAccountGroup {
+  id: ID!
+  crn: String!
+  name: String!
+  parent: String
+  enterpriseId: String!
+  enterprisePath: String!
+  state: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type EnterpriseAccount {
+  id: ID!
+  crn: String!
+  name: String!
+  parent: String
+  enterpriseId: String!
+  enterprisePath: String!
+  state: String!
+  paidAccountId: String
+  ownerEmail: String
+  isPaidAccount: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UsageReport {
+  entityId: String!
+  entityType: String!
+  entityCrn: String
+  entityName: String
+  billingUnitId: String
+  month: String!
+  countryCode: String
+  currencyCode: String!
+  resources: [ResourceUsage!]!
+}
+
+type ResourceUsage {
+  resourceId: String!
+  resourceName: String!
+  billableCost: Float!
+  billableRatedCost: Float!
+  nonBillableCost: Float!
+  nonBillableRatedCost: Float!
+  plans: [PlanUsage!]!
+}
+
+type PlanUsage {
+  planId: String!
+  planName: String!
+  billableCost: Float!
+  nonBillableCost: Float!
+  usages: [MetricUsage!]!
+}
+
+type MetricUsage {
+  metric: String!
+  unit: String!
+  quantity: Float!
+  ratableCost: Float!
+  cost: Float!
+  price: [JSON!]
+}
+
+# ─── CloudEvent ───────────────────────────────────────────────────────────────
+
+type CloudEvent {
+  id: ID!
+  source: String!
+  specversion: String!
+  type: String!
+  datacontenttype: String
+  dataschema: String
+  subject: String
+  time: DateTime!
+  data: JSON
+  ibmaccount: String
+  ibmenvironmentid: String
+}
+
+# ─── Root Operations ──────────────────────────────────────────────────────────
+
+type Query {
+  # IAM
+  account(id: ID!): Account
+  user(id: ID!): User
+  users(accountId: ID!): [User!]!
+  serviceID(id: ID!): ServiceID
+  serviceIDs(accountId: ID!): [ServiceID!]!
+  apiKey(id: ID!): APIKey
+  iamPolicy(id: ID!): IAMPolicy
+  iamPolicies(accountId: ID, type: IAMPolicyType): [IAMPolicy!]!
+  accessGroup(id: ID!): AccessGroup
+  accessGroups(accountId: ID!): [AccessGroup!]!
+  trustedProfile(id: ID!): TrustedProfile
+  trustedProfiles(accountId: ID!): [TrustedProfile!]!
+
+  # Resources
+  resourceGroup(id: ID!): ResourceGroup
+  resourceGroups(accountId: ID!): [ResourceGroup!]!
+  resourceInstance(id: ID!): ResourceInstance
+  resourceInstances(resourceGroupId: ID, serviceId: String, region: String): [ResourceInstance!]!
+  resourceKey(id: ID!): ResourceKey
+  catalog(q: String, tags: [String!], kind: String): [Catalog!]!
+  serviceDefinitions: [ServiceDefinition!]!
+
+  # VPC / Networking
+  vpc(id: ID!): VPC
+  vpcs(region: String): [VPC!]!
+  subnet(id: ID!): Subnet
+  subnets(vpcId: ID, region: String): [Subnet!]!
+  instance(id: ID!): Instance
+  instances(vpcId: ID, region: String): [Instance!]!
+  image(id: ID!): Image
+  images(region: String, visibility: String): [Image!]!
+  securityGroup(id: ID!): SecurityGroup
+  securityGroups(vpcId: ID, region: String): [SecurityGroup!]!
+  floatingIP(id: ID!): FloatingIP
+  floatingIPs(region: String): [FloatingIP!]!
+  loadBalancer(id: ID!): LoadBalancer
+  loadBalancers(region: String): [LoadBalancer!]!
+  volume(id: ID!): Volume
+  volumes(region: String): [Volume!]!
+  networkACL(id: ID!): NetworkACL
+  networkACLs(vpcId: ID, region: String): [NetworkACL!]!
+  publicGateway(id: ID!): PublicGateway
+  publicGateways(vpcId: ID, region: String): [PublicGateway!]!
+
+  # Object Storage
+  cosBucket(name: String!, region: String!): COSBucket
+  cosBuckets(region: String): [COSBucket!]!
+  cosObjects(bucket: String!, prefix: String, maxKeys: Int): [COSObject!]!
+
+  # Databases
+  databaseInstance(id: ID!): DatabaseInstance
+  databaseInstances(type: DatabaseType, region: String): [DatabaseInstance!]!
+
+  # Cloudant
+  cloudantDatabase(instanceId: ID!, dbName: String!): CloudantDatabase
+  cloudantDatabases(instanceId: ID!): [CloudantDatabase!]!
+  cloudantDocument(instanceId: ID!, dbName: String!, docId: String!): CloudantDocument
+
+  # Event Streams
+  kafkaTopic(instanceId: ID!, name: String!): KafkaTopic
+  kafkaTopics(instanceId: ID!): [KafkaTopic!]!
+  kafkaConsumerGroups(instanceId: ID!): [KafkaConsumerGroup!]!
+
+  # Watson Assistant
+  assistantSession(assistantId: ID!, sessionId: ID!): AssistantSession
+  dialogNodes(assistantId: ID!, environmentId: ID): [DialogNode!]!
+
+  # Watson NLU (analysis request via mutation; read results here)
+  nluAnalysis(analysisId: ID!): NLUResult
+
+  # Speech
+  speechRecognitionJob(id: ID!): SpeechRecognitionResult
+
+  # Watson Discovery
+  discoveryProject(projectId: ID!): DiscoveryProject
+  discoveryProjects: [DiscoveryProject!]!
+  discoveryCollection(projectId: ID!, collectionId: ID!): DiscoveryCollection
+
+  # watsonx.ai
+  watsonxModels(projectId: ID): [WatsonxModel!]!
+  watsonxModel(modelId: String!): WatsonxModel
+  watsonxPrompt(projectId: ID!, promptId: ID!): WatsonxPrompt
+
+  # watsonx.governance
+  fairnessMonitor(datamartId: ID!, monitorInstanceId: ID!): AIFairnessMonitor
+  qualityMonitor(datamartId: ID!, monitorInstanceId: ID!): ModelQualityMonitor
+
+  # Security
+  encryptionKey(instanceId: ID!, keyId: ID!): EncryptionKey
+  encryptionKeys(instanceId: ID!): [EncryptionKey!]!
+  secret(instanceId: ID!, secretId: ID!): Secret
+  secrets(instanceId: ID!): [Secret!]!
+  complianceProfile(profileId: ID!): ComplianceProfile
+  complianceProfiles: [ComplianceProfile!]!
+
+  # Observability
+  monitoringAlerts(instanceId: ID!): [MonitoringAlert!]!
+  logEntries(instanceId: ID!, query: String, startTime: DateTime, endTime: DateTime): [LogEntry!]!
+  activityTrackerEvents(startTime: DateTime!, endTime: DateTime!, action: String): [ActivityTrackerEvent!]!
+
+  # Container Registry
+  containerRepositories(namespace: String): [ContainerRepository!]!
+  containerImages(repository: String!, namespace: String): [ContainerImage!]!
+  imageVulnerabilityAssessment(imageName: String!): ImageVulnerabilityAssessment
+
+  # Code Engine
+  codeEngineProject(projectId: ID!): CodeEngineProject
+  codeEngineProjects: [CodeEngineProject!]!
+  codeEngineApp(projectId: ID!, appName: String!): CodeEngineApp
+  codeEngineApps(projectId: ID!): [CodeEngineApp!]!
+  codeEngineJob(projectId: ID!, jobName: String!): CodeEngineJob
+  codeEngineJobs(projectId: ID!): [CodeEngineJob!]!
+
+  # Enterprise / Billing
+  enterprise(enterpriseId: ID!): Enterprise
+  usageReport(accountId: ID!, month: String!): UsageReport
+  enterpriseUsageReports(enterpriseId: ID!, month: String): [UsageReport!]!
+
+  # Tags & Search
+  tags(resourceId: String, tagType: String): [Tag!]!
+  searchResources(query: String!, fields: [String!], limit: Int): [ResourceInstance!]!
+}
+
+type Mutation {
+  # IAM
+  createServiceID(name: String!, accountId: ID!, description: String): ServiceID!
+  deleteServiceID(id: ID!): Boolean!
+  createAPIKey(name: String!, iamId: String!, description: String): APIKey!
+  deleteAPIKey(id: ID!): Boolean!
+  createIAMPolicy(type: IAMPolicyType!, subjects: JSON!, roles: JSON!, resources: JSON!): IAMPolicy!
+  updateIAMPolicy(id: ID!, roles: JSON!): IAMPolicy!
+  deleteIAMPolicy(id: ID!): Boolean!
+  createAccessGroup(name: String!, accountId: ID!, description: String): AccessGroup!
+  addMemberToAccessGroup(groupId: ID!, memberId: String!, memberType: String!): AccessGroupMember!
+  removeMemberFromAccessGroup(groupId: ID!, memberId: String!): Boolean!
+  deleteAccessGroup(id: ID!): Boolean!
+
+  # Resources
+  createResourceInstance(name: String!, resourcePlanId: String!, resourceGroupId: ID!, region: String!, tags: [String!]): ResourceInstance!
+  updateResourceInstance(id: ID!, name: String, tags: [String!]): ResourceInstance!
+  deleteResourceInstance(id: ID!): Boolean!
+  createResourceKey(name: String!, sourceId: ID!, role: String): ResourceKey!
+  deleteResourceKey(id: ID!): Boolean!
+
+  # VPC / Networking
+  createVPC(name: String!, resourceGroupId: ID!, region: String!): VPC!
+  deleteVPC(id: ID!): Boolean!
+  createSubnet(name: String!, vpcId: ID!, zone: String!, ipv4CIDRBlock: String!, resourceGroupId: ID): Subnet!
+  deleteSubnet(id: ID!): Boolean!
+  createInstance(name: String!, vpcId: ID!, zone: String!, imageId: ID!, profile: String!, primaryNetworkInterfaceSubnetId: ID!, resourceGroupId: ID): Instance!
+  deleteInstance(id: ID!): Boolean!
+  stopInstance(id: ID!): Instance!
+  startInstance(id: ID!): Instance!
+  createSecurityGroup(name: String!, vpcId: ID!, resourceGroupId: ID): SecurityGroup!
+  addSecurityGroupRule(groupId: ID!, direction: String!, protocol: String, portMin: Int, portMax: Int, remote: JSON): SecurityGroupRule!
+  deleteSecurityGroup(id: ID!): Boolean!
+  reserveFloatingIP(zone: String!, resourceGroupId: ID, name: String): FloatingIP!
+  releaseFloatingIP(id: ID!): Boolean!
+  createLoadBalancer(name: String!, isPublic: Boolean!, subnets: [ID!]!, resourceGroupId: ID): LoadBalancer!
+  deleteLoadBalancer(id: ID!): Boolean!
+  createVolume(name: String!, profile: String!, zone: String!, capacity: Int!, resourceGroupId: ID): Volume!
+  deleteVolume(id: ID!): Boolean!
+
+  # Object Storage
+  createCOSBucket(name: String!, region: String!, storageClass: String): COSBucket!
+  deleteCOSBucket(name: String!, region: String!): Boolean!
+  putCORSConfiguration(bucketName: String!, rules: [JSON!]!): COSBucket!
+  putLifecycleConfiguration(bucketName: String!, rules: [JSON!]!): COSBucket!
+
+  # Databases
+  createDatabaseInstance(name: String!, type: DatabaseType!, version: String!, resourceGroupId: ID!, region: String!): DatabaseInstance!
+  deleteDatabaseInstance(id: ID!): Boolean!
+  scaleDatabase(id: ID!, groups: [JSON!]!): DatabaseInstance!
+  createDatabaseBackup(deploymentId: ID!): DatabaseBackup!
+
+  # Cloudant
+  createCloudantDatabase(instanceId: ID!, dbName: String!): CloudantDatabase!
+  deleteCloudantDatabase(instanceId: ID!, dbName: String!): Boolean!
+  createCloudantDocument(instanceId: ID!, dbName: String!, doc: JSON!): CloudantDocument!
+  updateCloudantDocument(instanceId: ID!, dbName: String!, docId: String!, rev: String!, doc: JSON!): CloudantDocument!
+  deleteCloudantDocument(instanceId: ID!, dbName: String!, docId: String!, rev: String!): Boolean!
+
+  # Event Streams
+  createKafkaTopic(instanceId: ID!, name: String!, partitions: Int, retentionMs: Int): KafkaTopic!
+  deleteKafkaTopic(instanceId: ID!, name: String!): Boolean!
+
+  # Watson Assistant
+  createAssistantSession(assistantId: ID!): AssistantSession!
+  deleteAssistantSession(assistantId: ID!, sessionId: ID!): Boolean!
+  sendMessage(assistantId: ID!, sessionId: ID!, text: String!, context: JSON): Message!
+
+  # Watson NLU
+  analyzeText(text: String!, language: String, features: JSON!, model: String): NLUResult!
+  analyzeURL(url: String!, features: JSON!, model: String): NLUResult!
+
+  # Watson Discovery
+  createDiscoveryProject(name: String!, type: String!): DiscoveryProject!
+  createDiscoveryCollection(projectId: ID!, name: String!, description: String): DiscoveryCollection!
+  addDiscoveryDocument(projectId: ID!, collectionId: ID!, file: Upload, url: String): DiscoveryDocument!
+  queryDiscovery(projectId: ID!, query: String!, count: Int, passages: Boolean): DiscoveryQueryResult!
+
+  # watsonx.ai
+  generateText(projectId: ID!, modelId: String!, input: String!, parameters: JSON): WatsonxTextGenerationResult!
+  embedText(projectId: ID!, modelId: String!, inputs: [String!]!, parameters: JSON): WatsonxEmbeddingResult!
+  createPrompt(projectId: ID!, name: String!, modelId: String!, input: String!, parameters: JSON): WatsonxPrompt!
+  deletePrompt(projectId: ID!, promptId: ID!): Boolean!
+
+  # Security
+  createEncryptionKey(instanceId: ID!, name: String!, description: String, payload: String): EncryptionKey!
+  rotateEncryptionKey(instanceId: ID!, keyId: ID!): EncryptionKey!
+  deleteEncryptionKey(instanceId: ID!, keyId: ID!): Boolean!
+  createSecret(instanceId: ID!, secretType: String!, name: String!, description: String, labels: [String!], payload: JSON!): Secret!
+  deleteSecret(instanceId: ID!, secretId: ID!): Boolean!
+
+  # Observability
+  createMonitoringAlert(instanceId: ID!, name: String!, severity: Int!, condition: JSON!, channels: [JSON!]!): MonitoringAlert!
+  deleteMonitoringAlert(instanceId: ID!, alertId: ID!): Boolean!
+
+  # Code Engine
+  createCodeEngineProject(name: String!, resourceGroupId: ID!): CodeEngineProject!
+  deleteCodeEngineProject(projectId: ID!): Boolean!
+  createCodeEngineApp(projectId: ID!, name: String!, image: String!, minScale: Int, maxScale: Int): CodeEngineApp!
+  deleteCodeEngineApp(projectId: ID!, appName: String!): Boolean!
+  createCodeEngineJob(projectId: ID!, name: String!, image: String!): CodeEngineJob!
+  submitJobRun(projectId: ID!, jobName: String!): JobRun!
+  deleteCodeEngineJob(projectId: ID!, jobName: String!): Boolean!
+
+  # Tags
+  attachTag(name: String!, resourceId: String!, tagType: String): Boolean!
+  detachTag(name: String!, resourceId: String!): Boolean!
+  deleteTag(name: String!, tagType: String): Boolean!
+
+  # Cloud Events
+  publishCloudEvent(event: JSON!): CloudEvent!
+}
+
+type Subscription {
+  instanceStatusChanged(instanceId: ID!): ResourceInstance!
+  speechRecognitionResult(sessionId: ID!): SpeechRecognitionResult!
+  assistantMessage(assistantId: ID!, sessionId: ID!): Message!
+  activityEvent(accountId: ID!, action: String): ActivityTrackerEvent!
+  logStream(instanceId: ID!, query: String): LogEntry!
+  jobRunStatus(projectId: ID!, jobRunId: ID!): JobRun!
+}

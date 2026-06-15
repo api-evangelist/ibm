@@ -1,0 +1,1108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IBM Cloud IAM API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an IAM access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/identity/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "apikey",
+                  "value": ""
+                },
+                {
+                  "name": "refresh_token",
+                  "value": ""
+                },
+                {
+                  "name": "response_type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create an IAM access token for a user or service ID using an API key, refresh token, or delegated refresh token. Tokens are valid for one hour and can be refreshed before expiration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List API keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID of the API keys to query."
+              },
+              {
+                "name": "iam_id",
+                "value": "",
+                "type": "query",
+                "description": "The IAM ID associated with the API keys."
+              },
+              {
+                "name": "pagesize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "pagetoken",
+                "value": "",
+                "type": "query",
+                "description": "Page token from a previous request for pagination."
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "Scope of the query, either account or iam_id."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by API key type."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order."
+              }
+            ]
+          },
+          "docs": "List API keys associated with an IAM ID, account, or service ID. Results can be filtered, sorted, and paginated."
+        },
+        {
+          "info": {
+            "name": "Create an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API key for a user or service ID. The API key value is returned only at creation time."
+        },
+        {
+          "info": {
+            "name": "Get API key details by value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/details",
+            "headers": [
+              {
+                "name": "IAM-ApiKey",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "include_history",
+                "value": "",
+                "type": "query",
+                "description": "Include activity history of the API key."
+              }
+            ]
+          },
+          "docs": "Retrieve details of an API key by providing the key value in the IAM-ApiKey header."
+        },
+        {
+          "info": {
+            "name": "Get an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              },
+              {
+                "name": "include_history",
+                "value": "",
+                "type": "query",
+                "description": "Include the history of the API key."
+              },
+              {
+                "name": "include_activity",
+                "value": "",
+                "type": "query",
+                "description": "Include the activity of the API key."
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific API key by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Update an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties of an existing API key such as name and description."
+        },
+        {
+          "info": {
+            "name": "Delete an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Remove an API key permanently. This action cannot be undone."
+        },
+        {
+          "info": {
+            "name": "Lock an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id/lock",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Lock an API key to prevent it from being deleted or modified. Locked keys remain active and can still be used for authentication."
+        },
+        {
+          "info": {
+            "name": "Unlock an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id/lock",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Unlock a previously locked API key to allow modifications and deletion."
+        },
+        {
+          "info": {
+            "name": "Disable an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Disable an API key to prevent it from being used for authentication. The key can be re-enabled later."
+        },
+        {
+          "info": {
+            "name": "Enable an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Re-enable a previously disabled API key for authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Service IDs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List service IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID of the service IDs to query."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter service IDs by name."
+              },
+              {
+                "name": "pagesize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "pagetoken",
+                "value": "",
+                "type": "query",
+                "description": "Page token from a previous request for pagination."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order."
+              }
+            ]
+          },
+          "docs": "List service IDs in an account. Results can be filtered by name, sorted, and paginated."
+        },
+        {
+          "info": {
+            "name": "Create a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new service ID for an IBM Cloud account. Service IDs are used by applications and services to authenticate with IBM Cloud."
+        },
+        {
+          "info": {
+            "name": "Get a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              },
+              {
+                "name": "include_history",
+                "value": "",
+                "type": "query",
+                "description": "Include the history of the service ID."
+              },
+              {
+                "name": "include_activity",
+                "value": "",
+                "type": "query",
+                "description": "Include the activity of the service ID."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a service ID by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Update a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties of an existing service ID such as name and description."
+        },
+        {
+          "info": {
+            "name": "Delete a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              }
+            ]
+          },
+          "docs": "Delete a service ID and all associated API keys. This action cannot be undone."
+        },
+        {
+          "info": {
+            "name": "Lock a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id/lock",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              }
+            ]
+          },
+          "docs": "Lock a service ID to prevent modification or deletion. Locked service IDs remain active."
+        },
+        {
+          "info": {
+            "name": "Unlock a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id/lock",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              }
+            ]
+          },
+          "docs": "Unlock a previously locked service ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Trusted Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List trusted profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/profiles",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID to list trusted profiles for."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter profiles by name."
+              },
+              {
+                "name": "pagesize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "pagetoken",
+                "value": "",
+                "type": "query",
+                "description": "Page token from a previous request."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order."
+              },
+              {
+                "name": "include_history",
+                "value": "",
+                "type": "query",
+                "description": "Include the history of the profiles."
+              }
+            ]
+          },
+          "docs": "List trusted profiles in an account. Trusted profiles allow federated users to establish trust with IBM Cloud."
+        },
+        {
+          "info": {
+            "name": "Create a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/profiles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new trusted profile for federated users to establish trust with IBM Cloud resources."
+        },
+        {
+          "info": {
+            "name": "Get a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              },
+              {
+                "name": "include_activity",
+                "value": "",
+                "type": "query",
+                "description": "Include the activity of the profile."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific trusted profile."
+        },
+        {
+          "info": {
+            "name": "Update a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties of an existing trusted profile."
+        },
+        {
+          "info": {
+            "name": "Delete a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              }
+            ]
+          },
+          "docs": "Delete a trusted profile and its associated claim rules and links. This action cannot be undone."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Claim Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List claim rules for a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              }
+            ]
+          },
+          "docs": "Retrieve all claim rules defined for a specific trusted profile."
+        },
+        {
+          "info": {
+            "name": "Create a claim rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a claim rule for a trusted profile. Claim rules define conditions that federated users must meet to apply the profile."
+        },
+        {
+          "info": {
+            "name": "Get a claim rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules/:rule-id",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              },
+              {
+                "name": "rule-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the claim rule."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific claim rule in a trusted profile."
+        },
+        {
+          "info": {
+            "name": "Update a claim rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules/:rule-id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              },
+              {
+                "name": "rule-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the claim rule."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing claim rule for a trusted profile."
+        },
+        {
+          "info": {
+            "name": "Delete a claim rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules/:rule-id",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              },
+              {
+                "name": "rule-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the claim rule."
+              }
+            ]
+          },
+          "docs": "Remove a claim rule from a trusted profile."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List access policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/policies",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID to list policies for."
+              },
+              {
+                "name": "iam_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the IAM ID of the subject."
+              },
+              {
+                "name": "access_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by access group ID."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by policy type."
+              },
+              {
+                "name": "service_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service type."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter by policy state."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of policies to return."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start token."
+              }
+            ]
+          },
+          "docs": "List access policies in an account. Results can be filtered by IAM ID, access group, service type, and state."
+        },
+        {
+          "info": {
+            "name": "Create an access policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/policies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new access policy to grant a subject access to a resource. A policy defines a subject, roles, and resources."
+        },
+        {
+          "info": {
+            "name": "Get an access policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the access policy."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific access policy."
+        },
+        {
+          "info": {
+            "name": "Replace an access policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/policies/:policy_id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the access policy."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace an existing access policy with an updated definition. The entire policy is replaced."
+        },
+        {
+          "info": {
+            "name": "Update policy state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://iam.cloud.ibm.com/v1/policies/:policy_id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the access policy."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate or deactivate an existing access policy."
+        },
+        {
+          "info": {
+            "name": "Delete an access policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the access policy."
+              }
+            ]
+          },
+          "docs": "Remove an access policy. This action cannot be undone."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List IAM roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v2/roles",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID to list custom roles for."
+              },
+              {
+                "name": "service_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter roles by the service they apply to."
+              },
+              {
+                "name": "source_service_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the source service name for authorization policies."
+              },
+              {
+                "name": "policy_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by policy type."
+              },
+              {
+                "name": "service_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the service group ID."
+              }
+            ]
+          },
+          "docs": "List system-defined and custom roles available in the account. Results can be filtered by service name."
+        },
+        {
+          "info": {
+            "name": "Create a custom role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v2/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom role with a set of actions for a specific service. Custom roles extend the built-in platform and service roles."
+        },
+        {
+          "info": {
+            "name": "Get a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v2/roles/:role_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the role."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific role."
+        },
+        {
+          "info": {
+            "name": "Replace a custom role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v2/roles/:role_id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the role."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace the definition of an existing custom role with an updated set of actions."
+        },
+        {
+          "info": {
+            "name": "Delete a custom role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v2/roles/:role_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the role."
+              }
+            ]
+          },
+          "docs": "Remove a custom role. System-defined roles cannot be deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

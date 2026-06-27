@@ -18,11 +18,11 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/assistant/assistant-v2
-  - type: openapi
+  - type: OpenAPI
     url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/assistant/assistant-v2.json
-  - type: authentication
+  - type: Authentication
     url: https://cloud.ibm.com/docs/watson?topic=watson-iam
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
   - url: graphql/ibm-graphql.md
     type: GraphQL
@@ -39,11 +39,11 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/natural-language-understanding
-  - type: openapi
+  - type: OpenAPI
     url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/natural-language-understanding/natural-language-understanding.json
-  - type: pricing
+  - type: Pricing
     url: https://www.ibm.com/cloud/watson-natural-language-understanding/pricing
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/natural-language-understanding
 - name: IBM Watson Language Translator
   description: Translate text from one language to another.
@@ -56,9 +56,9 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/language-translator
-  - type: openapi
+  - type: OpenAPI
     url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/language-translator/language-translator.json
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/language-translator
 - name: IBM Watson Speech to Text
   description: Convert audio voice into written text.
@@ -72,9 +72,9 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/speech-to-text
-  - type: openapi
+  - type: OpenAPI
     url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/speech-to-text/speech-to-text.json
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/speech-to-text
 - name: IBM Watson Text to Speech
   description: Convert written text into natural-sounding audio in a variety of languages
@@ -89,9 +89,9 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/text-to-speech
-  - type: openapi
+  - type: OpenAPI
     url: https://raw.githubusercontent.com/watson-developer-cloud/api-spec/master/text-to-speech/text-to-speech.json
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/text-to-speech
 - name: IBM Cloud Object Storage
   description: Store and access unstructured data with built-in high-speed file transfer.
@@ -105,9 +105,9 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/docs/cloud-object-storage/api-reference
-  - type: pricing
+  - type: Pricing
     url: https://www.ibm.com/cloud/object-storage/pricing
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/cloud-object-storage
 - name: IBM Cloud Databases for PostgreSQL
   description: Managed PostgreSQL database service.
@@ -121,7 +121,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/cloud-databases-api
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/databases-for-postgresql
 - name: IBM Cloud Code Engine
   description: Run containerized workloads without managing servers.
@@ -135,9 +135,9 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/codeengine
-  - type: cli
+  - type: CLI
     url: https://cloud.ibm.com/docs/codeengine?topic=codeengine-cli
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/codeengine?topic=codeengine-getting-started
 - name: IBM watsonx.ai
   description: Run text inference, prompt tuning, and more on large language models
@@ -153,9 +153,9 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/watsonx-ai
-  - type: pricing
+  - type: Pricing
     url: https://www.ibm.com/products/watsonx-ai/pricing
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/watsonxdata
 - name: IBM watsonx.governance
   description: Monitor and manage AI models with an enterprise-grade environment that
@@ -172,9 +172,9 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/ai-openscale
-  - type: pricing
+  - type: Pricing
     url: https://www.ibm.com/products/watsonx-governance/pricing
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/ai-openscale
 - name: IBM Watson Discovery
   description: Add cognitive search and content analytics to applications to identify
@@ -189,7 +189,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/discovery-data
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/discovery-data
 - name: IBM Cloud Virtual Private Cloud
   description: Provision and manage isolated virtual network environments for compute,
@@ -205,7 +205,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/vpc/latest
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/vpc
 - name: IBM Cloud Kubernetes Service
   description: Create and manage Kubernetes cluster infrastructure to deploy and manage
@@ -220,9 +220,9 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/kubernetes
-  - type: pricing
+  - type: Pricing
     url: https://www.ibm.com/cloud/kubernetes-service/pricing
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/containers?topic=containers-getting-started
 - name: IBM Key Protect
   description: Provision and manage encrypted keys for data-at-rest protection across
@@ -237,7 +237,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/key-protect
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/key-protect
 - name: IBM Cloud IAM Identity Services
   description: Manage service IDs, API key identities, trusted profiles, account security
@@ -252,13 +252,13 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/iam-identity-token-api
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/account?topic=account-iamoverview
-  - type: openapi
+  - type: OpenAPI
     url: openapi/ibm-cloud-iam.yml
-  - type: json-schema
+  - type: JSONSchema
     url: json-schema/ibm-cloud-resource-schema.json
-  - type: json-ld-context
+  - type: JSONLDContext
     url: json-ld/ibm-context.jsonld
 - name: IBM Cloud Secrets Manager
   description: Create, lease, and centrally manage secrets used in IBM Cloud services
@@ -273,7 +273,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/secrets-manager/secrets-manager-v2
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/secrets-manager
 - name: IBM Cloud Event Notifications
   description: Route event notifications from IBM Cloud services to communication
@@ -288,7 +288,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/event-notifications
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/event-notifications
 - name: IBM Cloud Container Registry
   description: Store and distribute container images in a managed private registry
@@ -303,7 +303,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/container-registry
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/Registry?topic=Registry-registry_overview
 - name: IBM Cloud Schematics
   description: Use Terraform and Ansible to automate the provisioning and configuration
@@ -318,7 +318,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/schematics/schematics
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/schematics?topic=schematics-getting-started
 - name: IBM Cloud Internet Services
   description: Provide DDoS protection, global load balancing, DNS management, WAF,
@@ -334,7 +334,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/cis
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/cis
 - name: IBM Cloudant
   description: Fully managed distributed JSON document database built for the cloud
@@ -349,7 +349,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/cloudant
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant
 - name: IBM Event Streams
   description: Fully managed Apache Kafka service for high-throughput event streaming,
@@ -364,7 +364,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/event-streams/adminrest
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-getting-started
 - name: IBM Cloud Security and Compliance Center
   description: Assess, monitor, and remediate security and compliance posture for
@@ -379,7 +379,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/security-compliance
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/security-compliance?topic=security-compliance-getting-started
 - name: IBM Cloud Functions
   description: Run lightweight code that executes application logic in a scalable
@@ -394,7 +394,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/functions
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/openwhisk
 - name: IBM Cloud DNS Services
   description: Manage private DNS zones and resolution for IBM Cloud VPC networks.
@@ -407,7 +407,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/dns-svcs
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/dns-svcs?topic=dns-svcs-getting-started
 - name: IBM Cloud Monitoring
   description: Gain operational visibility into the performance and health of applications,
@@ -422,7 +422,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/monitor
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/monitoring
 - name: IBM Cloud Logs
   description: A scalable logging service for persisting, querying, tailing, and visualizing
@@ -436,7 +436,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/logs-service-api
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/cloud-logs
 - name: IBM Cloud Activity Tracker
   description: Configure and manage auditing events to track how users and applications
@@ -451,7 +451,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/atracker
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/activity-tracker
 - name: IBM Cloud App ID
   description: Add authentication and authorization to web and mobile applications
@@ -466,7 +466,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/app-id/management
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/appid
 - name: IBM Cloud Transit Gateway
   description: Interconnect IBM Cloud VPCs, classic infrastructure, and on-premises
@@ -481,7 +481,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/transit-gateway
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/transit-gateway
 - name: IBM Cloud Resource Controller
   description: Manage the lifecycle of IBM Cloud resources in a customer account including
@@ -532,11 +532,11 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/iam-policy-management
-  - type: openapi
+  - type: OpenAPI
     url: openapi/ibm-cloud-iam.yml
-  - type: json-schema
+  - type: JSONSchema
     url: json-schema/ibm-cloud-resource-schema.json
-  - type: json-ld-context
+  - type: JSONLDContext
     url: json-ld/ibm-context.jsonld
 - name: IBM IAM Access Groups
   description: Create and manage access groups to organize users and service IDs into
@@ -551,11 +551,11 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/iam-access-groups
-  - type: openapi
+  - type: OpenAPI
     url: openapi/ibm-cloud-iam.yml
-  - type: json-schema
+  - type: JSONSchema
     url: json-schema/ibm-cloud-resource-schema.json
-  - type: json-ld-context
+  - type: JSONLDContext
     url: json-ld/ibm-context.jsonld
 - name: IBM Cloud Power Virtual Server
   description: Deploy and manage AIX, IBM i, and Linux workloads on IBM Power Systems
@@ -571,7 +571,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/power-cloud
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/power-iaas
 - name: IBM Cloud Enterprise Management
   description: Create and manage enterprise accounts, account groups, and child accounts
@@ -599,7 +599,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/projects
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects
 - name: IBM watsonx.data
   description: Collect, store, query, and analyze structured and unstructured enterprise
@@ -615,9 +615,9 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/watsonxdata-software
-  - type: pricing
+  - type: Pricing
     url: https://www.ibm.com/products/watsonx-data/pricing
-  - type: getting-started
+  - type: GettingStarted
     url: https://dataplatform.cloud.ibm.com/docs/?context=wx
 - name: IBM API Connect
   description: Create, secure, manage, share, monetize, and analyze APIs across clouds
@@ -632,7 +632,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/apiconnect/apic-management-api
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/apiconnect?topic=apiconnect-getting-started
 - name: IBM Cloud Direct Link
   description: Establish private, high-speed connectivity between on-premises networks
@@ -647,7 +647,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/direct_link
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/dl?topic=dl-get-started-with-ibm-cloud-dl
 - name: IBM Cloud Continuous Delivery Toolchain
   description: Create and manage toolchains that integrate development, deployment,
@@ -662,7 +662,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/toolchain
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-getting-started
 - name: IBM Cloud Tekton Pipeline
   description: Create and manage Tekton-based continuous integration and continuous
@@ -678,7 +678,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/tekton-pipeline
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines
 - name: IBM Cloud User Management
   description: Manage users within an IBM Cloud account including inviting, retrieving,
@@ -743,7 +743,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/context-based-restrictions
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/account?topic=account-context-restrictions-create
 - name: IBM Cloud Databases for Redis
   description: Fully managed Redis in-memory data store for caching, session management,
@@ -759,7 +759,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/databases-for-redis
 - name: IBM Cloud Databases for MongoDB
   description: Fully managed MongoDB document database service with built-in high
@@ -775,7 +775,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started-new
 - name: IBM Cloud Databases for Elasticsearch
   description: Fully managed Elasticsearch service for full-text search, log analytics,
@@ -791,7 +791,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/databases-for-elasticsearch
 - name: IBM Cloud Enterprise Billing Units
   description: Manage billing units, billing options, and credit pools for IBM Cloud
@@ -832,7 +832,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/vmware-solutions
-  - type: getting-started
+  - type: GettingStarted
     url: https://cloud.ibm.com/docs/vmwaresolutions
 - name: IBM watsonx.ai Runtime
   description: Build, train, and deploy machine learning models with a full range
@@ -848,7 +848,7 @@ apis:
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/machine-learning
-  - type: getting-started
+  - type: GettingStarted
     url: https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-api.html?context=wx
 - name: IBM Knowledge Catalog
   description: Discover, catalog, categorize, and govern data assets and AI models
@@ -882,7 +882,7 @@ common:
   url: https://www.ibm.com/terms
 - type: PrivacyPolicy
   url: https://www.ibm.com/privacy
-- type: SignUp
+- type: Signup
   url: https://cloud.ibm.com/registration
 - type: Pricing
   url: https://www.ibm.com/cloud/pricing
@@ -902,7 +902,7 @@ common:
   url: https://github.com/IBM
 - type: Free Tier
   url: https://www.ibm.com/products/cloud/free
-- type: API Hub
+- type: Portal
   url: https://developer.ibm.com/apis/catalog
 - type: Terraform Provider
   url: https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs

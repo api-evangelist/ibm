@@ -864,6 +864,12 @@ apis:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/knowledge-catalog
 common:
+- type: VulnerabilityDisclosure
+  url: security/ibm-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/ibm-domain-security.yml
+- type: Authentication
+  url: authentication/ibm-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/ibm
 - type: Portal

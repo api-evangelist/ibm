@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/ibm-cloud-iam.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: 'IAM access token obtained from the /identity/token endpoint. Pass as Authorization:
+    Bearer <token>.'
+  sources:
+  - openapi/ibm-cloud-iam.yml

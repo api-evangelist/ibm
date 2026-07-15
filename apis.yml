@@ -864,6 +864,8 @@ apis:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/knowledge-catalog
 common:
+- type: AgenticAccess
+  url: agentic-access/ibm-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/ibm-vulnerability-disclosure.yml
 - type: DomainSecurity

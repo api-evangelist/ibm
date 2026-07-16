@@ -1,0 +1,73 @@
+generated: '2026-06-20'
+method: searched
+status: published
+source: >-
+  IBM's official MCP collection at https://github.com/IBM/mcp and the per-product
+  MCP server repositories under the IBM GitHub org (2026-06-20).
+notes: >-
+  IBM does not (yet) expose a single hosted remote MCP endpoint for the whole
+  platform. Instead it publishes a curated collection of open-source MCP servers,
+  one per product surface, plus MCP tooling in watsonx Orchestrate. The IAM
+  candidate tool list below is DERIVED from openapi/ibm-cloud-iam.yml as a starting
+  point — there is no published IAM MCP server at time of writing.
+servers:
+  - name: IBM MCP collection
+    kind: published
+    transport: stdio
+    repo: https://github.com/IBM/mcp
+    description: Umbrella collection of Model Context Protocol servers, clients, and developer tools by IBM.
+  - name: watsonx.data MCP server
+    kind: published
+    transport: stdio
+    repo: https://github.com/IBM/ibm-watsonxdata-mcp-server
+    description: Query and explore watsonx.data lakehouse data with SQL, inspect catalogs, table schemas, and engines.
+  - name: watsonx.data Document Library Retrieval MCP server
+    kind: published
+    transport: stdio
+    repo: https://github.com/IBM/ibm-watsonxdata-dl-retrieval-mcp-server
+    description: Connect AI agents to document libraries in watsonx.data for intelligent retrieval.
+  - name: watsonx.governance Governed Catalog MCP server
+    kind: published
+    transport: stdio
+    repo: https://github.com/IBM/ibm-watsonx-gov-catalog-mcp-server
+    description: Connect AI agents to tools hosted on the watsonx governed agentic catalog.
+  - name: Data Intelligence MCP server
+    kind: published
+    transport: stdio
+    repo: https://github.com/IBM/data-intelligence-mcp-server
+    description: Unified gateway exposing MCP tools across the watsonx Data Intelligence ecosystem.
+candidate_server:
+  name: ibm-cloud-iam
+  status: candidate
+  source_openapi: openapi/ibm-cloud-iam.yml
+  tools:
+    - name: create_access_token
+      description: Create an IAM access token from an API key or refresh token.
+      source_operation: openapi/ibm-cloud-iam.yml#createAccessToken
+    - name: list_api_keys
+      description: List API keys for a user or service ID.
+      source_operation: openapi/ibm-cloud-iam.yml#listApiKeys
+    - name: create_api_key
+      description: Create an API key.
+      source_operation: openapi/ibm-cloud-iam.yml#createApiKey
+    - name: delete_api_key
+      description: Delete an API key.
+      source_operation: openapi/ibm-cloud-iam.yml#deleteApiKey
+    - name: list_service_ids
+      description: List service IDs in an account.
+      source_operation: openapi/ibm-cloud-iam.yml#listServiceIds
+    - name: create_service_id
+      description: Create a service ID.
+      source_operation: openapi/ibm-cloud-iam.yml#createServiceId
+    - name: list_profiles
+      description: List trusted profiles.
+      source_operation: openapi/ibm-cloud-iam.yml#listProfiles
+    - name: list_policies
+      description: List IAM access policies.
+      source_operation: openapi/ibm-cloud-iam.yml#listPolicies
+    - name: create_policy
+      description: Create an IAM access policy.
+      source_operation: openapi/ibm-cloud-iam.yml#createPolicy
+    - name: list_roles
+      description: List IAM roles.
+      source_operation: openapi/ibm-cloud-iam.yml#listRoles

@@ -1,0 +1,41 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/ibm-cloud-iam.yml (4xx/5xx responses)
+format: ibm-error-envelope
+envelope: >-
+  IBM Cloud services return errors as a JSON object with a `trace` id and an
+  `errors[]` array, each element carrying `code`, `message`, and optional
+  `more_info` and `target`. This is IBM's own convention, not RFC 9457
+  application/problem+json.
+problems:
+  - status: 400
+    title: Bad Request
+    description: The request body or query parameters are invalid or malformed.
+    source_operations:
+      - openapi/ibm-cloud-iam.yml#createApiKey
+      - openapi/ibm-cloud-iam.yml#createServiceId
+      - openapi/ibm-cloud-iam.yml#createPolicy
+      - openapi/ibm-cloud-iam.yml#createProfile
+  - status: 401
+    title: Unauthorized
+    description: Missing, invalid, or expired IAM bearer token.
+    remediation: "Obtain a fresh IAM access token from /identity/token and pass it as Authorization: Bearer <token>."
+    source_operations:
+      - openapi/ibm-cloud-iam.yml#listApiKeys
+      - openapi/ibm-cloud-iam.yml#listServiceIds
+      - openapi/ibm-cloud-iam.yml#listPolicies
+  - status: 404
+    title: Not Found
+    description: The requested resource (API key, service ID, profile, policy, role) does not exist or is not visible to the caller.
+    source_operations:
+      - openapi/ibm-cloud-iam.yml#getApiKey
+      - openapi/ibm-cloud-iam.yml#getServiceId
+      - openapi/ibm-cloud-iam.yml#getPolicy
+  - status: 409
+    title: Conflict
+    description: The resource state conflicts with the request — typically a stale If-Match entity tag or a duplicate resource.
+    remediation: Re-fetch the resource to obtain its current ETag and retry the update with an accurate If-Match header.
+    source_operations:
+      - openapi/ibm-cloud-iam.yml#updateApiKey
+      - openapi/ibm-cloud-iam.yml#updateServiceId
+      - openapi/ibm-cloud-iam.yml#replacePolicy

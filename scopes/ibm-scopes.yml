@@ -1,0 +1,39 @@
+generated: '2026-06-20'
+method: searched
+source: https://iam.cloud.ibm.com/identity/.well-known/openid-configuration
+docs: https://cloud.ibm.com/docs/account?topic=account-iamoverview
+notes: >-
+  The IBM Cloud IAM identity endpoint is an OAuth 2.0 / OpenID Connect authorization
+  server. The IAM management OpenAPI (openapi/ibm-cloud-iam.yml) itself uses http
+  bearer JWT, but the tokens are minted by this OAuth server, whose live OIDC
+  discovery document advertises the scopes and grant types below. Access to IBM
+  Cloud resources is governed by IAM access policies (roles + resource attributes),
+  not fine-grained OAuth scopes — these OIDC scopes control identity/session claims.
+schemes:
+  - name: IBM Cloud IAM (OpenID Connect)
+    issuer: https://iam.cloud.ibm.com/identity
+    authorization_endpoint: https://identity-3.us-east.iam.cloud.ibm.com/identity/authorize
+    token_endpoint: https://identity-3.us-east.iam.cloud.ibm.com/identity/token
+    grant_types:
+      - authorization_code
+      - refresh_token
+      - password
+      - implicit
+      - "urn:ibm:params:oauth:grant-type:apikey"
+      - "urn:ibm:params:oauth:grant-type:delegated-refresh-token"
+      - "urn:ibm:params:oauth:grant-type:iam-authz"
+scopes:
+  - scope: openid
+    description: Request an OpenID Connect ID token.
+  - scope: email
+    description: Include the user's email in identity claims.
+  - scope: profile
+    description: Include the user's profile in identity claims.
+  - scope: ibm
+    description: IBM Cloud platform identity scope.
+  - scope: roles
+    description: Include IAM role information in the token.
+  - scope: containers-kubernetes
+    description: Scope for IBM Cloud Kubernetes Service access tokens.
+  - scope: containers-openshift
+    description: Scope for IBM Cloud OpenShift access tokens.

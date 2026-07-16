@@ -3,7 +3,7 @@ description: A collection of IBM's public APIs and developer resources.
 image: https://www.ibm.com/brand/experience-guides/developer/b1db1ae501d522a1a4b49613fe07c9f1/01_8-bar-positive.svg
 url: https://developer.ibm.com
 created: '2024'
-modified: '2026-05-19'
+modified: '2026-06-20'
 apis:
 - name: IBM Watson Assistant
   description: Build conversational interfaces into any application, device, or channel.
@@ -870,8 +870,38 @@ common:
   url: security/ibm-vulnerability-disclosure.yml
 - type: DomainSecurity
   url: security/ibm-domain-security.yml
+- type: TrustCenter
+  url: security/ibm-trust-center.yml
 - type: Authentication
   url: authentication/ibm-authentication.yml
+- type: OAuthScopes
+  url: scopes/ibm-scopes.yml
+- type: Packages
+  url: packages/ibm-packages.yml
+- type: WellKnown
+  url: well-known/ibm-well-known.yml
+- type: SecurityTxt
+  url: well-known/ibm-security.txt
+- type: MCPServer
+  url: mcp/ibm-mcp.yml
+- type: LLMsTxt
+  url: llms/ibm-llms.txt
+- type: Overlay
+  url: overlays/ibm-cloud-iam-overlay.yaml
+- type: Conformance
+  url: conformance/ibm-conformance.yml
+- type: ErrorCatalog
+  url: errors/ibm-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/ibm-lifecycle.yml
+- type: Conventions
+  url: conventions/ibm-conventions.yml
+- type: ChangeLog
+  url: changelog/ibm-changelog.yml
+- type: CLI
+  url: cli/ibm-cli.yml
+- type: DataModel
+  url: data-model/ibm-data-model.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/ibm
 - type: Portal

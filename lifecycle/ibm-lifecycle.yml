@@ -1,0 +1,27 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  IBM Cloud API Handbook (changes/versioning) plus IBM Cloud status, support, and
+  overview docs (2026-06-20).
+versioning:
+  scheme: date-query-param
+  detail: >-
+    Many IBM Cloud services are versioned with a required `version` query parameter
+    carrying a date (YYYY-MM-DD); the service resolves to the latest behavior at or
+    before that date. The IAM identity/management APIs are additionally path-versioned
+    (e.g. /v1). URL major version + dated behavior version coexist.
+  docs: https://cloud.ibm.com/docs/api-handbook?topic=api-handbook-changes-overview
+deprecation:
+  policy: >-
+    IBM Cloud publishes an API compatibility and deprecation policy: additive
+    (backward-compatible) changes may ship without a new version; breaking changes
+    require a new dated/path version, and deprecated capabilities are announced with
+    advance notice via release notes before removal.
+  policy_url: https://cloud.ibm.com/docs/api-handbook?topic=api-handbook-changes-overview
+  release_notes: https://cloud.ibm.com/status?query=Deprecation&selected=release-notes
+sla:
+  url: https://www.ibm.com/cloud/service-level-agreements
+  note: Per-service SLAs are published in each service's terms; IBM Cloud offers up to 99.99% availability tiers depending on service and topology.
+status_page: https://cloud.ibm.com/status
+support: https://www.ibm.com/cloud/support
+deprecated_operations: []

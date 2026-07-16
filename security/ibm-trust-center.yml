@@ -1,0 +1,30 @@
+generated: '2026-06-20'
+method: searched
+probe: true
+url: https://www.ibm.com/cloud/compliance
+certifications:
+  - SOC 1
+  - SOC 2
+  - SOC 3
+  - ISO 27001
+  - ISO 27017
+  - ISO 27018
+  - ISO 27701
+  - ISO 9001
+  - ISO 22301
+  - FedRAMP
+  - HIPAA
+  - PCI DSS
+  - GDPR
+evidence:
+  - source: https://www.ibm.com/cloud/compliance
+    keywords: [soc 2, iso 27001, iso 27017, iso 27018, compliance, certifications]
+  - source: https://www.ibm.com/products/cloud/compliance/soc-2
+    keywords: [soc 2, attestation]
+  - source: https://www.ibm.com/support/pages/ibm-iso-27001-certifications-cloud
+    keywords: [iso 27001, certification]
+notes: >-
+  IBM Cloud maintains a large compliance portfolio spanning SOC 1/2/3, the ISO 27xxx
+  family, FedRAMP, HIPAA, PCI DSS, and regional standards (HDS, C5, IRAP, etc.).
+  The full, current program list and downloadable attestations are published on the
+  IBM Cloud compliance page.

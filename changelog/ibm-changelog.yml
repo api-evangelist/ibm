@@ -1,0 +1,21 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  IBM Cloud "What's new" overview and the IBM Cloud status release-notes feed
+  (2026-06-20). IBM maintains a per-service dated changelog rather than a single
+  global API version; the live feeds below are the source of truth.
+scheme: date-based
+current_version: rolling (per-service, date-versioned)
+changelog_surfaces:
+  - name: IBM Cloud What's new
+    url: https://cloud.ibm.com/docs/overview?topic=overview-whatsnew
+  - name: IBM Cloud status — release notes
+    url: https://cloud.ibm.com/status?selected=release-notes
+  - name: IBM Cloud status — deprecations
+    url: https://cloud.ibm.com/status?query=Deprecation&selected=release-notes
+notes: >-
+  Per-service release notes are published under each product's docs (e.g.
+  cloud.ibm.com/docs/<service>?topic=<service>-release-notes). Recent dated entries
+  are rendered dynamically on the What's new page and were not captured verbatim to
+  avoid fabrication; consult the surfaces above for the live window.
+entries: []

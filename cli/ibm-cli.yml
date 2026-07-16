@@ -1,0 +1,49 @@
+generated: '2026-06-20'
+method: searched
+source: https://cloud.ibm.com/docs/cli and https://github.com/IBM-Cloud/ibm-cloud-cli-release
+name: IBM Cloud CLI
+binary: ibmcloud
+description: >-
+  Unified command line interface for IBM Cloud. A small core (login, target,
+  account/user management, IAM, resource management, plugin management) is extended
+  by installable per-service plug-ins (Kubernetes Service, Container Registry, Code
+  Engine, Cloud Databases, Cloud Object Storage, Schematics, and many more).
+install:
+  - method: script-macos
+    command: "curl -fsSL https://clis.cloud.ibm.com/install/osx | sh"
+  - method: script-linux
+    command: "curl -fsSL https://clis.cloud.ibm.com/install/linux | sh"
+  - method: powershell-windows
+    command: "iex (New-Object Net.WebClient).DownloadString('https://clis.cloud.ibm.com/install/powershell')"
+  - method: homebrew
+    command: "brew install ibmcloud-cli"
+  - method: release-binaries
+    url: https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases
+command_groups:
+  - group: login / target
+    commands: [login, logout, target, api, regions]
+    purpose: Authenticate (SSO, API key, or federated) and set account, region, and resource group context.
+  - group: iam
+    commands: [iam oauth-tokens, iam api-keys, iam api-key-create, iam service-ids, iam service-policies, iam access-groups, iam roles, iam trusted-profiles]
+    purpose: Manage identities, API keys, service IDs, trusted profiles, access policies, and mint OAuth tokens.
+  - group: resource
+    commands: [resource groups, resource service-instances, resource service-instance-create, resource service-keys, resource reclamations]
+    purpose: Provision and manage resource instances, service keys, and resource groups.
+  - group: account
+    commands: [account show, account users, account user-invite, account orgs, account resource-groups]
+    purpose: Manage account membership, users, and organizational structure.
+  - group: plugin
+    commands: [plugin install, plugin update, plugin list, plugin repo-plugins, plugin uninstall]
+    purpose: Install and manage service-specific CLI plug-ins from the IBM Cloud plug-in repository.
+  - group: catalog
+    commands: [catalog service-marketplace, catalog service, catalog locations]
+    purpose: Browse the IBM Cloud catalog of services and offerings.
+notable_plugins:
+  - "kubernetes-service (ibmcloud ks)"
+  - "container-registry (ibmcloud cr)"
+  - "code-engine (ibmcloud ce)"
+  - "cloud-databases (ibmcloud cdb)"
+  - "cloud-object-storage (ibmcloud cos)"
+  - "schematics"
+  - "cis (Internet Services)"
+  - "secrets-manager"

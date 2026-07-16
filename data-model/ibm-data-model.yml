@@ -1,0 +1,64 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/ibm-cloud-iam.yml ($ref graph + id-reference fields)
+scope: IBM Cloud IAM (the identity substrate for IBM Cloud services)
+entities:
+  - name: AccountSettings
+    description: Per-account IAM configuration (session limits, MFA, allowed IP restrictions).
+    id_field: account_id
+  - name: ApiKey
+    description: A long-lived credential bound to a user or service ID, exchangeable for an IAM access token.
+    id_field: id
+    id_prefix: ApiKey-
+  - name: ServiceId
+    description: A non-human identity for applications and services; owns API keys and is granted access via policies.
+    id_field: id
+    id_prefix: ServiceId-
+  - name: TrustedProfile
+    description: A federated identity that other identities (compute resources, external IdPs) can assume via claim rules.
+    id_field: id
+    id_prefix: Profile-
+  - name: ClaimRule
+    description: A rule attached to a trusted profile that governs which identities may assume it.
+    id_field: id
+  - name: Policy
+    description: An IAM access policy binding a subject (user, service ID, access group, trusted profile) to roles over a set of resource attributes.
+    id_field: id
+  - name: Role
+    description: A named collection of actions (platform, service, or custom roles) referenced by policies.
+    id_field: id
+  - name: AccessToken
+    description: A short-lived (1 hour) RS256 JWT minted from an API key, refresh token, or delegated token.
+relationships:
+  - from: ServiceId
+    to: ApiKey
+    type: has_many
+    via: iam_id
+  - from: ApiKey
+    to: ServiceId
+    type: belongs_to
+    via: iam_id
+  - from: TrustedProfile
+    to: ClaimRule
+    type: has_many
+    via: profile-id
+  - from: ClaimRule
+    to: TrustedProfile
+    type: belongs_to
+    via: profile-id
+  - from: Policy
+    to: Role
+    type: has_many
+    via: roles[].role_id
+  - from: Policy
+    to: ServiceId
+    type: has_one
+    via: subjects[].attributes (iam_id)
+  - from: Policy
+    to: TrustedProfile
+    type: has_one
+    via: subjects[].attributes (iam_id)
+  - from: ApiKey
+    to: AccessToken
+    type: has_many
+    via: exchange at /identity/token

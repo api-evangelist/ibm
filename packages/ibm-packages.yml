@@ -1,0 +1,94 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  Registry lookups (npm, PyPI, Maven Central, NuGet, RubyGems, pkg.go.dev) plus
+  the IBM and watson-developer-cloud GitHub orgs. All libraries verified live.
+notes: >-
+  IBM ships per-service SDKs generated from OpenAPI on a shared "ibm-cloud-sdk-core"
+  runtime, published across every major language ecosystem. The core runtime and the
+  aggregate "platform-services" bindings are listed here; individual services (VPC,
+  Watson, etc.) ship their own sibling packages under the same orgs.
+packages:
+  # --- Core runtime (shared by all generated SDKs) ---
+  - language: javascript
+    registry: npm
+    name: ibm-cloud-sdk-core
+    url: https://www.npmjs.com/package/ibm-cloud-sdk-core
+    install: npm install ibm-cloud-sdk-core
+    official: true
+  - language: python
+    registry: pypi
+    name: ibm-cloud-sdk-core
+    url: https://pypi.org/project/ibm-cloud-sdk-core/
+    install: pip install ibm-cloud-sdk-core
+    official: true
+  - language: java
+    registry: maven
+    name: com.ibm.cloud:sdk-core
+    url: https://central.sonatype.com/artifact/com.ibm.cloud/sdk-core
+    install: 'implementation "com.ibm.cloud:sdk-core:+"'
+    official: true
+  - language: dotnet
+    registry: nuget
+    name: IBM.Cloud.SDK.Core
+    url: https://www.nuget.org/packages/IBM.Cloud.SDK.Core
+    install: dotnet add package IBM.Cloud.SDK.Core
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: ibm_cloud_sdk_core
+    url: https://rubygems.org/gems/ibm_cloud_sdk_core
+    install: gem install ibm_cloud_sdk_core
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/IBM/go-sdk-core
+    url: https://pkg.go.dev/github.com/IBM/go-sdk-core
+    install: go get github.com/IBM/go-sdk-core/v5
+    official: true
+  # --- Platform Services (IAM, resource controller, catalog, etc.) ---
+  - language: javascript
+    registry: npm
+    name: "@ibm-cloud/platform-services"
+    url: https://www.npmjs.com/package/@ibm-cloud/platform-services
+    install: npm install @ibm-cloud/platform-services
+    official: true
+  - language: python
+    registry: pypi
+    name: ibm-platform-services
+    url: https://pypi.org/project/ibm-platform-services/
+    install: pip install ibm-platform-services
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/IBM/platform-services-go-sdk
+    url: https://pkg.go.dev/github.com/IBM/platform-services-go-sdk
+    install: go get github.com/IBM/platform-services-go-sdk
+    official: true
+  # --- VPC / infrastructure ---
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/IBM/vpc-go-sdk
+    url: https://pkg.go.dev/github.com/IBM/vpc-go-sdk
+    install: go get github.com/IBM/vpc-go-sdk
+    official: true
+  # --- Watson AI services ---
+  - language: javascript
+    registry: npm
+    name: ibm-watson
+    url: https://www.npmjs.com/package/ibm-watson
+    install: npm install ibm-watson
+    official: true
+  - language: python
+    registry: pypi
+    name: ibm-watson
+    url: https://pypi.org/project/ibm-watson/
+    install: pip install ibm-watson
+    official: true
+  # --- CLI binary (command surface catalogued in cli/ibm-cli.yml) ---
+  - language: cli
+    registry: github
+    name: IBM Cloud CLI (ibmcloud)
+    url: https://github.com/IBM-Cloud/ibm-cloud-cli-release
+    install: "curl -fsSL https://clis.cloud.ibm.com/install/osx | sh"
+    official: true

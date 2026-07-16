@@ -1,0 +1,35 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for IBM Cloud IAM API
+  version: 1.0.0
+extends: openapi/ibm-cloud-iam.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: ibm
+      x-apievangelist-artifacts:
+        authentication: authentication/ibm-authentication.yml
+        scopes: scopes/ibm-scopes.yml
+        errors: errors/ibm-problem-types.yml
+        conventions: conventions/ibm-conventions.yml
+        data-model: data-model/ibm-data-model.yml
+        lifecycle: lifecycle/ibm-lifecycle.yml
+        agentic-access: agentic-access/ibm-agentic-access.yml
+  - target: $.info
+    update:
+      x-apievangelist-auth-model: >-
+        Bearer JWT (IAM access token). Tokens are minted at the OAuth/OIDC identity
+        endpoint (iam.cloud.ibm.com/identity/token) and expire after one hour.
+  - target: $.components.securitySchemes.bearerAuth
+    update:
+      x-token-endpoint: https://iam.cloud.ibm.com/identity/token
+      x-token-ttl-seconds: 3600
+      x-oidc-discovery: https://iam.cloud.ibm.com/identity/.well-known/openid-configuration
+  - target: $.info
+    update:
+      x-apievangelist-conformance:
+        - oauth2
+        - oidc
+        - jwt
+        - pagination
+        - etag-optimistic-concurrency

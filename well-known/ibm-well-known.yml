@@ -1,0 +1,40 @@
+generated: '2026-06-20'
+method: searched
+source: Live probes of IBM host /.well-known/ discovery surface (2026-06-20).
+hosts:
+  - host: https://www.ibm.com
+    documents:
+      - path: /.well-known/security.txt          # RFC 9116
+        status: 200
+        file: ibm-security.txt
+      - path: /.well-known/openid-configuration
+        status: 301
+      - path: /.well-known/oauth-authorization-server
+        status: 301
+      - path: /.well-known/api-catalog
+        status: 301
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://iam.cloud.ibm.com
+    documents:
+      - path: /identity/.well-known/openid-configuration   # OIDC discovery (RFC 8414 / OpenID Connect Discovery 1.0)
+        status: 200
+        file: ibm-openid-configuration.json
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://cloud.ibm.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 302
+      - path: /.well-known/openid-configuration
+        status: 302
+      - path: /.well-known/api-catalog
+        status: 307
+  - host: https://developer.ibm.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404

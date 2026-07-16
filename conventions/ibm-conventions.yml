@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  IBM Cloud API Handbook plus openapi/ibm-cloud-iam.yml. Cross-links to
+  authentication/, errors/, lifecycle/, and rate-limits/ artifacts in this repo.
+authentication:
+  style: bearer-jwt
+  detail: >-
+    All IBM Cloud service APIs authenticate with an IAM access token (RS256 JWT)
+    passed as Authorization: Bearer <token>. Tokens are minted from an API key or
+    other grant at iam.cloud.ibm.com/identity/token and are valid for one hour.
+  ref: authentication/ibm-authentication.yml
+pagination:
+  style: token-and-offset
+  detail: >-
+    Collection endpoints paginate. Token-cursor endpoints (API keys, service IDs,
+    profiles) accept a `pagetoken`/`start` from the previous response; policy-style
+    endpoints accept `limit` + `start`. Response envelopes carry `limit`, `offset`,
+    `total_count`, and hypermedia `first`, `previous`, and `next` URLs.
+  request_params: [limit, start, pagetoken]
+  response_fields: [limit, offset, total_count, first, previous, next]
+versioning:
+  style: date-query-param + path-major
+  detail: >-
+    Services accept a `version` query parameter carrying a date (YYYY-MM-DD) that
+    pins request behavior; the resource path additionally carries a major version
+    (e.g. /v1). See lifecycle/ibm-lifecycle.yml.
+  ref: lifecycle/ibm-lifecycle.yml
+concurrency:
+  style: etag-if-match
+  detail: >-
+    Mutating operations require an entity tag (ETag) obtained from a prior GET,
+    supplied via the If-Match header, to guard against lost updates (returns 409 on
+    mismatch).
+request_tracing:
+  detail: >-
+    IBM Cloud services accept a Transaction-Id / X-Correlation-Id-style header and
+    echo a `trace` id in error envelopes for support correlation.
+error_envelope:
+  shape: "{ trace, errors: [ { code, message, more_info, target } ] }"
+  format: ibm-error-envelope (not RFC 9457)
+  ref: errors/ibm-problem-types.yml
+rate_limit_signaling:
+  ref: rate-limits/ibm-rate-limits.yml
+  detail: See the rate-limits artifact; IAM enforces per-account request limits with 429 responses.

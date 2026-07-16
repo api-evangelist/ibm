@@ -1,0 +1,35 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  openapi/ibm-cloud-iam.yml, well-known/ibm-openid-configuration.json, and IBM Cloud
+  compliance documentation.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: IAM identity endpoint advertises OAuth 2.0 grant types (authorization_code, refresh_token, apikey grant) in its OIDC discovery document.
+  - id: oidc
+    conforms: true
+    evidence: Live OpenID Connect discovery at iam.cloud.ibm.com/identity/.well-known/openid-configuration (issuer, jwks_uri, RS256 id_token signing).
+  - id: jwt
+    conforms: true
+    evidence: bearerAuth securityScheme bearerFormat JWT; access tokens are RS256-signed JWTs.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Error responses use IBM's own envelope (errors[] with code/message/more_info + trace), not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: List operations expose token/offset pagination with first/previous/next/limit/total_count response fields.
+  - id: etag-optimistic-concurrency
+    conforms: true
+    evidence: Update operations require an If-Match entity tag from a prior GET (RFC 7232).
+  - id: soc2
+    conforms: true
+    evidence: IBM Cloud holds SOC 1, SOC 2, and SOC 3 attestations (https://www.ibm.com/products/cloud/compliance/soc-2).
+  - id: iso-27001
+    conforms: true
+    evidence: IBM Cloud is certified to ISO 27001, 27017, 27018, and 27701 (https://www.ibm.com/cloud/compliance).
+  - id: fhir-r4
+    conforms: false
+  - id: scim2
+    conforms: false
+    evidence: Not present in the IAM management API (IBM Cloud App ID exposes SCIM separately).

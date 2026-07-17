@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Authenticate and Inspect the Calling API Key
+  summary: Exchange an API key for an IAM access token, inspect that key, and refresh the token.
+  description: >-
+    The bootstrap flow for every IBM Cloud integration. Nothing else in IBM Cloud
+    can be called until an API key has been exchanged for an IAM access token, so
+    this workflow establishes that foundation: it mints an access token from an
+    API key, looks the key up by its value to confirm which identity and account
+    the caller is actually operating as, and then exercises the refresh grant so a
+    long-running integration can renew the token before its one hour lifetime
+    expires. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: authenticate-and-inspect-api-key
+  summary: Mint an IAM access token from an API key, identify the key, and refresh the token.
+  description: >-
+    Trades an API key for an access token using the IBM API key grant, resolves
+    the key's identity and account by looking it up by value, and then renews the
+    token with the refresh grant.
+  inputs:
+    type: object
+    required:
+    - apikey
+    properties:
+      apikey:
+        type: string
+        description: The IBM Cloud API key value to authenticate with.
+      includeHistory:
+        type: boolean
+        description: Whether to include the activity history of the API key in the lookup.
+        default: false
+  steps:
+  - stepId: mintAccessToken
+    description: >-
+      Exchange the API key for an IAM access token using the IBM API key grant
+      type. The token is valid for one hour and carries the identity of whoever
+      the API key belongs to.
+    operationId: createAccessToken
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        grant_type: urn:ibm:params:oauth:grant-type:apikey
+        apikey: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.access_token != null
+      type: jsonpath
+    outputs:
+      accessToken: $response.body#/access_token
+      refreshToken: $response.body#/refresh_token
+      tokenType: $response.body#/token_type
+      expiresIn: $response.body#/expires_in
+      expiration: $response.body#/expiration
+  - stepId: identifyApiKey
+    description: >-
+      Look the API key up by its value to confirm which IAM ID and account the
+      integration is authenticating as, and whether the key is locked or disabled.
+    operationId: getApiKeysDetails
+    parameters:
+    - name: IAM-ApiKey
+      in: header
+      value: $inputs.apikey
+    - name: include_history
+      in: query
+      value: $inputs.includeHistory
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      apiKeyId: $response.body#/id
+      apiKeyName: $response.body#/name
+      iamId: $response.body#/iam_id
+      accountId: $response.body#/account_id
+      entityTag: $response.body#/entity_tag
+      locked: $response.body#/locked
+      disabled: $response.body#/disabled
+  - stepId: refreshAccessToken
+    description: >-
+      Renew the access token with the refresh token returned by the first step so
+      a long-running integration never presents an expired credential.
+    operationId: createAccessToken
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        grant_type: refresh_token
+        refresh_token: $steps.mintAccessToken.outputs.refreshToken
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.access_token != null
+      type: jsonpath
+    outputs:
+      accessToken: $response.body#/access_token
+      refreshToken: $response.body#/refresh_token
+      expiration: $response.body#/expiration
+  outputs:
+    accessToken: $steps.refreshAccessToken.outputs.accessToken
+    refreshToken: $steps.refreshAccessToken.outputs.refreshToken
+    apiKeyId: $steps.identifyApiKey.outputs.apiKeyId
+    iamId: $steps.identifyApiKey.outputs.iamId
+    accountId: $steps.identifyApiKey.outputs.accountId

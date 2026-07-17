@@ -1,0 +1,132 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Provision a Service ID with a Working API Key
+  summary: Create a service ID, issue it an API key, prove the key authenticates, and lock the identity.
+  description: >-
+    The standard way to give an application its own machine identity in IBM Cloud.
+    The workflow creates a service ID in the target account, issues an API key
+    against the supplied IAM ID, proves the new key actually authenticates by
+    exchanging it for an access token, and then locks the service ID so it cannot
+    be modified or deleted by accident. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: service-id-onboarding
+  summary: Provision a service ID, issue an API key for it, verify it, and lock it.
+  description: >-
+    Creates the service ID, mints an API key for the identity, verifies the key by
+    minting an access token with it, and locks the service ID against accidental
+    change.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - serviceIdName
+    - iamId
+    - apiKeyName
+    properties:
+      accountId:
+        type: string
+        description: The IBM Cloud account ID the service ID belongs to.
+      serviceIdName:
+        type: string
+        description: The name of the service ID to create (e.g. "billing-exporter").
+      iamId:
+        type: string
+        description: >-
+          The IAM ID the API key authenticates. For a service ID this is the
+          service ID's own IAM ID, which is assigned when the service ID is
+          created and is visible on the service ID in the IBM Cloud console.
+      apiKeyName:
+        type: string
+        description: The name of the API key to issue (e.g. "billing-exporter-key").
+      serviceIdDescription:
+        type: string
+        description: A description of what the service ID is used for.
+      uniqueInstanceCrns:
+        type: array
+        description: Optional CRNs restricting the service ID to specific resource instances.
+        items:
+          type: string
+  steps:
+  - stepId: createServiceIdentity
+    description: >-
+      Create the service ID in the target account. This is the identity the
+      application will authenticate as, separate from any human user.
+    operationId: createServiceId
+    requestBody:
+      contentType: application/json
+      payload:
+        account_id: $inputs.accountId
+        name: $inputs.serviceIdName
+        description: $inputs.serviceIdDescription
+        unique_instance_crns: $inputs.uniqueInstanceCrns
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      serviceIdId: $response.body#/id
+      serviceIdCrn: $response.body#/crn
+      entityTag: $response.body#/entity_tag
+      createdAt: $response.body#/created_at
+  - stepId: issueApiKey
+    description: >-
+      Issue an API key for the identity. The key value is returned only at
+      creation time, so store_value is set and the value is captured here or it is
+      lost forever.
+    operationId: createApiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.apiKeyName
+        iam_id: $inputs.iamId
+        account_id: $inputs.accountId
+        description: $inputs.serviceIdDescription
+        store_value: true
+    successCriteria:
+    - condition: $statusCode == 201
+    - context: $response.body
+      condition: $.apikey != null
+      type: jsonpath
+    outputs:
+      apiKeyId: $response.body#/id
+      apiKeyValue: $response.body#/apikey
+      apiKeyEntityTag: $response.body#/entity_tag
+  - stepId: verifyApiKeyAuthenticates
+    description: >-
+      Prove the newly issued key actually works by exchanging it for an IAM access
+      token before the identity is handed to the application.
+    operationId: createAccessToken
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        grant_type: urn:ibm:params:oauth:grant-type:apikey
+        apikey: $steps.issueApiKey.outputs.apiKeyValue
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.access_token != null
+      type: jsonpath
+    outputs:
+      accessToken: $response.body#/access_token
+      expiresIn: $response.body#/expires_in
+  - stepId: lockServiceIdentity
+    description: >-
+      Lock the service ID so it cannot be modified or deleted without an explicit
+      unlock. The identity stays fully usable for authentication while locked.
+    operationId: lockServiceId
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createServiceIdentity.outputs.serviceIdId
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    serviceIdId: $steps.createServiceIdentity.outputs.serviceIdId
+    serviceIdCrn: $steps.createServiceIdentity.outputs.serviceIdCrn
+    apiKeyId: $steps.issueApiKey.outputs.apiKeyId
+    apiKeyValue: $steps.issueApiKey.outputs.apiKeyValue

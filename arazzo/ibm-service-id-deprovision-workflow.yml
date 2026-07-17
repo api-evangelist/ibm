@@ -1,0 +1,142 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Deprovision a Service ID
+  summary: Resolve a service ID by name, prove it is dormant, unlock it, and delete it with its keys.
+  description: >-
+    Retiring a machine identity without breaking whatever quietly still depends on
+    it. The workflow resolves the service ID by name, inventories the service ID
+    API keys in the account that deletion will destroy, and reads the identity's
+    authentication activity to prove it is genuinely dormant before anything is
+    removed — the check that separates a clean decommission from an outage. It then
+    unlocks the identity, since production service IDs are routinely locked, and
+    deletes it along with its keys. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: deprovision-service-id
+  summary: Find a service ID by name, confirm it is unused, then unlock and delete it.
+  description: >-
+    Looks the service ID up by name, lists the account's service ID keys, reads its
+    activity to establish last authentication, unlocks it, and deletes it together
+    with all associated API keys.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - serviceIdName
+    properties:
+      accountId:
+        type: string
+        description: The IBM Cloud account ID that owns the service ID.
+      serviceIdName:
+        type: string
+        description: The name of the service ID being retired.
+  steps:
+  - stepId: findServiceId
+    description: >-
+      Resolve the service ID by name within the account. Matching on name rather
+      than requiring the caller to supply an opaque id is what makes this runnable
+      from a decommission ticket.
+    operationId: listServiceIds
+    parameters:
+    - name: account_id
+      in: query
+      value: $inputs.accountId
+    - name: name
+      in: query
+      value: $inputs.serviceIdName
+    - name: pagesize
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.serviceids.length > 0
+      type: jsonpath
+    outputs:
+      serviceIdId: $response.body#/serviceids/0/id
+      serviceIdCrn: $response.body#/serviceids/0/crn
+      locked: $response.body#/serviceids/0/locked
+  - stepId: inventoryServiceKeys
+    description: >-
+      List the service ID API keys in the account so the credentials that deletion
+      will destroy are recorded first. This API description exposes no way to
+      filter keys by a service ID's own identifier, so the inventory is scoped to
+      all service ID keys in the account and must be correlated by the reviewer.
+    operationId: listApiKeys
+    parameters:
+    - name: account_id
+      in: query
+      value: $inputs.accountId
+    - name: type
+      in: query
+      value: serviceid
+    - name: scope
+      in: query
+      value: account
+    - name: pagesize
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      serviceKeys: $response.body#/apikeys
+  - stepId: confirmDormant
+    description: >-
+      Read the service ID with its activity and history to establish when it last
+      authenticated. A recent last_authn means something still depends on this
+      identity and the decommission should stop here.
+    operationId: getServiceId
+    parameters:
+    - name: id
+      in: path
+      value: $steps.findServiceId.outputs.serviceIdId
+    - name: include_activity
+      in: query
+      value: true
+    - name: include_history
+      in: query
+      value: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      serviceIdName: $response.body#/name
+      entityTag: $response.body#/entity_tag
+      locked: $response.body#/locked
+      history: $response.body#/history
+      lastAuthentication: $response.body#/activity/last_authn
+      authenticationCount: $response.body#/activity/authn_count
+  - stepId: unlockServiceIdentity
+    description: >-
+      Unlock the service ID so it can be deleted. Identities provisioned for
+      production are commonly locked at creation, and deletion is refused while the
+      lock is in place.
+    operationId: unlockServiceId
+    parameters:
+    - name: id
+      in: path
+      value: $steps.findServiceId.outputs.serviceIdId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: deleteServiceIdentity
+    description: >-
+      Delete the service ID and every API key associated with it. This cannot be
+      undone, and any access policy written against the identity should be
+      withdrawn separately or it is left dangling.
+    operationId: deleteServiceId
+    parameters:
+    - name: id
+      in: path
+      value: $steps.findServiceId.outputs.serviceIdId
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    deletedServiceIdId: $steps.findServiceId.outputs.serviceIdId
+    deletedServiceIdCrn: $steps.findServiceId.outputs.serviceIdCrn
+    lastAuthentication: $steps.confirmDormant.outputs.lastAuthentication
+    destroyedKeys: $steps.inventoryServiceKeys.outputs.serviceKeys

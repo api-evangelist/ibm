@@ -1,0 +1,147 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Rotate an API Key
+  summary: Issue a replacement API key, verify it, then unlock, disable, and delete the old key.
+  description: >-
+    Key rotation done in the order that does not cause an outage. The workflow
+    issues the replacement key first and proves it authenticates, and only then
+    retires the outgoing key — unlocking it so it can be changed, disabling it so
+    it stops authenticating while remaining recoverable, and finally deleting it.
+    Disabling before deleting leaves a reversible checkpoint in case a consumer of
+    the old key was missed. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: rotate-api-key
+  summary: Create and verify a replacement API key, then unlock, disable, and delete the outgoing key.
+  description: >-
+    Mints a new key for the same identity, confirms the new key can obtain an
+    access token, then unlocks, disables, and deletes the key being retired.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - iamId
+    - outgoingApiKeyId
+    - newApiKeyName
+    properties:
+      accountId:
+        type: string
+        description: The IBM Cloud account ID that owns the keys.
+      iamId:
+        type: string
+        description: The IAM ID the replacement key authenticates — the same identity as the outgoing key.
+      outgoingApiKeyId:
+        type: string
+        description: The unique identifier of the API key being retired.
+      newApiKeyName:
+        type: string
+        description: The name for the replacement API key.
+      newApiKeyDescription:
+        type: string
+        description: A description of the replacement key, typically recording the rotation date.
+  steps:
+  - stepId: inventoryExistingKeys
+    description: >-
+      List the keys currently held by the identity so the rotation is performed
+      against a known inventory and the outgoing key can be seen in context.
+    operationId: listApiKeys
+    parameters:
+    - name: account_id
+      in: query
+      value: $inputs.accountId
+    - name: iam_id
+      in: query
+      value: $inputs.iamId
+    - name: scope
+      in: query
+      value: iam_id
+    - name: pagesize
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      existingKeys: $response.body#/apikeys
+  - stepId: createReplacementKey
+    description: >-
+      Issue the replacement key for the same identity before anything is retired,
+      so there is never a window without a working credential. The key value is
+      returned only here.
+    operationId: createApiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.newApiKeyName
+        iam_id: $inputs.iamId
+        account_id: $inputs.accountId
+        description: $inputs.newApiKeyDescription
+        store_value: true
+    successCriteria:
+    - condition: $statusCode == 201
+    - context: $response.body
+      condition: $.apikey != null
+      type: jsonpath
+    outputs:
+      newApiKeyId: $response.body#/id
+      newApiKeyValue: $response.body#/apikey
+  - stepId: verifyReplacementKey
+    description: >-
+      Confirm the replacement key authenticates by exchanging it for an access
+      token. The outgoing key is only touched after this succeeds.
+    operationId: createAccessToken
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        grant_type: urn:ibm:params:oauth:grant-type:apikey
+        apikey: $steps.createReplacementKey.outputs.newApiKeyValue
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.access_token != null
+      type: jsonpath
+    outputs:
+      accessToken: $response.body#/access_token
+  - stepId: unlockOutgoingKey
+    description: >-
+      Unlock the outgoing key so it can be modified and deleted. A locked key
+      cannot be retired, and keys issued for production identities are commonly
+      locked at creation.
+    operationId: unlockApiKey
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.outgoingApiKeyId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: disableOutgoingKey
+    description: >-
+      Disable the outgoing key so it immediately stops authenticating. This is the
+      reversible checkpoint — if a forgotten consumer breaks, the key can be
+      re-enabled rather than reissued.
+    operationId: disableApiKey
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.outgoingApiKeyId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: deleteOutgoingKey
+    description: >-
+      Permanently delete the outgoing key once the replacement is confirmed in
+      service. This cannot be undone.
+    operationId: deleteApiKey
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.outgoingApiKeyId
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    newApiKeyId: $steps.createReplacementKey.outputs.newApiKeyId
+    newApiKeyValue: $steps.createReplacementKey.outputs.newApiKeyValue
+    retiredApiKeyId: $inputs.outgoingApiKeyId

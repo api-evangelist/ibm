@@ -902,6 +902,45 @@ common:
   url: cli/ibm-cli.yml
 - type: DataModel
   url: data-model/ibm-data-model.yml
+- type: Arazzo
+  url: arazzo/ibm-authenticate-and-inspect-api-key-workflow.yml
+  name: IBM Cloud IAM Authenticate and Inspect the Calling API Key
+- type: Arazzo
+  url: arazzo/ibm-service-id-onboarding-workflow.yml
+  name: IBM Cloud IAM Provision a Service ID with a Working API Key
+- type: Arazzo
+  url: arazzo/ibm-grant-service-id-access-workflow.yml
+  name: IBM Cloud IAM Grant an Identity Access with a Policy
+- type: Arazzo
+  url: arazzo/ibm-api-key-rotation-workflow.yml
+  name: IBM Cloud IAM Rotate an API Key
+- type: Arazzo
+  url: arazzo/ibm-api-key-audit-workflow.yml
+  name: IBM Cloud IAM Audit API Key Activity and History
+- type: Arazzo
+  url: arazzo/ibm-api-key-reactivation-workflow.yml
+  name: IBM Cloud IAM Re-enable and Re-scope a Disabled API Key
+- type: Arazzo
+  url: arazzo/ibm-trusted-profile-federation-workflow.yml
+  name: IBM Cloud IAM Set Up a Trusted Profile for Federated Access
+- type: Arazzo
+  url: arazzo/ibm-claim-rule-maintenance-workflow.yml
+  name: IBM Cloud IAM Update a Trusted Profile Claim Rule
+- type: Arazzo
+  url: arazzo/ibm-trusted-profile-decommission-workflow.yml
+  name: IBM Cloud IAM Decommission a Trusted Profile
+- type: Arazzo
+  url: arazzo/ibm-custom-role-lifecycle-workflow.yml
+  name: IBM Cloud IAM Create and Evolve a Custom Role
+- type: Arazzo
+  url: arazzo/ibm-policy-deactivation-workflow.yml
+  name: IBM Cloud IAM Review and Deactivate an Access Policy
+- type: Arazzo
+  url: arazzo/ibm-policy-role-change-workflow.yml
+  name: IBM Cloud IAM Change the Roles on an Existing Policy
+- type: Arazzo
+  url: arazzo/ibm-service-id-deprovision-workflow.yml
+  name: IBM Cloud IAM Deprovision a Service ID
 - type: LinkedIn
   url: https://www.linkedin.com/company/ibm
 - type: Portal

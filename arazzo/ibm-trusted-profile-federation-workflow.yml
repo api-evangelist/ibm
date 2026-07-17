@@ -1,0 +1,157 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Set Up a Trusted Profile for Federated Access
+  summary: Create a trusted profile, attach a SAML claim rule, and verify the trust took effect.
+  description: >-
+    How federated users and workloads get into IBM Cloud without anyone minting a
+    long-lived API key. The workflow creates a trusted profile, attaches a claim
+    rule stating exactly which assertions an incoming identity provider token must
+    carry before the profile will apply, then lists the rules and reads the profile
+    back to confirm the trust is in place and to capture the profile's IAM ID —
+    which is what access policies are later written against. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: setup-trusted-profile-federation
+  summary: Create a trusted profile with a SAML claim rule and confirm it resolves.
+  description: >-
+    Creates the profile, attaches a Profile-SAML claim rule bound to a realm and a
+    claim condition, lists the rules on the profile, and reads the profile back for
+    its IAM ID.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - profileName
+    - realmName
+    - claimName
+    - claimValue
+    properties:
+      accountId:
+        type: string
+        description: The IBM Cloud account ID the trusted profile belongs to.
+      profileName:
+        type: string
+        description: The name of the trusted profile (e.g. "corp-sso-engineering").
+      realmName:
+        type: string
+        description: The realm name of the identity provider the trust is established with.
+      claimName:
+        type: string
+        description: The claim in the incoming token to test (e.g. "groups" or "email").
+      claimValue:
+        type: string
+        description: The value the claim must match for the profile to apply.
+      claimOperator:
+        type: string
+        description: How the claim value is compared.
+        enum:
+        - EQUALS
+        - NOT_EQUALS
+        - EQUALS_IGNORE_CASE
+        - NOT_EQUALS_IGNORE_CASE
+        - CONTAINS
+        - IN
+        default: EQUALS
+      ruleName:
+        type: string
+        description: The name of the claim rule.
+      sessionExpiration:
+        type: integer
+        description: Token session expiration in seconds for identities applying this profile.
+      profileDescription:
+        type: string
+        description: A description of who the profile is for and why the trust exists.
+  steps:
+  - stepId: createTrustedProfile
+    description: >-
+      Create the trusted profile. On its own the profile trusts nobody — it is an
+      empty identity until at least one claim rule is attached in the next step.
+    operationId: createProfile
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.profileName
+        account_id: $inputs.accountId
+        description: $inputs.profileDescription
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      profileId: $response.body#/id
+      profileIamId: $response.body#/iam_id
+      profileCrn: $response.body#/crn
+      entityTag: $response.body#/entity_tag
+      createdAt: $response.body#/created_at
+  - stepId: attachClaimRule
+    description: >-
+      Attach the SAML claim rule that defines the trust. Only identities presenting
+      a token from the named realm whose claim satisfies this condition may apply
+      the profile, so this condition is the actual security boundary.
+    operationId: createClaimRule
+    parameters:
+    - name: profile-id
+      in: path
+      value: $steps.createTrustedProfile.outputs.profileId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: Profile-SAML
+        name: $inputs.ruleName
+        realm_name: $inputs.realmName
+        expiration: $inputs.sessionExpiration
+        conditions:
+        - claim: $inputs.claimName
+          operator: $inputs.claimOperator
+          value: $inputs.claimValue
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      ruleId: $response.body#/id
+      ruleEntityTag: $response.body#/entity_tag
+      ruleConditions: $response.body#/conditions
+  - stepId: listProfileRules
+    description: >-
+      List the rules attached to the profile to confirm the new rule is the only
+      trust path and that no unexpected rule is already granting access.
+    operationId: listClaimRules
+    parameters:
+    - name: profile-id
+      in: path
+      value: $steps.createTrustedProfile.outputs.profileId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.rules.length > 0
+      type: jsonpath
+    outputs:
+      rules: $response.body#/rules
+  - stepId: verifyProfile
+    description: >-
+      Read the profile back and capture its IAM ID. That IAM ID is the subject any
+      subsequent access policy must be written against — the profile still has no
+      access until such a policy exists.
+    operationId: getProfile
+    parameters:
+    - name: profile-id
+      in: path
+      value: $steps.createTrustedProfile.outputs.profileId
+    - name: include_activity
+      in: query
+      value: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      profileId: $response.body#/id
+      profileIamId: $response.body#/iam_id
+      profileName: $response.body#/name
+      entityTag: $response.body#/entity_tag
+  outputs:
+    profileId: $steps.verifyProfile.outputs.profileId
+    profileIamId: $steps.verifyProfile.outputs.profileIamId
+    ruleId: $steps.attachClaimRule.outputs.ruleId
+    rules: $steps.listProfileRules.outputs.rules

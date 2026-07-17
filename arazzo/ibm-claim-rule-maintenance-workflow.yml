@@ -1,0 +1,143 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Update a Trusted Profile Claim Rule
+  summary: Locate a claim rule on a profile, read its entity tag, and update its conditions under If-Match.
+  description: >-
+    Identity providers change. A realm gets renamed, a group claim is restructured,
+    a session lifetime is shortened — and the claim rules encoding that trust have
+    to follow, without widening access in the process. This workflow lists the
+    rules on a profile, reads the target rule for its current conditions and entity
+    tag, and replaces its conditions under If-Match so a concurrent edit by another
+    administrator is rejected rather than silently lost. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: maintain-claim-rule
+  summary: Read a trusted profile's claim rule and update its conditions with optimistic concurrency.
+  description: >-
+    Lists the profile's claim rules, reads the target rule to capture its entity
+    tag and existing conditions, and applies an updated realm, condition, and
+    session expiration guarded by If-Match.
+  inputs:
+    type: object
+    required:
+    - profileId
+    - ruleId
+    - claimName
+    - claimValue
+    properties:
+      profileId:
+        type: string
+        description: The unique identifier of the trusted profile that owns the rule.
+      ruleId:
+        type: string
+        description: The unique identifier of the claim rule to update.
+      claimName:
+        type: string
+        description: The claim in the incoming token to test (e.g. "groups").
+      claimValue:
+        type: string
+        description: The value the claim must match for the profile to apply.
+      claimOperator:
+        type: string
+        description: How the claim value is compared.
+        enum:
+        - EQUALS
+        - NOT_EQUALS
+        - EQUALS_IGNORE_CASE
+        - NOT_EQUALS_IGNORE_CASE
+        - CONTAINS
+        - IN
+        default: EQUALS
+      realmName:
+        type: string
+        description: The updated realm name of the identity provider.
+      ruleName:
+        type: string
+        description: The updated name of the claim rule.
+      sessionExpiration:
+        type: integer
+        description: Updated token session expiration in seconds.
+  steps:
+  - stepId: listProfileRules
+    description: >-
+      List every claim rule on the profile so the change is made with full sight of
+      the other trust paths into this identity, not just the one being edited.
+    operationId: listClaimRules
+    parameters:
+    - name: profile-id
+      in: path
+      value: $inputs.profileId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.rules.length > 0
+      type: jsonpath
+    outputs:
+      rules: $response.body#/rules
+  - stepId: readTargetRule
+    description: >-
+      Read the specific rule to capture its current conditions and entity tag. The
+      existing conditions are what the update is diffed against by whoever reviews
+      this change.
+    operationId: getClaimRule
+    parameters:
+    - name: profile-id
+      in: path
+      value: $inputs.profileId
+    - name: rule-id
+      in: path
+      value: $inputs.ruleId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      entityTag: $response.body#/entity_tag
+      ruleType: $response.body#/type
+      currentConditions: $response.body#/conditions
+      currentRealm: $response.body#/realm_name
+      modifiedAt: $response.body#/modified_at
+  - stepId: updateRuleConditions
+    description: >-
+      Apply the updated realm, condition, and session expiration. The rule type is
+      carried through from the read so a SAML rule is never accidentally converted
+      into a compute resource rule, and If-Match ensures the rule has not shifted
+      underneath this edit.
+    operationId: updateClaimRule
+    parameters:
+    - name: profile-id
+      in: path
+      value: $inputs.profileId
+    - name: rule-id
+      in: path
+      value: $inputs.ruleId
+    - name: If-Match
+      in: header
+      value: $steps.readTargetRule.outputs.entityTag
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $steps.readTargetRule.outputs.ruleType
+        name: $inputs.ruleName
+        realm_name: $inputs.realmName
+        expiration: $inputs.sessionExpiration
+        conditions:
+        - claim: $inputs.claimName
+          operator: $inputs.claimOperator
+          value: $inputs.claimValue
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleId: $response.body#/id
+      entityTag: $response.body#/entity_tag
+      updatedConditions: $response.body#/conditions
+      modifiedAt: $response.body#/modified_at
+  outputs:
+    ruleId: $steps.updateRuleConditions.outputs.ruleId
+    entityTag: $steps.updateRuleConditions.outputs.entityTag
+    previousConditions: $steps.readTargetRule.outputs.currentConditions
+    updatedConditions: $steps.updateRuleConditions.outputs.updatedConditions

@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Audit API Key Activity and History
+  summary: Authenticate, inventory an account's API keys, and pull the full history and activity for one.
+  description: >-
+    The recurring credential hygiene sweep. Dormant and forgotten API keys are one
+    of the largest standing risks in a cloud account, and this workflow surfaces
+    them: it authenticates, inventories every API key in the account sorted by
+    creation date, and then pulls one key's complete change history and
+    authentication activity so a reviewer can see when it was last actually used
+    and by whom it was changed. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: audit-api-key-activity
+  summary: Inventory account API keys and retrieve the history and activity of a single key.
+  description: >-
+    Mints an access token, lists the account's API keys with pagination, and reads
+    one key with its history and activity included to establish last authentication
+    time and change provenance.
+  inputs:
+    type: object
+    required:
+    - apikey
+    - accountId
+    - auditApiKeyId
+    properties:
+      apikey:
+        type: string
+        description: The API key used to authenticate the audit itself.
+      accountId:
+        type: string
+        description: The IBM Cloud account ID whose API keys are being audited.
+      auditApiKeyId:
+        type: string
+        description: The unique identifier of the API key to inspect in depth.
+      keyType:
+        type: string
+        description: Restrict the inventory to user keys or service ID keys.
+        enum:
+        - user
+        - serviceid
+  steps:
+  - stepId: authenticate
+    description: >-
+      Exchange the auditor's API key for an IAM access token. The audit runs as
+      whichever identity this key belongs to, so it must hold sufficient account
+      privileges to enumerate keys.
+    operationId: createAccessToken
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        grant_type: urn:ibm:params:oauth:grant-type:apikey
+        apikey: $inputs.apikey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accessToken: $response.body#/access_token
+  - stepId: inventoryAccountKeys
+    description: >-
+      List every API key in the account, oldest first, so the longest-lived
+      credentials — the usual audit finding — surface at the top of the report.
+    operationId: listApiKeys
+    parameters:
+    - name: account_id
+      in: query
+      value: $inputs.accountId
+    - name: scope
+      in: query
+      value: account
+    - name: type
+      in: query
+      value: $inputs.keyType
+    - name: sort
+      in: query
+      value: created_at
+    - name: order
+      in: query
+      value: asc
+    - name: pagesize
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      apiKeys: $response.body#/apikeys
+      nextPageToken: $response.body#/next
+      limit: $response.body#/limit
+  - stepId: inspectKeyHistory
+    description: >-
+      Pull the target key with its full change history and authentication activity
+      so the reviewer can see the last authentication timestamp, the total
+      authentication count, and every recorded modification to the key.
+    operationId: getApiKey
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.auditApiKeyId
+    - name: include_history
+      in: query
+      value: true
+    - name: include_activity
+      in: query
+      value: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      apiKeyId: $response.body#/id
+      apiKeyName: $response.body#/name
+      iamId: $response.body#/iam_id
+      locked: $response.body#/locked
+      disabled: $response.body#/disabled
+      createdAt: $response.body#/created_at
+      createdBy: $response.body#/created_by
+      modifiedAt: $response.body#/modified_at
+      history: $response.body#/history
+      lastAuthentication: $response.body#/activity/last_authn
+      authenticationCount: $response.body#/activity/authn_count
+  outputs:
+    apiKeys: $steps.inventoryAccountKeys.outputs.apiKeys
+    lastAuthentication: $steps.inspectKeyHistory.outputs.lastAuthentication
+    authenticationCount: $steps.inspectKeyHistory.outputs.authenticationCount
+    history: $steps.inspectKeyHistory.outputs.history

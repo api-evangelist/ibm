@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Decommission a Trusted Profile
+  summary: Find a profile by name, revoke its claim rule first, then delete the profile.
+  description: >-
+    Retiring a federated identity in the order that revokes access soonest.
+    Deleting a trusted profile removes its claim rules along with it, but deletion
+    is the last step of a change window and trust should be cut the moment the
+    decision is made — so this workflow locates the profile by name, enumerates the
+    claim rules that currently grant access to it, deletes the offending rule to
+    sever the trust path immediately, and only then removes the profile itself.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: decommission-trusted-profile
+  summary: Resolve a trusted profile by name, revoke its claim rule, and delete the profile.
+  description: >-
+    Looks the profile up by name within an account, lists its claim rules, deletes
+    the first rule to cut the trust path, and then deletes the profile itself.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - profileName
+    properties:
+      accountId:
+        type: string
+        description: The IBM Cloud account ID the trusted profile belongs to.
+      profileName:
+        type: string
+        description: The name of the trusted profile being retired.
+  steps:
+  - stepId: findProfile
+    description: >-
+      Resolve the profile by name within the account, including its history so the
+      reviewer can see who created the trust and when before it is torn down.
+    operationId: listProfiles
+    parameters:
+    - name: account_id
+      in: query
+      value: $inputs.accountId
+    - name: name
+      in: query
+      value: $inputs.profileName
+    - name: include_history
+      in: query
+      value: true
+    - name: pagesize
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.profiles.length > 0
+      type: jsonpath
+    outputs:
+      profileId: $response.body#/profiles/0/id
+      profileIamId: $response.body#/profiles/0/iam_id
+      profileHistory: $response.body#/profiles/0/history
+  - stepId: enumerateTrustPaths
+    description: >-
+      List the claim rules attached to the profile. Each rule is a live path by
+      which an external identity can assume this profile, so this is the inventory
+      of what is about to be revoked.
+    operationId: listClaimRules
+    parameters:
+    - name: profile-id
+      in: path
+      value: $steps.findProfile.outputs.profileId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rules: $response.body#/rules
+      firstRuleId: $response.body#/rules/0/id
+  - stepId: revokeTrustPath
+    description: >-
+      Delete the claim rule to sever the trust immediately. Profile deletion would
+      remove this rule anyway, but revoking first means access stops the moment the
+      decision is taken rather than at the end of the change window.
+    operationId: deleteClaimRule
+    parameters:
+    - name: profile-id
+      in: path
+      value: $steps.findProfile.outputs.profileId
+    - name: rule-id
+      in: path
+      value: $steps.enumerateTrustPaths.outputs.firstRuleId
+    successCriteria:
+    - condition: $statusCode == 204
+  - stepId: deleteTrustedProfile
+    description: >-
+      Delete the trusted profile along with any remaining claim rules and links.
+      This cannot be undone, and any access policy written against the profile's
+      IAM ID is left dangling and should be cleaned up separately.
+    operationId: deleteProfile
+    parameters:
+    - name: profile-id
+      in: path
+      value: $steps.findProfile.outputs.profileId
+    successCriteria:
+    - condition: $statusCode == 204
+  outputs:
+    deletedProfileId: $steps.findProfile.outputs.profileId
+    deletedProfileIamId: $steps.findProfile.outputs.profileIamId
+    revokedRules: $steps.enumerateTrustPaths.outputs.rules

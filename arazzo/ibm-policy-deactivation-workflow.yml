@@ -1,0 +1,137 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Review and Deactivate an Access Policy
+  summary: Find the policies granting an identity access, inspect one, and deactivate it.
+  description: >-
+    The access review, and the offboarding step that follows it. When someone
+    leaves a team or a service ID is retired, the standing grants attached to their
+    IAM ID are what actually has to be withdrawn — deleting the identity without
+    clearing its policies leaves the grants behind. This workflow lists every
+    active policy bound to a subject, reads the target policy so the roles being
+    removed are recorded before the change, and deactivates it by state transition
+    rather than deletion, leaving an auditable trail. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: review-and-deactivate-policy
+  summary: Enumerate a subject's active access policies, inspect one, and transition it to deleted state.
+  description: >-
+    Lists the active policies granting a given IAM ID access in an account, reads
+    the target policy to capture the roles and resources being withdrawn, and
+    updates its state under If-Match.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - iamId
+    - policyId
+    - ifMatch
+    properties:
+      accountId:
+        type: string
+        description: The IBM Cloud account ID whose policies are under review.
+      iamId:
+        type: string
+        description: The IAM ID of the subject whose standing access is being reviewed.
+      policyId:
+        type: string
+        description: The unique identifier of the policy to deactivate.
+      ifMatch:
+        type: string
+        description: >-
+          The entity tag from a previous GET of this policy, used for optimistic
+          concurrency control. Note that this API description does not model an
+          entity tag on the Policy schema, so the value has to be taken from the
+          GET response's ETag header rather than its body.
+      policyType:
+        type: string
+        description: Restrict the review to access or authorization policies.
+        enum:
+        - access
+        - authorization
+  steps:
+  - stepId: listSubjectPolicies
+    description: >-
+      List every active policy granting this subject access in the account. This is
+      the complete standing-access picture for the identity, and the reason
+      offboarding cannot stop at deleting the identity itself.
+    operationId: listPolicies
+    parameters:
+    - name: account_id
+      in: query
+      value: $inputs.accountId
+    - name: iam_id
+      in: query
+      value: $inputs.iamId
+    - name: type
+      in: query
+      value: $inputs.policyType
+    - name: state
+      in: query
+      value: active
+    - name: limit
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      activePolicies: $response.body#/policies
+  - stepId: inspectPolicy
+    description: >-
+      Read the target policy before changing it so the roles and resources being
+      withdrawn are captured for the audit record. Once the state transition lands,
+      this is the only evidence of what the identity previously held.
+    operationId: getPolicy
+    parameters:
+    - name: policy_id
+      in: path
+      value: $inputs.policyId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.state == 'active'
+      type: jsonpath
+    outputs:
+      policyId: $response.body#/id
+      withdrawnRoles: $response.body#/roles
+      withdrawnResources: $response.body#/resources
+      subjects: $response.body#/subjects
+      createdBy: $response.body#/created_by_id
+      lastModifiedAt: $response.body#/last_modified_at
+  - stepId: deactivatePolicy
+    description: >-
+      Transition the policy to the deleted state, withdrawing the grant. This is a
+      state change rather than a hard delete, so the policy remains queryable with
+      state=deleted for later audit.
+    operationId: updatePolicyState
+    parameters:
+    - name: policy_id
+      in: path
+      value: $inputs.policyId
+    - name: If-Match
+      in: header
+      value: $inputs.ifMatch
+    requestBody:
+      contentType: application/json
+      payload:
+        state: deleted
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.state == 'deleted'
+      type: jsonpath
+    outputs:
+      policyId: $response.body#/id
+      state: $response.body#/state
+      lastModifiedAt: $response.body#/last_modified_at
+      lastModifiedBy: $response.body#/last_modified_by_id
+  outputs:
+    policyId: $steps.deactivatePolicy.outputs.policyId
+    state: $steps.deactivatePolicy.outputs.state
+    withdrawnRoles: $steps.inspectPolicy.outputs.withdrawnRoles
+    activePolicies: $steps.listSubjectPolicies.outputs.activePolicies

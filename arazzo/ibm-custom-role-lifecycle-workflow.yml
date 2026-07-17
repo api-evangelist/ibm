@@ -1,0 +1,164 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Create and Evolve a Custom Role
+  summary: Create a custom role, read it back, replace its action set under If-Match, and confirm it lists.
+  description: >-
+    Least privilege in practice. The built-in platform roles are usually too broad
+    for a specific job, so teams define a custom role carrying exactly the actions
+    a workload needs — and then narrow or extend it as the workload changes. This
+    workflow creates the role, reads it back to see the actions IBM actually
+    accepted, replaces the action set as a whole, and lists the account's custom
+    roles to confirm the change is visible to policy authors. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: custom-role-lifecycle
+  summary: Create a custom role, verify it, replace its actions, and list the account's custom roles.
+  description: >-
+    Defines a custom role for a service, reads it back, replaces the full action
+    set under optimistic concurrency control, and re-lists custom roles for the
+    account.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - serviceName
+    - roleName
+    - displayName
+    - actions
+    - revisedActions
+    - ifMatch
+    properties:
+      accountId:
+        type: string
+        description: The IBM Cloud account ID that owns the custom role.
+      serviceName:
+        type: string
+        description: The service the role applies to (e.g. "cloud-object-storage").
+      roleName:
+        type: string
+        description: The programmatic name identifier for the role (e.g. "ObjectReader").
+      displayName:
+        type: string
+        description: The human-readable display name shown to policy authors.
+      actions:
+        type: array
+        description: The initial set of actions the role grants.
+        items:
+          type: string
+      revisedActions:
+        type: array
+        description: >-
+          The complete revised action set. Replace semantics apply — this array
+          becomes the role's entire action list, so any action omitted here is
+          removed from the role.
+        items:
+          type: string
+      ifMatch:
+        type: string
+        description: >-
+          The entity tag from a previous GET of this role, used for optimistic
+          concurrency control on the replace. Note that this API description does
+          not model an entity tag on the Role schema, so the value has to be taken
+          from the GET response's ETag header rather than its body.
+      roleDescription:
+        type: string
+        description: A description of what the custom role is for.
+  steps:
+  - stepId: createCustomRole
+    description: >-
+      Create the custom role with its initial action set, scoped to one service
+      within the account. Custom roles extend the built-in platform and service
+      roles rather than replacing them.
+    operationId: createRole
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.roleName
+        display_name: $inputs.displayName
+        account_id: $inputs.accountId
+        service_name: $inputs.serviceName
+        description: $inputs.roleDescription
+        actions: $inputs.actions
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      roleId: $response.body#/id
+      roleCrn: $response.body#/crn
+      grantedActions: $response.body#/actions
+      createdAt: $response.body#/created_at
+  - stepId: verifyCustomRole
+    description: >-
+      Read the role back to see the action set IBM actually persisted, which may
+      differ from what was submitted if an action was rejected as invalid for the
+      service.
+    operationId: getRole
+    parameters:
+    - name: role_id
+      in: path
+      value: $steps.createCustomRole.outputs.roleId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      roleId: $response.body#/id
+      roleCrn: $response.body#/crn
+      actions: $response.body#/actions
+      lastModifiedAt: $response.body#/last_modified_at
+  - stepId: replaceRoleActions
+    description: >-
+      Replace the role's definition with the revised action set. This is a full
+      replace, not a merge — every action the role should retain must appear in the
+      revised list or it is dropped, which is how a role gets narrowed toward least
+      privilege.
+    operationId: replaceRole
+    parameters:
+    - name: role_id
+      in: path
+      value: $steps.createCustomRole.outputs.roleId
+    - name: If-Match
+      in: header
+      value: $inputs.ifMatch
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.roleName
+        display_name: $inputs.displayName
+        account_id: $inputs.accountId
+        service_name: $inputs.serviceName
+        description: $inputs.roleDescription
+        actions: $inputs.revisedActions
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      roleId: $response.body#/id
+      revisedActions: $response.body#/actions
+      lastModifiedAt: $response.body#/last_modified_at
+  - stepId: listCustomRoles
+    description: >-
+      List the account's roles for the service to confirm the revised role is
+      visible to policy authors alongside the system and service roles they can
+      choose from.
+    operationId: listRoles
+    parameters:
+    - name: account_id
+      in: query
+      value: $inputs.accountId
+    - name: service_name
+      in: query
+      value: $inputs.serviceName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customRoles: $response.body#/custom_roles
+      systemRoles: $response.body#/system_roles
+      serviceRoles: $response.body#/service_roles
+  outputs:
+    roleId: $steps.replaceRoleActions.outputs.roleId
+    roleCrn: $steps.verifyCustomRole.outputs.roleCrn
+    revisedActions: $steps.replaceRoleActions.outputs.revisedActions
+    customRoles: $steps.listCustomRoles.outputs.customRoles

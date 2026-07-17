@@ -1,0 +1,134 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Change the Roles on an Existing Policy
+  summary: Read a policy, resolve the target role CRN from the service, and replace the policy's roles.
+  description: >-
+    The most common access change there is: someone has Viewer and needs Writer, or
+    holds Editor and should be narrowed to Reader. IBM Cloud has no endpoint that
+    patches the roles on a policy, so the whole policy must be replaced — which
+    makes it dangerously easy to drop the subject or resource by resubmitting an
+    incomplete body. This workflow reads the policy first, resolves the role CRN
+    against the roles the service genuinely exposes, and replaces the policy while
+    carrying the original subject and resource through unchanged. Every step spells
+    out its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: change-policy-roles
+  summary: Replace an existing policy's roles while preserving its subjects and resources.
+  description: >-
+    Reads the current policy, lists the roles available for the service to confirm
+    the target role CRN is grantable, and replaces the policy with the new role
+    bound to the original subjects and resources.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - policyId
+    - serviceName
+    - newRoleCrn
+    - ifMatch
+    properties:
+      accountId:
+        type: string
+        description: The IBM Cloud account ID the policy is scoped to.
+      policyId:
+        type: string
+        description: The unique identifier of the policy whose roles are changing.
+      serviceName:
+        type: string
+        description: The service the policy grants access to, used to resolve grantable roles.
+      newRoleCrn:
+        type: string
+        description: >-
+          The CRN of the role that should replace the policy's current roles (e.g.
+          "crn:v1:bluemix:public:iam::::role:Editor").
+      ifMatch:
+        type: string
+        description: >-
+          The entity tag from a previous GET of this policy, used for optimistic
+          concurrency control. Note that this API description does not model an
+          entity tag on the Policy schema, so the value has to be taken from the
+          GET response's ETag header rather than its body.
+      changeDescription:
+        type: string
+        description: A description recording why the role changed and who approved it.
+  steps:
+  - stepId: readCurrentPolicy
+    description: >-
+      Read the policy as it stands. The subjects and resources captured here are
+      carried through the replace unchanged — this step is what prevents the
+      replace from silently rebinding or orphaning the grant.
+    operationId: getPolicy
+    parameters:
+    - name: policy_id
+      in: path
+      value: $inputs.policyId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.state == 'active'
+      type: jsonpath
+    outputs:
+      policyType: $response.body#/type
+      currentSubjects: $response.body#/subjects
+      currentRoles: $response.body#/roles
+      currentResources: $response.body#/resources
+      lastModifiedAt: $response.body#/last_modified_at
+  - stepId: resolveTargetRole
+    description: >-
+      List the roles the service exposes so the incoming role CRN can be checked
+      against what is actually grantable, rather than discovering it is invalid
+      when the replace rejects the whole policy.
+    operationId: listRoles
+    parameters:
+    - name: account_id
+      in: query
+      value: $inputs.accountId
+    - name: service_name
+      in: query
+      value: $inputs.serviceName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      systemRoles: $response.body#/system_roles
+      serviceRoles: $response.body#/service_roles
+      customRoles: $response.body#/custom_roles
+  - stepId: replacePolicyRoles
+    description: >-
+      Replace the policy with the new role, reusing the type, subjects, and
+      resources read from the live policy. Everything not restated in this body is
+      lost, which is why nothing here is reconstructed from assumptions.
+    operationId: replacePolicy
+    parameters:
+    - name: policy_id
+      in: path
+      value: $inputs.policyId
+    - name: If-Match
+      in: header
+      value: $inputs.ifMatch
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $steps.readCurrentPolicy.outputs.policyType
+        description: $inputs.changeDescription
+        subjects: $steps.readCurrentPolicy.outputs.currentSubjects
+        resources: $steps.readCurrentPolicy.outputs.currentResources
+        roles:
+        - role_id: $inputs.newRoleCrn
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      policyId: $response.body#/id
+      updatedRoles: $response.body#/roles
+      state: $response.body#/state
+      lastModifiedAt: $response.body#/last_modified_at
+  outputs:
+    policyId: $steps.replacePolicyRoles.outputs.policyId
+    previousRoles: $steps.readCurrentPolicy.outputs.currentRoles
+    updatedRoles: $steps.replacePolicyRoles.outputs.updatedRoles
+    state: $steps.replacePolicyRoles.outputs.state

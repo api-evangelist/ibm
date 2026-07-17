@@ -1,0 +1,127 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Re-enable and Re-scope a Disabled API Key
+  summary: Confirm a key is disabled, re-enable it, then update its expiry and metadata under If-Match.
+  description: >-
+    The other half of an incident response. A key disabled during a suspected leak
+    investigation has to be brought back deliberately once the review clears it,
+    and this workflow does that in a defensible order: it reads the key to confirm
+    it really is disabled, re-enables it, re-reads it to obtain a fresh entity tag
+    because enabling changes the resource version, and only then updates its expiry
+    and description under If-Match so a concurrent edit by another operator fails
+    loudly instead of being silently overwritten. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: reactivate-api-key
+  summary: Re-enable a disabled API key and update its expiry using optimistic concurrency control.
+  description: >-
+    Verifies the key's disabled state, enables it, re-reads the entity tag, and
+    applies a metadata and expiry update guarded by If-Match.
+  inputs:
+    type: object
+    required:
+    - apiKeyId
+    - expiresAt
+    properties:
+      apiKeyId:
+        type: string
+        description: The unique identifier of the disabled API key to bring back into service.
+      expiresAt:
+        type: string
+        format: date-time
+        description: The new expiration date and time for the key, bounding how long it stays valid.
+      updatedDescription:
+        type: string
+        description: A description recording the review that cleared the key for re-enablement.
+      actionWhenLeaked:
+        type: string
+        description: The action IBM Cloud should take if this key is detected as leaked.
+  steps:
+  - stepId: confirmDisabledState
+    description: >-
+      Read the key and confirm it is actually disabled before enabling anything.
+      This prevents the workflow from silently acting on the wrong key id.
+    operationId: getApiKey
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.apiKeyId
+    - name: include_history
+      in: query
+      value: true
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.disabled == true
+      type: jsonpath
+    outputs:
+      apiKeyName: $response.body#/name
+      iamId: $response.body#/iam_id
+      locked: $response.body#/locked
+      history: $response.body#/history
+  - stepId: enableKey
+    description: >-
+      Re-enable the key so it can authenticate again. This is the step that
+      restores access, and it is deliberately separate from the metadata update.
+    operationId: enableApiKey
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.apiKeyId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: rereadEntityTag
+    description: >-
+      Re-read the key to pick up a fresh entity tag. Enabling the key changed the
+      resource version, so the tag captured before the enable would be stale and
+      the following update would be rejected with a conflict.
+    operationId: getApiKey
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.apiKeyId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.disabled == false
+      type: jsonpath
+    outputs:
+      entityTag: $response.body#/entity_tag
+      disabled: $response.body#/disabled
+  - stepId: rescopeKey
+    description: >-
+      Bound the revived key with a new expiry and record why it was restored. The
+      If-Match header carries the freshly read entity tag so a competing edit
+      fails with a 409 rather than being clobbered.
+    operationId: updateApiKey
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.apiKeyId
+    - name: If-Match
+      in: header
+      value: $steps.rereadEntityTag.outputs.entityTag
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $steps.confirmDisabledState.outputs.apiKeyName
+        description: $inputs.updatedDescription
+        expires_at: $inputs.expiresAt
+        action_when_leaked: $inputs.actionWhenLeaked
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      apiKeyId: $response.body#/id
+      entityTag: $response.body#/entity_tag
+      modifiedAt: $response.body#/modified_at
+      disabled: $response.body#/disabled
+  outputs:
+    apiKeyId: $steps.rescopeKey.outputs.apiKeyId
+    entityTag: $steps.rescopeKey.outputs.entityTag
+    disabled: $steps.rescopeKey.outputs.disabled

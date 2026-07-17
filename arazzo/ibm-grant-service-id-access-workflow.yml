@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: IBM Cloud IAM Grant an Identity Access with a Policy
+  summary: Discover the roles a service exposes, grant an identity a role on it, and read the policy back.
+  description: >-
+    Creating an identity does not give it any access. This workflow closes that
+    gap: it lists the roles the target service actually exposes so the caller can
+    see which role CRNs are grantable, creates an access policy binding an IAM ID
+    to the chosen role on the chosen resource, and reads the policy back to
+    confirm what was granted and that it landed in the active state. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: ibmCloudIamApi
+  url: ../openapi/ibm-cloud-iam.yml
+  type: openapi
+workflows:
+- workflowId: grant-identity-access
+  summary: List a service's roles, create an access policy for an identity, and verify it.
+  description: >-
+    Resolves the roles available for a service, grants the supplied IAM ID the
+    chosen role CRN on the target service within an account, then reads the
+    resulting policy back.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - iamId
+    - serviceName
+    - roleCrn
+    properties:
+      accountId:
+        type: string
+        description: The IBM Cloud account ID the policy is scoped to.
+      iamId:
+        type: string
+        description: >-
+          The IAM ID of the subject being granted access — a user, a service ID,
+          or a trusted profile.
+      serviceName:
+        type: string
+        description: The service the policy grants access to (e.g. "cloud-object-storage").
+      roleCrn:
+        type: string
+        description: >-
+          The CRN of the role to grant (e.g.
+          "crn:v1:bluemix:public:iam::::role:Viewer"). Run this workflow once and
+          read the discoverRoles outputs to find the grantable CRNs for a service.
+      policyDescription:
+        type: string
+        description: A human-readable description recording why the access was granted.
+  steps:
+  - stepId: discoverRoles
+    description: >-
+      List the system, service, and custom roles the target service exposes in
+      this account. This confirms the service is real and surfaces the role CRNs
+      that are legal to grant before any policy is written.
+    operationId: listRoles
+    parameters:
+    - name: account_id
+      in: query
+      value: $inputs.accountId
+    - name: service_name
+      in: query
+      value: $inputs.serviceName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      systemRoles: $response.body#/system_roles
+      serviceRoles: $response.body#/service_roles
+      customRoles: $response.body#/custom_roles
+  - stepId: createAccessPolicy
+    description: >-
+      Grant the subject the chosen role on the target service within the account.
+      The subject is identified by its IAM ID and the resource is narrowed by
+      account and service name.
+    operationId: createPolicy
+    requestBody:
+      contentType: application/json
+      payload:
+        type: access
+        description: $inputs.policyDescription
+        subjects:
+        - attributes:
+          - name: iam_id
+            value: $inputs.iamId
+            operator: stringEquals
+        roles:
+        - role_id: $inputs.roleCrn
+        resources:
+        - attributes:
+          - name: accountId
+            value: $inputs.accountId
+            operator: stringEquals
+          - name: serviceName
+            value: $inputs.serviceName
+            operator: stringEquals
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      policyId: $response.body#/id
+      policyHref: $response.body#/href
+      policyState: $response.body#/state
+      createdAt: $response.body#/created_at
+  - stepId: verifyPolicy
+    description: >-
+      Read the policy back to confirm the roles and resources that were actually
+      persisted and that the policy is active rather than pending.
+    operationId: getPolicy
+    parameters:
+    - name: policy_id
+      in: path
+      value: $steps.createAccessPolicy.outputs.policyId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.state == 'active'
+      type: jsonpath
+    outputs:
+      policyId: $response.body#/id
+      grantedRoles: $response.body#/roles
+      grantedResources: $response.body#/resources
+      state: $response.body#/state
+  outputs:
+    policyId: $steps.verifyPolicy.outputs.policyId
+    grantedRoles: $steps.verifyPolicy.outputs.grantedRoles
+    state: $steps.verifyPolicy.outputs.state

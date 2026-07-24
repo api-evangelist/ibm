@@ -1,0 +1,423 @@
+openapi: 3.1.0
+info:
+  title: IBM Cloud IAM API Keys Trusted Profiles API
+  description: The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com
+    email: cloud@ibm.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-ibm-api-source: https://cloud.ibm.com/apidocs/iam-identity-token-api
+servers:
+- url: https://iam.cloud.ibm.com
+  description: IBM Cloud IAM production endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Trusted Profiles
+  description: Create and manage trusted profiles for federated identities
+paths:
+  /v1/profiles:
+    get:
+      operationId: listProfiles
+      summary: List trusted profiles
+      description: List trusted profiles in an account. Trusted profiles allow federated users to establish trust with IBM Cloud.
+      tags:
+      - Trusted Profiles
+      parameters:
+      - name: account_id
+        in: query
+        required: true
+        description: The account ID to list trusted profiles for.
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Filter profiles by name.
+        schema:
+          type: string
+      - name: pagesize
+        in: query
+        description: Number of results per page.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: pagetoken
+        in: query
+        description: Page token from a previous request.
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Field to sort by.
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: include_history
+        in: query
+        description: Include the history of the profiles.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: List of trusted profiles returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrustedProfileList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createProfile
+      summary: Create a trusted profile
+      description: Create a new trusted profile for federated users to establish trust with IBM Cloud resources.
+      tags:
+      - Trusted Profiles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProfileRequest'
+      responses:
+        '201':
+          description: Trusted profile created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrustedProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v1/profiles/{profile-id}:
+    get:
+      operationId: getProfile
+      summary: Get a trusted profile
+      description: Retrieve details of a specific trusted profile.
+      tags:
+      - Trusted Profiles
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - name: include_activity
+        in: query
+        description: Include the activity of the profile.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Trusted profile details returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrustedProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateProfile
+      summary: Update a trusted profile
+      description: Update properties of an existing trusted profile.
+      tags:
+      - Trusted Profiles
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/IfMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProfileRequest'
+      responses:
+        '200':
+          description: Trusted profile updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrustedProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+    delete:
+      operationId: deleteProfile
+      summary: Delete a trusted profile
+      description: Delete a trusted profile and its associated claim rules and links. This action cannot be undone.
+      tags:
+      - Trusted Profiles
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      responses:
+        '204':
+          description: Trusted profile deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    TrustedProfileList:
+      type: object
+      description: A paginated list of trusted profiles.
+      properties:
+        context:
+          $ref: '#/components/schemas/ResponseContext'
+        offset:
+          type: integer
+          description: The offset of the current page.
+        limit:
+          type: integer
+          description: The number of results per page.
+        first:
+          type: string
+          description: URL to the first page of results.
+        previous:
+          type: string
+          description: URL to the previous page of results.
+        next:
+          type: string
+          description: URL to the next page of results.
+        profiles:
+          type: array
+          description: The list of trusted profiles.
+          items:
+            $ref: '#/components/schemas/TrustedProfile'
+    ResponseContext:
+      type: object
+      description: Context metadata for paginated API responses.
+      properties:
+        transaction_id:
+          type: string
+          description: The unique transaction ID for the request.
+        operation:
+          type: string
+          description: The operation that was performed.
+        user_agent:
+          type: string
+          description: The user agent string from the request.
+        url:
+          type: string
+          description: The URL of the request.
+        instance_id:
+          type: string
+          description: The instance ID of the service.
+        thread_id:
+          type: string
+          description: The thread ID of the request.
+        host:
+          type: string
+          description: The host that served the request.
+        start_time:
+          type: string
+          description: Timestamp when the request started.
+        end_time:
+          type: string
+          description: Timestamp when the request ended.
+        elapsed_time:
+          type: string
+          description: The elapsed time of the request.
+        cluster_name:
+          type: string
+          description: The cluster name of the service.
+    ErrorResponse:
+      type: object
+      description: An error response from the IAM API.
+      properties:
+        context:
+          $ref: '#/components/schemas/ResponseContext'
+        status_code:
+          type: integer
+          description: The HTTP status code.
+        errors:
+          type: array
+          description: The list of errors.
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: The error code.
+              message:
+                type: string
+                description: A human-readable error message.
+              details:
+                type: string
+                description: Additional error details.
+              more_info:
+                type: string
+                description: A URL for more information about the error.
+        trace:
+          type: string
+          description: A trace identifier for debugging.
+    CreateProfileRequest:
+      type: object
+      description: Request body for creating a trusted profile.
+      required:
+      - name
+      - account_id
+      properties:
+        name:
+          type: string
+          description: The name of the trusted profile.
+        account_id:
+          type: string
+          description: The account ID for the trusted profile.
+        description:
+          type: string
+          description: A description of the trusted profile.
+    TrustedProfile:
+      type: object
+      description: A trusted profile defines a set of conditions under which federated users or compute resources can assume an identity with specific access rights.
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the trusted profile.
+        entity_tag:
+          type: string
+          description: The version identifier for optimistic concurrency control.
+        crn:
+          type: string
+          description: The Cloud Resource Name for this trusted profile.
+        name:
+          type: string
+          description: The name of the trusted profile.
+        description:
+          type: string
+          description: A description of the trusted profile.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the profile was created.
+        modified_at:
+          type: string
+          format: date-time
+          description: Timestamp when the profile was last modified.
+        iam_id:
+          type: string
+          description: The IAM ID of the trusted profile.
+        account_id:
+          type: string
+          description: The account ID that this profile belongs to.
+        template_id:
+          type: string
+          description: The ID of the template that this profile was created from, if applicable.
+        ims_account_id:
+          type: integer
+          description: The IMS account ID if applicable.
+        ims_user_id:
+          type: integer
+          description: The IMS user ID if applicable.
+        history:
+          type: array
+          description: History of changes to the profile.
+          items:
+            $ref: '#/components/schemas/ActivityEntry'
+        activity:
+          $ref: '#/components/schemas/Activity'
+    Activity:
+      type: object
+      description: Activity information for an identity resource.
+      properties:
+        last_authn:
+          type: string
+          description: Timestamp of the last authentication using this identity.
+        authn_count:
+          type: integer
+          description: The number of authentications using this identity.
+    ActivityEntry:
+      type: object
+      description: A history entry for an identity resource.
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the activity.
+        iam_id:
+          type: string
+          description: The IAM ID that performed the action.
+        iam_id_account:
+          type: string
+          description: The account ID of the actor.
+        action:
+          type: string
+          description: The action that was performed.
+        params:
+          type: array
+          description: Parameters associated with the action.
+          items:
+            type: string
+        message:
+          type: string
+          description: A message describing the action.
+    UpdateProfileRequest:
+      type: object
+      description: Request body for updating a trusted profile.
+      properties:
+        name:
+          type: string
+          description: The updated name of the trusted profile.
+        description:
+          type: string
+          description: The updated description of the trusted profile.
+  parameters:
+    IfMatch:
+      name: If-Match
+      in: header
+      required: true
+      description: The entity tag value from a previous GET request used for optimistic concurrency control.
+      schema:
+        type: string
+    ProfileId:
+      name: profile-id
+      in: path
+      required: true
+      description: The unique identifier of the trusted profile.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or credentials are missing.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: A conflict occurred, typically from an If-Match version mismatch.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'IAM access token obtained from the /identity/token endpoint. Pass as Authorization: Bearer <token>.'

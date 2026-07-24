@@ -1,0 +1,391 @@
+openapi: 3.1.0
+info:
+  title: IBM Cloud IAM API Keys Claim Rules API
+  description: The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com
+    email: cloud@ibm.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-ibm-api-source: https://cloud.ibm.com/apidocs/iam-identity-token-api
+servers:
+- url: https://iam.cloud.ibm.com
+  description: IBM Cloud IAM production endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Claim Rules
+  description: Manage claim rules for trusted profiles
+paths:
+  /v1/profiles/{profile-id}/rules:
+    get:
+      operationId: listClaimRules
+      summary: List claim rules for a trusted profile
+      description: Retrieve all claim rules defined for a specific trusted profile.
+      tags:
+      - Claim Rules
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      responses:
+        '200':
+          description: List of claim rules returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimRuleList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createClaimRule
+      summary: Create a claim rule
+      description: Create a claim rule for a trusted profile. Claim rules define conditions that federated users must meet to apply the profile.
+      tags:
+      - Claim Rules
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClaimRuleRequest'
+      responses:
+        '201':
+          description: Claim rule created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimRule'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v1/profiles/{profile-id}/rules/{rule-id}:
+    get:
+      operationId: getClaimRule
+      summary: Get a claim rule
+      description: Retrieve details of a specific claim rule in a trusted profile.
+      tags:
+      - Claim Rules
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/RuleId'
+      responses:
+        '200':
+          description: Claim rule details returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimRule'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateClaimRule
+      summary: Update a claim rule
+      description: Update an existing claim rule for a trusted profile.
+      tags:
+      - Claim Rules
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/RuleId'
+      - $ref: '#/components/parameters/IfMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateClaimRuleRequest'
+      responses:
+        '200':
+          description: Claim rule updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimRule'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+    delete:
+      operationId: deleteClaimRule
+      summary: Delete a claim rule
+      description: Remove a claim rule from a trusted profile.
+      tags:
+      - Claim Rules
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/RuleId'
+      responses:
+        '204':
+          description: Claim rule deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    RuleId:
+      name: rule-id
+      in: path
+      required: true
+      description: The unique identifier of the claim rule.
+      schema:
+        type: string
+    IfMatch:
+      name: If-Match
+      in: header
+      required: true
+      description: The entity tag value from a previous GET request used for optimistic concurrency control.
+      schema:
+        type: string
+    ProfileId:
+      name: profile-id
+      in: path
+      required: true
+      description: The unique identifier of the trusted profile.
+      schema:
+        type: string
+  schemas:
+    ClaimRuleList:
+      type: object
+      description: A list of claim rules for a trusted profile.
+      properties:
+        context:
+          $ref: '#/components/schemas/ResponseContext'
+        rules:
+          type: array
+          description: The list of claim rules.
+          items:
+            $ref: '#/components/schemas/ClaimRule'
+    ClaimRule:
+      type: object
+      description: A claim rule defines conditions under which a federated user can apply a trusted profile.
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the claim rule.
+        entity_tag:
+          type: string
+          description: The version identifier for optimistic concurrency control.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the rule was created.
+        modified_at:
+          type: string
+          format: date-time
+          description: Timestamp when the rule was last modified.
+        name:
+          type: string
+          description: The name of the claim rule.
+        type:
+          type: string
+          description: The type of the claim rule.
+          enum:
+          - Profile-SAML
+          - Profile-CR
+        conditions:
+          type: array
+          description: Conditions the incoming token must satisfy.
+          items:
+            $ref: '#/components/schemas/ClaimRuleCondition'
+        realm_name:
+          type: string
+          description: The realm name of the identity provider.
+        cr_type:
+          type: string
+          description: The compute resource type for Profile-CR rules.
+        expiration:
+          type: integer
+          description: Token session expiration in seconds.
+    ResponseContext:
+      type: object
+      description: Context metadata for paginated API responses.
+      properties:
+        transaction_id:
+          type: string
+          description: The unique transaction ID for the request.
+        operation:
+          type: string
+          description: The operation that was performed.
+        user_agent:
+          type: string
+          description: The user agent string from the request.
+        url:
+          type: string
+          description: The URL of the request.
+        instance_id:
+          type: string
+          description: The instance ID of the service.
+        thread_id:
+          type: string
+          description: The thread ID of the request.
+        host:
+          type: string
+          description: The host that served the request.
+        start_time:
+          type: string
+          description: Timestamp when the request started.
+        end_time:
+          type: string
+          description: Timestamp when the request ended.
+        elapsed_time:
+          type: string
+          description: The elapsed time of the request.
+        cluster_name:
+          type: string
+          description: The cluster name of the service.
+    ClaimRuleCondition:
+      type: object
+      description: A condition in a claim rule.
+      required:
+      - claim
+      - operator
+      - value
+      properties:
+        claim:
+          type: string
+          description: The claim name from the identity provider token.
+        operator:
+          type: string
+          description: The operator for comparing the claim value.
+          enum:
+          - EQUALS
+          - NOT_EQUALS
+          - EQUALS_IGNORE_CASE
+          - NOT_EQUALS_IGNORE_CASE
+          - CONTAINS
+          - IN
+        value:
+          type: string
+          description: The value to compare against.
+    ErrorResponse:
+      type: object
+      description: An error response from the IAM API.
+      properties:
+        context:
+          $ref: '#/components/schemas/ResponseContext'
+        status_code:
+          type: integer
+          description: The HTTP status code.
+        errors:
+          type: array
+          description: The list of errors.
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: The error code.
+              message:
+                type: string
+                description: A human-readable error message.
+              details:
+                type: string
+                description: Additional error details.
+              more_info:
+                type: string
+                description: A URL for more information about the error.
+        trace:
+          type: string
+          description: A trace identifier for debugging.
+    UpdateClaimRuleRequest:
+      type: object
+      description: Request body for updating a claim rule.
+      required:
+      - type
+      - conditions
+      properties:
+        type:
+          type: string
+          description: The type of the claim rule.
+          enum:
+          - Profile-SAML
+          - Profile-CR
+        conditions:
+          type: array
+          description: Updated conditions the incoming token must satisfy.
+          items:
+            $ref: '#/components/schemas/ClaimRuleCondition'
+        name:
+          type: string
+          description: The updated name of the claim rule.
+        realm_name:
+          type: string
+          description: The updated realm name of the identity provider.
+        cr_type:
+          type: string
+          description: The updated compute resource type.
+        expiration:
+          type: integer
+          description: Updated token session expiration in seconds.
+    CreateClaimRuleRequest:
+      type: object
+      description: Request body for creating a claim rule.
+      required:
+      - type
+      - conditions
+      properties:
+        type:
+          type: string
+          description: The type of the claim rule.
+          enum:
+          - Profile-SAML
+          - Profile-CR
+        conditions:
+          type: array
+          description: Conditions the incoming token must satisfy.
+          items:
+            $ref: '#/components/schemas/ClaimRuleCondition'
+        name:
+          type: string
+          description: The name of the claim rule.
+        realm_name:
+          type: string
+          description: The realm name of the identity provider.
+        cr_type:
+          type: string
+          description: The compute resource type for Profile-CR rules.
+        expiration:
+          type: integer
+          description: Token session expiration in seconds.
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or credentials are missing.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: A conflict occurred, typically from an If-Match version mismatch.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'IAM access token obtained from the /identity/token endpoint. Pass as Authorization: Bearer <token>.'

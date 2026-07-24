@@ -1,0 +1,556 @@
+openapi: 3.1.0
+info:
+  title: IBM Cloud IAM API Keys Service IDs API
+  description: The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com
+    email: cloud@ibm.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-ibm-api-source: https://cloud.ibm.com/apidocs/iam-identity-token-api
+servers:
+- url: https://iam.cloud.ibm.com
+  description: IBM Cloud IAM production endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Service IDs
+  description: Create and manage service IDs for applications and services
+paths:
+  /v1/serviceids/:
+    get:
+      operationId: listServiceIds
+      summary: List service IDs
+      description: List service IDs in an account. Results can be filtered by name, sorted, and paginated.
+      tags:
+      - Service IDs
+      parameters:
+      - name: account_id
+        in: query
+        description: The account ID of the service IDs to query.
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Filter service IDs by name.
+        schema:
+          type: string
+      - name: pagesize
+        in: query
+        description: Number of results per page.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: pagetoken
+        in: query
+        description: Page token from a previous request for pagination.
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Field to sort results by.
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      responses:
+        '200':
+          description: List of service IDs returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceIdList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createServiceId
+      summary: Create a service ID
+      description: Create a new service ID for an IBM Cloud account. Service IDs are used by applications and services to authenticate with IBM Cloud.
+      tags:
+      - Service IDs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceIdRequest'
+      responses:
+        '201':
+          description: Service ID created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceId'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v1/serviceids/{id}:
+    get:
+      operationId: getServiceId
+      summary: Get a service ID
+      description: Retrieve details of a service ID by its unique identifier.
+      tags:
+      - Service IDs
+      parameters:
+      - $ref: '#/components/parameters/ServiceIdParam'
+      - name: include_history
+        in: query
+        description: Include the history of the service ID.
+        schema:
+          type: boolean
+          default: false
+      - name: include_activity
+        in: query
+        description: Include the activity of the service ID.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Service ID details returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceId'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateServiceId
+      summary: Update a service ID
+      description: Update properties of an existing service ID such as name and description.
+      tags:
+      - Service IDs
+      parameters:
+      - $ref: '#/components/parameters/ServiceIdParam'
+      - $ref: '#/components/parameters/IfMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateServiceIdRequest'
+      responses:
+        '200':
+          description: Service ID updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceId'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+    delete:
+      operationId: deleteServiceId
+      summary: Delete a service ID
+      description: Delete a service ID and all associated API keys. This action cannot be undone.
+      tags:
+      - Service IDs
+      parameters:
+      - $ref: '#/components/parameters/ServiceIdParam'
+      responses:
+        '204':
+          description: Service ID deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/serviceids/{id}/lock:
+    post:
+      operationId: lockServiceId
+      summary: Lock a service ID
+      description: Lock a service ID to prevent modification or deletion. Locked service IDs remain active.
+      tags:
+      - Service IDs
+      parameters:
+      - $ref: '#/components/parameters/ServiceIdParam'
+      responses:
+        '200':
+          description: Service ID locked successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: unlockServiceId
+      summary: Unlock a service ID
+      description: Unlock a previously locked service ID.
+      tags:
+      - Service IDs
+      parameters:
+      - $ref: '#/components/parameters/ServiceIdParam'
+      responses:
+        '200':
+          description: Service ID unlocked successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    ResponseContext:
+      type: object
+      description: Context metadata for paginated API responses.
+      properties:
+        transaction_id:
+          type: string
+          description: The unique transaction ID for the request.
+        operation:
+          type: string
+          description: The operation that was performed.
+        user_agent:
+          type: string
+          description: The user agent string from the request.
+        url:
+          type: string
+          description: The URL of the request.
+        instance_id:
+          type: string
+          description: The instance ID of the service.
+        thread_id:
+          type: string
+          description: The thread ID of the request.
+        host:
+          type: string
+          description: The host that served the request.
+        start_time:
+          type: string
+          description: Timestamp when the request started.
+        end_time:
+          type: string
+          description: Timestamp when the request ended.
+        elapsed_time:
+          type: string
+          description: The elapsed time of the request.
+        cluster_name:
+          type: string
+          description: The cluster name of the service.
+    CreateServiceIdRequest:
+      type: object
+      description: Request body for creating a service ID.
+      required:
+      - account_id
+      - name
+      properties:
+        account_id:
+          type: string
+          description: The account ID for the service ID.
+        name:
+          type: string
+          description: The name of the service ID.
+        description:
+          type: string
+          description: A description of the service ID.
+        unique_instance_crns:
+          type: array
+          description: List of CRNs that restrict the scope of the service ID to specific resource instances.
+          items:
+            type: string
+        apikey:
+          $ref: '#/components/schemas/CreateApiKeyRequest'
+    CreateApiKeyRequest:
+      type: object
+      description: Request body for creating an API key.
+      required:
+      - name
+      - iam_id
+      properties:
+        name:
+          type: string
+          description: The name of the API key.
+        iam_id:
+          type: string
+          description: The IAM ID that the API key authenticates.
+        description:
+          type: string
+          description: A description of the API key.
+        account_id:
+          type: string
+          description: The account ID for the API key.
+        apikey:
+          type: string
+          description: Specify the API key value. If omitted, the system generates one automatically.
+        store_value:
+          type: boolean
+          description: Whether to store the API key value in the system.
+        support_sessions:
+          type: boolean
+          description: Whether sessions are supported for this API key.
+        action_when_leaked:
+          type: string
+          description: Action to perform when the API key is leaked.
+        expires_at:
+          type: string
+          format: date-time
+          description: Expiration date and time for the API key.
+    ApiKey:
+      type: object
+      description: An IAM API key used for authentication.
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the API key.
+        entity_tag:
+          type: string
+          description: The version identifier for optimistic concurrency control.
+        crn:
+          type: string
+          description: The Cloud Resource Name for this API key.
+        locked:
+          type: boolean
+          description: Whether the API key is locked against modification.
+        disabled:
+          type: boolean
+          description: Whether the API key is disabled for authentication.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the API key was created.
+        created_by:
+          type: string
+          description: The IAM ID of the user who created the API key.
+        modified_at:
+          type: string
+          format: date-time
+          description: Timestamp when the API key was last modified.
+        name:
+          type: string
+          description: The name of the API key.
+        support_sessions:
+          type: boolean
+          description: Whether sessions are supported for this API key.
+        action_when_leaked:
+          type: string
+          description: Action to perform when the API key is leaked.
+        description:
+          type: string
+          description: A description of the API key.
+        iam_id:
+          type: string
+          description: The IAM ID associated with this API key.
+        account_id:
+          type: string
+          description: The account ID that this API key belongs to.
+        apikey:
+          type: string
+          description: The API key value. Only included at creation time.
+        history:
+          type: array
+          description: History of changes to the API key.
+          items:
+            $ref: '#/components/schemas/ActivityEntry'
+        activity:
+          $ref: '#/components/schemas/Activity'
+    ErrorResponse:
+      type: object
+      description: An error response from the IAM API.
+      properties:
+        context:
+          $ref: '#/components/schemas/ResponseContext'
+        status_code:
+          type: integer
+          description: The HTTP status code.
+        errors:
+          type: array
+          description: The list of errors.
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: The error code.
+              message:
+                type: string
+                description: A human-readable error message.
+              details:
+                type: string
+                description: Additional error details.
+              more_info:
+                type: string
+                description: A URL for more information about the error.
+        trace:
+          type: string
+          description: A trace identifier for debugging.
+    ServiceId:
+      type: object
+      description: A service ID is an identity for an application or service that can be used to authenticate with IBM Cloud.
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the service ID.
+        entity_tag:
+          type: string
+          description: The version identifier for optimistic concurrency control.
+        crn:
+          type: string
+          description: The Cloud Resource Name for this service ID.
+        locked:
+          type: boolean
+          description: Whether the service ID is locked against modification.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the service ID was created.
+        modified_at:
+          type: string
+          format: date-time
+          description: Timestamp when the service ID was last modified.
+        account_id:
+          type: string
+          description: The account ID that this service ID belongs to.
+        name:
+          type: string
+          description: The name of the service ID.
+        description:
+          type: string
+          description: A description of the service ID.
+        unique_instance_crns:
+          type: array
+          description: List of CRNs that restrict the scope of the service ID to specific resource instances.
+          items:
+            type: string
+        history:
+          type: array
+          description: History of changes to the service ID.
+          items:
+            $ref: '#/components/schemas/ActivityEntry'
+        activity:
+          $ref: '#/components/schemas/Activity'
+        apikey:
+          $ref: '#/components/schemas/ApiKey'
+    ServiceIdList:
+      type: object
+      description: A paginated list of service IDs.
+      properties:
+        context:
+          $ref: '#/components/schemas/ResponseContext'
+        offset:
+          type: integer
+          description: The offset of the current page.
+        limit:
+          type: integer
+          description: The number of results per page.
+        first:
+          type: string
+          description: URL to the first page of results.
+        previous:
+          type: string
+          description: URL to the previous page of results.
+        next:
+          type: string
+          description: URL to the next page of results.
+        serviceids:
+          type: array
+          description: The list of service IDs.
+          items:
+            $ref: '#/components/schemas/ServiceId'
+    Activity:
+      type: object
+      description: Activity information for an identity resource.
+      properties:
+        last_authn:
+          type: string
+          description: Timestamp of the last authentication using this identity.
+        authn_count:
+          type: integer
+          description: The number of authentications using this identity.
+    ActivityEntry:
+      type: object
+      description: A history entry for an identity resource.
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the activity.
+        iam_id:
+          type: string
+          description: The IAM ID that performed the action.
+        iam_id_account:
+          type: string
+          description: The account ID of the actor.
+        action:
+          type: string
+          description: The action that was performed.
+        params:
+          type: array
+          description: Parameters associated with the action.
+          items:
+            type: string
+        message:
+          type: string
+          description: A message describing the action.
+    UpdateServiceIdRequest:
+      type: object
+      description: Request body for updating a service ID.
+      properties:
+        name:
+          type: string
+          description: The updated name of the service ID.
+        description:
+          type: string
+          description: The updated description of the service ID.
+        unique_instance_crns:
+          type: array
+          description: Updated list of CRNs that restrict the scope of the service ID.
+          items:
+            type: string
+  parameters:
+    IfMatch:
+      name: If-Match
+      in: header
+      required: true
+      description: The entity tag value from a previous GET request used for optimistic concurrency control.
+      schema:
+        type: string
+    ServiceIdParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the service ID.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: A conflict occurred, typically from an If-Match version mismatch.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or credentials are missing.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'IAM access token obtained from the /identity/token endpoint. Pass as Authorization: Bearer <token>.'

@@ -1,0 +1,175 @@
+openapi: 3.1.0
+info:
+  title: IBM Cloud IAM API Keys Tokens API
+  description: The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com
+    email: cloud@ibm.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-ibm-api-source: https://cloud.ibm.com/apidocs/iam-identity-token-api
+servers:
+- url: https://iam.cloud.ibm.com
+  description: IBM Cloud IAM production endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Tokens
+  description: Create and manage IAM access tokens
+paths:
+  /identity/token:
+    post:
+      operationId: createAccessToken
+      summary: Create an IAM access token
+      description: Create an IAM access token for a user or service ID using an API key, refresh token, or delegated refresh token. Tokens are valid for one hour and can be refreshed before expiration.
+      tags:
+      - Tokens
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              properties:
+                grant_type:
+                  type: string
+                  description: The grant type for token creation.
+                  enum:
+                  - urn:ibm:params:oauth:grant-type:apikey
+                  - urn:ibm:params:oauth:grant-type:delegated-refresh-token
+                  - refresh_token
+                apikey:
+                  type: string
+                  description: The API key to use for authentication.
+                refresh_token:
+                  type: string
+                  description: The refresh token to use for token renewal.
+                response_type:
+                  type: string
+                  description: Response type for delegated refresh token. Must be cloud_iam when grant_type is urn:ibm:params:oauth:grant-type:delegated-refresh-token.
+                  enum:
+                  - cloud_iam
+      responses:
+        '200':
+          description: Token created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or expired credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: An error response from the IAM API.
+      properties:
+        context:
+          $ref: '#/components/schemas/ResponseContext'
+        status_code:
+          type: integer
+          description: The HTTP status code.
+        errors:
+          type: array
+          description: The list of errors.
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: The error code.
+              message:
+                type: string
+                description: A human-readable error message.
+              details:
+                type: string
+                description: Additional error details.
+              more_info:
+                type: string
+                description: A URL for more information about the error.
+        trace:
+          type: string
+          description: A trace identifier for debugging.
+    TokenResponse:
+      type: object
+      description: An IAM access token response.
+      properties:
+        access_token:
+          type: string
+          description: The IAM access token.
+        refresh_token:
+          type: string
+          description: The refresh token that can be used to obtain a new access token.
+        token_type:
+          type: string
+          description: The token type, always Bearer.
+          enum:
+          - Bearer
+        expires_in:
+          type: integer
+          description: Token lifetime in seconds.
+        expiration:
+          type: integer
+          description: Token expiration time as a Unix timestamp.
+        scope:
+          type: string
+          description: The scope of the token.
+    ResponseContext:
+      type: object
+      description: Context metadata for paginated API responses.
+      properties:
+        transaction_id:
+          type: string
+          description: The unique transaction ID for the request.
+        operation:
+          type: string
+          description: The operation that was performed.
+        user_agent:
+          type: string
+          description: The user agent string from the request.
+        url:
+          type: string
+          description: The URL of the request.
+        instance_id:
+          type: string
+          description: The instance ID of the service.
+        thread_id:
+          type: string
+          description: The thread ID of the request.
+        host:
+          type: string
+          description: The host that served the request.
+        start_time:
+          type: string
+          description: Timestamp when the request started.
+        end_time:
+          type: string
+          description: Timestamp when the request ended.
+        elapsed_time:
+          type: string
+          description: The elapsed time of the request.
+        cluster_name:
+          type: string
+          description: The cluster name of the service.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'IAM access token obtained from the /identity/token endpoint. Pass as Authorization: Bearer <token>.'

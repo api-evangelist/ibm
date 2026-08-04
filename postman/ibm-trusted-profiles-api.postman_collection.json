@@ -1,0 +1,1230 @@
+{
+  "info": {
+    "_postman_id": "d0fc9cea-b90c-4c50-b0af-f60cd700cab6",
+    "name": "IBM Cloud IAM API Keys Trusted Profiles API",
+    "description": "The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.\n\nContact Support:\n Name: IBM Cloud\n Email: cloud@ibm.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:57:24.000Z",
+    "updatedAt": "2026-07-28T01:57:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d0fc9cea-b90c-4c50-b0af-f60cd700cab6"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "profiles",
+          "item": [
+            {
+              "name": "{profile-id}",
+              "item": [
+                {
+                  "name": "Get a trusted profile",
+                  "id": "c021b1f5-53a3-41a8-97fc-128599a1764c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/profiles/:profile-id?include_activity=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "profiles",
+                        ":profile-id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Include the activity of the profile.",
+                          "key": "include_activity",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4e73a735-1801-43e8-929b-46ffbd164a1b",
+                          "key": "profile-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the trusted profile."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a specific trusted profile."
+                  },
+                  "response": [
+                    {
+                      "id": "c4e7a647-29b2-4810-9518-83dcab6655ec",
+                      "name": "Trusted profile details returned successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id?include_activity=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include the activity of the profile.",
+                              "key": "include_activity",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity_tag\": \"<string>\",\n  \"crn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\",\n  \"iam_id\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"template_id\": \"<string>\",\n  \"ims_account_id\": \"<integer>\",\n  \"ims_user_id\": \"<integer>\",\n  \"history\": [\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    },\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    }\n  ],\n  \"activity\": {\n    \"last_authn\": \"<string>\",\n    \"authn_count\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-c4e7a647-29b2-4810-9518-83dcab6655ec"
+                    },
+                    {
+                      "id": "25490b90-b684-4125-a7ad-824980eabaf5",
+                      "name": "Authentication failed or credentials are missing.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id?include_activity=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include the activity of the profile.",
+                              "key": "include_activity",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-25490b90-b684-4125-a7ad-824980eabaf5"
+                    },
+                    {
+                      "id": "884f38ab-66d0-44e7-96df-fad1ab9d5efb",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id?include_activity=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include the activity of the profile.",
+                              "key": "include_activity",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-884f38ab-66d0-44e7-96df-fad1ab9d5efb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:57:25.000Z",
+                  "updatedAt": "2026-07-28T01:57:25.000Z",
+                  "uid": "35240-c021b1f5-53a3-41a8-97fc-128599a1764c"
+                },
+                {
+                  "name": "Update a trusted profile",
+                  "id": "435ad577-e909-4a8a-83b8-1e948c90588c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                        "key": "If-Match",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/profiles/:profile-id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "profiles",
+                        ":profile-id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f6d890a9-5e1e-44e3-b259-1e4199f42d6b",
+                          "key": "profile-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the trusted profile."
+                        }
+                      ]
+                    },
+                    "description": "Update properties of an existing trusted profile."
+                  },
+                  "response": [
+                    {
+                      "id": "4ac90d0c-2af2-4252-8fb3-4d941720e700",
+                      "name": "Trusted profile updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity_tag\": \"<string>\",\n  \"crn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\",\n  \"iam_id\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"template_id\": \"<string>\",\n  \"ims_account_id\": \"<integer>\",\n  \"ims_user_id\": \"<integer>\",\n  \"history\": [\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    },\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    }\n  ],\n  \"activity\": {\n    \"last_authn\": \"<string>\",\n    \"authn_count\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-4ac90d0c-2af2-4252-8fb3-4d941720e700"
+                    },
+                    {
+                      "id": "c349522c-44f9-4c96-9d63-3ee8c4008623",
+                      "name": "The request was invalid or malformed.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-c349522c-44f9-4c96-9d63-3ee8c4008623"
+                    },
+                    {
+                      "id": "dfd1961a-f4e7-4f7c-baad-221179a97138",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-dfd1961a-f4e7-4f7c-baad-221179a97138"
+                    },
+                    {
+                      "id": "6c2bac03-36f6-4e74-84ee-d4b222a03270",
+                      "name": "A conflict occurred, typically from an If-Match version mismatch.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-6c2bac03-36f6-4e74-84ee-d4b222a03270"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:57:25.000Z",
+                  "updatedAt": "2026-07-28T01:57:25.000Z",
+                  "uid": "35240-435ad577-e909-4a8a-83b8-1e948c90588c"
+                },
+                {
+                  "name": "Delete a trusted profile",
+                  "id": "4dc1be51-db3f-4432-9327-1495b2694c02",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/profiles/:profile-id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "profiles",
+                        ":profile-id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "169c5ca5-f568-42b3-8f8e-7a8ef598cec4",
+                          "key": "profile-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the trusted profile."
+                        }
+                      ]
+                    },
+                    "description": "Delete a trusted profile and its associated claim rules and links. This action cannot be undone."
+                  },
+                  "response": [
+                    {
+                      "id": "088fbcac-206f-4f8f-a003-e6a4df0f2fdf",
+                      "name": "Trusted profile deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-088fbcac-206f-4f8f-a003-e6a4df0f2fdf"
+                    },
+                    {
+                      "id": "e88a42cb-9a4d-4989-8825-da691b4465de",
+                      "name": "Authentication failed or credentials are missing.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-e88a42cb-9a4d-4989-8825-da691b4465de"
+                    },
+                    {
+                      "id": "ac30ad97-41e3-4f82-87fa-cbeb11763b30",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/profiles/:profile-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "profiles",
+                            ":profile-id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "profile-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:25.000Z",
+                      "updatedAt": "2026-07-28T01:57:25.000Z",
+                      "uid": "35240-ac30ad97-41e3-4f82-87fa-cbeb11763b30"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:57:25.000Z",
+                  "updatedAt": "2026-07-28T01:57:25.000Z",
+                  "uid": "35240-4dc1be51-db3f-4432-9327-1495b2694c02"
+                }
+              ],
+              "id": "80c07927-536b-453f-afdb-0252a5e23b2a",
+              "createdAt": "2026-07-28T01:57:25.000Z",
+              "updatedAt": "2026-07-28T01:57:25.000Z",
+              "uid": "35240-80c07927-536b-453f-afdb-0252a5e23b2a"
+            },
+            {
+              "name": "List trusted profiles",
+              "id": "d4417525-41ba-4fee-a358-7efd43af1679",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/profiles?account_id=<string>&name=<string>&pagesize=<integer>&pagetoken=<string>&sort=<string>&order=asc&include_history=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "profiles"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The account ID to list trusted profiles for.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter profiles by name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "pagesize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Page token from a previous request.",
+                      "key": "pagetoken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order.",
+                      "key": "order",
+                      "value": "asc"
+                    },
+                    {
+                      "description": "Include the history of the profiles.",
+                      "key": "include_history",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "List trusted profiles in an account. Trusted profiles allow federated users to establish trust with IBM Cloud."
+              },
+              "response": [
+                {
+                  "id": "ac541693-112c-4e18-a405-f2423309e3d4",
+                  "name": "List of trusted profiles returned successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/profiles?account_id=<string>&name=<string>&pagesize=<integer>&pagetoken=<string>&sort=<string>&order=asc&include_history=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "profiles"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The account ID to list trusted profiles for.",
+                          "key": "account_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter profiles by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "pagesize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Page token from a previous request.",
+                          "key": "pagetoken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Field to sort by.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort order.",
+                          "key": "order",
+                          "value": "asc"
+                        },
+                        {
+                          "description": "Include the history of the profiles.",
+                          "key": "include_history",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"offset\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"first\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"next\": \"<string>\",\n  \"profiles\": [\n    {\n      \"id\": \"<string>\",\n      \"entity_tag\": \"<string>\",\n      \"crn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"modified_at\": \"<dateTime>\",\n      \"iam_id\": \"<string>\",\n      \"account_id\": \"<string>\",\n      \"template_id\": \"<string>\",\n      \"ims_account_id\": \"<integer>\",\n      \"ims_user_id\": \"<integer>\",\n      \"history\": [\n        {\n          \"timestamp\": \"<string>\",\n          \"iam_id\": \"<string>\",\n          \"iam_id_account\": \"<string>\",\n          \"action\": \"<string>\",\n          \"params\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"message\": \"<string>\"\n        },\n        {\n          \"timestamp\": \"<string>\",\n          \"iam_id\": \"<string>\",\n          \"iam_id_account\": \"<string>\",\n          \"action\": \"<string>\",\n          \"params\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"message\": \"<string>\"\n        }\n      ],\n      \"activity\": {\n        \"last_authn\": \"<string>\",\n        \"authn_count\": \"<integer>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity_tag\": \"<string>\",\n      \"crn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"modified_at\": \"<dateTime>\",\n      \"iam_id\": \"<string>\",\n      \"account_id\": \"<string>\",\n      \"template_id\": \"<string>\",\n      \"ims_account_id\": \"<integer>\",\n      \"ims_user_id\": \"<integer>\",\n      \"history\": [\n        {\n          \"timestamp\": \"<string>\",\n          \"iam_id\": \"<string>\",\n          \"iam_id_account\": \"<string>\",\n          \"action\": \"<string>\",\n          \"params\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"message\": \"<string>\"\n        },\n        {\n          \"timestamp\": \"<string>\",\n          \"iam_id\": \"<string>\",\n          \"iam_id_account\": \"<string>\",\n          \"action\": \"<string>\",\n          \"params\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"message\": \"<string>\"\n        }\n      ],\n      \"activity\": {\n        \"last_authn\": \"<string>\",\n        \"authn_count\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:57:25.000Z",
+                  "updatedAt": "2026-07-28T01:57:25.000Z",
+                  "uid": "35240-ac541693-112c-4e18-a405-f2423309e3d4"
+                },
+                {
+                  "id": "8e8fe2d0-625e-4ab0-8db9-7e2a02ced489",
+                  "name": "Authentication failed or credentials are missing.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/profiles?account_id=<string>&name=<string>&pagesize=<integer>&pagetoken=<string>&sort=<string>&order=asc&include_history=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "profiles"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The account ID to list trusted profiles for.",
+                          "key": "account_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter profiles by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "pagesize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Page token from a previous request.",
+                          "key": "pagetoken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Field to sort by.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort order.",
+                          "key": "order",
+                          "value": "asc"
+                        },
+                        {
+                          "description": "Include the history of the profiles.",
+                          "key": "include_history",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:25.000Z",
+                  "updatedAt": "2026-07-28T01:57:25.000Z",
+                  "uid": "35240-8e8fe2d0-625e-4ab0-8db9-7e2a02ced489"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:25.000Z",
+              "updatedAt": "2026-07-28T01:57:25.000Z",
+              "uid": "35240-d4417525-41ba-4fee-a358-7efd43af1679"
+            },
+            {
+              "name": "Create a trusted profile",
+              "id": "34a3b3af-1bf0-4979-befc-6af65eb1cf75",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/profiles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "profiles"
+                  ]
+                },
+                "description": "Create a new trusted profile for federated users to establish trust with IBM Cloud resources."
+              },
+              "response": [
+                {
+                  "id": "4ffe8f87-d13e-4a4d-9ffb-6ea8b2b5b0d1",
+                  "name": "Trusted profile created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/profiles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "profiles"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity_tag\": \"<string>\",\n  \"crn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\",\n  \"iam_id\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"template_id\": \"<string>\",\n  \"ims_account_id\": \"<integer>\",\n  \"ims_user_id\": \"<integer>\",\n  \"history\": [\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    },\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    }\n  ],\n  \"activity\": {\n    \"last_authn\": \"<string>\",\n    \"authn_count\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:57:25.000Z",
+                  "updatedAt": "2026-07-28T01:57:25.000Z",
+                  "uid": "35240-4ffe8f87-d13e-4a4d-9ffb-6ea8b2b5b0d1"
+                },
+                {
+                  "id": "08ece2aa-8f3a-4a9e-81ce-3acbac168e43",
+                  "name": "The request was invalid or malformed.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/profiles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "profiles"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:25.000Z",
+                  "updatedAt": "2026-07-28T01:57:25.000Z",
+                  "uid": "35240-08ece2aa-8f3a-4a9e-81ce-3acbac168e43"
+                },
+                {
+                  "id": "e3525f1e-b4bc-4f53-97c5-7aacec566e7a",
+                  "name": "Authentication failed or credentials are missing.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/profiles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "profiles"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:25.000Z",
+                  "updatedAt": "2026-07-28T01:57:25.000Z",
+                  "uid": "35240-e3525f1e-b4bc-4f53-97c5-7aacec566e7a"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:25.000Z",
+              "updatedAt": "2026-07-28T01:57:25.000Z",
+              "uid": "35240-34a3b3af-1bf0-4979-befc-6af65eb1cf75"
+            }
+          ],
+          "id": "01f6bb78-a176-41b2-b2f0-62a208387c93",
+          "createdAt": "2026-07-28T01:57:25.000Z",
+          "updatedAt": "2026-07-28T01:57:25.000Z",
+          "uid": "35240-01f6bb78-a176-41b2-b2f0-62a208387c93"
+        }
+      ],
+      "id": "b29bd44c-f9a3-4c68-a78b-05974c00880b",
+      "createdAt": "2026-07-28T01:57:25.000Z",
+      "updatedAt": "2026-07-28T01:57:25.000Z",
+      "uid": "35240-b29bd44c-f9a3-4c68-a78b-05974c00880b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://iam.cloud.ibm.com"
+    }
+  ]
+}

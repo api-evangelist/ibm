@@ -1,0 +1,1617 @@
+{
+  "info": {
+    "_postman_id": "67af2c7a-eb92-4a84-8719-5e8e6fc2f155",
+    "name": "IBM Cloud IAM API Keys Service IDs API",
+    "description": "The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.\n\nContact Support:\n Name: IBM Cloud\n Email: cloud@ibm.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:57:22.000Z",
+    "updatedAt": "2026-07-28T01:57:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-67af2c7a-eb92-4a84-8719-5e8e6fc2f155"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "serviceids",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "lock",
+                  "item": [
+                    {
+                      "name": "Lock a service ID",
+                      "id": "44be999a-a25c-4471-a294-afeb79395bb0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id/lock",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id",
+                            "lock"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fe5ac7c4-1764-4277-9c18-c940613de35b",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the service ID."
+                            }
+                          ]
+                        },
+                        "description": "Lock a service ID to prevent modification or deletion. Locked service IDs remain active."
+                      },
+                      "response": [
+                        {
+                          "id": "7b86df70-0381-4bed-90e4-5fefd4bc7af3",
+                          "name": "Service ID locked successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/serviceids/:id/lock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "serviceids",
+                                ":id",
+                                "lock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:57:23.000Z",
+                          "updatedAt": "2026-07-28T01:57:23.000Z",
+                          "uid": "35240-7b86df70-0381-4bed-90e4-5fefd4bc7af3"
+                        },
+                        {
+                          "id": "9bac17a9-daa4-4beb-8dd1-c78f1073effa",
+                          "name": "Authentication failed or credentials are missing.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/serviceids/:id/lock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "serviceids",
+                                ":id",
+                                "lock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:57:23.000Z",
+                          "updatedAt": "2026-07-28T01:57:23.000Z",
+                          "uid": "35240-9bac17a9-daa4-4beb-8dd1-c78f1073effa"
+                        },
+                        {
+                          "id": "3d4eef72-5fb5-434b-87d6-f556e662b2e1",
+                          "name": "The requested resource was not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/serviceids/:id/lock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "serviceids",
+                                ":id",
+                                "lock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:57:23.000Z",
+                          "updatedAt": "2026-07-28T01:57:23.000Z",
+                          "uid": "35240-3d4eef72-5fb5-434b-87d6-f556e662b2e1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-44be999a-a25c-4471-a294-afeb79395bb0"
+                    },
+                    {
+                      "name": "Unlock a service ID",
+                      "id": "71c02fde-4f23-4291-a3e3-bcbbe42ab124",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id/lock",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id",
+                            "lock"
+                          ],
+                          "variable": [
+                            {
+                              "id": "48dcce46-b536-406a-a762-fc693d94e59d",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the service ID."
+                            }
+                          ]
+                        },
+                        "description": "Unlock a previously locked service ID."
+                      },
+                      "response": [
+                        {
+                          "id": "126aee0d-a36a-4b31-8a5e-cb53b200d36d",
+                          "name": "Service ID unlocked successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/serviceids/:id/lock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "serviceids",
+                                ":id",
+                                "lock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:57:23.000Z",
+                          "updatedAt": "2026-07-28T01:57:23.000Z",
+                          "uid": "35240-126aee0d-a36a-4b31-8a5e-cb53b200d36d"
+                        },
+                        {
+                          "id": "35f90e5a-0f46-49be-990d-6cb7ab033cda",
+                          "name": "Authentication failed or credentials are missing.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/serviceids/:id/lock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "serviceids",
+                                ":id",
+                                "lock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:57:23.000Z",
+                          "updatedAt": "2026-07-28T01:57:23.000Z",
+                          "uid": "35240-35f90e5a-0f46-49be-990d-6cb7ab033cda"
+                        },
+                        {
+                          "id": "f908013b-80b1-4a7a-a868-4ac465e51fc7",
+                          "name": "The requested resource was not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/serviceids/:id/lock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "serviceids",
+                                ":id",
+                                "lock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:57:23.000Z",
+                          "updatedAt": "2026-07-28T01:57:23.000Z",
+                          "uid": "35240-f908013b-80b1-4a7a-a868-4ac465e51fc7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-71c02fde-4f23-4291-a3e3-bcbbe42ab124"
+                    }
+                  ],
+                  "id": "75dbc239-f8d1-4d2d-82e5-26baee9e0a73",
+                  "createdAt": "2026-07-28T01:57:23.000Z",
+                  "updatedAt": "2026-07-28T01:57:23.000Z",
+                  "uid": "35240-75dbc239-f8d1-4d2d-82e5-26baee9e0a73"
+                },
+                {
+                  "name": "Get a service ID",
+                  "id": "75184c5b-78c3-41f8-8712-0fff71e21451",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/serviceids/:id?include_history=false&include_activity=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "serviceids",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Include the history of the service ID.",
+                          "key": "include_history",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Include the activity of the service ID.",
+                          "key": "include_activity",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "63568e61-4812-487a-86f2-e630038f9371",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the service ID."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a service ID by its unique identifier."
+                  },
+                  "response": [
+                    {
+                      "id": "3a644342-c0dc-4841-ba53-5017bd4168fc",
+                      "name": "Service ID details returned successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id?include_history=false&include_activity=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include the history of the service ID.",
+                              "key": "include_history",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Include the activity of the service ID.",
+                              "key": "include_activity",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity_tag\": \"<string>\",\n  \"crn\": \"<string>\",\n  \"locked\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\",\n  \"account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"history\": [\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    },\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    }\n  ],\n  \"activity\": {\n    \"last_authn\": \"<string>\",\n    \"authn_count\": \"<integer>\"\n  },\n  \"apikey\": {\n    \"id\": \"<string>\",\n    \"entity_tag\": \"<string>\",\n    \"crn\": \"<string>\",\n    \"locked\": \"<boolean>\",\n    \"disabled\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"created_by\": \"<string>\",\n    \"modified_at\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"support_sessions\": \"<boolean>\",\n    \"action_when_leaked\": \"<string>\",\n    \"description\": \"<string>\",\n    \"iam_id\": \"<string>\",\n    \"account_id\": \"<string>\",\n    \"apikey\": \"<string>\",\n    \"history\": [\n      {\n        \"timestamp\": \"<string>\",\n        \"iam_id\": \"<string>\",\n        \"iam_id_account\": \"<string>\",\n        \"action\": \"<string>\",\n        \"params\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"message\": \"<string>\"\n      },\n      {\n        \"timestamp\": \"<string>\",\n        \"iam_id\": \"<string>\",\n        \"iam_id_account\": \"<string>\",\n        \"action\": \"<string>\",\n        \"params\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"message\": \"<string>\"\n      }\n    ],\n    \"activity\": {\n      \"last_authn\": \"<string>\",\n      \"authn_count\": \"<integer>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-3a644342-c0dc-4841-ba53-5017bd4168fc"
+                    },
+                    {
+                      "id": "c71cd83b-2ed2-423f-8818-777c5ffbe36e",
+                      "name": "Authentication failed or credentials are missing.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id?include_history=false&include_activity=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include the history of the service ID.",
+                              "key": "include_history",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Include the activity of the service ID.",
+                              "key": "include_activity",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-c71cd83b-2ed2-423f-8818-777c5ffbe36e"
+                    },
+                    {
+                      "id": "ccf8e516-fad8-469e-905a-5a58acb58072",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id?include_history=false&include_activity=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include the history of the service ID.",
+                              "key": "include_history",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Include the activity of the service ID.",
+                              "key": "include_activity",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-ccf8e516-fad8-469e-905a-5a58acb58072"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:57:23.000Z",
+                  "updatedAt": "2026-07-28T01:57:23.000Z",
+                  "uid": "35240-75184c5b-78c3-41f8-8712-0fff71e21451"
+                },
+                {
+                  "name": "Update a service ID",
+                  "id": "80af328c-5f7f-45f0-8eea-1bd04e7f4897",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                        "key": "If-Match",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/serviceids/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "serviceids",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "456a970f-3bf6-4c10-9f36-ea83d82f2edf",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the service ID."
+                        }
+                      ]
+                    },
+                    "description": "Update properties of an existing service ID such as name and description."
+                  },
+                  "response": [
+                    {
+                      "id": "ec3a1dcf-eede-42d3-9c7f-f513bea76889",
+                      "name": "Service ID updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity_tag\": \"<string>\",\n  \"crn\": \"<string>\",\n  \"locked\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\",\n  \"account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"history\": [\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    },\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    }\n  ],\n  \"activity\": {\n    \"last_authn\": \"<string>\",\n    \"authn_count\": \"<integer>\"\n  },\n  \"apikey\": {\n    \"id\": \"<string>\",\n    \"entity_tag\": \"<string>\",\n    \"crn\": \"<string>\",\n    \"locked\": \"<boolean>\",\n    \"disabled\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"created_by\": \"<string>\",\n    \"modified_at\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"support_sessions\": \"<boolean>\",\n    \"action_when_leaked\": \"<string>\",\n    \"description\": \"<string>\",\n    \"iam_id\": \"<string>\",\n    \"account_id\": \"<string>\",\n    \"apikey\": \"<string>\",\n    \"history\": [\n      {\n        \"timestamp\": \"<string>\",\n        \"iam_id\": \"<string>\",\n        \"iam_id_account\": \"<string>\",\n        \"action\": \"<string>\",\n        \"params\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"message\": \"<string>\"\n      },\n      {\n        \"timestamp\": \"<string>\",\n        \"iam_id\": \"<string>\",\n        \"iam_id_account\": \"<string>\",\n        \"action\": \"<string>\",\n        \"params\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"message\": \"<string>\"\n      }\n    ],\n    \"activity\": {\n      \"last_authn\": \"<string>\",\n      \"authn_count\": \"<integer>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-ec3a1dcf-eede-42d3-9c7f-f513bea76889"
+                    },
+                    {
+                      "id": "ba67a433-2975-4fcd-9d23-253a8ebb8689",
+                      "name": "The request was invalid or malformed.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-ba67a433-2975-4fcd-9d23-253a8ebb8689"
+                    },
+                    {
+                      "id": "8e603a2f-9804-4bf5-bf09-f3f15bca3d1c",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-8e603a2f-9804-4bf5-bf09-f3f15bca3d1c"
+                    },
+                    {
+                      "id": "349352d4-b629-416c-82ef-4061de13baf0",
+                      "name": "A conflict occurred, typically from an If-Match version mismatch.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-349352d4-b629-416c-82ef-4061de13baf0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:57:23.000Z",
+                  "updatedAt": "2026-07-28T01:57:23.000Z",
+                  "uid": "35240-80af328c-5f7f-45f0-8eea-1bd04e7f4897"
+                },
+                {
+                  "name": "Delete a service ID",
+                  "id": "d7d2f4f3-f6e3-4633-b697-247f177b250b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/serviceids/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "serviceids",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9b633c15-6f7f-4856-b401-6b976570e5d7",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the service ID."
+                        }
+                      ]
+                    },
+                    "description": "Delete a service ID and all associated API keys. This action cannot be undone."
+                  },
+                  "response": [
+                    {
+                      "id": "a0df95ae-1e29-48c4-aabf-f2c7e360e779",
+                      "name": "Service ID deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-a0df95ae-1e29-48c4-aabf-f2c7e360e779"
+                    },
+                    {
+                      "id": "b7110e6d-856a-4c0c-b5c7-b9309a3e28a4",
+                      "name": "Authentication failed or credentials are missing.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-b7110e6d-856a-4c0c-b5c7-b9309a3e28a4"
+                    },
+                    {
+                      "id": "e2495dfa-1ed8-4443-a3cd-bcb0af19c9cb",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/serviceids/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "serviceids",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:23.000Z",
+                      "updatedAt": "2026-07-28T01:57:23.000Z",
+                      "uid": "35240-e2495dfa-1ed8-4443-a3cd-bcb0af19c9cb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:57:23.000Z",
+                  "updatedAt": "2026-07-28T01:57:23.000Z",
+                  "uid": "35240-d7d2f4f3-f6e3-4633-b697-247f177b250b"
+                }
+              ],
+              "id": "b3a6fe12-eb78-417e-9a7e-9fc617468e06",
+              "createdAt": "2026-07-28T01:57:23.000Z",
+              "updatedAt": "2026-07-28T01:57:23.000Z",
+              "uid": "35240-b3a6fe12-eb78-417e-9a7e-9fc617468e06"
+            },
+            {
+              "name": "List service IDs",
+              "id": "b91e3d66-ba67-4e3d-a8b5-dd5f02e3adaa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/serviceids/?account_id=<string>&name=<string>&pagesize=<integer>&pagetoken=<string>&sort=<string>&order=asc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "serviceids",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "The account ID of the service IDs to query.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter service IDs by name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "pagesize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Page token from a previous request for pagination.",
+                      "key": "pagetoken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort results by.",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order.",
+                      "key": "order",
+                      "value": "asc"
+                    }
+                  ]
+                },
+                "description": "List service IDs in an account. Results can be filtered by name, sorted, and paginated."
+              },
+              "response": [
+                {
+                  "id": "1da54a6a-da0f-4e68-bfcb-0d41b98bd083",
+                  "name": "List of service IDs returned successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/serviceids/?account_id=<string>&name=<string>&pagesize=<integer>&pagetoken=<string>&sort=<string>&order=asc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "serviceids",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The account ID of the service IDs to query.",
+                          "key": "account_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter service IDs by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "pagesize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Page token from a previous request for pagination.",
+                          "key": "pagetoken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Field to sort results by.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort order.",
+                          "key": "order",
+                          "value": "asc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"offset\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"first\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"next\": \"<string>\",\n  \"serviceids\": [\n    {\n      \"id\": \"<string>\",\n      \"entity_tag\": \"<string>\",\n      \"crn\": \"<string>\",\n      \"locked\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\",\n      \"modified_at\": \"<dateTime>\",\n      \"account_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unique_instance_crns\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"history\": [\n        {\n          \"timestamp\": \"<string>\",\n          \"iam_id\": \"<string>\",\n          \"iam_id_account\": \"<string>\",\n          \"action\": \"<string>\",\n          \"params\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"message\": \"<string>\"\n        },\n        {\n          \"timestamp\": \"<string>\",\n          \"iam_id\": \"<string>\",\n          \"iam_id_account\": \"<string>\",\n          \"action\": \"<string>\",\n          \"params\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"message\": \"<string>\"\n        }\n      ],\n      \"activity\": {\n        \"last_authn\": \"<string>\",\n        \"authn_count\": \"<integer>\"\n      },\n      \"apikey\": {\n        \"id\": \"<string>\",\n        \"entity_tag\": \"<string>\",\n        \"crn\": \"<string>\",\n        \"locked\": \"<boolean>\",\n        \"disabled\": \"<boolean>\",\n        \"created_at\": \"<dateTime>\",\n        \"created_by\": \"<string>\",\n        \"modified_at\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"support_sessions\": \"<boolean>\",\n        \"action_when_leaked\": \"<string>\",\n        \"description\": \"<string>\",\n        \"iam_id\": \"<string>\",\n        \"account_id\": \"<string>\",\n        \"apikey\": \"<string>\",\n        \"history\": [\n          {\n            \"timestamp\": \"<string>\",\n            \"iam_id\": \"<string>\",\n            \"iam_id_account\": \"<string>\",\n            \"action\": \"<string>\",\n            \"params\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"message\": \"<string>\"\n          },\n          {\n            \"timestamp\": \"<string>\",\n            \"iam_id\": \"<string>\",\n            \"iam_id_account\": \"<string>\",\n            \"action\": \"<string>\",\n            \"params\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"message\": \"<string>\"\n          }\n        ],\n        \"activity\": {\n          \"last_authn\": \"<string>\",\n          \"authn_count\": \"<integer>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity_tag\": \"<string>\",\n      \"crn\": \"<string>\",\n      \"locked\": \"<boolean>\",\n      \"created_at\": \"<dateTime>\",\n      \"modified_at\": \"<dateTime>\",\n      \"account_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"unique_instance_crns\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"history\": [\n        {\n          \"timestamp\": \"<string>\",\n          \"iam_id\": \"<string>\",\n          \"iam_id_account\": \"<string>\",\n          \"action\": \"<string>\",\n          \"params\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"message\": \"<string>\"\n        },\n        {\n          \"timestamp\": \"<string>\",\n          \"iam_id\": \"<string>\",\n          \"iam_id_account\": \"<string>\",\n          \"action\": \"<string>\",\n          \"params\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"message\": \"<string>\"\n        }\n      ],\n      \"activity\": {\n        \"last_authn\": \"<string>\",\n        \"authn_count\": \"<integer>\"\n      },\n      \"apikey\": {\n        \"id\": \"<string>\",\n        \"entity_tag\": \"<string>\",\n        \"crn\": \"<string>\",\n        \"locked\": \"<boolean>\",\n        \"disabled\": \"<boolean>\",\n        \"created_at\": \"<dateTime>\",\n        \"created_by\": \"<string>\",\n        \"modified_at\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"support_sessions\": \"<boolean>\",\n        \"action_when_leaked\": \"<string>\",\n        \"description\": \"<string>\",\n        \"iam_id\": \"<string>\",\n        \"account_id\": \"<string>\",\n        \"apikey\": \"<string>\",\n        \"history\": [\n          {\n            \"timestamp\": \"<string>\",\n            \"iam_id\": \"<string>\",\n            \"iam_id_account\": \"<string>\",\n            \"action\": \"<string>\",\n            \"params\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"message\": \"<string>\"\n          },\n          {\n            \"timestamp\": \"<string>\",\n            \"iam_id\": \"<string>\",\n            \"iam_id_account\": \"<string>\",\n            \"action\": \"<string>\",\n            \"params\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"message\": \"<string>\"\n          }\n        ],\n        \"activity\": {\n          \"last_authn\": \"<string>\",\n          \"authn_count\": \"<integer>\"\n        }\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:57:23.000Z",
+                  "updatedAt": "2026-07-28T01:57:23.000Z",
+                  "uid": "35240-1da54a6a-da0f-4e68-bfcb-0d41b98bd083"
+                },
+                {
+                  "id": "31f280b8-0256-411b-8be8-697cd9ebe897",
+                  "name": "Authentication failed or credentials are missing.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/serviceids/?account_id=<string>&name=<string>&pagesize=<integer>&pagetoken=<string>&sort=<string>&order=asc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "serviceids",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The account ID of the service IDs to query.",
+                          "key": "account_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter service IDs by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "pagesize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Page token from a previous request for pagination.",
+                          "key": "pagetoken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Field to sort results by.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort order.",
+                          "key": "order",
+                          "value": "asc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:23.000Z",
+                  "updatedAt": "2026-07-28T01:57:23.000Z",
+                  "uid": "35240-31f280b8-0256-411b-8be8-697cd9ebe897"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:23.000Z",
+              "updatedAt": "2026-07-28T01:57:23.000Z",
+              "uid": "35240-b91e3d66-ba67-4e3d-a8b5-dd5f02e3adaa"
+            },
+            {
+              "name": "Create a service ID",
+              "id": "2578e8ea-c4ae-4409-8acc-6161e66c1ad6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apikey\": {\n    \"name\": \"<string>\",\n    \"iam_id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"account_id\": \"<string>\",\n    \"apikey\": \"<string>\",\n    \"store_value\": \"<boolean>\",\n    \"support_sessions\": \"<boolean>\",\n    \"action_when_leaked\": \"<string>\",\n    \"expires_at\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/serviceids/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "serviceids",
+                    ""
+                  ]
+                },
+                "description": "Create a new service ID for an IBM Cloud account. Service IDs are used by applications and services to authenticate with IBM Cloud."
+              },
+              "response": [
+                {
+                  "id": "218c222a-fc8e-4758-a9a8-25f298c5b3ef",
+                  "name": "Service ID created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apikey\": {\n    \"name\": \"<string>\",\n    \"iam_id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"account_id\": \"<string>\",\n    \"apikey\": \"<string>\",\n    \"store_value\": \"<boolean>\",\n    \"support_sessions\": \"<boolean>\",\n    \"action_when_leaked\": \"<string>\",\n    \"expires_at\": \"<dateTime>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/serviceids/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "serviceids",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity_tag\": \"<string>\",\n  \"crn\": \"<string>\",\n  \"locked\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\",\n  \"account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"history\": [\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    },\n    {\n      \"timestamp\": \"<string>\",\n      \"iam_id\": \"<string>\",\n      \"iam_id_account\": \"<string>\",\n      \"action\": \"<string>\",\n      \"params\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"message\": \"<string>\"\n    }\n  ],\n  \"activity\": {\n    \"last_authn\": \"<string>\",\n    \"authn_count\": \"<integer>\"\n  },\n  \"apikey\": {\n    \"id\": \"<string>\",\n    \"entity_tag\": \"<string>\",\n    \"crn\": \"<string>\",\n    \"locked\": \"<boolean>\",\n    \"disabled\": \"<boolean>\",\n    \"created_at\": \"<dateTime>\",\n    \"created_by\": \"<string>\",\n    \"modified_at\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"support_sessions\": \"<boolean>\",\n    \"action_when_leaked\": \"<string>\",\n    \"description\": \"<string>\",\n    \"iam_id\": \"<string>\",\n    \"account_id\": \"<string>\",\n    \"apikey\": \"<string>\",\n    \"history\": [\n      {\n        \"timestamp\": \"<string>\",\n        \"iam_id\": \"<string>\",\n        \"iam_id_account\": \"<string>\",\n        \"action\": \"<string>\",\n        \"params\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"message\": \"<string>\"\n      },\n      {\n        \"timestamp\": \"<string>\",\n        \"iam_id\": \"<string>\",\n        \"iam_id_account\": \"<string>\",\n        \"action\": \"<string>\",\n        \"params\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"message\": \"<string>\"\n      }\n    ],\n    \"activity\": {\n      \"last_authn\": \"<string>\",\n      \"authn_count\": \"<integer>\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:57:23.000Z",
+                  "updatedAt": "2026-07-28T01:57:23.000Z",
+                  "uid": "35240-218c222a-fc8e-4758-a9a8-25f298c5b3ef"
+                },
+                {
+                  "id": "e1ee8528-ad7a-4fac-9b12-b2e2378738bd",
+                  "name": "The request was invalid or malformed.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apikey\": {\n    \"name\": \"<string>\",\n    \"iam_id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"account_id\": \"<string>\",\n    \"apikey\": \"<string>\",\n    \"store_value\": \"<boolean>\",\n    \"support_sessions\": \"<boolean>\",\n    \"action_when_leaked\": \"<string>\",\n    \"expires_at\": \"<dateTime>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/serviceids/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "serviceids",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:23.000Z",
+                  "updatedAt": "2026-07-28T01:57:23.000Z",
+                  "uid": "35240-e1ee8528-ad7a-4fac-9b12-b2e2378738bd"
+                },
+                {
+                  "id": "29cd2d48-ee76-4864-b91d-62198784711a",
+                  "name": "Authentication failed or credentials are missing.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"unique_instance_crns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"apikey\": {\n    \"name\": \"<string>\",\n    \"iam_id\": \"<string>\",\n    \"description\": \"<string>\",\n    \"account_id\": \"<string>\",\n    \"apikey\": \"<string>\",\n    \"store_value\": \"<boolean>\",\n    \"support_sessions\": \"<boolean>\",\n    \"action_when_leaked\": \"<string>\",\n    \"expires_at\": \"<dateTime>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/serviceids/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "serviceids",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:23.000Z",
+                  "updatedAt": "2026-07-28T01:57:23.000Z",
+                  "uid": "35240-29cd2d48-ee76-4864-b91d-62198784711a"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:23.000Z",
+              "updatedAt": "2026-07-28T01:57:23.000Z",
+              "uid": "35240-2578e8ea-c4ae-4409-8acc-6161e66c1ad6"
+            }
+          ],
+          "id": "9fcd422d-f0f8-4c7e-b40f-d2666c65b777",
+          "createdAt": "2026-07-28T01:57:23.000Z",
+          "updatedAt": "2026-07-28T01:57:23.000Z",
+          "uid": "35240-9fcd422d-f0f8-4c7e-b40f-d2666c65b777"
+        }
+      ],
+      "id": "3062226e-9e1b-4b09-be76-48c79190c4c6",
+      "createdAt": "2026-07-28T01:57:23.000Z",
+      "updatedAt": "2026-07-28T01:57:23.000Z",
+      "uid": "35240-3062226e-9e1b-4b09-be76-48c79190c4c6"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://iam.cloud.ibm.com"
+    }
+  ]
+}

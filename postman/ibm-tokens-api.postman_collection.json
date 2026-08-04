@@ -1,0 +1,325 @@
+{
+  "info": {
+    "_postman_id": "bc68adcc-5198-431d-817a-7b70d9abb49a",
+    "name": "IBM Cloud IAM API Keys Tokens API",
+    "description": "The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.\n\nContact Support:\n Name: IBM Cloud\n Email: cloud@ibm.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:57:23.000Z",
+    "updatedAt": "2026-07-28T01:57:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bc68adcc-5198-431d-817a-7b70d9abb49a"
+  },
+  "item": [
+    {
+      "name": "identity",
+      "item": [
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Create an IAM access token",
+              "id": "19fb8749-5096-45b1-89e9-126e3bc99ec7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The grant type for token creation.",
+                      "key": "grant_type",
+                      "value": "urn:ibm:params:oauth:grant-type:apikey"
+                    },
+                    {
+                      "description": "The API key to use for authentication.",
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The refresh token to use for token renewal.",
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Response type for delegated refresh token. Must be cloud_iam when grant_type is urn:ibm:params:oauth:grant-type:delegated-refresh-token.",
+                      "key": "response_type",
+                      "value": "cloud_iam"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/identity/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "identity",
+                    "token"
+                  ]
+                },
+                "description": "Create an IAM access token for a user or service ID using an API key, refresh token, or delegated refresh token. Tokens are valid for one hour and can be refreshed before expiration."
+              },
+              "response": [
+                {
+                  "id": "073de93c-e115-4056-8375-10857e7dbf5d",
+                  "name": "Token created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The grant type for token creation.",
+                          "key": "grant_type",
+                          "value": "urn:ibm:params:oauth:grant-type:apikey"
+                        },
+                        {
+                          "description": "The API key to use for authentication.",
+                          "key": "apikey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The refresh token to use for token renewal.",
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Response type for delegated refresh token. Must be cloud_iam when grant_type is urn:ibm:params:oauth:grant-type:delegated-refresh-token.",
+                          "key": "response_type",
+                          "value": "cloud_iam"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/identity/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"refresh_token\": \"<string>\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": \"<integer>\",\n  \"expiration\": \"<integer>\",\n  \"scope\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:24.000Z",
+                  "updatedAt": "2026-07-28T01:57:24.000Z",
+                  "uid": "35240-073de93c-e115-4056-8375-10857e7dbf5d"
+                },
+                {
+                  "id": "132c1b06-2542-46c0-b73e-99cc99418391",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The grant type for token creation.",
+                          "key": "grant_type",
+                          "value": "urn:ibm:params:oauth:grant-type:apikey"
+                        },
+                        {
+                          "description": "The API key to use for authentication.",
+                          "key": "apikey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The refresh token to use for token renewal.",
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Response type for delegated refresh token. Must be cloud_iam when grant_type is urn:ibm:params:oauth:grant-type:delegated-refresh-token.",
+                          "key": "response_type",
+                          "value": "cloud_iam"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/identity/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:24.000Z",
+                  "updatedAt": "2026-07-28T01:57:24.000Z",
+                  "uid": "35240-132c1b06-2542-46c0-b73e-99cc99418391"
+                },
+                {
+                  "id": "bab929ef-a3ff-4870-a327-5e1ecd61fdc3",
+                  "name": "Invalid or expired credentials.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The grant type for token creation.",
+                          "key": "grant_type",
+                          "value": "urn:ibm:params:oauth:grant-type:apikey"
+                        },
+                        {
+                          "description": "The API key to use for authentication.",
+                          "key": "apikey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The refresh token to use for token renewal.",
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Response type for delegated refresh token. Must be cloud_iam when grant_type is urn:ibm:params:oauth:grant-type:delegated-refresh-token.",
+                          "key": "response_type",
+                          "value": "cloud_iam"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/identity/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:24.000Z",
+                  "updatedAt": "2026-07-28T01:57:24.000Z",
+                  "uid": "35240-bab929ef-a3ff-4870-a327-5e1ecd61fdc3"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:24.000Z",
+              "updatedAt": "2026-07-28T01:57:24.000Z",
+              "uid": "35240-19fb8749-5096-45b1-89e9-126e3bc99ec7"
+            }
+          ],
+          "id": "d809e8f4-9938-4733-b77b-d3cc635a8e6a",
+          "createdAt": "2026-07-28T01:57:24.000Z",
+          "updatedAt": "2026-07-28T01:57:24.000Z",
+          "uid": "35240-d809e8f4-9938-4733-b77b-d3cc635a8e6a"
+        }
+      ],
+      "id": "1d6d2ad9-1a09-4cfc-8763-9889f36fbf39",
+      "createdAt": "2026-07-28T01:57:24.000Z",
+      "updatedAt": "2026-07-28T01:57:24.000Z",
+      "uid": "35240-1d6d2ad9-1a09-4cfc-8763-9889f36fbf39"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://iam.cloud.ibm.com"
+    }
+  ]
+}

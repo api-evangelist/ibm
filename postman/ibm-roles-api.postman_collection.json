@@ -1,0 +1,1229 @@
+{
+  "info": {
+    "_postman_id": "faad6540-067c-45dd-8c92-e637d4570e1a",
+    "name": "IBM Cloud IAM API Keys Roles API",
+    "description": "The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.\n\nContact Support:\n Name: IBM Cloud\n Email: cloud@ibm.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:57:18.000Z",
+    "updatedAt": "2026-07-28T01:57:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-faad6540-067c-45dd-8c92-e637d4570e1a"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "roles",
+          "item": [
+            {
+              "name": "{role_id}",
+              "item": [
+                {
+                  "name": "Get a role",
+                  "id": "5e90c805-e7c6-4f73-9a89-0337635a5a02",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/roles/:role_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "roles",
+                        ":role_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4121b5cc-940e-4a16-a850-edbe19aba76f",
+                          "key": "role_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the role."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a specific role."
+                  },
+                  "response": [
+                    {
+                      "id": "f8714401-d8d1-4113-9699-4576013e32e2",
+                      "name": "Role details returned successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"crn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"created_by_id\": \"<string>\",\n  \"last_modified_at\": \"<dateTime>\",\n  \"last_modified_by_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-f8714401-d8d1-4113-9699-4576013e32e2"
+                    },
+                    {
+                      "id": "a64acb44-0951-49d5-8ffc-16065b14a56f",
+                      "name": "Authentication failed or credentials are missing.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-a64acb44-0951-49d5-8ffc-16065b14a56f"
+                    },
+                    {
+                      "id": "0b2cf848-a041-471c-a2e4-54ae27497bc4",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-0b2cf848-a041-471c-a2e4-54ae27497bc4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:57:19.000Z",
+                  "updatedAt": "2026-07-28T01:57:19.000Z",
+                  "uid": "35240-5e90c805-e7c6-4f73-9a89-0337635a5a02"
+                },
+                {
+                  "name": "Replace a custom role",
+                  "id": "f1fd4be6-b47c-4d61-87b1-1bef82aedf56",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                        "key": "If-Match",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/roles/:role_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "roles",
+                        ":role_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3369a0d0-7db9-4c93-a9d0-0ede9c31a9a3",
+                          "key": "role_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the role."
+                        }
+                      ]
+                    },
+                    "description": "Replace the definition of an existing custom role with an updated set of actions."
+                  },
+                  "response": [
+                    {
+                      "id": "7bbe0e35-0939-4718-a298-70a4c91b3bd3",
+                      "name": "Role replaced successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"crn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"created_by_id\": \"<string>\",\n  \"last_modified_at\": \"<dateTime>\",\n  \"last_modified_by_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-7bbe0e35-0939-4718-a298-70a4c91b3bd3"
+                    },
+                    {
+                      "id": "719471e4-8046-42b2-aabf-f193a17caafd",
+                      "name": "The request was invalid or malformed.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-719471e4-8046-42b2-aabf-f193a17caafd"
+                    },
+                    {
+                      "id": "e338153d-ada6-41e2-875a-353a10a358e5",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-e338153d-ada6-41e2-875a-353a10a358e5"
+                    },
+                    {
+                      "id": "e43cdd89-2540-48b2-889b-d0fe438ead8d",
+                      "name": "A conflict occurred, typically from an If-Match version mismatch.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                            "key": "If-Match",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-e43cdd89-2540-48b2-889b-d0fe438ead8d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:57:19.000Z",
+                  "updatedAt": "2026-07-28T01:57:19.000Z",
+                  "uid": "35240-f1fd4be6-b47c-4d61-87b1-1bef82aedf56"
+                },
+                {
+                  "name": "Delete a custom role",
+                  "id": "d7925b9a-94ee-482c-99cc-3ca5042321ca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/roles/:role_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "roles",
+                        ":role_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "292a0a24-2817-413b-947c-85e312ba3e62",
+                          "key": "role_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the role."
+                        }
+                      ]
+                    },
+                    "description": "Remove a custom role. System-defined roles cannot be deleted."
+                  },
+                  "response": [
+                    {
+                      "id": "a2322129-a127-4852-8dc4-0dfe71e2baa7",
+                      "name": "Role deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-a2322129-a127-4852-8dc4-0dfe71e2baa7"
+                    },
+                    {
+                      "id": "46cd92c2-eff5-4812-82b5-ca9526503c37",
+                      "name": "Authentication failed or credentials are missing.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-46cd92c2-eff5-4812-82b5-ca9526503c37"
+                    },
+                    {
+                      "id": "bba0998a-6016-4756-bc5d-ab1b2356756f",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/roles/:role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "roles",
+                            ":role_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "role_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:57:19.000Z",
+                      "updatedAt": "2026-07-28T01:57:19.000Z",
+                      "uid": "35240-bba0998a-6016-4756-bc5d-ab1b2356756f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:57:19.000Z",
+                  "updatedAt": "2026-07-28T01:57:19.000Z",
+                  "uid": "35240-d7925b9a-94ee-482c-99cc-3ca5042321ca"
+                }
+              ],
+              "id": "4a6d022d-9d53-4679-aaab-bac5fc665211",
+              "createdAt": "2026-07-28T01:57:19.000Z",
+              "updatedAt": "2026-07-28T01:57:19.000Z",
+              "uid": "35240-4a6d022d-9d53-4679-aaab-bac5fc665211"
+            },
+            {
+              "name": "List IAM roles",
+              "id": "24e5cb54-bf32-441e-94fc-5f3c70dea394",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/roles?account_id=<string>&service_name=<string>&source_service_name=<string>&policy_type=<string>&service_group_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "description": "The account ID to list custom roles for.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter roles by the service they apply to.",
+                      "key": "service_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the source service name for authorization policies.",
+                      "key": "source_service_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by policy type.",
+                      "key": "policy_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the service group ID.",
+                      "key": "service_group_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List system-defined and custom roles available in the account. Results can be filtered by service name."
+              },
+              "response": [
+                {
+                  "id": "a06821f1-7d9d-4c57-b7c4-03ddefa0608b",
+                  "name": "List of roles returned successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/roles?account_id=<string>&service_name=<string>&source_service_name=<string>&policy_type=<string>&service_group_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "roles"
+                      ],
+                      "query": [
+                        {
+                          "description": "The account ID to list custom roles for.",
+                          "key": "account_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter roles by the service they apply to.",
+                          "key": "service_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the source service name for authorization policies.",
+                          "key": "source_service_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by policy type.",
+                          "key": "policy_type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the service group ID.",
+                          "key": "service_group_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"custom_roles\": [\n    {\n      \"id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"actions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"crn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_id\": \"<string>\",\n      \"service_name\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_id\": \"<string>\",\n      \"last_modified_at\": \"<dateTime>\",\n      \"last_modified_by_id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"actions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"crn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_id\": \"<string>\",\n      \"service_name\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_id\": \"<string>\",\n      \"last_modified_at\": \"<dateTime>\",\n      \"last_modified_by_id\": \"<string>\"\n    }\n  ],\n  \"service_roles\": [\n    {\n      \"id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"actions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"crn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_id\": \"<string>\",\n      \"service_name\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_id\": \"<string>\",\n      \"last_modified_at\": \"<dateTime>\",\n      \"last_modified_by_id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"actions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"crn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_id\": \"<string>\",\n      \"service_name\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_id\": \"<string>\",\n      \"last_modified_at\": \"<dateTime>\",\n      \"last_modified_by_id\": \"<string>\"\n    }\n  ],\n  \"system_roles\": [\n    {\n      \"id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"actions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"crn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_id\": \"<string>\",\n      \"service_name\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_id\": \"<string>\",\n      \"last_modified_at\": \"<dateTime>\",\n      \"last_modified_by_id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"actions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"crn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_id\": \"<string>\",\n      \"service_name\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_id\": \"<string>\",\n      \"last_modified_at\": \"<dateTime>\",\n      \"last_modified_by_id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:57:19.000Z",
+                  "updatedAt": "2026-07-28T01:57:19.000Z",
+                  "uid": "35240-a06821f1-7d9d-4c57-b7c4-03ddefa0608b"
+                },
+                {
+                  "id": "67f07c29-fbdd-4bbf-bf4d-047bbbdea79f",
+                  "name": "Authentication failed or credentials are missing.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/roles?account_id=<string>&service_name=<string>&source_service_name=<string>&policy_type=<string>&service_group_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "roles"
+                      ],
+                      "query": [
+                        {
+                          "description": "The account ID to list custom roles for.",
+                          "key": "account_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter roles by the service they apply to.",
+                          "key": "service_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the source service name for authorization policies.",
+                          "key": "source_service_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by policy type.",
+                          "key": "policy_type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the service group ID.",
+                          "key": "service_group_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:19.000Z",
+                  "updatedAt": "2026-07-28T01:57:19.000Z",
+                  "uid": "35240-67f07c29-fbdd-4bbf-bf4d-047bbbdea79f"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:19.000Z",
+              "updatedAt": "2026-07-28T01:57:19.000Z",
+              "uid": "35240-24e5cb54-bf32-441e-94fc-5f3c70dea394"
+            },
+            {
+              "name": "Create a custom role",
+              "id": "c47e9771-1e29-4959-8148-add6fd344a97",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/roles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "roles"
+                  ]
+                },
+                "description": "Create a custom role with a set of actions for a specific service. Custom roles extend the built-in platform and service roles."
+              },
+              "response": [
+                {
+                  "id": "52b274ee-b26f-4b86-907d-ac2cbdd208cb",
+                  "name": "Custom role created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"crn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"created_by_id\": \"<string>\",\n  \"last_modified_at\": \"<dateTime>\",\n  \"last_modified_by_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:19.000Z",
+                  "updatedAt": "2026-07-28T01:57:19.000Z",
+                  "uid": "35240-52b274ee-b26f-4b86-907d-ac2cbdd208cb"
+                },
+                {
+                  "id": "44b27182-0af3-4368-87d1-ab413fff8f82",
+                  "name": "The request was invalid or malformed.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:19.000Z",
+                  "updatedAt": "2026-07-28T01:57:19.000Z",
+                  "uid": "35240-44b27182-0af3-4368-87d1-ab413fff8f82"
+                },
+                {
+                  "id": "a3bf5721-5b3d-4fa4-9bf2-ed4acaccc487",
+                  "name": "Authentication failed or credentials are missing.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:19.000Z",
+                  "updatedAt": "2026-07-28T01:57:19.000Z",
+                  "uid": "35240-a3bf5721-5b3d-4fa4-9bf2-ed4acaccc487"
+                },
+                {
+                  "id": "6ae192c9-b730-4e4e-93c0-3f54b3c112e7",
+                  "name": "A conflict occurred, typically from an If-Match version mismatch.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"display_name\": \"<string>\",\n  \"actions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"service_name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"context\": {\n    \"transaction_id\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"user_agent\": \"<string>\",\n    \"url\": \"<string>\",\n    \"instance_id\": \"<string>\",\n    \"thread_id\": \"<string>\",\n    \"host\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"elapsed_time\": \"<string>\",\n    \"cluster_name\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\",\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"more_info\": \"<string>\"\n    }\n  ],\n  \"trace\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:19.000Z",
+                  "updatedAt": "2026-07-28T01:57:19.000Z",
+                  "uid": "35240-6ae192c9-b730-4e4e-93c0-3f54b3c112e7"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:19.000Z",
+              "updatedAt": "2026-07-28T01:57:19.000Z",
+              "uid": "35240-c47e9771-1e29-4959-8148-add6fd344a97"
+            }
+          ],
+          "id": "fa7a1d5a-10bf-4d95-9742-f379a833cd4e",
+          "createdAt": "2026-07-28T01:57:19.000Z",
+          "updatedAt": "2026-07-28T01:57:19.000Z",
+          "uid": "35240-fa7a1d5a-10bf-4d95-9742-f379a833cd4e"
+        }
+      ],
+      "id": "595f1daf-eccb-4c08-b6e5-0e3435f98fe7",
+      "createdAt": "2026-07-28T01:57:19.000Z",
+      "updatedAt": "2026-07-28T01:57:19.000Z",
+      "uid": "35240-595f1daf-eccb-4c08-b6e5-0e3435f98fe7"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://iam.cloud.ibm.com"
+    }
+  ]
+}

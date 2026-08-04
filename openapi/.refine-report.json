@@ -1,0 +1,26 @@
+{
+  "provider": "ibm",
+  "sources": [
+    "ibm-api-keys-api-openapi.yml",
+    "ibm-claim-rules-api-openapi.yml",
+    "ibm-policies-api-openapi.yml",
+    "ibm-roles-api-openapi.yml",
+    "ibm-service-ids-api-openapi.yml",
+    "ibm-tokens-api-openapi.yml",
+    "ibm-trusted-profiles-api-openapi.yml"
+  ],
+  "outputs": [
+    "ibm-api-keys-api-openapi.yml",
+    "ibm-claim-rules-api-openapi.yml",
+    "ibm-policies-api-openapi.yml",
+    "ibm-roles-api-openapi.yml",
+    "ibm-service-ids-api-openapi.yml",
+    "ibm-tokens-api-openapi.yml",
+    "ibm-trusted-profiles-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

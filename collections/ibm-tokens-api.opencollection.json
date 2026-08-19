@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IBM Cloud IAM API Keys Tokens API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an IAM access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/identity/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "apikey",
+                  "value": ""
+                },
+                {
+                  "name": "refresh_token",
+                  "value": ""
+                },
+                {
+                  "name": "response_type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create an IAM access token for a user or service ID using an API key, refresh token, or delegated refresh token. Tokens are valid for one hour and can be refreshed before expiration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

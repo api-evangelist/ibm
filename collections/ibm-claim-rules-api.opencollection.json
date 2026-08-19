@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IBM Cloud IAM API Keys Claim Rules API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Claim Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List claim rules for a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              }
+            ]
+          },
+          "docs": "Retrieve all claim rules defined for a specific trusted profile."
+        },
+        {
+          "info": {
+            "name": "Create a claim rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a claim rule for a trusted profile. Claim rules define conditions that federated users must meet to apply the profile."
+        },
+        {
+          "info": {
+            "name": "Get a claim rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules/:rule-id",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              },
+              {
+                "name": "rule-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the claim rule."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific claim rule in a trusted profile."
+        },
+        {
+          "info": {
+            "name": "Update a claim rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules/:rule-id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              },
+              {
+                "name": "rule-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the claim rule."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing claim rule for a trusted profile."
+        },
+        {
+          "info": {
+            "name": "Delete a claim rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id/rules/:rule-id",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              },
+              {
+                "name": "rule-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the claim rule."
+              }
+            ]
+          },
+          "docs": "Remove a claim rule from a trusted profile."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

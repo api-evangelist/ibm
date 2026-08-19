@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IBM Cloud IAM API Keys Trusted Profiles API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trusted Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List trusted profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/profiles",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID to list trusted profiles for."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter profiles by name."
+              },
+              {
+                "name": "pagesize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "pagetoken",
+                "value": "",
+                "type": "query",
+                "description": "Page token from a previous request."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order."
+              },
+              {
+                "name": "include_history",
+                "value": "",
+                "type": "query",
+                "description": "Include the history of the profiles."
+              }
+            ]
+          },
+          "docs": "List trusted profiles in an account. Trusted profiles allow federated users to establish trust with IBM Cloud."
+        },
+        {
+          "info": {
+            "name": "Create a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/profiles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new trusted profile for federated users to establish trust with IBM Cloud resources."
+        },
+        {
+          "info": {
+            "name": "Get a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              },
+              {
+                "name": "include_activity",
+                "value": "",
+                "type": "query",
+                "description": "Include the activity of the profile."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific trusted profile."
+        },
+        {
+          "info": {
+            "name": "Update a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties of an existing trusted profile."
+        },
+        {
+          "info": {
+            "name": "Delete a trusted profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/profiles/:profile-id",
+            "params": [
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trusted profile."
+              }
+            ]
+          },
+          "docs": "Delete a trusted profile and its associated claim rules and links. This action cannot be undone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

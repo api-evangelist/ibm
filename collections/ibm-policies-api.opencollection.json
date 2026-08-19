@@ -1,0 +1,196 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IBM Cloud IAM API Keys Policies API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List access policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/policies",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID to list policies for."
+              },
+              {
+                "name": "iam_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the IAM ID of the subject."
+              },
+              {
+                "name": "access_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by access group ID."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by policy type."
+              },
+              {
+                "name": "service_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service type."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter by policy state."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of policies to return."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start token."
+              }
+            ]
+          },
+          "docs": "List access policies in an account. Results can be filtered by IAM ID, access group, service type, and state."
+        },
+        {
+          "info": {
+            "name": "Create an access policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/policies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new access policy to grant a subject access to a resource. A policy defines a subject, roles, and resources."
+        },
+        {
+          "info": {
+            "name": "Get an access policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the access policy."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific access policy."
+        },
+        {
+          "info": {
+            "name": "Replace an access policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/policies/:policy_id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the access policy."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace an existing access policy with an updated definition. The entire policy is replaced."
+        },
+        {
+          "info": {
+            "name": "Update policy state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://iam.cloud.ibm.com/v1/policies/:policy_id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the access policy."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate or deactivate an existing access policy."
+        },
+        {
+          "info": {
+            "name": "Delete an access policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the access policy."
+              }
+            ]
+          },
+          "docs": "Remove an access policy. This action cannot be undone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

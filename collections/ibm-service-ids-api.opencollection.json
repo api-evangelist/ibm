@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IBM Cloud IAM API Keys Service IDs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service IDs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List service IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID of the service IDs to query."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter service IDs by name."
+              },
+              {
+                "name": "pagesize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "pagetoken",
+                "value": "",
+                "type": "query",
+                "description": "Page token from a previous request for pagination."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order."
+              }
+            ]
+          },
+          "docs": "List service IDs in an account. Results can be filtered by name, sorted, and paginated."
+        },
+        {
+          "info": {
+            "name": "Create a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new service ID for an IBM Cloud account. Service IDs are used by applications and services to authenticate with IBM Cloud."
+        },
+        {
+          "info": {
+            "name": "Get a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              },
+              {
+                "name": "include_history",
+                "value": "",
+                "type": "query",
+                "description": "Include the history of the service ID."
+              },
+              {
+                "name": "include_activity",
+                "value": "",
+                "type": "query",
+                "description": "Include the activity of the service ID."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a service ID by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Update a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties of an existing service ID such as name and description."
+        },
+        {
+          "info": {
+            "name": "Delete a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              }
+            ]
+          },
+          "docs": "Delete a service ID and all associated API keys. This action cannot be undone."
+        },
+        {
+          "info": {
+            "name": "Lock a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id/lock",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              }
+            ]
+          },
+          "docs": "Lock a service ID to prevent modification or deletion. Locked service IDs remain active."
+        },
+        {
+          "info": {
+            "name": "Unlock a service ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/serviceids/:id/lock",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service ID."
+              }
+            ]
+          },
+          "docs": "Unlock a previously locked service ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

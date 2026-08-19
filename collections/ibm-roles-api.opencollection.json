@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IBM Cloud IAM API Keys Roles API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List IAM roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v2/roles",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID to list custom roles for."
+              },
+              {
+                "name": "service_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter roles by the service they apply to."
+              },
+              {
+                "name": "source_service_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the source service name for authorization policies."
+              },
+              {
+                "name": "policy_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by policy type."
+              },
+              {
+                "name": "service_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the service group ID."
+              }
+            ]
+          },
+          "docs": "List system-defined and custom roles available in the account. Results can be filtered by service name."
+        },
+        {
+          "info": {
+            "name": "Create a custom role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v2/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom role with a set of actions for a specific service. Custom roles extend the built-in platform and service roles."
+        },
+        {
+          "info": {
+            "name": "Get a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v2/roles/:role_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the role."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific role."
+        },
+        {
+          "info": {
+            "name": "Replace a custom role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v2/roles/:role_id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the role."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace the definition of an existing custom role with an updated set of actions."
+        },
+        {
+          "info": {
+            "name": "Delete a custom role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v2/roles/:role_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the role."
+              }
+            ]
+          },
+          "docs": "Remove a custom role. System-defined roles cannot be deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

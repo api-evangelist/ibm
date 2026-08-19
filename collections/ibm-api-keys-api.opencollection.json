@@ -1,0 +1,280 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IBM Cloud IAM API Keys API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List API keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID of the API keys to query."
+              },
+              {
+                "name": "iam_id",
+                "value": "",
+                "type": "query",
+                "description": "The IAM ID associated with the API keys."
+              },
+              {
+                "name": "pagesize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "pagetoken",
+                "value": "",
+                "type": "query",
+                "description": "Page token from a previous request for pagination."
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "Scope of the query, either account or iam_id."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by API key type."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order."
+              }
+            ]
+          },
+          "docs": "List API keys associated with an IAM ID, account, or service ID. Results can be filtered, sorted, and paginated."
+        },
+        {
+          "info": {
+            "name": "Create an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API key for a user or service ID. The API key value is returned only at creation time."
+        },
+        {
+          "info": {
+            "name": "Get API key details by value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/details",
+            "headers": [
+              {
+                "name": "IAM-ApiKey",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "include_history",
+                "value": "",
+                "type": "query",
+                "description": "Include activity history of the API key."
+              }
+            ]
+          },
+          "docs": "Retrieve details of an API key by providing the key value in the IAM-ApiKey header."
+        },
+        {
+          "info": {
+            "name": "Get an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              },
+              {
+                "name": "include_history",
+                "value": "",
+                "type": "query",
+                "description": "Include the history of the API key."
+              },
+              {
+                "name": "include_activity",
+                "value": "",
+                "type": "query",
+                "description": "Include the activity of the API key."
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific API key by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Update an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties of an existing API key such as name and description."
+        },
+        {
+          "info": {
+            "name": "Delete an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Remove an API key permanently. This action cannot be undone."
+        },
+        {
+          "info": {
+            "name": "Lock an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id/lock",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Lock an API key to prevent it from being deleted or modified. Locked keys remain active and can still be used for authentication."
+        },
+        {
+          "info": {
+            "name": "Unlock an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id/lock",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Unlock a previously locked API key to allow modifications and deletion."
+        },
+        {
+          "info": {
+            "name": "Disable an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Disable an API key to prevent it from being used for authentication. The key can be re-enabled later."
+        },
+        {
+          "info": {
+            "name": "Enable an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iam.cloud.ibm.com/v1/apikeys/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Re-enable a previously disabled API key for authentication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

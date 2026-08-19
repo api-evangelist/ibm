@@ -1,0 +1,1347 @@
+{
+  "item": [
+    {
+      "id": "f8b39ac8-3b43-4928-a5ca-77fd32d7f8c5",
+      "name": "Claim Rules",
+      "description": {
+        "content": "Manage claim rules for trusted profiles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f20b7ce7-510d-4c72-b326-d9fff6605ed8",
+          "name": "List claim rules for a trusted profile",
+          "request": {
+            "name": "List claim rules for a trusted profile",
+            "description": {
+              "content": "Retrieve all claim rules defined for a specific trusted profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "profiles",
+                ":profile-id",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile-id",
+                  "description": "(Required) The unique identifier of the trusted profile."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00efb8c2-d336-47e5-9a08-8c9b341f1f6c",
+              "name": "List of claim rules returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"rules\": [\n    {\n      \"id\": \"string\",\n      \"entity_tag\": \"string\",\n      \"created_at\": \"1956-10-14T18:43:28.320Z\",\n      \"modified_at\": \"1984-12-05T16:25:56.086Z\",\n      \"name\": \"string\",\n      \"type\": \"Profile-CR\",\n      \"conditions\": [\n        {\n          \"claim\": \"string\",\n          \"operator\": \"EQUALS\",\n          \"value\": \"string\"\n        },\n        {\n          \"claim\": \"string\",\n          \"operator\": \"IN\",\n          \"value\": \"string\"\n        }\n      ],\n      \"realm_name\": \"string\",\n      \"cr_type\": \"string\",\n      \"expiration\": 8768\n    },\n    {\n      \"id\": \"string\",\n      \"entity_tag\": \"string\",\n      \"created_at\": \"2020-11-11T13:06:05.950Z\",\n      \"modified_at\": \"1975-08-28T07:30:14.014Z\",\n      \"name\": \"string\",\n      \"type\": \"Profile-CR\",\n      \"conditions\": [\n        {\n          \"claim\": \"string\",\n          \"operator\": \"NOT_EQUALS_IGNORE_CASE\",\n          \"value\": \"string\"\n        },\n        {\n          \"claim\": \"string\",\n          \"operator\": \"IN\",\n          \"value\": \"string\"\n        }\n      ],\n      \"realm_name\": \"string\",\n      \"cr_type\": \"string\",\n      \"expiration\": 7892\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f50a411-eff9-4f54-910a-3e74c524d384",
+              "name": "Authentication failed or credentials are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 9515,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87c69d3e-f18c-43d8-9978-c792c56d8c7d",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 9515,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0410d7a6-13da-497e-b02d-7fb5b0858d56",
+          "name": "Create a claim rule",
+          "request": {
+            "name": "Create a claim rule",
+            "description": {
+              "content": "Create a claim rule for a trusted profile. Claim rules define conditions that federated users must meet to apply the profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "profiles",
+                ":profile-id",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile-id",
+                  "description": "(Required) The unique identifier of the trusted profile."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"conditions\": [\n    {\n      \"claim\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"claim\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"realm_name\": \"<string>\",\n  \"cr_type\": \"<string>\",\n  \"expiration\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8cbee6e0-bdc5-41ba-93a2-7d566f30598b",
+              "name": "Claim rule created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"NOT_EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"realm_name\": \"<string>\",\n  \"cr_type\": \"<string>\",\n  \"expiration\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity_tag\": \"string\",\n  \"created_at\": \"2009-12-18T15:50:21.191Z\",\n  \"modified_at\": \"2004-06-26T05:48:05.398Z\",\n  \"name\": \"string\",\n  \"type\": \"Profile-CR\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"CONTAINS\",\n      \"value\": \"string\"\n    }\n  ],\n  \"realm_name\": \"string\",\n  \"cr_type\": \"string\",\n  \"expiration\": 5349\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d7b5ddb-2c40-43ee-af76-f04dc18efd71",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"NOT_EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"realm_name\": \"<string>\",\n  \"cr_type\": \"<string>\",\n  \"expiration\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 9515,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab1ef1c4-0d41-44c8-bb1f-293702fa9271",
+              "name": "Authentication failed or credentials are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"NOT_EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"realm_name\": \"<string>\",\n  \"cr_type\": \"<string>\",\n  \"expiration\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 6708,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3ce7d08-3c0c-4748-bd98-6957c1f8caa3",
+          "name": "Get a claim rule",
+          "request": {
+            "name": "Get a claim rule",
+            "description": {
+              "content": "Retrieve details of a specific claim rule in a trusted profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "profiles",
+                ":profile-id",
+                "rules",
+                ":rule-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile-id",
+                  "description": "(Required) The unique identifier of the trusted profile."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rule-id",
+                  "description": "(Required) The unique identifier of the claim rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e9bfeab-bbe3-47cf-b8ca-69ffa7605b5a",
+              "name": "Claim rule details returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity_tag\": \"string\",\n  \"created_at\": \"2009-12-18T15:50:21.191Z\",\n  \"modified_at\": \"2004-06-26T05:48:05.398Z\",\n  \"name\": \"string\",\n  \"type\": \"Profile-CR\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"CONTAINS\",\n      \"value\": \"string\"\n    }\n  ],\n  \"realm_name\": \"string\",\n  \"cr_type\": \"string\",\n  \"expiration\": 5349\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19475657-bf62-44d8-851d-10c54a43a4f2",
+              "name": "Authentication failed or credentials are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 6708,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8b4aa6e-a2d6-416e-a92e-fa8d0b401c0a",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 6708,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1935e8a-f378-490f-912d-d83f23aa9184",
+          "name": "Update a claim rule",
+          "request": {
+            "name": "Update a claim rule",
+            "description": {
+              "content": "Update an existing claim rule for a trusted profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "profiles",
+                ":profile-id",
+                "rules",
+                ":rule-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile-id",
+                  "description": "(Required) The unique identifier of the trusted profile."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rule-id",
+                  "description": "(Required) The unique identifier of the claim rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"conditions\": [\n    {\n      \"claim\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"claim\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"realm_name\": \"<string>\",\n  \"cr_type\": \"<string>\",\n  \"expiration\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9516b502-2181-415c-8d17-74bb7278986f",
+              "name": "Claim rule updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"CONTAINS\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"NOT_EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"realm_name\": \"<string>\",\n  \"cr_type\": \"<string>\",\n  \"expiration\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity_tag\": \"string\",\n  \"created_at\": \"2009-12-18T15:50:21.191Z\",\n  \"modified_at\": \"2004-06-26T05:48:05.398Z\",\n  \"name\": \"string\",\n  \"type\": \"Profile-CR\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"CONTAINS\",\n      \"value\": \"string\"\n    }\n  ],\n  \"realm_name\": \"string\",\n  \"cr_type\": \"string\",\n  \"expiration\": 5349\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d842474-5068-42de-9449-9174a3fc739c",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"CONTAINS\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"NOT_EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"realm_name\": \"<string>\",\n  \"cr_type\": \"<string>\",\n  \"expiration\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 6708,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdd22bc6-a48e-4c58-baed-21aa0fe80ce9",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"CONTAINS\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"NOT_EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"realm_name\": \"<string>\",\n  \"cr_type\": \"<string>\",\n  \"expiration\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 6708,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b23e40f6-120b-47ab-aa16-4aecab1948ca",
+              "name": "A conflict occurred, typically from an If-Match version mismatch.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"conditions\": [\n    {\n      \"claim\": \"string\",\n      \"operator\": \"CONTAINS\",\n      \"value\": \"string\"\n    },\n    {\n      \"claim\": \"string\",\n      \"operator\": \"NOT_EQUALS_IGNORE_CASE\",\n      \"value\": \"string\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"realm_name\": \"<string>\",\n  \"cr_type\": \"<string>\",\n  \"expiration\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 9515,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2f0ffea-51d2-4477-a4bc-980e3b444ff9",
+          "name": "Delete a claim rule",
+          "request": {
+            "name": "Delete a claim rule",
+            "description": {
+              "content": "Remove a claim rule from a trusted profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "profiles",
+                ":profile-id",
+                "rules",
+                ":rule-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile-id",
+                  "description": "(Required) The unique identifier of the trusted profile."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rule-id",
+                  "description": "(Required) The unique identifier of the claim rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5fce57d-b425-4ae2-ac1d-fe7a56aff1e4",
+              "name": "Claim rule deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22d03439-f9a8-465b-a3d0-4da34e372c87",
+              "name": "Authentication failed or credentials are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 6708,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4af38174-43dc-41a6-9c15-62e2f70ffd8d",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "profiles",
+                    ":profile-id",
+                    "rules",
+                    ":rule-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile-id",
+                      "description": "(Required) The unique identifier of the trusted profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rule-id",
+                      "description": "(Required) The unique identifier of the claim rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 6708,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://iam.cloud.ibm.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b02a9166-bb46-479e-a205-c49532ae022c",
+    "name": "IBM Cloud IAM API Keys Claim Rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.\n\nContact Support:\n Name: IBM Cloud\n Email: cloud@ibm.com",
+      "type": "text/plain"
+    }
+  }
+}

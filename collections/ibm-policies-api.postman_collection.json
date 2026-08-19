@@ -1,0 +1,1605 @@
+{
+  "item": [
+    {
+      "id": "5df9f236-db56-4004-8eef-bfbbd3057906",
+      "name": "Policies",
+      "description": {
+        "content": "Create and manage IAM access policies",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "208b4582-848a-40c1-81fd-c18f43fdfe07",
+          "name": "List access policies",
+          "request": {
+            "name": "List access policies",
+            "description": {
+              "content": "List access policies in an account. Results can be filtered by IAM ID, access group, service type, and state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "(Required) The account ID to list policies for."
+                },
+                {
+                  "disabled": false,
+                  "key": "iam_id",
+                  "value": "<string>",
+                  "description": "Filter by the IAM ID of the subject."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_group_id",
+                  "value": "<string>",
+                  "description": "Filter by access group ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by policy type."
+                },
+                {
+                  "disabled": false,
+                  "key": "service_type",
+                  "value": "<string>",
+                  "description": "Filter by service type."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Filter by policy state."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of policies to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>",
+                  "description": "Pagination start token."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a880ca4-9074-4302-b80e-0e53f15ca990",
+              "name": "List of access policies returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iam_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"policies\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"authorization\",\n      \"description\": \"string\",\n      \"subjects\": [\n        {\n          \"attributes\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"attributes\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"roles\": [\n        {\n          \"role_id\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"role_id\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"resources\": [\n        {\n          \"attributes\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"attributes\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"href\": \"string\",\n      \"created_at\": \"1989-07-09T00:26:54.537Z\",\n      \"created_by_id\": \"string\",\n      \"last_modified_at\": \"1959-06-02T12:54:02.770Z\",\n      \"last_modified_by_id\": \"string\",\n      \"state\": \"active\"\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"access\",\n      \"description\": \"string\",\n      \"subjects\": [\n        {\n          \"attributes\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"attributes\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"roles\": [\n        {\n          \"role_id\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"role_id\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"resources\": [\n        {\n          \"attributes\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"attributes\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"href\": \"string\",\n      \"created_at\": \"1975-07-27T14:46:55.337Z\",\n      \"created_by_id\": \"string\",\n      \"last_modified_at\": \"2006-11-06T06:24:06.655Z\",\n      \"last_modified_by_id\": \"string\",\n      \"state\": \"active\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de41a554-6f1e-4f59-9be6-157142ed4e08",
+              "name": "Authentication failed or credentials are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iam_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 4890,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "991b4184-bd62-4095-ba34-fd67d943539f",
+          "name": "Create an access policy",
+          "request": {
+            "name": "Create an access policy",
+            "description": {
+              "content": "Create a new access policy to grant a subject access to a resource. A policy defines a subject, roles, and resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"role_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b997904c-7c42-4f81-932f-286e9cfc2fac",
+              "name": "Access policy created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"access\",\n  \"description\": \"string\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    }\n  ],\n  \"href\": \"string\",\n  \"created_at\": \"1966-05-29T05:40:09.674Z\",\n  \"created_by_id\": \"string\",\n  \"last_modified_at\": \"1949-01-06T11:16:44.375Z\",\n  \"last_modified_by_id\": \"string\",\n  \"state\": \"active\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db3e12f-8881-4dab-a325-e69b1c2d4410",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 4890,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4dcf7e22-422c-493d-961c-82395ad46059",
+              "name": "Authentication failed or credentials are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a3408cb-f0da-4678-a5ed-c3ec2e438114",
+              "name": "A conflict occurred, typically from an If-Match version mismatch.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 4890,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94db8a11-741b-4312-b6ba-684f9512a55b",
+          "name": "Get an access policy",
+          "request": {
+            "name": "Get an access policy",
+            "description": {
+              "content": "Retrieve details of a specific access policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "policies",
+                ":policy_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policy_id",
+                  "description": "(Required) The unique identifier of the access policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e16c2e1-c40d-4cac-9c9a-578e6c63808c",
+              "name": "Access policy details returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"access\",\n  \"description\": \"string\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    }\n  ],\n  \"href\": \"string\",\n  \"created_at\": \"1966-05-29T05:40:09.674Z\",\n  \"created_by_id\": \"string\",\n  \"last_modified_at\": \"1949-01-06T11:16:44.375Z\",\n  \"last_modified_by_id\": \"string\",\n  \"state\": \"active\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29ed2fa1-168b-412b-a48b-613f5e55e7e7",
+              "name": "Authentication failed or credentials are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e974d5c9-0755-4342-9e0e-f5123d5ef183",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 4890,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e1b8ab0-57f9-4e4f-a216-5f2571bba0b4",
+          "name": "Replace an access policy",
+          "request": {
+            "name": "Replace an access policy",
+            "description": {
+              "content": "Replace an existing access policy with an updated definition. The entire policy is replaced.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "policies",
+                ":policy_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policy_id",
+                  "description": "(Required) The unique identifier of the access policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"role_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e6da0cd8-8594-4e31-b16b-3c8b6cf67d53",
+              "name": "Access policy replaced successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"access\",\n  \"description\": \"string\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    }\n  ],\n  \"href\": \"string\",\n  \"created_at\": \"1966-05-29T05:40:09.674Z\",\n  \"created_by_id\": \"string\",\n  \"last_modified_at\": \"1949-01-06T11:16:44.375Z\",\n  \"last_modified_by_id\": \"string\",\n  \"state\": \"active\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a001ab20-3ef0-4b26-b29a-9e527ceecb56",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1368d7e-1a5a-4cc5-b7db-0f400eb13c27",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38fcdf9c-1adf-4372-bb39-0679dfdc66e8",
+              "name": "A conflict occurred, typically from an If-Match version mismatch.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "511aca37-a27f-4454-85ae-366b2dbc94b9",
+          "name": "Delete an access policy",
+          "request": {
+            "name": "Delete an access policy",
+            "description": {
+              "content": "Remove an access policy. This action cannot be undone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "policies",
+                ":policy_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policy_id",
+                  "description": "(Required) The unique identifier of the access policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aff8670a-921a-4a8c-9323-14d4e592d71b",
+              "name": "Access policy deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b8af5a46-aa59-4400-8eae-144d809a4fbe",
+              "name": "Authentication failed or credentials are missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f5004cd-0176-43c2-8c5c-90bec4dbde7a",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9c9682a-844c-4c22-97d5-e064a72e9d4e",
+          "name": "Update policy state",
+          "request": {
+            "name": "Update policy state",
+            "description": {
+              "content": "Activate or deactivate an existing access policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "policies",
+                ":policy_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policy_id",
+                  "description": "(Required) The unique identifier of the access policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3973277-13e4-4b6a-922c-d25077ca7b6a",
+              "name": "Policy state updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"access\",\n  \"description\": \"string\",\n  \"subjects\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        }\n      ]\n    }\n  ],\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringExists\"\n        }\n      ]\n    },\n    {\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringEquals\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"operator\": \"stringMatch\"\n        }\n      ]\n    }\n  ],\n  \"href\": \"string\",\n  \"created_at\": \"1966-05-29T05:40:09.674Z\",\n  \"created_by_id\": \"string\",\n  \"last_modified_at\": \"1949-01-06T11:16:44.375Z\",\n  \"last_modified_by_id\": \"string\",\n  \"state\": \"active\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d302474e-8bd9-4afe-8eb9-f6e8f5029393",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a45b87da-13c5-4acd-98dd-3b242602d396",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "921006ab-216d-4d69-800f-0e58a0b62aa2",
+              "name": "A conflict occurred, typically from an If-Match version mismatch.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "policies",
+                    ":policy_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policy_id",
+                      "description": "(Required) The unique identifier of the access policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The entity tag value from a previous GET request used for optimistic concurrency control.",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"context\": {\n    \"transaction_id\": \"string\",\n    \"operation\": \"string\",\n    \"user_agent\": \"string\",\n    \"url\": \"string\",\n    \"instance_id\": \"string\",\n    \"thread_id\": \"string\",\n    \"host\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"elapsed_time\": \"string\",\n    \"cluster_name\": \"string\"\n  },\n  \"status_code\": 2160,\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"more_info\": \"string\"\n    }\n  ],\n  \"trace\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://iam.cloud.ibm.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e5fb469e-5123-4e99-b2fa-38ba079be5cf",
+    "name": "IBM Cloud IAM API Keys Policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.\n\nContact Support:\n Name: IBM Cloud\n Email: cloud@ibm.com",
+      "type": "text/plain"
+    }
+  }
+}

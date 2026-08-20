@@ -54,6 +54,11 @@ apis:
   humanURL: https://www.ibm.com/cloud/code-engine
   baseURL: https://api.us-south.codeengine.cloud.ibm.com
   tags:
+  - Cloud-Native
+  - Containers
+  - Platform
+  - Serverless
+  tags_raw:
   - Cloud Native
   - Containers
   - Platform
@@ -72,6 +77,12 @@ apis:
   humanURL: https://www.ibm.com/products/watsonx-ai
   baseURL: https://us-south.ml.cloud.ibm.com
   tags:
+  - Artificial Intelligence
+  - Foundation Models
+  - Generative AI
+  - Large Language Models
+  - Machine-Learning
+  tags_raw:
   - Artificial Intelligence
   - Foundation Models
   - Generative AI
@@ -110,6 +121,11 @@ apis:
   humanURL: https://www.ibm.com/products/watson-discovery
   baseURL: https://api.us-south.discovery.watson.cloud.ibm.com
   tags:
+  - Artificial Intelligence
+  - Cognitive Search
+  - Content Analytics
+  - Document Understanding
+  tags_raw:
   - AI
   - Cognitive Search
   - Content Analytics
@@ -143,6 +159,11 @@ apis:
   humanURL: https://www.ibm.com/products/kubernetes-service
   baseURL: https://containers.cloud.ibm.com
   tags:
+  - Cloud-Native
+  - Containers
+  - Kubernetes
+  - Orchestration
+  tags_raw:
   - Cloud Native
   - Containers
   - Kubernetes
@@ -192,6 +213,11 @@ apis:
   baseURL: https://us-south.event-notifications.cloud.ibm.com
   tags:
   - Alerts
+  - Event
+  - Messaging
+  - Notification
+  tags_raw:
+  - Alerts
   - Events
   - Messaging
   - Notifications
@@ -207,6 +233,11 @@ apis:
   humanURL: https://www.ibm.com/products/container-registry
   baseURL: https://us.icr.io
   tags:
+  - Container Registry
+  - Containers
+  - Docker
+  - Image
+  tags_raw:
   - Container Registry
   - Containers
   - Docker
@@ -272,6 +303,11 @@ apis:
   humanURL: https://www.ibm.com/products/event-automation
   baseURL: https://us-south.event-streams.cloud.ibm.com
   tags:
+  - Apache Kafka
+  - Event Streaming
+  - Messaging
+  - Pub-Sub
+  tags_raw:
   - Apache Kafka
   - Event Streaming
   - Messaging
@@ -498,6 +534,12 @@ apis:
   humanURL: https://www.ibm.com/products/watsonx-data
   baseURL: https://us-south.lakehouse.cloud.ibm.com
   tags:
+  - Ai Data
+  - Analytics
+  - Data Lakehouse
+  - Data Management
+  - Open-Source
+  tags_raw:
   - AI Data
   - Analytics
   - Data Lakehouse
@@ -747,6 +789,12 @@ apis:
   humanURL: https://www.ibm.com/products/watsonx-ai
   baseURL: https://us-south.ml.cloud.ibm.com
   tags:
+  - Artificial Intelligence
+  - Data Science
+  - Machine-Learning
+  - Model Deployment
+  - Model Training
+  tags_raw:
   - AI
   - Data Science
   - Machine Learning
@@ -777,6 +825,8 @@ apis:
   humanURL: https://www.ibm.com/products/watson-assistant
   baseURL: https://api.us-south.assistant.watson.cloud.ibm.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
@@ -1265,6 +1315,28 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 tags:
+- API Management
+- Artificial Intelligence
+- Billing
+- Cloud Computing
+- Containers
+- Data Governance
+- Databases
+- DevOps
+- Enterprise
+- Generative AI
+- Hybrid Cloud
+- Infrastructure
+- Machine-Learning
+- Networking
+- Observability
+- Security
+- Serverless
+- Storage
+- Watson
+- Watsonx
+- Fortune 100
+tags_raw:
 - API Management
 - Artificial Intelligence
 - Billing

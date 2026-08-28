@@ -14,8 +14,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: ibmCloudIamApi
-  url: ../openapi/ibm-cloud-iam.yml
+- name: apiKeysApi
+  url: ../openapi/ibm-api-keys-api-openapi.yml
+  type: openapi
+- name: serviceIdsApi
+  url: ../openapi/ibm-service-ids-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: deprovision-service-id

@@ -13,8 +13,8 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: ibmCloudIamApi
-  url: ../openapi/ibm-cloud-iam.yml
+- name: rolesApi
+  url: ../openapi/ibm-roles-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: custom-role-lifecycle

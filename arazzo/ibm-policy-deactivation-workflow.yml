@@ -14,8 +14,8 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: ibmCloudIamApi
-  url: ../openapi/ibm-cloud-iam.yml
+- name: policiesApi
+  url: ../openapi/ibm-policies-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: review-and-deactivate-policy

@@ -12,8 +12,11 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: ibmCloudIamApi
-  url: ../openapi/ibm-cloud-iam.yml
+- name: policiesApi
+  url: ../openapi/ibm-policies-api-openapi.yml
+  type: openapi
+- name: rolesApi
+  url: ../openapi/ibm-roles-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: grant-identity-access

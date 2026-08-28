@@ -13,8 +13,8 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: ibmCloudIamApi
-  url: ../openapi/ibm-cloud-iam.yml
+- name: claimRulesApi
+  url: ../openapi/ibm-claim-rules-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: maintain-claim-rule

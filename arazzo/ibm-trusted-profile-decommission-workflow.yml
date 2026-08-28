@@ -13,8 +13,11 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: ibmCloudIamApi
-  url: ../openapi/ibm-cloud-iam.yml
+- name: claimRulesApi
+  url: ../openapi/ibm-claim-rules-api-openapi.yml
+  type: openapi
+- name: trustedProfilesApi
+  url: ../openapi/ibm-trusted-profiles-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: decommission-trusted-profile

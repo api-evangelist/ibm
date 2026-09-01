@@ -305,7 +305,7 @@ apis:
   - Apache Kafka
   - Event Streaming
   - Messaging
-  - Pub/Sub
+  - Pub-Sub
   tags_raw:
   - Apache Kafka
   - Event Streaming
@@ -517,7 +517,7 @@ apis:
   humanURL: https://www.ibm.com/products/watsonx-data
   baseURL: https://us-south.lakehouse.cloud.ibm.com
   tags:
-  - AI Data
+  - Ai Data
   - Analytics
   - Data Lakehouse
   - Data Management

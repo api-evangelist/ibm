@@ -24,7 +24,9 @@ accessModel:
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - scopes
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://www.ibm.com/brand/experience-guides/developer/b1db1ae501d522a1a4b49613fe07c9f1/01_8-bar-positive.svg
 url: https://developer.ibm.com
@@ -1146,8 +1148,9 @@ common:
   url: well-known/ibm-well-known.yml
 - type: SecurityTxt
   url: well-known/ibm-security.txt
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/ibm-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: LLMsTxt
   url: llms/ibm-llms.txt
 - type: Overlay

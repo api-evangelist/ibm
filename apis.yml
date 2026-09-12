@@ -1125,6 +1125,8 @@ apis:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/iam-access-groups
 common:
+- type: Website
+  url: https://www.ibm.com/
 - type: CapabilityMap
   url: capabilities/ibm-capability-edges.yml
   name: IBM Business Capability Map

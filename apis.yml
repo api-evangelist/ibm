@@ -93,7 +93,7 @@ apis:
   - Artificial Intelligence
   - Foundation Models
   - Generative AI
-  - Large Language Models
+  - LLM
   - Machine-Learning
   tags_raw:
   - Artificial Intelligence
@@ -605,6 +605,11 @@ apis:
   baseURL: https://user-management.cloud.ibm.com
   tags:
   - Account Management
+  - Identity and Access Management
+  - Identity
+  - User Management
+  tags_raw:
+  - Account Management
   - IAM
   - Identity
   - User Management
@@ -729,6 +734,11 @@ apis:
   humanURL: https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-viewingusage
   baseURL: https://enterprise.cloud.ibm.com
   tags:
+  - Analytics
+  - Cost Management
+  - Enterprise
+  - USAGE_REPORTS
+  tags_raw:
   - Analytics
   - Cost Management
   - Enterprise
@@ -1392,7 +1402,7 @@ tags:
 - Cloud Computing
 - Containers
 - Data Governance
-- Databases
+- Database
 - DevOps
 - Enterprise
 - Generative AI
@@ -1407,8 +1417,9 @@ tags:
 - Watson
 - Watsonx
 - Fortune 100
-- IBM
 tags_raw:
+- Databases
+- IBM
 - API Management
 - Artificial Intelligence
 - Billing

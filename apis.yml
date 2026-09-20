@@ -1135,6 +1135,8 @@ apis:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/iam-access-groups
 common:
+- type: Plans
+  url: plans/ibm-plans-pricing.yml
 - type: Website
   url: https://www.ibm.com/
 - type: CapabilityMap

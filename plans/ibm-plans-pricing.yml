@@ -11,6 +11,11 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
+  managed_tier: Standard Pricing
 published: true
 note: Product overview page with a short pricing section; only headline rate USD 10/TB/month shown, plus
   promos (up to 75% savings, USD 500 free credits with TRYCOS, 35% off with COS35OFF). Detailed rate card

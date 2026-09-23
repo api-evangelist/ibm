@@ -1,7 +1,9 @@
 ---
 title: IBM - Announcements
 url: https://newsroom.ibm.com/announcements
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"IBM" press release artificial intelligence'
 position: 4
 source: serpapi-google

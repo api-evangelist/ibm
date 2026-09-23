@@ -1,13 +1,7 @@
 {
   "provider": "ibm",
   "sources": [
-    "ibm-api-keys-api-openapi.yml",
-    "ibm-claim-rules-api-openapi.yml",
-    "ibm-policies-api-openapi.yml",
-    "ibm-roles-api-openapi.yml",
-    "ibm-service-ids-api-openapi.yml",
-    "ibm-tokens-api-openapi.yml",
-    "ibm-trusted-profiles-api-openapi.yml"
+    "_original/ibm-cloud-iam.yml"
   ],
   "outputs": [
     "ibm-api-keys-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "ibm-cloud-iam.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "ibm-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ibm-claim-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ibm-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ibm-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ibm-service-ids-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ibm-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ibm-trusted-profiles-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

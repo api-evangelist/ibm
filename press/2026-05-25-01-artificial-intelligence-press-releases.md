@@ -1,7 +1,9 @@
 ---
 title: Artificial intelligence press releases
 url: https://newsroom.ibm.com/press-releases-artificial-intelligence
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"IBM" press release artificial intelligence'
 position: 1
 source: serpapi-google

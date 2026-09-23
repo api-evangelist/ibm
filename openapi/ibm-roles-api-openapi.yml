@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: IBM Cloud IAM API Keys Roles API
+  title: IBM Cloud IAM Roles API
   description: The IBM Cloud Identity and Access Management (IAM) API enables you to manage IAM access tokens, API keys, service IDs, trusted profiles, and access policies. Use this API to authenticate identities, authorize access to IBM Cloud resources, and manage the full lifecycle of identity and policy objects within your IBM Cloud account.
   version: 1.0.0
   contact:
@@ -151,26 +151,47 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    RoleIdParam:
+      name: role_id
+      in: path
+      required: true
+      description: The unique identifier of the role.
+      schema:
+        type: string
+    IfMatch:
+      name: If-Match
+      in: header
+      required: true
+      description: The entity tag value from a previous GET request used for optimistic concurrency control.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or credentials are missing.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: A conflict occurred, typically from an If-Match version mismatch.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    RoleList:
-      type: object
-      description: A list of IAM roles.
-      properties:
-        custom_roles:
-          type: array
-          description: The list of custom roles.
-          items:
-            $ref: '#/components/schemas/Role'
-        service_roles:
-          type: array
-          description: The list of service-defined roles.
-          items:
-            $ref: '#/components/schemas/Role'
-        system_roles:
-          type: array
-          description: The list of system-defined platform roles.
-          items:
-            $ref: '#/components/schemas/Role'
     Role:
       type: object
       description: An IAM role that defines a set of actions.
@@ -312,46 +333,25 @@ components:
         description:
           type: string
           description: A description of the custom role.
-  parameters:
-    IfMatch:
-      name: If-Match
-      in: header
-      required: true
-      description: The entity tag value from a previous GET request used for optimistic concurrency control.
-      schema:
-        type: string
-    RoleIdParam:
-      name: role_id
-      in: path
-      required: true
-      description: The unique identifier of the role.
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or credentials are missing.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Conflict:
-      description: A conflict occurred, typically from an If-Match version mismatch.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    RoleList:
+      type: object
+      description: A list of IAM roles.
+      properties:
+        custom_roles:
+          type: array
+          description: The list of custom roles.
+          items:
+            $ref: '#/components/schemas/Role'
+        service_roles:
+          type: array
+          description: The list of service-defined roles.
+          items:
+            $ref: '#/components/schemas/Role'
+        system_roles:
+          type: array
+          description: The list of system-defined platform roles.
+          items:
+            $ref: '#/components/schemas/Role'
   securitySchemes:
     bearerAuth:
       type: http

@@ -94,13 +94,14 @@ apis:
   - Foundation Models
   - Generative AI
   - LLM
-  - Machine-Learning
+  - Machine Learning
   tags_raw:
   - Artificial Intelligence
   - Foundation Models
   - Generative AI
   - Large Language Models
   - Machine Learning
+  - Machine-Learning
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/watsonx-ai
@@ -513,7 +514,7 @@ apis:
     url: https://cloud.ibm.com/apidocs/projects
   - type: GettingStarted
     url: https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects
-- name: IBM watsonx.data
+- name: IBM Watsonx.data API
   description: Collect, store, query, and analyze structured and unstructured enterprise data with a unified data
     lakehouse platform optimized for price and performance.
   humanURL: https://www.ibm.com/products/watsonx-data
@@ -523,13 +524,14 @@ apis:
   - Analytics
   - Data Lakehouse
   - Data Management
-  - Open-Source
+  - Open Source
   tags_raw:
   - AI Data
   - Analytics
   - Data Lakehouse
   - Data Management
   - Open Source
+  - Open-Source
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/watsonxdata-software
@@ -769,7 +771,7 @@ apis:
   tags:
   - Artificial Intelligence
   - Data Science
-  - Machine-Learning
+  - Machine Learning
   - Model Deployment
   - Model Training
   tags_raw:
@@ -778,6 +780,7 @@ apis:
   - Machine Learning
   - Model Deployment
   - Model Training
+  - Machine-Learning
   properties:
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/machine-learning
@@ -814,8 +817,6 @@ apis:
     url: https://cloud.ibm.com/docs/watson?topic=watson-iam
   - type: GettingStarted
     url: https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
-  - type: GraphQL
-    url: graphql/ibm-graphql.md
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/natural-language-understanding
   - type: Pricing
@@ -862,8 +863,6 @@ apis:
     url: https://cloud.ibm.com/docs/watson?topic=watson-iam
   - type: GettingStarted
     url: https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
-  - type: GraphQL
-    url: graphql/ibm-graphql.md
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/natural-language-understanding
   - type: Pricing
@@ -910,8 +909,6 @@ apis:
     url: https://cloud.ibm.com/docs/watson?topic=watson-iam
   - type: GettingStarted
     url: https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
-  - type: GraphQL
-    url: graphql/ibm-graphql.md
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/natural-language-understanding
   - type: Pricing
@@ -958,8 +955,6 @@ apis:
     url: https://cloud.ibm.com/docs/watson?topic=watson-iam
   - type: GettingStarted
     url: https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
-  - type: GraphQL
-    url: graphql/ibm-graphql.md
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/natural-language-understanding
   - type: Pricing
@@ -1006,8 +1001,6 @@ apis:
     url: https://cloud.ibm.com/docs/watson?topic=watson-iam
   - type: GettingStarted
     url: https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
-  - type: GraphQL
-    url: graphql/ibm-graphql.md
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/natural-language-understanding
   - type: Pricing
@@ -1054,8 +1047,6 @@ apis:
     url: https://cloud.ibm.com/docs/watson?topic=watson-iam
   - type: GettingStarted
     url: https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
-  - type: GraphQL
-    url: graphql/ibm-graphql.md
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/natural-language-understanding
   - type: Pricing
@@ -1102,8 +1093,6 @@ apis:
     url: https://cloud.ibm.com/docs/watson?topic=watson-iam
   - type: GettingStarted
     url: https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started
-  - type: GraphQL
-    url: graphql/ibm-graphql.md
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/natural-language-understanding
   - type: Pricing
@@ -1411,7 +1400,7 @@ tags:
 - Generative AI
 - Hybrid Cloud
 - Infrastructure
-- Machine-Learning
+- Machine Learning
 - Networking
 - Observability
 - Security
@@ -1420,6 +1409,7 @@ tags:
 - Watson
 - Watsonx
 - Fortune 100
+- A2A
 tags_raw:
 - Databases
 - IBM
@@ -1444,3 +1434,5 @@ tags_raw:
 - Watson
 - Watsonx
 - Fortune 100
+- Machine-Learning
+- A2A

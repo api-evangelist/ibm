@@ -76,30 +76,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    TokenResponse:
-      type: object
-      description: An IAM access token response.
-      properties:
-        access_token:
-          type: string
-          description: The IAM access token.
-        refresh_token:
-          type: string
-          description: The refresh token that can be used to obtain a new access token.
-        token_type:
-          type: string
-          description: The token type, always Bearer.
-          enum:
-          - Bearer
-        expires_in:
-          type: integer
-          description: Token lifetime in seconds.
-        expiration:
-          type: integer
-          description: Token expiration time as a Unix timestamp.
-        scope:
-          type: string
-          description: The scope of the token.
     ResponseContext:
       type: object
       description: Context metadata for paginated API responses.
@@ -167,6 +143,30 @@ components:
         trace:
           type: string
           description: A trace identifier for debugging.
+    TokenResponse:
+      type: object
+      description: An IAM access token response.
+      properties:
+        access_token:
+          type: string
+          description: The IAM access token.
+        refresh_token:
+          type: string
+          description: The refresh token that can be used to obtain a new access token.
+        token_type:
+          type: string
+          description: The token type, always Bearer.
+          enum:
+          - Bearer
+        expires_in:
+          type: integer
+          description: Token lifetime in seconds.
+        expiration:
+          type: integer
+          description: Token expiration time as a Unix timestamp.
+        scope:
+          type: string
+          description: The scope of the token.
   securitySchemes:
     bearerAuth:
       type: http

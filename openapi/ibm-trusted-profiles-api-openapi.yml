@@ -173,6 +173,78 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    TrustedProfileList:
+      type: object
+      description: A paginated list of trusted profiles.
+      properties:
+        context:
+          $ref: '#/components/schemas/ResponseContext'
+        offset:
+          type: integer
+          description: The offset of the current page.
+        limit:
+          type: integer
+          description: The number of results per page.
+        first:
+          type: string
+          description: URL to the first page of results.
+        previous:
+          type: string
+          description: URL to the previous page of results.
+        next:
+          type: string
+          description: URL to the next page of results.
+        profiles:
+          type: array
+          description: The list of trusted profiles.
+          items:
+            $ref: '#/components/schemas/TrustedProfile'
+    ErrorResponse:
+      type: object
+      description: An error response from the IAM API.
+      properties:
+        context:
+          $ref: '#/components/schemas/ResponseContext'
+        status_code:
+          type: integer
+          description: The HTTP status code.
+        errors:
+          type: array
+          description: The list of errors.
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: The error code.
+              message:
+                type: string
+                description: A human-readable error message.
+              details:
+                type: string
+                description: Additional error details.
+              more_info:
+                type: string
+                description: A URL for more information about the error.
+        trace:
+          type: string
+          description: A trace identifier for debugging.
+    CreateProfileRequest:
+      type: object
+      description: Request body for creating a trusted profile.
+      required:
+      - name
+      - account_id
+      properties:
+        name:
+          type: string
+          description: The name of the trusted profile.
+        account_id:
+          type: string
+          description: The account ID for the trusted profile.
+        description:
+          type: string
+          description: A description of the trusted profile.
     TrustedProfile:
       type: object
       description: A trusted profile defines a set of conditions under which federated users or compute resources can assume an identity with specific access rights.
@@ -222,22 +294,50 @@ components:
             $ref: '#/components/schemas/ActivityEntry'
         activity:
           $ref: '#/components/schemas/Activity'
-    CreateProfileRequest:
+    UpdateProfileRequest:
       type: object
-      description: Request body for creating a trusted profile.
-      required:
-      - name
-      - account_id
+      description: Request body for updating a trusted profile.
       properties:
         name:
           type: string
-          description: The name of the trusted profile.
-        account_id:
-          type: string
-          description: The account ID for the trusted profile.
+          description: The updated name of the trusted profile.
         description:
           type: string
-          description: A description of the trusted profile.
+          description: The updated description of the trusted profile.
+    Activity:
+      type: object
+      description: Activity information for an identity resource.
+      properties:
+        last_authn:
+          type: string
+          description: Timestamp of the last authentication using this identity.
+        authn_count:
+          type: integer
+          description: The number of authentications using this identity.
+    ActivityEntry:
+      type: object
+      description: A history entry for an identity resource.
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the activity.
+        iam_id:
+          type: string
+          description: The IAM ID that performed the action.
+        iam_id_account:
+          type: string
+          description: The account ID of the actor.
+        action:
+          type: string
+          description: The action that was performed.
+        params:
+          type: array
+          description: Parameters associated with the action.
+          items:
+            type: string
+        message:
+          type: string
+          description: A message describing the action.
     ResponseContext:
       type: object
       description: Context metadata for paginated API responses.
@@ -275,115 +375,30 @@ components:
         cluster_name:
           type: string
           description: The cluster name of the service.
-    TrustedProfileList:
-      type: object
-      description: A paginated list of trusted profiles.
-      properties:
-        context:
-          $ref: '#/components/schemas/ResponseContext'
-        offset:
-          type: integer
-          description: The offset of the current page.
-        limit:
-          type: integer
-          description: The number of results per page.
-        first:
-          type: string
-          description: URL to the first page of results.
-        previous:
-          type: string
-          description: URL to the previous page of results.
-        next:
-          type: string
-          description: URL to the next page of results.
-        profiles:
-          type: array
-          description: The list of trusted profiles.
-          items:
-            $ref: '#/components/schemas/TrustedProfile'
-    Activity:
-      type: object
-      description: Activity information for an identity resource.
-      properties:
-        last_authn:
-          type: string
-          description: Timestamp of the last authentication using this identity.
-        authn_count:
-          type: integer
-          description: The number of authentications using this identity.
-    UpdateProfileRequest:
-      type: object
-      description: Request body for updating a trusted profile.
-      properties:
-        name:
-          type: string
-          description: The updated name of the trusted profile.
-        description:
-          type: string
-          description: The updated description of the trusted profile.
-    ErrorResponse:
-      type: object
-      description: An error response from the IAM API.
-      properties:
-        context:
-          $ref: '#/components/schemas/ResponseContext'
-        status_code:
-          type: integer
-          description: The HTTP status code.
-        errors:
-          type: array
-          description: The list of errors.
-          items:
-            type: object
-            properties:
-              code:
-                type: string
-                description: The error code.
-              message:
-                type: string
-                description: A human-readable error message.
-              details:
-                type: string
-                description: Additional error details.
-              more_info:
-                type: string
-                description: A URL for more information about the error.
-        trace:
-          type: string
-          description: A trace identifier for debugging.
-    ActivityEntry:
-      type: object
-      description: A history entry for an identity resource.
-      properties:
-        timestamp:
-          type: string
-          description: Timestamp of the activity.
-        iam_id:
-          type: string
-          description: The IAM ID that performed the action.
-        iam_id_account:
-          type: string
-          description: The account ID of the actor.
-        action:
-          type: string
-          description: The action that was performed.
-        params:
-          type: array
-          description: Parameters associated with the action.
-          items:
-            type: string
-        message:
-          type: string
-          description: A message describing the action.
+  parameters:
+    ProfileId:
+      name: profile-id
+      in: path
+      required: true
+      description: The unique identifier of the trusted profile.
+      schema:
+        type: string
+    IfMatch:
+      name: If-Match
+      in: header
+      required: true
+      description: The entity tag value from a previous GET request used for optimistic concurrency control.
+      schema:
+        type: string
   responses:
-    BadRequest:
-      description: The request was invalid or malformed.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
+    BadRequest:
+      description: The request was invalid or malformed.
       content:
         application/json:
           schema:
@@ -400,21 +415,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    IfMatch:
-      name: If-Match
-      in: header
-      required: true
-      description: The entity tag value from a previous GET request used for optimistic concurrency control.
-      schema:
-        type: string
-    ProfileId:
-      name: profile-id
-      in: path
-      required: true
-      description: The unique identifier of the trusted profile.
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

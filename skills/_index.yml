@@ -1,0 +1,23 @@
+generated: '2026-10-03'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/ibm-api-keys-api-openapi.yml
+skills:
+- file: skills/ibm-create-and-retrieve-api-key.md
+  name: ibm-create-and-retrieve-api-key
+  api: openapi/ibm-api-keys-api-openapi.yml
+  operations:
+  - createApiKey
+  - getApiKey
+- file: skills/ibm-create-and-list-policies.md
+  name: ibm-create-and-list-policies
+  api: openapi/ibm-policies-api-openapi.yml
+  operations:
+  - createPolicy
+  - listPolicies
+- file: skills/ibm-create-trusted-profile.md
+  name: ibm-create-trusted-profile
+  api: openapi/ibm-trusted-profiles-api-openapi.yml
+  operations:
+  - createProfile
+  - getProfile

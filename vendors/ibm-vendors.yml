@@ -1,0 +1,85 @@
+generated: '2026-10-03'
+method: probed
+source: pre-flight dossier (docs platform, portal detections) + CNAME chains and response headers of the hosts apis.yml names
+registry: all/0-working/vendors.yml
+areas_vocabulary:
+- documentation
+- developer-portal
+- api-gateway
+- cdn
+- hosting
+- sdk-generation
+- api-collections
+- status-page
+- support
+- community
+- identity
+- mcp-hosting
+vendors:
+- vendor: akamai
+  name: Akamai
+  area: cdn
+  host: www.ibm.com
+  evidence: cname:akamaiedge.net
+  signal: cname
+  confidence: high
+  kin_score: []
+- vendor: cloudflare
+  name: Cloudflare
+  area: cdn
+  host: api.us-south.databases.cloud.ibm.com
+  evidence: header:cf-ray
+  signal: header
+  confidence: high
+  kin_score:
+  - https_enforced
+  - hsts
+reliance:
+  areas_vendor_served:
+  - cdn
+  vendor_count: 2
+  areas_observed: 12
+  share_of_observable_areas: 0.083
+  note: areas where a third party was DETECTED serving this provider; an area absent here was either self-run or not observed, and this script
+    cannot tell those apart
+checked:
+- 'docs-platform: custom'
+- www.ibm.com (SignUp)
+- developer.ibm.com (Documentation)
+- www.ibm.com (Website)
+- developer.ibm.com (Portal)
+- cloud.ibm.com (GettingStarted)
+- cloud.ibm.com (StatusPage)
+- www.ibm.com (Support)
+- community.ibm.com (Community)
+- s3.us.cloud-object-storage.appdomain.cloud (baseURL)
+- api.us-south.databases.cloud.ibm.com (baseURL)
+- api.us-south.codeengine.cloud.ibm.com (baseURL)
+- us-south.ml.cloud.ibm.com (baseURL)
+- api.us-south.discovery.watson.cloud.ibm.com (baseURL)
+- us-south.iaas.cloud.ibm.com (baseURL)
+- containers.cloud.ibm.com (baseURL)
+- us-south.kms.cloud.ibm.com (baseURL)
+- us-south.secrets-manager.appdomain.cloud (baseURL)
+- us-south.event-notifications.cloud.ibm.com (baseURL)
+- us.icr.io (baseURL)
+- us-south.schematics.cloud.ibm.com (baseURL)
+- api.cis.cloud.ibm.com (baseURL)
+- us-south.cloudantnosqldb.appdomain.cloud (baseURL)
+- us-south.event-streams.cloud.ibm.com (baseURL)
+- us-south.compliance.cloud.ibm.com (baseURL)
+- us-south.functions.cloud.ibm.com (baseURL)
+- api.dns-svcs.cloud.ibm.com (baseURL)
+- us-south.monitoring.cloud.ibm.com (baseURL)
+- us-south.logs.cloud.ibm.com (baseURL)
+- us-south.atracker.cloud.ibm.com (baseURL)
+- us-south.appid.cloud.ibm.com (baseURL)
+- transit.cloud.ibm.com (baseURL)
+- resource-controller.cloud.ibm.com (baseURL)
+- api.global-search-tagging.cloud.ibm.com (baseURL)
+- tags.global-search-tagging.cloud.ibm.com (baseURL)
+- us-south.power-iaas.cloud.ibm.com (baseURL)
+- enterprise.cloud.ibm.com (baseURL)
+- projects.api.cloud.ibm.com (baseURL)
+- us-south.lakehouse.cloud.ibm.com (baseURL)
+- api.us-south.apiconnect.cloud.ibm.com (baseURL)

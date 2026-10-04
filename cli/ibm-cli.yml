@@ -1,5 +1,6 @@
 generated: '2026-06-20'
 method: searched
+commands: []
 source: https://cloud.ibm.com/docs/cli and https://github.com/IBM-Cloud/ibm-cloud-cli-release
 name: IBM Cloud CLI
 binary: ibmcloud

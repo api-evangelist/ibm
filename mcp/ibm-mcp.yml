@@ -71,7 +71,7 @@ candidate_server:
     description: List IAM roles.
     source_operation: openapi/ibm-cloud-iam.yml#listRoles
 deployment:
-  mode: unclear
+  mode: local-stdio
   verified: searched
   checked: '2026-08-12'
   source: catalog MCP census

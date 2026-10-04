@@ -1,4 +1,6 @@
 generated: '2026-06-20'
+idempotency:
+  coverage: none
 method: searched
 source: >-
   IBM Cloud API Handbook plus openapi/ibm-cloud-iam.yml. Cross-links to

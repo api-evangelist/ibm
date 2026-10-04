@@ -2,6 +2,7 @@
 generated: '2026-09-20'
 method: searched
 source: https://www.ibm.com/products/cloud-object-storage
+name: IBM API Plans
 sources:
 - https://www.ibm.com/products/cloud-object-storage
 - https://www.ibm.com/cloud/object-storage/pricing

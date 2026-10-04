@@ -1,0 +1,211 @@
+generated: '2026-10-03'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/ibm-api-keys-api-openapi.yml
+- openapi/ibm-claim-rules-api-openapi.yml
+- openapi/ibm-policies-api-openapi.yml
+- openapi/ibm-roles-api-openapi.yml
+- openapi/ibm-service-ids-api-openapi.yml
+vocabulary:
+  name: IBM Domain Vocabulary
+  description: 'Terms declared by IBM''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions. Derived,
+    not authored.'
+  version: '2026-10-03'
+  terms:
+  - term: API Keys
+    definition: Create and manage API keys for users and service IDs
+    tags:
+    - Resource Group
+    source: openapi/ibm-api-keys-api-openapi.yml
+  - term: Claim Rules
+    definition: Manage claim rules for trusted profiles
+    tags:
+    - Resource Group
+    source: openapi/ibm-claim-rules-api-openapi.yml
+  - term: Policies
+    definition: Create and manage IAM access policies
+    tags:
+    - Resource Group
+    source: openapi/ibm-policies-api-openapi.yml
+  - term: Roles
+    definition: List and manage IAM roles
+    tags:
+    - Resource Group
+    source: openapi/ibm-roles-api-openapi.yml
+  - term: Service IDs
+    definition: Create and manage service IDs for applications and services
+    tags:
+    - Resource Group
+    source: openapi/ibm-service-ids-api-openapi.yml
+  - term: Tokens
+    definition: Create and manage IAM access tokens
+    tags:
+    - Resource Group
+    source: openapi/ibm-tokens-api-openapi.yml
+  - term: Trusted Profiles
+    definition: Create and manage trusted profiles for federated identities
+    tags:
+    - Resource Group
+    source: openapi/ibm-trusted-profiles-api-openapi.yml
+  - term: ErrorResponse
+    definition: An error response from the IAM API.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ErrorResponse
+  - term: UpdateApiKeyRequest
+    definition: Request body for updating an API key.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/UpdateApiKeyRequest
+  - term: Activity
+    definition: Activity information for an identity resource.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/Activity
+  - term: ApiKeyList
+    definition: A paginated list of API keys.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ApiKeyList
+  - term: CreateApiKeyRequest
+    definition: Request body for creating an API key.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/CreateApiKeyRequest
+  - term: ActivityEntry
+    definition: A history entry for an identity resource.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ActivityEntry
+  - term: ApiKey
+    definition: An IAM API key used for authentication.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ApiKey
+  - term: ResponseContext
+    definition: Context metadata for paginated API responses.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ResponseContext
+  - term: CreateClaimRuleRequest
+    definition: Request body for creating a claim rule.
+    tags:
+    - Object
+    source: openapi/ibm-claim-rules-api-openapi.yml#/components/schemas/CreateClaimRuleRequest
+  - term: ClaimRuleList
+    definition: A list of claim rules for a trusted profile.
+    tags:
+    - Object
+    source: openapi/ibm-claim-rules-api-openapi.yml#/components/schemas/ClaimRuleList
+  - term: ClaimRule
+    definition: A claim rule defines conditions under which a federated user can apply a trusted profile.
+    tags:
+    - Object
+    source: openapi/ibm-claim-rules-api-openapi.yml#/components/schemas/ClaimRule
+  - term: UpdateClaimRuleRequest
+    definition: Request body for updating a claim rule.
+    tags:
+    - Object
+    source: openapi/ibm-claim-rules-api-openapi.yml#/components/schemas/UpdateClaimRuleRequest
+  - term: ClaimRuleCondition
+    definition: A condition in a claim rule.
+    tags:
+    - Object
+    source: openapi/ibm-claim-rules-api-openapi.yml#/components/schemas/ClaimRuleCondition
+  - term: PolicyRole
+    definition: A role assigned in a policy.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyRole
+  - term: PolicyAttribute
+    definition: An attribute used to identify a subject or resource in a policy.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyAttribute
+  - term: CreatePolicyRequest
+    definition: Request body for creating an access policy.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/CreatePolicyRequest
+  - term: PolicyList
+    definition: A paginated list of access policies.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyList
+  - term: PolicyResource
+    definition: A resource in a policy, defining what the policy applies to.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyResource
+  - term: Policy
+    definition: An IAM access policy that grants a subject a set of roles on a resource.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/Policy
+  - term: PolicySubject
+    definition: A subject in a policy, defining who the policy applies to.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicySubject
+  - term: Role
+    definition: An IAM role that defines a set of actions.
+    tags:
+    - Object
+    source: openapi/ibm-roles-api-openapi.yml#/components/schemas/Role
+  - term: RoleList
+    definition: A list of IAM roles.
+    tags:
+    - Object
+    source: openapi/ibm-roles-api-openapi.yml#/components/schemas/RoleList
+  - term: CreateRoleRequest
+    definition: Request body for creating a custom role.
+    tags:
+    - Object
+    source: openapi/ibm-roles-api-openapi.yml#/components/schemas/CreateRoleRequest
+  - term: UpdateServiceIdRequest
+    definition: Request body for updating a service ID.
+    tags:
+    - Object
+    source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/UpdateServiceIdRequest
+  - term: ServiceIdList
+    definition: A paginated list of service IDs.
+    tags:
+    - Object
+    source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/ServiceIdList
+  - term: CreateServiceIdRequest
+    definition: Request body for creating a service ID.
+    tags:
+    - Object
+    source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/CreateServiceIdRequest
+  - term: ServiceId
+    definition: A service ID is an identity for an application or service that can be used to authenticate with IBM Cloud.
+    tags:
+    - Object
+    source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/ServiceId
+  - term: TokenResponse
+    definition: An IAM access token response.
+    tags:
+    - Object
+    source: openapi/ibm-tokens-api-openapi.yml#/components/schemas/TokenResponse
+  - term: TrustedProfileList
+    definition: A paginated list of trusted profiles.
+    tags:
+    - Object
+    source: openapi/ibm-trusted-profiles-api-openapi.yml#/components/schemas/TrustedProfileList
+  - term: CreateProfileRequest
+    definition: Request body for creating a trusted profile.
+    tags:
+    - Object
+    source: openapi/ibm-trusted-profiles-api-openapi.yml#/components/schemas/CreateProfileRequest
+  - term: TrustedProfile
+    definition: A trusted profile defines a set of conditions under which federated users or compute resources can assume an identity with specific
+      access rights.
+    tags:
+    - Object
+    source: openapi/ibm-trusted-profiles-api-openapi.yml#/components/schemas/TrustedProfile
+  - term: UpdateProfileRequest
+    definition: Request body for updating a trusted profile.
+    tags:
+    - Object
+    source: openapi/ibm-trusted-profiles-api-openapi.yml#/components/schemas/UpdateProfileRequest

@@ -1,0 +1,54 @@
+generated: '2026-10-03'
+method: derived
+source: openapi/ibm-cloud-iam.yml
+crosswalk:
+  - tool: create_access_token
+    category: iam
+    rest: [createAccessToken]
+    binding: operationId
+    confidence: high
+  - tool: list_api_keys
+    category: iam
+    rest: [listApiKeys]
+    binding: operationId
+    confidence: high
+  - tool: create_api_key
+    category: iam
+    rest: [createApiKey]
+    binding: operationId
+    confidence: high
+  - tool: delete_api_key
+    category: iam
+    rest: [deleteApiKey]
+    binding: operationId
+    confidence: high
+  - tool: list_service_ids
+    category: iam
+    rest: [listServiceIds]
+    binding: operationId
+    confidence: high
+  - tool: create_service_id
+    category: iam
+    rest: [createServiceId]
+    binding: operationId
+    confidence: high
+  - tool: list_profiles
+    category: iam
+    rest: [listProfiles]
+    binding: operationId
+    confidence: high
+  - tool: list_policies
+    category: iam
+    rest: [listPolicies]
+    binding: operationId
+    confidence: high
+  - tool: create_policy
+    category: iam
+    rest: [createPolicy]
+    binding: operationId
+    confidence: high
+  - tool: list_roles
+    category: iam
+    rest: [listRoles]
+    binding: operationId
+    confidence: high

@@ -18,4 +18,7 @@ notes: >-
   cloud.ibm.com/docs/<service>?topic=<service>-release-notes). Recent dated entries
   are rendered dynamically on the What's new page and were not captured verbatim to
   avoid fabrication; consult the surfaces above for the live window.
-entries: []
+entries:
+  - version: "2026-06-20"
+    description: "No specific changelog entries captured; refer to listed surfaces for per-service release notes."
+

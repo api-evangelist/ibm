@@ -34,3 +34,26 @@ plans:
 - name: Standard Pricing
   price_text: A flexible pay‑as‑you‑go option with no minimum fee
   period: per-use
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - data
+  plans:
+  - name: One‑Rate Pricing
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Standard Pricing
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - other

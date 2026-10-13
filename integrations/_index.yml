@@ -112,17 +112,6 @@
   source: curated
   status: pending-generation
   arazzo: null
-- slug: ibm-apache-kafka
-  label: Apache Kafka
-  partner: apache-kafka
-  partner_name: Apache Kafka
-  type: docs
-  channel: provider-built
-  evidence: https://www.ibm.com/products/event-streams
-  source: edge
-  relationship: compatible
-  status: not-a-workflow
-  arazzo: null
 - slug: ibm-amazon-web-services
   label: Amazon Web Services
   partner: amazon-web-services
@@ -130,6 +119,17 @@
   type: contract
   channel: provider-built
   evidence: https://github.com/api-evangelist/ibm/blob/main/openapi/ibm-buckets-api-openapi.yml#L4
+  source: edge
+  relationship: compatible
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-apache-kafka
+  label: Apache Kafka
+  partner: apache-kafka
+  partner_name: Apache Kafka
+  type: docs
+  channel: provider-built
+  evidence: https://www.ibm.com/products/event-streams
   source: edge
   relationship: compatible
   status: not-a-workflow

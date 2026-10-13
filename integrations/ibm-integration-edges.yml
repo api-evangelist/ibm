@@ -15,7 +15,6 @@ edges:
     and server-side enc'
   detected_by: sweep-shape-compat.py
   first_seen: '2026-10-13'
-  x-moved-from: international-business-machines (consolidated into ibm 2026-10-13, approved by Kin Lane)
 - partner_name: Apache Kafka
   partner: apache-kafka
   partner_match: shape-anchor

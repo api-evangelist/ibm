@@ -1,4 +1,21 @@
 edges:
+- partner_name: Amazon Web Services
+  partner: amazon-web-services
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: aws-s3
+  type: contract
+  degree: declared-unqualified
+  evidence: https://github.com/api-evangelist/ibm/blob/main/openapi/ibm-buckets-api-openapi.yml#L4
+  evidence_kind: own-contract
+  quote: 'description: The IBM Cloud Object Storage API provides a RESTful interface compatible with S3 for storing
+    and retrieving objects in buckets. It supports features such as multipart uploads, versioning, lifecycle policies,
+    and server-side enc'
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
+  x-moved-from: international-business-machines (consolidated into ibm 2026-10-13, approved by Kin Lane)
 - partner_name: Apache Kafka
   partner: apache-kafka
   partner_match: shape-anchor
@@ -16,20 +33,5 @@ edges:
     on value added tasks
   detected_by: sweep-shape-compat.py
   first_seen: '2026-10-13'
-- partner_name: Amazon Web Services
-  partner: amazon-web-services
-  partner_match: shape-anchor
-  channel: provider-built
-  relationship: compatible
-  direction: provider-built
-  shape: aws-s3
-  type: contract
-  degree: declared-unqualified
-  evidence: https://github.com/api-evangelist/ibm/blob/main/openapi/ibm-buckets-api-openapi.yml#L4
-  evidence_kind: own-contract
-  quote: 'description: The IBM Cloud Object Storage API provides a RESTful interface compatible with S3 for storing and retrieving objects in buckets. It supports features such as multipart uploads, versioning, lifecycle policies, and server-side enc'
-  detected_by: sweep-shape-compat.py
-  first_seen: '2026-10-13'
-  x-moved-from: international-business-machines (consolidated into ibm 2026-10-13, approved by Kin Lane)
 generated: '2026-10-13'
 method: searched

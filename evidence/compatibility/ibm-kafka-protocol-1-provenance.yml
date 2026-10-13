@@ -1,0 +1,14 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://www.ibm.com/products/event-streams
+page: https://www.ibm.com/products/event-streams
+file: ibm-kafka-protocol-1.md
+bytes: 7261
+sha256: 8157ecbd908072ce0210fd0310f7ad95660d41cb906b11e9c021ee4e9e98188c
+anchor: apache-kafka
+shape: kafka-protocol
+classification: declares-compatibility
+quote: Leverage IBM Support for deep technical expertise whenever you need it. Event Streams offers a fully managed
+  Apache Kafka service, ensuring durability, high availability and security and compliance so that you can focus
+  on value added tasks like building applications.
+note: text extracted from the provider's own page (tags stripped), saved for evidence

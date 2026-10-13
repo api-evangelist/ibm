@@ -1,0 +1,20 @@
+edges:
+- partner_name: Apache Kafka
+  partner: apache-kafka
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: kafka-protocol
+  type: docs
+  degree: full
+  evidence: https://www.ibm.com/products/event-streams
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/ibm/blob/main/evidence/compatibility/ibm-kafka-protocol-1.md
+  quote: Leverage IBM Support for deep technical expertise whenever you need it. Event Streams offers a fully managed
+    Apache Kafka service, ensuring durability, high availability and security and compliance so that you can focus
+    on value added tasks
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched

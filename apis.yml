@@ -76,6 +76,8 @@ tags:
 - A2A
 
 common:
+- type: IntegrationEdges
+  url: integrations/ibm-integration-edges.yml
 - type: MCPServer
   url: mcp/ibm-mcp.yml
 - type: FinOps
@@ -1471,6 +1473,984 @@ apis:
     url: https://cloud.ibm.com/apidocs/iam-policy-management
   - type: Documentation
     url: https://cloud.ibm.com/apidocs/iam-access-groups
+- aid: ibm:ibm-analyze-api
+  name: IBM Analyze API
+  description: Analyze text content.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Analyze
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-analyze-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-analyze-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-buckets-api
+  name: IBM Buckets API
+  description: Manage storage buckets.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Buckets
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-buckets-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-buckets-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-clusters-api
+  name: IBM Clusters API
+  description: Manage Kubernetes clusters.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Cluster
+  tags_raw:
+  - Clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-clusters-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-clusters-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-custom-language-models-api
+  name: IBM Custom Language Models API
+  description: Create and manage custom language models.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Custom Language Models
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-custom-language-models-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-custom-language-models-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-embeddings-api
+  name: IBM Embeddings API
+  description: Generate text embeddings.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Embeddings
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-embeddings-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-embeddings-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-environments-api
+  name: IBM Environments API
+  description: Manage assistant environments.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Environment
+  tags_raw:
+  - Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-environments-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-environments-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-instances-api
+  name: IBM Instances API
+  description: Manage virtual server instances.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-instances-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-instances-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-messages-api
+  name: IBM Messages API
+  description: Send messages to an assistant.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Message
+  tags_raw:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-messages-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-messages-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-models-api
+  name: IBM Models API
+  description: Manage custom models.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-models-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-models-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-objects-api
+  name: IBM Objects API
+  description: Manage objects within buckets.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Objects
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-objects-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-objects-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-pronunciation-api
+  name: IBM Pronunciation API
+  description: Get word pronunciations.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Pronunciation
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-pronunciation-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-pronunciation-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-recognition-api
+  name: IBM Recognition API
+  description: Recognize and transcribe audio.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Recognition
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-recognition-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-recognition-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-security-groups-api
+  name: IBM Security Groups API
+  description: Manage security groups.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Security Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-security-groups-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-security-groups-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-sessions-api
+  name: IBM Sessions API
+  description: Manage conversation sessions.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-sessions-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-subnets-api
+  name: IBM Subnets API
+  description: Manage subnets.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Subnets
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-subnets-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-subnets-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-synthesis-api
+  name: IBM Synthesis API
+  description: Synthesize text to audio.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Synthesis
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-synthesis-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-synthesis-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-text-generation-api
+  name: IBM Text Generation API
+  description: Generate text using foundation models.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Text Generation
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-text-generation-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-text-generation-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-voices-api
+  name: IBM Voices API
+  description: Manage available voices.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Voice
+  tags_raw:
+  - Voices
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-voices-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-voices-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-volumes-api
+  name: IBM Volumes API
+  description: Manage block storage volumes.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Volumes
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-volumes-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-volumes-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-worker-nodes-api
+  name: IBM Worker Nodes API
+  description: Manage worker nodes.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Worker Nodes
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-worker-nodes-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-worker-nodes-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-worker-pools-api
+  name: IBM Worker Pools API
+  description: Manage worker pools.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - Worker Pools
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-worker-pools-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-worker-pools-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
+- aid: ibm:ibm-vpcs-api
+  name: IBM VP Cs API
+  description: Manage Virtual Private Clouds.
+  humanURL: https://cloud.ibm.com/apidocs/watsonx-ai
+  tags:
+  - VPC
+  tags_raw:
+  - VPCs
+  properties:
+  - type: OpenAPI
+    url: openapi/ibm-vpcs-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  - type: JSONSchema
+    url: json-schema/foundation-model.json
+  - type: JSONSchema
+    url: json-schema/text-generation-request.json
+  - type: JSONLD
+    url: json-ld/ibm-context.jsonld
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  - type: JSONSchema
+    url: json-schema/assistant-message.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  - type: JSONSchema
+    url: json-schema/nlu-analysis.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  - type: JSONSchema
+    url: json-schema/speech-recognition-result.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  - type: Documentation
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  - type: JSONSchema
+    url: json-schema/bucket.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  - type: JSONSchema
+    url: json-schema/cluster.json
+  - type: Documentation
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  - type: JSONSchema
+    url: json-schema/vpc.json
+  x-moved-from: international-business-machines:international-business-machines-vpcs-api (consolidated into ibm 2026-10-13, approved by Kin Lane)
 
 tags_raw:
 - Databases

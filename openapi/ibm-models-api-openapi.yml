@@ -1,0 +1,214 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines Models API
+  version: 1.0.0
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+  description: 'Operations tagged Models across 3 of this provider''s published API definitions: ibm-natural-language-understanding-openapi.yml, ibm-speech-to-text-openapi.yml, ibm-watsonx-ai-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.us-south.natural-language-understanding.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+- url: https://api.us-south.speech-to-text.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.speech-to-text.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+- url: https://us-south.ml.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://eu-de.ml.cloud.ibm.com
+  description: EU Central (Frankfurt)
+- url: https://eu-gb.ml.cloud.ibm.com
+  description: EU (London)
+- url: https://jp-tok.ml.cloud.ibm.com
+  description: AP (Tokyo)
+security:
+- bearerAuth: []
+tags:
+- name: Models
+  description: Manage custom models.
+paths:
+  /v1/models/sentiment:
+    get:
+      operationId: listSentimentModels
+      summary: International Business Machines List sentiment models
+      description: List available custom sentiment models.
+      tags:
+      - Models
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    servers:
+    - url: https://api.us-south.natural-language-understanding.watson.cloud.ibm.com
+      description: US South (Dallas)
+    - url: https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com
+      description: EU Central (Frankfurt)
+  /v1/models/categories:
+    get:
+      operationId: listCategoriesModels
+      summary: International Business Machines List categories models
+      description: List available custom categories models.
+      tags:
+      - Models
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    servers:
+    - url: https://api.us-south.natural-language-understanding.watson.cloud.ibm.com
+      description: US South (Dallas)
+    - url: https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com
+      description: EU Central (Frankfurt)
+  /v1/models:
+    get:
+      operationId: listModels
+      summary: International Business Machines List models
+      description: List all available language models.
+      tags:
+      - Models
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  models:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SpeechModel'
+    servers:
+    - url: https://api.us-south.speech-to-text.watson.cloud.ibm.com
+      description: US South (Dallas)
+    - url: https://api.eu-de.speech-to-text.watson.cloud.ibm.com
+      description: EU Central (Frankfurt)
+  /v1/models/{model_id}:
+    get:
+      operationId: getModel
+      summary: International Business Machines Get a model
+      description: Get information about a specific language model.
+      tags:
+      - Models
+      parameters:
+      - name: model_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpeechModel'
+    servers:
+    - url: https://api.us-south.speech-to-text.watson.cloud.ibm.com
+      description: US South (Dallas)
+    - url: https://api.eu-de.speech-to-text.watson.cloud.ibm.com
+      description: EU Central (Frankfurt)
+  /ml/v1/foundation_model_specs:
+    get:
+      operationId: listFoundationModels
+      summary: International Business Machines List foundation models
+      description: Retrieve the list of available foundation models.
+      tags:
+      - Models
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoundationModelsResponse'
+    servers:
+    - url: https://us-south.ml.cloud.ibm.com
+      description: US South (Dallas)
+    - url: https://eu-de.ml.cloud.ibm.com
+      description: EU Central (Frankfurt)
+    - url: https://eu-gb.ml.cloud.ibm.com
+      description: EU (London)
+    - url: https://jp-tok.ml.cloud.ibm.com
+      description: AP (Tokyo)
+components:
+  schemas:
+    SpeechModel:
+      type: object
+      properties:
+        name:
+          type: string
+        language:
+          type: string
+        rate:
+          type: integer
+        url:
+          type: string
+        description:
+          type: string
+    FoundationModelsResponse:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        resources:
+          type: array
+          items:
+            type: object
+            properties:
+              model_id:
+                type: string
+              label:
+                type: string
+              provider:
+                type: string
+              source:
+                type: string
+              tasks:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    label:
+                      type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token
+x-refined-from:
+- ibm-natural-language-understanding-openapi.yml
+- ibm-speech-to-text-openapi.yml
+- ibm-watsonx-ai-openapi.yml

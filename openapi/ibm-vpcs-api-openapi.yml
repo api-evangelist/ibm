@@ -1,0 +1,129 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Cloud VPC VPCs API
+  description: The IBM Cloud Virtual Private Cloud (VPC) API enables you to programmatically provision and manage virtual server instances, networks, storage volumes, load balancers, security groups, and other infrastructure resources within an isolated virtual network on IBM Cloud.
+  version: 2.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://us-south.iaas.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://eu-de.iaas.cloud.ibm.com
+  description: EU Central (Frankfurt)
+security:
+- bearerAuth: []
+tags:
+- name: VPCs
+  description: Manage Virtual Private Clouds.
+paths:
+  /v1/vpcs:
+    get:
+      operationId: listVpcs
+      summary: International Business Machines List VPCs
+      description: List all VPCs in the region.
+      tags:
+      - VPCs
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: generation
+        in: query
+        required: true
+        schema:
+          type: integer
+          enum:
+          - 2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vpcs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VPC'
+    post:
+      operationId: createVpc
+      summary: International Business Machines Create a VPC
+      description: Create a new VPC.
+      tags:
+      - VPCs
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: generation
+        in: query
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                address_prefix_management:
+                  type: string
+                resource_group:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+      responses:
+        '201':
+          description: VPC created
+components:
+  schemas:
+    VPC:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        crn:
+          type: string
+        classic_access:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        default_security_group:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        resource_group:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

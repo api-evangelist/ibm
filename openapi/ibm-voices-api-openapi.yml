@@ -1,0 +1,83 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Text to Speech Voices…
+  description: The IBM Text to Speech API provides speech-synthesis capabilities to convert written text into natural-sounding speech in a variety of languages, dialects, and voices. It supports SSML input and multiple audio formats.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://api.us-south.text-to-speech.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.text-to-speech.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+security:
+- bearerAuth: []
+tags:
+- name: Voices
+  description: Manage available voices.
+paths:
+  /v1/voices:
+    get:
+      operationId: listVoices
+      summary: International Business Machines List voices
+      description: List all available voices.
+      tags:
+      - Voices
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  voices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Voice'
+  /v1/voices/{voice}:
+    get:
+      operationId: getVoice
+      summary: International Business Machines Get a voice
+      description: Get information about a specific voice.
+      tags:
+      - Voices
+      parameters:
+      - name: voice
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Voice'
+components:
+  schemas:
+    Voice:
+      type: object
+      properties:
+        name:
+          type: string
+        language:
+          type: string
+        gender:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        customizable:
+          type: boolean
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

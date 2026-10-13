@@ -1,0 +1,126 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Cloud Object Storage…
+  description: The IBM Cloud Object Storage API provides a RESTful interface compatible with S3 for storing and retrieving objects in buckets. It supports features such as multipart uploads, versioning, lifecycle policies, and server-side encryption.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://s3.us-south.cloud-object-storage.appdomain.cloud
+  description: US South
+- url: https://s3.eu-de.cloud-object-storage.appdomain.cloud
+  description: EU Germany
+- url: https://s3.eu-gb.cloud-object-storage.appdomain.cloud
+  description: EU Great Britain
+security:
+- bearerAuth: []
+tags:
+- name: Objects
+  description: Manage objects within buckets.
+paths:
+  /{bucket}:
+    get:
+      operationId: listObjects
+      summary: International Business Machines List objects in a bucket
+      description: List objects stored in a bucket.
+      tags:
+      - Objects
+      parameters:
+      - name: bucket
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: prefix
+        in: query
+        schema:
+          type: string
+      - name: max-keys
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+  /{bucket}/{key}:
+    put:
+      operationId: putObject
+      summary: International Business Machines Upload an object
+      description: Upload an object to a bucket.
+      tags:
+      - Objects
+      parameters:
+      - name: bucket
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Object uploaded
+    get:
+      operationId: getObject
+      summary: International Business Machines Get an object
+      description: Retrieve an object from a bucket.
+      tags:
+      - Objects
+      parameters:
+      - name: bucket
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+    delete:
+      operationId: deleteObject
+      summary: International Business Machines Delete an object
+      description: Delete an object from a bucket.
+      tags:
+      - Objects
+      parameters:
+      - name: bucket
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Object deleted
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

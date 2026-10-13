@@ -1,0 +1,86 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Cloud Object Storage…
+  description: The IBM Cloud Object Storage API provides a RESTful interface compatible with S3 for storing and retrieving objects in buckets. It supports features such as multipart uploads, versioning, lifecycle policies, and server-side encryption.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/docs/cloud-object-storage
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://s3.us-south.cloud-object-storage.appdomain.cloud
+  description: US South
+- url: https://s3.eu-de.cloud-object-storage.appdomain.cloud
+  description: EU Germany
+- url: https://s3.eu-gb.cloud-object-storage.appdomain.cloud
+  description: EU Great Britain
+security:
+- bearerAuth: []
+tags:
+- name: Buckets
+  description: Manage storage buckets.
+paths:
+  /:
+    get:
+      operationId: listBuckets
+      summary: International Business Machines List buckets
+      description: List all buckets in the service instance.
+      tags:
+      - Buckets
+      parameters:
+      - name: ibm-service-instance-id
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                type: object
+  /{bucket}:
+    put:
+      operationId: createBucket
+      summary: International Business Machines Create a bucket
+      description: Create a new bucket.
+      tags:
+      - Buckets
+      parameters:
+      - name: bucket
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ibm-service-instance-id
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Bucket created
+    delete:
+      operationId: deleteBucket
+      summary: International Business Machines Delete a bucket
+      description: Delete an empty bucket.
+      tags:
+      - Buckets
+      parameters:
+      - name: bucket
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Bucket deleted
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

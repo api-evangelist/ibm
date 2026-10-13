@@ -1,0 +1,90 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM watsonx.ai Embeddings…
+  description: The IBM watsonx.ai API enables developers to run text inference, prompt tuning, and other operations on Large Language Models (LLMs). It provides access to multiple open source and IBM foundation models through a unified REST interface for text generation, embeddings, and model management.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://us-south.ml.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://eu-de.ml.cloud.ibm.com
+  description: EU Central (Frankfurt)
+- url: https://eu-gb.ml.cloud.ibm.com
+  description: EU (London)
+- url: https://jp-tok.ml.cloud.ibm.com
+  description: AP (Tokyo)
+security:
+- bearerAuth: []
+tags:
+- name: Embeddings
+  description: Generate text embeddings.
+paths:
+  /ml/v1/text/embeddings:
+    post:
+      operationId: textEmbeddings
+      summary: International Business Machines Generate embeddings
+      description: Generate embeddings from text input for use in downstream tasks such as search and retrieval.
+      tags:
+      - Embeddings
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddingsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddingsResponse'
+components:
+  schemas:
+    EmbeddingsResponse:
+      type: object
+      properties:
+        model_id:
+          type: string
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              embedding:
+                type: array
+                items:
+                  type: number
+              input_token_count:
+                type: integer
+    EmbeddingsRequest:
+      type: object
+      required:
+      - model_id
+      - inputs
+      - project_id
+      properties:
+        model_id:
+          type: string
+        inputs:
+          type: array
+          items:
+            type: string
+        project_id:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

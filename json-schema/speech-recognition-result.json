@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "speech-recognition-result.json",
+  "title": "Speech Recognition Result",
+  "description": "A result from the IBM Speech to Text service.",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "description": "Recognition results.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "final": {
+            "type": "boolean",
+            "description": "Whether the result is final."
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "transcript": {
+                  "type": "string",
+                  "description": "The transcribed text."
+                },
+                "confidence": {
+                  "type": "number",
+                  "description": "The confidence score.",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": ["transcript"]
+            }
+          }
+        }
+      }
+    },
+    "result_index": {
+      "type": "integer",
+      "description": "The index of the first result."
+    },
+    "speaker_labels": {
+      "type": "array",
+      "description": "Speaker labels for diarization.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "number" },
+          "to": { "type": "number" },
+          "speaker": { "type": "integer" },
+          "confidence": { "type": "number" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Speech to Text Custom…
+  description: The IBM Speech to Text API provides speech-recognition capabilities to produce transcripts of spoken audio. It supports multiple languages and audio formats, and offers features such as speaker labels, keyword spotting, smart formatting, and custom language and acoustic models.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://api.us-south.speech-to-text.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.speech-to-text.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+security:
+- bearerAuth: []
+tags:
+- name: Custom Language Models
+  description: Create and manage custom language models.
+paths:
+  /v1/customizations:
+    get:
+      operationId: listLanguageModels
+      summary: International Business Machines List custom language models
+      description: List all custom language models.
+      tags:
+      - Custom Language Models
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: createLanguageModel
+      summary: International Business Machines Create a custom language model
+      description: Create a new custom language model for a specified base model.
+      tags:
+      - Custom Language Models
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - base_model_name
+              properties:
+                name:
+                  type: string
+                base_model_name:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '201':
+          description: Custom model created
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

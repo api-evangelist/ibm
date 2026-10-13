@@ -1,0 +1,155 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Cloud Kubernetes…
+  description: The IBM Cloud Kubernetes Service API enables you to create and manage Kubernetes clusters and worker nodes on IBM Cloud. It supports both community Kubernetes and Red Hat OpenShift clusters with integrated logging, monitoring, and security capabilities.
+  version: 2.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://containers.cloud.ibm.com
+  description: Global endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Clusters
+  description: Manage Kubernetes clusters.
+paths:
+  /v2/getClusters:
+    get:
+      operationId: getClusters
+      summary: International Business Machines List clusters
+      description: List all Kubernetes and OpenShift clusters in the account.
+      tags:
+      - Clusters
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cluster'
+  /v2/getCluster:
+    get:
+      operationId: getCluster
+      summary: International Business Machines Get a cluster
+      description: Get details about a specific cluster.
+      tags:
+      - Clusters
+      parameters:
+      - name: cluster
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cluster'
+  /v2/createCluster:
+    post:
+      operationId: createCluster
+      summary: International Business Machines Create a cluster
+      description: Create a new Kubernetes or OpenShift cluster.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClusterRequest'
+      responses:
+        '201':
+          description: Cluster created
+  /v2/removeCluster:
+    delete:
+      operationId: removeCluster
+      summary: International Business Machines Delete a cluster
+      description: Delete a cluster and its associated worker nodes.
+      tags:
+      - Clusters
+      parameters:
+      - name: cluster
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Cluster deleted
+components:
+  schemas:
+    Cluster:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        location:
+          type: string
+        region:
+          type: string
+        masterKubeVersion:
+          type: string
+        workerCount:
+          type: integer
+        resourceGroup:
+          type: string
+        provider:
+          type: string
+        type:
+          type: string
+        createdDate:
+          type: string
+    CreateClusterRequest:
+      type: object
+      required:
+      - name
+      - provider
+      properties:
+        name:
+          type: string
+        provider:
+          type: string
+          enum:
+          - vpc-gen2
+          - classic
+        kubeVersion:
+          type: string
+        workerPool:
+          type: object
+          properties:
+            name:
+              type: string
+            flavor:
+              type: string
+            workerCount:
+              type: integer
+            vpcID:
+              type: string
+            zones:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  subnetID:
+                    type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

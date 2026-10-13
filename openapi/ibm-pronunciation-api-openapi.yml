@@ -1,0 +1,62 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Text to Speech…
+  description: The IBM Text to Speech API provides speech-synthesis capabilities to convert written text into natural-sounding speech in a variety of languages, dialects, and voices. It supports SSML input and multiple audio formats.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/text-to-speech
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://api.us-south.text-to-speech.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.text-to-speech.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+security:
+- bearerAuth: []
+tags:
+- name: Pronunciation
+  description: Get word pronunciations.
+paths:
+  /v1/pronunciation:
+    get:
+      operationId: getPronunciation
+      summary: International Business Machines Get pronunciation
+      description: Get the phonetic pronunciation of a word.
+      tags:
+      - Pronunciation
+      parameters:
+      - name: text
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: voice
+        in: query
+        schema:
+          type: string
+      - name: format
+        in: query
+        schema:
+          type: string
+          enum:
+          - ipa
+          - ibm
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pronunciation:
+                    type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

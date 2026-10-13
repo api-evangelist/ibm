@@ -1,0 +1,196 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM watsonx.ai Text…
+  description: The IBM watsonx.ai API enables developers to run text inference, prompt tuning, and other operations on Large Language Models (LLMs). It provides access to multiple open source and IBM foundation models through a unified REST interface for text generation, embeddings, and model management.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/watsonx-ai
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://us-south.ml.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://eu-de.ml.cloud.ibm.com
+  description: EU Central (Frankfurt)
+- url: https://eu-gb.ml.cloud.ibm.com
+  description: EU (London)
+- url: https://jp-tok.ml.cloud.ibm.com
+  description: AP (Tokyo)
+security:
+- bearerAuth: []
+tags:
+- name: Text Generation
+  description: Generate text using foundation models.
+paths:
+  /ml/v1/text/generation:
+    post:
+      operationId: textGeneration
+      summary: International Business Machines Generate text
+      description: Infer the next tokens for a given deployed model with a set of parameters.
+      tags:
+      - Text Generation
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The API version date.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextGenerationRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TextGenerationResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /ml/v1/text/generation_stream:
+    post:
+      operationId: textGenerationStream
+      summary: International Business Machines Generate text (streaming)
+      description: Infer the next tokens for a given deployed model with a set of parameters, returning results as a stream.
+      tags:
+      - Text Generation
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextGenerationRequest'
+      responses:
+        '200':
+          description: Successful streaming response
+          content:
+            text/event-stream:
+              schema:
+                type: string
+  /ml/v1/text/tokenization:
+    post:
+      operationId: textTokenization
+      summary: International Business Machines Tokenize text
+      description: Return the tokens for the provided text with the given model.
+      tags:
+      - Text Generation
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenizationRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenizationResponse'
+components:
+  schemas:
+    TokenizationRequest:
+      type: object
+      required:
+      - model_id
+      - input
+      - project_id
+      properties:
+        model_id:
+          type: string
+        input:
+          type: string
+        project_id:
+          type: string
+    TokenizationResponse:
+      type: object
+      properties:
+        model_id:
+          type: string
+        result:
+          type: object
+          properties:
+            token_count:
+              type: integer
+            tokens:
+              type: array
+              items:
+                type: string
+    TextGenerationResponse:
+      type: object
+      properties:
+        model_id:
+          type: string
+        created_at:
+          type: string
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              generated_text:
+                type: string
+              generated_token_count:
+                type: integer
+              input_token_count:
+                type: integer
+              stop_reason:
+                type: string
+    TextGenerationRequest:
+      type: object
+      required:
+      - model_id
+      - input
+      - project_id
+      properties:
+        model_id:
+          type: string
+          description: The ID of the model to use.
+        input:
+          type: string
+          description: The prompt text.
+        project_id:
+          type: string
+          description: The project ID.
+        parameters:
+          type: object
+          properties:
+            max_new_tokens:
+              type: integer
+            temperature:
+              type: number
+            top_p:
+              type: number
+            top_k:
+              type: integer
+            repetition_penalty:
+              type: number
+            stop_sequences:
+              type: array
+              items:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

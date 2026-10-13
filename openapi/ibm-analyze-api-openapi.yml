@@ -1,0 +1,219 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Natural Language…
+  description: The IBM Natural Language Understanding API enables developers to analyze text content for sentiment, emotion, entities, keywords, categories, concepts, relations, and semantic roles. It can process plain text, HTML, or content from a public URL.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/natural-language-understanding
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://api.us-south.natural-language-understanding.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+security:
+- bearerAuth: []
+tags:
+- name: Analyze
+  description: Analyze text content.
+paths:
+  /v1/analyze:
+    post:
+      operationId: analyze
+      summary: International Business Machines Analyze text
+      description: Analyze text, HTML, or a public URL with one or more text analytics features.
+      tags:
+      - Analyze
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyzeRequest'
+      responses:
+        '200':
+          description: Successful analysis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalysisResults'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    AnalysisResults:
+      type: object
+      properties:
+        language:
+          type: string
+        analyzed_text:
+          type: string
+        sentiment:
+          type: object
+          properties:
+            document:
+              type: object
+              properties:
+                score:
+                  type: number
+                label:
+                  type: string
+        emotion:
+          type: object
+          properties:
+            document:
+              type: object
+              properties:
+                emotion:
+                  type: object
+                  properties:
+                    sadness:
+                      type: number
+                    joy:
+                      type: number
+                    fear:
+                      type: number
+                    disgust:
+                      type: number
+                    anger:
+                      type: number
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+        keywords:
+          type: array
+          items:
+            $ref: '#/components/schemas/Keyword'
+        categories:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              score:
+                type: number
+        concepts:
+          type: array
+          items:
+            type: object
+            properties:
+              text:
+                type: string
+              relevance:
+                type: number
+              dbpedia_resource:
+                type: string
+    AnalyzeRequest:
+      type: object
+      required:
+      - features
+      properties:
+        text:
+          type: string
+          description: The plain text to analyze.
+        html:
+          type: string
+          description: The HTML content to analyze.
+        url:
+          type: string
+          description: The URL of the content to analyze.
+        features:
+          type: object
+          properties:
+            sentiment:
+              type: object
+              properties:
+                targets:
+                  type: array
+                  items:
+                    type: string
+                document:
+                  type: boolean
+            emotion:
+              type: object
+              properties:
+                targets:
+                  type: array
+                  items:
+                    type: string
+                document:
+                  type: boolean
+            entities:
+              type: object
+              properties:
+                limit:
+                  type: integer
+                sentiment:
+                  type: boolean
+                emotion:
+                  type: boolean
+            keywords:
+              type: object
+              properties:
+                limit:
+                  type: integer
+                sentiment:
+                  type: boolean
+                emotion:
+                  type: boolean
+            categories:
+              type: object
+              properties:
+                limit:
+                  type: integer
+            concepts:
+              type: object
+              properties:
+                limit:
+                  type: integer
+            relations:
+              type: object
+            semantic_roles:
+              type: object
+              properties:
+                limit:
+                  type: integer
+        language:
+          type: string
+        clean:
+          type: boolean
+    Entity:
+      type: object
+      properties:
+        type:
+          type: string
+        text:
+          type: string
+        relevance:
+          type: number
+        count:
+          type: integer
+        confidence:
+          type: number
+    Keyword:
+      type: object
+      properties:
+        text:
+          type: string
+        relevance:
+          type: number
+        count:
+          type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

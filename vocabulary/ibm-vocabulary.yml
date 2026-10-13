@@ -1,43 +1,128 @@
-generated: '2026-10-03'
+generated: '2026-10-13'
 method: derived
 generator: derive-vocabulary.py
 source:
+- openapi/ibm-analyze-api-openapi.yml
 - openapi/ibm-api-keys-api-openapi.yml
+- openapi/ibm-buckets-api-openapi.yml
 - openapi/ibm-claim-rules-api-openapi.yml
-- openapi/ibm-policies-api-openapi.yml
-- openapi/ibm-roles-api-openapi.yml
-- openapi/ibm-service-ids-api-openapi.yml
+- openapi/ibm-clusters-api-openapi.yml
 vocabulary:
   name: IBM Domain Vocabulary
   description: 'Terms declared by IBM''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions. Derived,
     not authored.'
-  version: '2026-10-03'
+  version: '2026-10-13'
   terms:
+  - term: Analyze
+    definition: Analyze text content.
+    tags:
+    - Resource Group
+    source: openapi/ibm-analyze-api-openapi.yml
   - term: API Keys
     definition: Create and manage API keys for users and service IDs
     tags:
     - Resource Group
     source: openapi/ibm-api-keys-api-openapi.yml
+  - term: Buckets
+    definition: Manage storage buckets.
+    tags:
+    - Resource Group
+    source: openapi/ibm-buckets-api-openapi.yml
   - term: Claim Rules
     definition: Manage claim rules for trusted profiles
     tags:
     - Resource Group
     source: openapi/ibm-claim-rules-api-openapi.yml
+  - term: Clusters
+    definition: Manage Kubernetes clusters.
+    tags:
+    - Resource Group
+    source: openapi/ibm-clusters-api-openapi.yml
+  - term: Custom Language Models
+    definition: Create and manage custom language models.
+    tags:
+    - Resource Group
+    source: openapi/ibm-custom-language-models-api-openapi.yml
+  - term: Embeddings
+    definition: Generate text embeddings.
+    tags:
+    - Resource Group
+    source: openapi/ibm-embeddings-api-openapi.yml
+  - term: Environments
+    definition: Manage assistant environments.
+    tags:
+    - Resource Group
+    source: openapi/ibm-environments-api-openapi.yml
+  - term: Instances
+    definition: Manage virtual server instances.
+    tags:
+    - Resource Group
+    source: openapi/ibm-instances-api-openapi.yml
+  - term: Messages
+    definition: Send messages to an assistant.
+    tags:
+    - Resource Group
+    source: openapi/ibm-messages-api-openapi.yml
+  - term: Models
+    definition: Manage custom models.
+    tags:
+    - Resource Group
+    source: openapi/ibm-models-api-openapi.yml
+  - term: Objects
+    definition: Manage objects within buckets.
+    tags:
+    - Resource Group
+    source: openapi/ibm-objects-api-openapi.yml
   - term: Policies
     definition: Create and manage IAM access policies
     tags:
     - Resource Group
     source: openapi/ibm-policies-api-openapi.yml
+  - term: Pronunciation
+    definition: Get word pronunciations.
+    tags:
+    - Resource Group
+    source: openapi/ibm-pronunciation-api-openapi.yml
+  - term: Recognition
+    definition: Recognize and transcribe audio.
+    tags:
+    - Resource Group
+    source: openapi/ibm-recognition-api-openapi.yml
   - term: Roles
     definition: List and manage IAM roles
     tags:
     - Resource Group
     source: openapi/ibm-roles-api-openapi.yml
+  - term: Security Groups
+    definition: Manage security groups.
+    tags:
+    - Resource Group
+    source: openapi/ibm-security-groups-api-openapi.yml
   - term: Service IDs
     definition: Create and manage service IDs for applications and services
     tags:
     - Resource Group
     source: openapi/ibm-service-ids-api-openapi.yml
+  - term: Sessions
+    definition: Manage conversation sessions.
+    tags:
+    - Resource Group
+    source: openapi/ibm-sessions-api-openapi.yml
+  - term: Subnets
+    definition: Manage subnets.
+    tags:
+    - Resource Group
+    source: openapi/ibm-subnets-api-openapi.yml
+  - term: Synthesis
+    definition: Synthesize text to audio.
+    tags:
+    - Resource Group
+    source: openapi/ibm-synthesis-api-openapi.yml
+  - term: Text Generation
+    definition: Generate text using foundation models.
+    tags:
+    - Resource Group
+    source: openapi/ibm-text-generation-api-openapi.yml
   - term: Tokens
     definition: Create and manage IAM access tokens
     tags:
@@ -48,6 +133,76 @@ vocabulary:
     tags:
     - Resource Group
     source: openapi/ibm-trusted-profiles-api-openapi.yml
+  - term: Voices
+    definition: Manage available voices.
+    tags:
+    - Resource Group
+    source: openapi/ibm-voices-api-openapi.yml
+  - term: Volumes
+    definition: Manage block storage volumes.
+    tags:
+    - Resource Group
+    source: openapi/ibm-volumes-api-openapi.yml
+  - term: VPCs
+    definition: Manage Virtual Private Clouds.
+    tags:
+    - Resource Group
+    source: openapi/ibm-vpcs-api-openapi.yml
+  - term: Worker Nodes
+    definition: Manage worker nodes.
+    tags:
+    - Resource Group
+    source: openapi/ibm-worker-nodes-api-openapi.yml
+  - term: Worker Pools
+    definition: Manage worker pools.
+    tags:
+    - Resource Group
+    source: openapi/ibm-worker-pools-api-openapi.yml
+  - term: AnalysisResults
+    definition: 'Object declared by the contract with fields: language, analyzed_text, sentiment, emotion, entities, keywords, categories, concepts.'
+    tags:
+    - Object
+    source: openapi/ibm-analyze-api-openapi.yml#/components/schemas/AnalysisResults
+  - term: AnalyzeRequest
+    definition: 'Object declared by the contract with fields: text, html, url, features, language, clean.'
+    tags:
+    - Object
+    source: openapi/ibm-analyze-api-openapi.yml#/components/schemas/AnalyzeRequest
+  - term: Entity
+    definition: 'Object declared by the contract with fields: type, text, relevance, count, confidence.'
+    tags:
+    - Object
+    source: openapi/ibm-analyze-api-openapi.yml#/components/schemas/Entity
+  - term: Keyword
+    definition: 'Object declared by the contract with fields: text, relevance, count.'
+    tags:
+    - Object
+    source: openapi/ibm-analyze-api-openapi.yml#/components/schemas/Keyword
+  - term: ActivityEntry
+    definition: A history entry for an identity resource.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ActivityEntry
+  - term: ApiKeyList
+    definition: A paginated list of API keys.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ApiKeyList
+  - term: Activity
+    definition: Activity information for an identity resource.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/Activity
+  - term: ApiKey
+    definition: An IAM API key used for authentication.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ApiKey
+  - term: CreateApiKeyRequest
+    definition: Request body for creating an API key.
+    tags:
+    - Object
+    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/CreateApiKeyRequest
   - term: ErrorResponse
     definition: An error response from the IAM API.
     tags:
@@ -58,36 +213,16 @@ vocabulary:
     tags:
     - Object
     source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/UpdateApiKeyRequest
-  - term: Activity
-    definition: Activity information for an identity resource.
-    tags:
-    - Object
-    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/Activity
-  - term: ApiKeyList
-    definition: A paginated list of API keys.
-    tags:
-    - Object
-    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ApiKeyList
-  - term: CreateApiKeyRequest
-    definition: Request body for creating an API key.
-    tags:
-    - Object
-    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/CreateApiKeyRequest
-  - term: ActivityEntry
-    definition: A history entry for an identity resource.
-    tags:
-    - Object
-    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ActivityEntry
-  - term: ApiKey
-    definition: An IAM API key used for authentication.
-    tags:
-    - Object
-    source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ApiKey
   - term: ResponseContext
     definition: Context metadata for paginated API responses.
     tags:
     - Object
     source: openapi/ibm-api-keys-api-openapi.yml#/components/schemas/ResponseContext
+  - term: ClaimRuleCondition
+    definition: A condition in a claim rule.
+    tags:
+    - Object
+    source: openapi/ibm-claim-rules-api-openapi.yml#/components/schemas/ClaimRuleCondition
   - term: CreateClaimRuleRequest
     definition: Request body for creating a claim rule.
     tags:
@@ -108,46 +243,107 @@ vocabulary:
     tags:
     - Object
     source: openapi/ibm-claim-rules-api-openapi.yml#/components/schemas/UpdateClaimRuleRequest
-  - term: ClaimRuleCondition
-    definition: A condition in a claim rule.
+  - term: Cluster
+    definition: 'Object declared by the contract with fields: id, name, state, location, region, masterKubeVersion, workerCount, resourceGroup,
+      provider, type, createdDate.'
     tags:
     - Object
-    source: openapi/ibm-claim-rules-api-openapi.yml#/components/schemas/ClaimRuleCondition
-  - term: PolicyRole
-    definition: A role assigned in a policy.
+    source: openapi/ibm-clusters-api-openapi.yml#/components/schemas/Cluster
+  - term: CreateClusterRequest
+    definition: 'Object declared by the contract with fields: name, provider, kubeVersion, workerPool.'
     tags:
     - Object
-    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyRole
-  - term: PolicyAttribute
-    definition: An attribute used to identify a subject or resource in a policy.
+    source: openapi/ibm-clusters-api-openapi.yml#/components/schemas/CreateClusterRequest
+  - term: EmbeddingsResponse
+    definition: 'Object declared by the contract with fields: model_id, results.'
     tags:
     - Object
-    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyAttribute
-  - term: CreatePolicyRequest
-    definition: Request body for creating an access policy.
+    source: openapi/ibm-embeddings-api-openapi.yml#/components/schemas/EmbeddingsResponse
+  - term: EmbeddingsRequest
+    definition: 'Object declared by the contract with fields: model_id, inputs, project_id.'
     tags:
     - Object
-    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/CreatePolicyRequest
-  - term: PolicyList
-    definition: A paginated list of access policies.
+    source: openapi/ibm-embeddings-api-openapi.yml#/components/schemas/EmbeddingsRequest
+  - term: EnvironmentCollection
+    definition: 'Object declared by the contract with fields: environments.'
     tags:
     - Object
-    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyList
-  - term: PolicyResource
-    definition: A resource in a policy, defining what the policy applies to.
+    source: openapi/ibm-environments-api-openapi.yml#/components/schemas/EnvironmentCollection
+  - term: CreateInstanceRequest
+    definition: 'Object declared by the contract with fields: name, profile, vpc, primary_network_interface, image, zone, keys.'
     tags:
     - Object
-    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyResource
+    source: openapi/ibm-instances-api-openapi.yml#/components/schemas/CreateInstanceRequest
+  - term: StatelessMessageResponse
+    definition: 'Object declared by the contract with fields: output, context, user_id.'
+    tags:
+    - Object
+    source: openapi/ibm-messages-api-openapi.yml#/components/schemas/StatelessMessageResponse
+  - term: StatelessMessageRequest
+    definition: 'Object declared by the contract with fields: input, context.'
+    tags:
+    - Object
+    source: openapi/ibm-messages-api-openapi.yml#/components/schemas/StatelessMessageRequest
+  - term: MessageResponse
+    definition: 'Object declared by the contract with fields: output, context.'
+    tags:
+    - Object
+    source: openapi/ibm-messages-api-openapi.yml#/components/schemas/MessageResponse
+  - term: MessageRequest
+    definition: 'Object declared by the contract with fields: input, context.'
+    tags:
+    - Object
+    source: openapi/ibm-messages-api-openapi.yml#/components/schemas/MessageRequest
+  - term: SpeechModel
+    definition: 'Object declared by the contract with fields: name, language, rate, url, description.'
+    tags:
+    - Object
+    source: openapi/ibm-models-api-openapi.yml#/components/schemas/SpeechModel
+  - term: FoundationModelsResponse
+    definition: 'Object declared by the contract with fields: total_count, limit, offset, resources.'
+    tags:
+    - Object
+    source: openapi/ibm-models-api-openapi.yml#/components/schemas/FoundationModelsResponse
   - term: Policy
     definition: An IAM access policy that grants a subject a set of roles on a resource.
     tags:
     - Object
     source: openapi/ibm-policies-api-openapi.yml#/components/schemas/Policy
+  - term: PolicyResource
+    definition: A resource in a policy, defining what the policy applies to.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyResource
+  - term: CreatePolicyRequest
+    definition: Request body for creating an access policy.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/CreatePolicyRequest
   - term: PolicySubject
     definition: A subject in a policy, defining who the policy applies to.
     tags:
     - Object
     source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicySubject
+  - term: PolicyRole
+    definition: A role assigned in a policy.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyRole
+  - term: PolicyList
+    definition: A paginated list of access policies.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyList
+  - term: PolicyAttribute
+    definition: An attribute used to identify a subject or resource in a policy.
+    tags:
+    - Object
+    source: openapi/ibm-policies-api-openapi.yml#/components/schemas/PolicyAttribute
+  - term: SpeechRecognitionResults
+    definition: 'Object declared by the contract with fields: results, result_index, speaker_labels.'
+    tags:
+    - Object
+    source: openapi/ibm-recognition-api-openapi.yml#/components/schemas/SpeechRecognitionResults
   - term: Role
     definition: An IAM role that defines a set of actions.
     tags:
@@ -163,49 +359,59 @@ vocabulary:
     tags:
     - Object
     source: openapi/ibm-roles-api-openapi.yml#/components/schemas/CreateRoleRequest
-  - term: UpdateServiceIdRequest
-    definition: Request body for updating a service ID.
-    tags:
-    - Object
-    source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/UpdateServiceIdRequest
-  - term: ServiceIdList
-    definition: A paginated list of service IDs.
-    tags:
-    - Object
-    source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/ServiceIdList
   - term: CreateServiceIdRequest
     definition: Request body for creating a service ID.
     tags:
     - Object
     source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/CreateServiceIdRequest
+  - term: ServiceIdList
+    definition: A paginated list of service IDs.
+    tags:
+    - Object
+    source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/ServiceIdList
+  - term: UpdateServiceIdRequest
+    definition: Request body for updating a service ID.
+    tags:
+    - Object
+    source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/UpdateServiceIdRequest
   - term: ServiceId
     definition: A service ID is an identity for an application or service that can be used to authenticate with IBM Cloud.
     tags:
     - Object
     source: openapi/ibm-service-ids-api-openapi.yml#/components/schemas/ServiceId
+  - term: Session
+    definition: 'Object declared by the contract with fields: session_id.'
+    tags:
+    - Object
+    source: openapi/ibm-sessions-api-openapi.yml#/components/schemas/Session
+  - term: TokenizationRequest
+    definition: 'Object declared by the contract with fields: model_id, input, project_id.'
+    tags:
+    - Object
+    source: openapi/ibm-text-generation-api-openapi.yml#/components/schemas/TokenizationRequest
+  - term: TokenizationResponse
+    definition: 'Object declared by the contract with fields: model_id, result.'
+    tags:
+    - Object
+    source: openapi/ibm-text-generation-api-openapi.yml#/components/schemas/TokenizationResponse
+  - term: TextGenerationResponse
+    definition: 'Object declared by the contract with fields: model_id, created_at, results.'
+    tags:
+    - Object
+    source: openapi/ibm-text-generation-api-openapi.yml#/components/schemas/TextGenerationResponse
+  - term: TextGenerationRequest
+    definition: 'Object declared by the contract with fields: model_id, input, project_id, parameters.'
+    tags:
+    - Object
+    source: openapi/ibm-text-generation-api-openapi.yml#/components/schemas/TextGenerationRequest
   - term: TokenResponse
     definition: An IAM access token response.
     tags:
     - Object
     source: openapi/ibm-tokens-api-openapi.yml#/components/schemas/TokenResponse
-  - term: TrustedProfileList
-    definition: A paginated list of trusted profiles.
-    tags:
-    - Object
-    source: openapi/ibm-trusted-profiles-api-openapi.yml#/components/schemas/TrustedProfileList
-  - term: CreateProfileRequest
-    definition: Request body for creating a trusted profile.
-    tags:
-    - Object
-    source: openapi/ibm-trusted-profiles-api-openapi.yml#/components/schemas/CreateProfileRequest
   - term: TrustedProfile
     definition: A trusted profile defines a set of conditions under which federated users or compute resources can assume an identity with specific
       access rights.
     tags:
     - Object
     source: openapi/ibm-trusted-profiles-api-openapi.yml#/components/schemas/TrustedProfile
-  - term: UpdateProfileRequest
-    definition: Request body for updating a trusted profile.
-    tags:
-    - Object
-    source: openapi/ibm-trusted-profiles-api-openapi.yml#/components/schemas/UpdateProfileRequest

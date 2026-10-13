@@ -1,0 +1,68 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Cloud Kubernetes…
+  description: The IBM Cloud Kubernetes Service API enables you to create and manage Kubernetes clusters and worker nodes on IBM Cloud. It supports both community Kubernetes and Red Hat OpenShift clusters with integrated logging, monitoring, and security capabilities.
+  version: 2.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/kubernetes/containers-v1-v2
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://containers.cloud.ibm.com
+  description: Global endpoint
+security:
+- bearerAuth: []
+tags:
+- name: Worker Nodes
+  description: Manage worker nodes.
+paths:
+  /v2/getWorkers:
+    get:
+      operationId: getWorkers
+      summary: International Business Machines List worker nodes
+      description: List all worker nodes in a cluster.
+      tags:
+      - Worker Nodes
+      parameters:
+      - name: cluster
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Worker'
+components:
+  schemas:
+    Worker:
+      type: object
+      properties:
+        id:
+          type: string
+        state:
+          type: string
+        status:
+          type: string
+        privateIP:
+          type: string
+        publicIP:
+          type: string
+        machineType:
+          type: string
+        kubeVersion:
+          type: string
+        poolID:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

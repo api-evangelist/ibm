@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "text-generation-request.json",
+  "title": "Text Generation Request",
+  "description": "A request to generate text using an IBM watsonx.ai foundation model.",
+  "type": "object",
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "description": "The ID of the model to use for generation."
+    },
+    "input": {
+      "type": "string",
+      "description": "The prompt text to send to the model."
+    },
+    "project_id": {
+      "type": "string",
+      "description": "The watsonx.ai project ID."
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Generation parameters.",
+      "properties": {
+        "max_new_tokens": {
+          "type": "integer",
+          "description": "Maximum number of tokens to generate.",
+          "minimum": 1
+        },
+        "temperature": {
+          "type": "number",
+          "description": "Sampling temperature.",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "top_p": {
+          "type": "number",
+          "description": "Top-p (nucleus) sampling.",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "top_k": {
+          "type": "integer",
+          "description": "Top-k sampling.",
+          "minimum": 1
+        },
+        "repetition_penalty": {
+          "type": "number",
+          "description": "Penalty for repeated tokens."
+        },
+        "stop_sequences": {
+          "type": "array",
+          "description": "Sequences that stop generation.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": ["model_id", "input", "project_id"]
+}

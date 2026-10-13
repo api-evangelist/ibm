@@ -1,0 +1,103 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Speech to Text…
+  description: The IBM Speech to Text API provides speech-recognition capabilities to produce transcripts of spoken audio. It supports multiple languages and audio formats, and offers features such as speaker labels, keyword spotting, smart formatting, and custom language and acoustic models.
+  version: 1.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/speech-to-text
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://api.us-south.speech-to-text.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.speech-to-text.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+security:
+- bearerAuth: []
+tags:
+- name: Recognition
+  description: Recognize and transcribe audio.
+paths:
+  /v1/recognize:
+    post:
+      operationId: recognize
+      summary: International Business Machines Recognize audio
+      description: Send audio and receive a transcription of the audio content.
+      tags:
+      - Recognition
+      parameters:
+      - name: model
+        in: query
+        schema:
+          type: string
+        description: The model to use for recognition.
+      - name: content-type
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          audio/flac:
+            schema:
+              type: string
+              format: binary
+          audio/wav:
+            schema:
+              type: string
+              format: binary
+          audio/mp3:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Successful transcription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpeechRecognitionResults'
+components:
+  schemas:
+    SpeechRecognitionResults:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              final:
+                type: boolean
+              alternatives:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    transcript:
+                      type: string
+                    confidence:
+                      type: number
+        result_index:
+          type: integer
+        speaker_labels:
+          type: array
+          items:
+            type: object
+            properties:
+              from:
+                type: number
+              to:
+                type: number
+              speaker:
+                type: integer
+              confidence:
+                type: number
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vpc.json",
+  "title": "Virtual Private Cloud",
+  "description": "An IBM Cloud Virtual Private Cloud (VPC) resource.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the VPC."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the VPC."
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the VPC.",
+      "enum": ["available", "deleting", "failed", "pending"]
+    },
+    "crn": {
+      "type": "string",
+      "description": "The Cloud Resource Name (CRN) of the VPC."
+    },
+    "classic_access": {
+      "type": "boolean",
+      "description": "Whether classic access is enabled."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the VPC was created."
+    },
+    "default_security_group": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "resource_group": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    }
+  },
+  "required": ["id", "name", "status"]
+}

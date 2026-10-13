@@ -1,0 +1,123 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Cloud VPC Instances API
+  description: The IBM Cloud Virtual Private Cloud (VPC) API enables you to programmatically provision and manage virtual server instances, networks, storage volumes, load balancers, security groups, and other infrastructure resources within an isolated virtual network on IBM Cloud.
+  version: 2.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://us-south.iaas.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://eu-de.iaas.cloud.ibm.com
+  description: EU Central (Frankfurt)
+security:
+- bearerAuth: []
+tags:
+- name: Instances
+  description: Manage virtual server instances.
+paths:
+  /v1/instances:
+    get:
+      operationId: listInstances
+      summary: International Business Machines List instances
+      description: List all virtual server instances in the region.
+      tags:
+      - Instances
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: generation
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: createInstance
+      summary: International Business Machines Create an instance
+      description: Create a new virtual server instance.
+      tags:
+      - Instances
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: generation
+        in: query
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInstanceRequest'
+      responses:
+        '201':
+          description: Instance created
+components:
+  schemas:
+    CreateInstanceRequest:
+      type: object
+      required:
+      - name
+      - profile
+      - vpc
+      - primary_network_interface
+      - image
+      - zone
+      properties:
+        name:
+          type: string
+        profile:
+          type: object
+          properties:
+            name:
+              type: string
+        vpc:
+          type: object
+          properties:
+            id:
+              type: string
+        primary_network_interface:
+          type: object
+          properties:
+            subnet:
+              type: object
+              properties:
+                id:
+                  type: string
+        image:
+          type: object
+          properties:
+            id:
+              type: string
+        zone:
+          type: object
+          properties:
+            name:
+              type: string
+        keys:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

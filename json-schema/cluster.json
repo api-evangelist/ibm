@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cluster.json",
+  "title": "Kubernetes Cluster",
+  "description": "An IBM Cloud Kubernetes Service cluster.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the cluster."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the cluster."
+    },
+    "state": {
+      "type": "string",
+      "description": "The current state of the cluster."
+    },
+    "location": {
+      "type": "string",
+      "description": "The data center location."
+    },
+    "region": {
+      "type": "string",
+      "description": "The IBM Cloud region."
+    },
+    "masterKubeVersion": {
+      "type": "string",
+      "description": "The Kubernetes version of the master."
+    },
+    "workerCount": {
+      "type": "integer",
+      "description": "The number of worker nodes."
+    },
+    "resourceGroup": {
+      "type": "string",
+      "description": "The resource group ID."
+    },
+    "provider": {
+      "type": "string",
+      "description": "The infrastructure provider (e.g., vpc-gen2, classic)."
+    },
+    "type": {
+      "type": "string",
+      "description": "The cluster type (e.g., kubernetes, openshift)."
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the cluster was created."
+    }
+  },
+  "required": ["id", "name", "state"]
+}

@@ -1,0 +1,87 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM watsonx Assistant v2…
+  description: The IBM watsonx Assistant v2 API enables developers to build conversational interfaces into applications, devices, and channels. The API supports creating and managing assistants, sessions, and message interactions using natural language understanding and dialog management.
+  version: 2.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://api.us-south.assistant.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.assistant.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+- url: https://api.eu-gb.assistant.watson.cloud.ibm.com
+  description: EU (London)
+security:
+- bearerAuth: []
+tags:
+- name: Sessions
+  description: Manage conversation sessions.
+paths:
+  /v2/assistants/{assistant_id}/sessions:
+    post:
+      operationId: createSession
+      summary: International Business Machines Create a session
+      description: Create a new session for an assistant. A session is used to send user input to an assistant and receive responses.
+      tags:
+      - Sessions
+      parameters:
+      - name: assistant_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+  /v2/assistants/{assistant_id}/sessions/{session_id}:
+    delete:
+      operationId: deleteSession
+      summary: International Business Machines Delete a session
+      description: Delete an existing session.
+      tags:
+      - Sessions
+      parameters:
+      - name: assistant_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: session_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Session deleted successfully
+components:
+  schemas:
+    Session:
+      type: object
+      properties:
+        session_id:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

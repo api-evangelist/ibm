@@ -1,0 +1,49 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM Cloud VPC Security…
+  description: The IBM Cloud Virtual Private Cloud (VPC) API enables you to programmatically provision and manage virtual server instances, networks, storage volumes, load balancers, security groups, and other infrastructure resources within an isolated virtual network on IBM Cloud.
+  version: 2.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/vpc/latest
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://us-south.iaas.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://eu-de.iaas.cloud.ibm.com
+  description: EU Central (Frankfurt)
+security:
+- bearerAuth: []
+tags:
+- name: Security Groups
+  description: Manage security groups.
+paths:
+  /v1/security_groups:
+    get:
+      operationId: listSecurityGroups
+      summary: International Business Machines List security groups
+      description: List all security groups in the region.
+      tags:
+      - Security Groups
+      parameters:
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: generation
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "foundation-model.json",
+  "title": "Foundation Model",
+  "description": "An IBM watsonx.ai foundation model available for text generation and embeddings.",
+  "type": "object",
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "description": "The unique identifier of the foundation model."
+    },
+    "label": {
+      "type": "string",
+      "description": "The display name of the model."
+    },
+    "provider": {
+      "type": "string",
+      "description": "The provider of the model (e.g., IBM, Meta)."
+    },
+    "source": {
+      "type": "string",
+      "description": "The source of the model."
+    },
+    "short_description": {
+      "type": "string",
+      "description": "A brief description of the model."
+    },
+    "tasks": {
+      "type": "array",
+      "description": "Tasks the model can perform.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "model_limits": {
+      "type": "object",
+      "properties": {
+        "max_sequence_length": {
+          "type": "integer"
+        },
+        "max_output_tokens": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "required": ["model_id", "label", "provider"]
+}

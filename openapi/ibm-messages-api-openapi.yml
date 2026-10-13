@@ -1,0 +1,178 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM watsonx Assistant v2…
+  description: The IBM watsonx Assistant v2 API enables developers to build conversational interfaces into applications, devices, and channels. The API supports creating and managing assistants, sessions, and message interactions using natural language understanding and dialog management.
+  version: 2.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://api.us-south.assistant.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.assistant.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+- url: https://api.eu-gb.assistant.watson.cloud.ibm.com
+  description: EU (London)
+security:
+- bearerAuth: []
+tags:
+- name: Messages
+  description: Send messages to an assistant.
+paths:
+  /v2/assistants/{assistant_id}/sessions/{session_id}/message:
+    post:
+      operationId: message
+      summary: International Business Machines Send user input to assistant
+      description: Send user input to an assistant and receive a response within the context of a session.
+      tags:
+      - Messages
+      parameters:
+      - name: assistant_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: session_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+  /v2/assistants/{assistant_id}/message:
+    post:
+      operationId: messageStateless
+      summary: International Business Machines Send user input to assistant (stateless)
+      description: Send user input to an assistant without maintaining a session.
+      tags:
+      - Messages
+      parameters:
+      - name: assistant_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatelessMessageRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatelessMessageResponse'
+components:
+  schemas:
+    StatelessMessageResponse:
+      type: object
+      properties:
+        output:
+          type: object
+        context:
+          type: object
+        user_id:
+          type: string
+    StatelessMessageRequest:
+      type: object
+      properties:
+        input:
+          type: object
+          properties:
+            message_type:
+              type: string
+            text:
+              type: string
+        context:
+          type: object
+    MessageResponse:
+      type: object
+      properties:
+        output:
+          type: object
+          properties:
+            generic:
+              type: array
+              items:
+                type: object
+                properties:
+                  response_type:
+                    type: string
+                  text:
+                    type: string
+            intents:
+              type: array
+              items:
+                type: object
+                properties:
+                  intent:
+                    type: string
+                  confidence:
+                    type: number
+            entities:
+              type: array
+              items:
+                type: object
+                properties:
+                  entity:
+                    type: string
+                  value:
+                    type: string
+                  confidence:
+                    type: number
+        context:
+          type: object
+    MessageRequest:
+      type: object
+      properties:
+        input:
+          type: object
+          properties:
+            message_type:
+              type: string
+              enum:
+              - text
+              - search
+            text:
+              type: string
+            options:
+              type: object
+              properties:
+                return_context:
+                  type: boolean
+                debug:
+                  type: boolean
+        context:
+          type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

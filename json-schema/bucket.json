@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bucket.json",
+  "title": "Cloud Object Storage Bucket",
+  "description": "An IBM Cloud Object Storage bucket.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the bucket."
+    },
+    "creation_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the bucket was created."
+    },
+    "location_constraint": {
+      "type": "string",
+      "description": "The location constraint (e.g., us-south-standard)."
+    },
+    "storage_class": {
+      "type": "string",
+      "description": "The storage class.",
+      "enum": ["standard", "vault", "cold", "smart"]
+    },
+    "ibm_service_instance_id": {
+      "type": "string",
+      "description": "The service instance ID that owns this bucket."
+    }
+  },
+  "required": ["name"]
+}

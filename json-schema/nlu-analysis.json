@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nlu-analysis.json",
+  "title": "NLU Analysis",
+  "description": "Results from an IBM Natural Language Understanding analysis.",
+  "type": "object",
+  "properties": {
+    "language": {
+      "type": "string",
+      "description": "The detected language of the analyzed text."
+    },
+    "analyzed_text": {
+      "type": "string",
+      "description": "The text that was analyzed."
+    },
+    "sentiment": {
+      "type": "object",
+      "description": "Document-level sentiment analysis.",
+      "properties": {
+        "document": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            },
+            "label": {
+              "type": "string",
+              "enum": ["positive", "negative", "neutral"]
+            }
+          }
+        }
+      }
+    },
+    "emotion": {
+      "type": "object",
+      "description": "Document-level emotion analysis.",
+      "properties": {
+        "document": {
+          "type": "object",
+          "properties": {
+            "emotion": {
+              "type": "object",
+              "properties": {
+                "sadness": { "type": "number" },
+                "joy": { "type": "number" },
+                "fear": { "type": "number" },
+                "disgust": { "type": "number" },
+                "anger": { "type": "number" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "description": "Detected entities.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "text": { "type": "string" },
+          "relevance": { "type": "number" },
+          "count": { "type": "integer" },
+          "confidence": { "type": "number" }
+        }
+      }
+    },
+    "keywords": {
+      "type": "array",
+      "description": "Extracted keywords.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string" },
+          "relevance": { "type": "number" },
+          "count": { "type": "integer" }
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "description": "Content categories.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string" },
+          "score": { "type": "number" }
+        }
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "description": "High-level concepts.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string" },
+          "relevance": { "type": "number" },
+          "dbpedia_resource": { "type": "string" }
+        }
+      }
+    }
+  }
+}

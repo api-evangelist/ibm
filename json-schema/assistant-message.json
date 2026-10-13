@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "assistant-message.json",
+  "title": "Assistant Message",
+  "description": "A message exchanged with an IBM watsonx Assistant.",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "description": "The user input.",
+      "properties": {
+        "message_type": {
+          "type": "string",
+          "enum": ["text", "search"],
+          "description": "The type of the message."
+        },
+        "text": {
+          "type": "string",
+          "description": "The text of the user input."
+        },
+        "options": {
+          "type": "object",
+          "properties": {
+            "return_context": {
+              "type": "boolean"
+            },
+            "debug": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "description": "The assistant response.",
+      "properties": {
+        "generic": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "response_type": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "intents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "intent": {
+                "type": "string"
+              },
+              "confidence": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entity": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "confidence": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "description": "Session context data."
+    }
+  }
+}

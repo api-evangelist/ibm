@@ -1,0 +1,70 @@
+openapi: 3.2.0
+info:
+  title: International Business Machines IBM watsonx Assistant v2…
+  description: The IBM watsonx Assistant v2 API enables developers to build conversational interfaces into applications, devices, and channels. The API supports creating and managing assistants, sessions, and message interactions using natural language understanding and dialog management.
+  version: 2.0.0
+  contact:
+    name: IBM Cloud
+    url: https://cloud.ibm.com/apidocs/assistant-v2
+  license:
+    name: IBM Cloud Terms
+    url: https://www.ibm.com/terms
+servers:
+- url: https://api.us-south.assistant.watson.cloud.ibm.com
+  description: US South (Dallas)
+- url: https://api.eu-de.assistant.watson.cloud.ibm.com
+  description: EU Central (Frankfurt)
+- url: https://api.eu-gb.assistant.watson.cloud.ibm.com
+  description: EU (London)
+security:
+- bearerAuth: []
+tags:
+- name: Environments
+  description: Manage assistant environments.
+paths:
+  /v2/assistants/{assistant_id}/environments:
+    get:
+      operationId: listEnvironments
+      summary: International Business Machines List environments
+      description: List the environments associated with an assistant.
+      tags:
+      - Environments
+      parameters:
+      - name: assistant_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentCollection'
+components:
+  schemas:
+    EnvironmentCollection:
+      type: object
+      properties:
+        environments:
+          type: array
+          items:
+            type: object
+            properties:
+              environment_id:
+                type: string
+              name:
+                type: string
+              description:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: IAM Token

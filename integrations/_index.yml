@@ -19,7 +19,9 @@
   use_case: Forward IBM Cloud IAM Policy create/update/delete events to Splunk HEC so the SecOps team can detect
     privilege escalation across IBM Cloud, watsonx, and API Connect.
   source: curated
-  status: pending-generation
+  status: not-a-workflow
+  evidence: https://splunkbase.splunk.com/app/7568/
+  type: marketplace
   arazzo: null
 - slug: ibm-slack
   label: Alert Slack on IBM Cloud IAM API key creation
@@ -175,6 +177,31 @@
   marketplace: vscode
   channel: partner-built
   evidence: https://marketplace.visualstudio.com/publishers/IBM
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-crowdstrike-own
+  label: CrowdStrike (own)
+  partner: crowdstrike
+  partner_name: CrowdStrike (own)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.crowdstrike.com/listings/ibm-security/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-grafana-own
+  label: Grafana (own)
+  partner: grafana-com
+  partner_name: Grafana (own)
+  category: Application
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://grafana.com/grafana/plugins/ibm-rmf-app/
   source: edge
   relationship: platform-app
   status: not-a-workflow

@@ -32,5 +32,59 @@ edges:
     on value added tasks
   detected_by: sweep-shape-compat.py
   first_seen: '2026-10-13'
+- partner_name: Open Geospatial Consortium
+  partner: ogc
+  detected_by: sweep-geospatial.py
+  first_seen: '2026-10-14'
+  partner_match: register
+  type: register
+  direction: partner-built
+  channel: standard-directory
+  relationship: standard-participant
+  evidence: https://portal.ogc.org/public_ogc/compliance/implementing.php?org_match=IBM%20Corporation
+  conformance:
+    organization: IBM Corporation
+    domain: ibm.com
+    products: 4
+    compliant_specs: []
+    implementing_specs:
+    - 'Implementation Specification for Geographic information - Simple feature access - Part 2: SQL option 1.1'
+    - 'Implementation Specification for Geographic information - Simple feature access - Part 2: SQL option 1.2.1'
+    products_list:
+    - name: IBM DB2 Spatial Extender
+      version: '7.1'
+      type: Server
+      pid: '26'
+      valid_until: null
+      compliant: []
+    - name: IBM DB2 Spatial Extender
+      version: 7.1 - 11.1
+      type: Server
+      pid: '569'
+      valid_until: null
+      compliant: []
+    - name: IBM Informix Spatial Datablade Module
+      version: '8.21'
+      type: Server
+      pid: '1094'
+      valid_until: null
+      compliant: []
+    - name: IBM DB2 for z/OS Spatial Support
+      version: 9 - 12
+      type: Server
+      pid: '1095'
+      valid_until: null
+      compliant: []
+  match:
+    method: domain+name-among-holders
+    domain: ibm.com
+  contract_reference:
+    register: portal.ogc.org/public_ogc/compliance
+    spec_file: null
+    role: implementation-registration
+    registered_name: IBM Corporation
+    register_id: IBM Corporation
+    detected_by: sweep-geospatial.py
+    detected: '2026-10-14'
 generated: '2026-10-13'
 method: searched

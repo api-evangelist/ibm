@@ -37,7 +37,9 @@
   use_case: Drive scheduled IBM Cloud IAM API key rotation from a GitHub Actions workflow — create a new key, write
     it to a GitHub Actions secret, then disable the old one.
   source: curated
-  status: pending-generation
+  status: not-a-workflow
+  evidence: https://github.com/marketplace/power-z-gha-runner
+  type: marketplace
   arazzo: null
 - slug: ibm-anthropic
   label: Complement watsonx with Anthropic Claude via shared IBM Cloud identity
@@ -151,5 +153,29 @@
     register_id: IBM Corporation
     detected_by: sweep-geospatial.py
     detected: '2026-10-14'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-github-marketplace-actions
+  label: GitHub Marketplace (actions)
+  partner: github-actions
+  partner_name: GitHub Marketplace (actions)
+  type: marketplace
+  marketplace: github-actions
+  channel: partner-built
+  evidence: https://github.com/marketplace/actions/deploy-to-ibm-cloud-foundry
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-visual-studio-code-marketplace
+  label: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_name: Visual Studio Code Marketplace
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  evidence: https://marketplace.visualstudio.com/publishers/IBM
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null

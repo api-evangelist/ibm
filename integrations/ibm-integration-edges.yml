@@ -86,5 +86,75 @@ edges:
     register_id: IBM Corporation
     detected_by: sweep-geospatial.py
     detected: '2026-10-14'
+- partner_name: GitHub Marketplace (apps)
+  partner: github
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-apps
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/power-z-gha-runner
+  listing_count: 1
+  apps:
+  - power-z-gha-runner
+  publisher_name: International Business Machines
+  badges:
+  - Verified creator
+  - Verified domain
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+- partner_name: GitHub Marketplace (actions)
+  partner: github-actions
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-actions
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/actions/deploy-to-ibm-cloud-foundry
+  listing_count: 8
+  apps:
+  - Deploy to IBM Cloud Foundry
+  - IBM Cloud CLI
+  - Code Engine GitHub Action
+  - Rational Functional Tester GitHub Action
+  - Rational Performance Tester GitHub Action
+  publisher_name: International Business Machines
+  badges:
+  - Verified creator
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+- partner_name: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_match: aggregator
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.visualstudio.com/publishers/IBM
+  listing_count: 17
+  apps:
+  - Output Colorizer
+  - IBM Db2 for z/OS Developer Extension
+  - IBM Z Open Editor
+  - IBM Cloud Account
+  - watsonx Code Assistant
+  publisher_name: IBM
+  badges:
+  - Verified publisher
+  - Verified domain
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 generated: '2026-10-13'
 method: searched
+checked:
+- https://github.com/marketplace?type=actions
+- https://github.com/marketplace?type=apps
+- https://marketplace.visualstudio.com/vscode
+marketplace_apps: []
+source:
+- https://github.com/marketplace?type=actions
+- https://github.com/marketplace?type=apps
+- https://marketplace.visualstudio.com/vscode

@@ -510,6 +510,81 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-mlops.py
   first_seen: '2026-10-15'
+- partner_name: FedRAMP
+  partner: null
+  partner_match: register
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://marketplace.fedramp.gov/products/FR2135730387
+  category: FedRAMP authorization
+  contract_reference:
+    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
+    standard: FedRAMP
+    spec_file: null
+    role: fedramp-authorized
+    registered_name: IBM
+    register_id: FR2135730387
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    domain_source: website
+    designations:
+    - Compliant
+    packages:
+    - IBM Cloud for Government
+    - IBM Federal HR Cloud
+    - IBM Maximo and TRIRIGA on Cloud for U.S. Federal
+    - MaaS360 Enterprise Mobility Management
+    - SmartCloud for Government
+    service_models:
+    - IaaS
+    - PaaS
+    - SaaS
+    paths:
+    - Agency
+    - JAB
+    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
+      models, paths and leveraging agencies are context, never counted. The register lists current designations
+      only (revoked / expired are removed), so lapsed is always false
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+    certified_products:
+    - product: FedRAMP Moderate
+      impact_level: Moderate
+      lapsed: false
+      latest_authorization: '2022-10-04'
+    - product: FedRAMP High
+      impact_level: High
+      lapsed: false
+      latest_authorization: '2019-11-14'
+  detected_by: sweep-gov-cloud.py
+  first_seen: '2026-10-15'
+- partner_name: UK G-Cloud 15 (Digital Marketplace)
+  partner: null
+  partner_match: register
+  type: marketplace
+  marketplace: g-cloud
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/supplier/92284
+  category: UK public-sector procurement framework
+  contract_reference:
+    register: UK G-Cloud 15 supplier list (Digital Marketplace)
+    spec_file: null
+    role: g-cloud-supplier
+    registered_name: IBM UNITED KINGDOM LIMITED
+    register_id: '92284'
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    domain_source: contact-email
+    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out
+      of position shares
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+  detected_by: sweep-gov-cloud.py
+  first_seen: '2026-10-15'
 generated: '2026-10-13'
 method: searched
 checked:
@@ -523,8 +598,11 @@ checked:
 - https://github.com/marketplace?type=actions
 - https://github.com/marketplace?type=apps
 - https://github.com/mlcommons
+- https://govramp.org/program-participants
 - https://marketplace.visualstudio.com/vscode
 - https://peppol.org/members/peppol-certified-service-providers/
+- https://raw.githubusercontent.com/18F/fedramp-data/4b73d9247fd6360759960e4690e3ce4ca858e0fa/data/data.json
+- https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/suppliers
 - https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees
 - https://www.streamlinedsalestax.org/certified-service-providers/certified-service-providers-list
 - splunk/integrations/splunk-integration-edges.yml

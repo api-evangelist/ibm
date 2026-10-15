@@ -471,3 +471,78 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: ibm-fedramp
+  label: FedRAMP
+  partner_name: FedRAMP
+  category: FedRAMP authorization
+  type: contract
+  channel: regulator-register
+  evidence: https://marketplace.fedramp.gov/products/FR2135730387
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
+    standard: FedRAMP
+    spec_file: null
+    role: fedramp-authorized
+    registered_name: IBM
+    register_id: FR2135730387
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    domain_source: website
+    designations:
+    - Compliant
+    packages:
+    - IBM Cloud for Government
+    - IBM Federal HR Cloud
+    - IBM Maximo and TRIRIGA on Cloud for U.S. Federal
+    - MaaS360 Enterprise Mobility Management
+    - SmartCloud for Government
+    service_models:
+    - IaaS
+    - PaaS
+    - SaaS
+    paths:
+    - Agency
+    - JAB
+    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
+      models, paths and leveraging agencies are context, never counted. The register lists current designations
+      only (revoked / expired are removed), so lapsed is always false
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+    certified_products:
+    - product: FedRAMP Moderate
+      impact_level: Moderate
+      lapsed: false
+      latest_authorization: '2022-10-04'
+    - product: FedRAMP High
+      impact_level: High
+      lapsed: false
+      latest_authorization: '2019-11-14'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-uk-g-cloud-15-digital-marketplace
+  label: UK G-Cloud 15 (Digital Marketplace)
+  partner_name: UK G-Cloud 15 (Digital Marketplace)
+  category: UK public-sector procurement framework
+  type: marketplace
+  marketplace: g-cloud
+  channel: distribution
+  evidence: https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/supplier/92284
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: UK G-Cloud 15 supplier list (Digital Marketplace)
+    spec_file: null
+    role: g-cloud-supplier
+    registered_name: IBM UNITED KINGDOM LIMITED
+    register_id: '92284'
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    domain_source: contact-email
+    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out
+      of position shares
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null

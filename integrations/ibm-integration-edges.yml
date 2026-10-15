@@ -1,37 +1,4 @@
 edges:
-- partner_name: Amazon Web Services
-  partner: amazon-web-services
-  partner_match: shape-anchor
-  channel: provider-built
-  relationship: compatible
-  direction: provider-built
-  shape: aws-s3
-  type: contract
-  degree: declared-unqualified
-  evidence: https://github.com/api-evangelist/ibm/blob/main/openapi/ibm-buckets-api-openapi.yml#L4
-  evidence_kind: own-contract
-  quote: 'description: The IBM Cloud Object Storage API provides a RESTful interface compatible with S3 for storing
-    and retrieving objects in buckets. It supports features such as multipart uploads, versioning, lifecycle policies,
-    and server-side enc'
-  detected_by: sweep-shape-compat.py
-  first_seen: '2026-10-13'
-- partner_name: Apache Kafka
-  partner: apache-kafka
-  partner_match: shape-anchor
-  channel: provider-built
-  relationship: compatible
-  direction: provider-built
-  shape: kafka-protocol
-  type: docs
-  degree: full
-  evidence: https://www.ibm.com/products/event-streams
-  evidence_kind: own-docs
-  evidence_file: https://github.com/api-evangelist/ibm/blob/main/evidence/compatibility/ibm-kafka-protocol-1.md
-  quote: Leverage IBM Support for deep technical expertise whenever you need it. Event Streams offers a fully managed
-    Apache Kafka service, ensuring durability, high availability and security and compliance so that you can focus
-    on value added tasks
-  detected_by: sweep-shape-compat.py
-  first_seen: '2026-10-13'
 - partner_name: Open Geospatial Consortium
   partner: ogc
   detected_by: sweep-geospatial.py
@@ -147,6 +114,39 @@ edges:
   - Verified domain
   detected_by: sweep-devtools.py
   detected: '2026-10-14'
+- partner_name: Amazon Web Services
+  partner: amazon-web-services
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: aws-s3
+  type: contract
+  degree: declared-unqualified
+  evidence: https://github.com/api-evangelist/ibm/blob/main/openapi/ibm-buckets-api-openapi.yml#L4
+  evidence_kind: own-contract
+  quote: 'description: The IBM Cloud Object Storage API provides a RESTful interface compatible with S3 for storing
+    and retrieving objects in buckets. It supports features such as multipart uploads, versioning, lifecycle policies,
+    and server-side enc'
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
+- partner_name: Apache Kafka
+  partner: apache-kafka
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: kafka-protocol
+  type: docs
+  degree: full
+  evidence: https://www.ibm.com/products/event-streams
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/ibm/blob/main/evidence/compatibility/ibm-kafka-protocol-1.md
+  quote: Leverage IBM Support for deep technical expertise whenever you need it. Event Streams offers a fully managed
+    Apache Kafka service, ensuring durability, high availability and security and compliance so that you can focus
+    on value added tasks
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
 - partner_name: CrowdStrike (own)
   partner: crowdstrike
   partner_match: mirror

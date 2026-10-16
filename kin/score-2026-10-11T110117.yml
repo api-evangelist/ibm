@@ -1,24 +1,22 @@
-# Kin Score artifact — ibm — 2026-09-06T224210
+# Kin Score artifact — ibm — 2026-10-11T110117
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: ibm
-  schema_version: 0.19.0
-  scored_at: '2026-09-06'
-  run_ts: 2026-09-06T224210
-  composite: 60.7
-  band: strong
+  schema_version: 0.23.0
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
+  composite: 71.3
+  band: exemplar
   facets:
-    discoverability: 61.1
-    contract_quality: 72.6
-    governance: 14.4
-    operational_transparency: 50.0
-    developer_ergonomics: 72.6
-    commercial_clarity: 68.4
-    contract_governance: 14.4
-    access_clarity: 68.4
+    discoverability: 80.0
+    contract_quality: 61.8
+    contract_governance: 31.8
+    operational_transparency: 57.9
+    developer_ergonomics: 76.7
+    access_clarity: 89.5
   agent_readiness:
-    score: 37.3
+    score: 38.6
     band: agent-ready
     dimensions:
       spec_presence: true
@@ -29,9 +27,9 @@ kin_score:
       idempotency: false
       error_semantics: verified
       openapi_examples: false
-      rate_limit_signal: documented
+      rate_limit_signal: derived
       event_surface_described: false
-      agent_skills: false
+      agent_skills: unknown
       well_known_catalog: false
       consent_identity: false
       agent_card: false
@@ -40,6 +38,12 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 41.8
+    matched_via: fallback
   provenance:
     mcp: first-party
     agentic_access: derived

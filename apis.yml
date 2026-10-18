@@ -648,7 +648,7 @@ apis:
   - Apache Kafka
   - Event Streaming
   - Messaging
-  - Pub-Sub
+  - Pub/Sub
   tags_raw:
   - Apache Kafka
   - Event Streaming

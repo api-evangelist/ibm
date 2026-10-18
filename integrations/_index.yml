@@ -30,7 +30,9 @@
   use_case: Post a Slack message when an IBM Cloud IAM API key is created, locked, or disabled so platform engineers
     can act on suspicious credential activity without leaving chat.
   source: curated
-  status: pending-generation
+  status: not-a-workflow
+  evidence: https://slack.com/marketplace/A03JXC6JM8S-ibm-video-streaming
+  type: marketplace
   arazzo: null
 - slug: ibm-github
   label: Rotate IBM Cloud IAM API keys from a GitHub Actions workflow

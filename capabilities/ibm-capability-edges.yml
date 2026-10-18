@@ -3,6 +3,8 @@ provider: IBM
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
+- Electrical Components & Equipment
+- Infrastructure
 - Telecommunications
 min_confidence: 0.7
 capability_model:
@@ -11,17 +13,68 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 6
+edge_count: 20
 edges:
 - tag: Policies
   spec_file: ibm-policies-api-openapi.yml
   capability_id: BC-620.20
   capability_id_l1: BC-620
   capability_name: Identity & Access Management
+  confidence: 0.92
+  evidence: '"Create an access policy", "List access policies"; "authorize access to IBM Cloud resources"'
+  reason: Access policy CRUD within IAM is squarely identity and access management, not corporate policy
+    management.
+- tag: Roles
+  spec_file: ibm-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
   confidence: 0.9
-  evidence: POST /v1/policies  createPolicy  Create an access policy
-  reason: Access-policy lifecycle with PolicySubject/PolicyResource/PolicyRole schemas is authorization
-    management within IAM, not corporate policy management.
+  evidence: '"List IAM roles", "Create a custom role" within the IBM Cloud Identity and Access Management
+    API'
+  reason: Role definition and management for authorization is identity and access management, not HR job
+    roles.
+- tag: Service IDs
+  spec_file: ibm-service-ids-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.9
+  evidence: POST /v1/serviceids/  createServiceId  Create a service ID ... manage IAM access tokens, API
+    keys, service IDs, trusted profiles
+  reason: Lifecycle of non-human service identities and their API keys, including lock/unlock, is machine
+    identity and access management.
+- tag: Tokens
+  spec_file: ibm-tokens-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: POST /identity/token  createAccessToken  Create an IAM access token; "enables you to manage
+    IAM access tokens, API keys, service IDs, trusted profiles, and access policies"
+  reason: Operation issues IAM access tokens to authenticate identities and authorise access to cloud
+    resources — identity and access management, not generic auth plumbing of an unrelated business API.
+- tag: Trusted Profiles
+  spec_file: ibm-trusted-profiles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: POST /v1/profiles createProfile, schema TrustedProfile — "manage ... trusted profiles, and
+    access policies"
+  reason: Trusted profiles are federated identity constructs granting access to cloud resources; lifecycle
+    CRUD over them is identity and access management.
+- tag: VPCs
+  spec_file: ibm-vpcs-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.88
+  evidence: POST /v1/vpcs  createVpc  Create a VPC; "programmatically provision and manage virtual server
+    instances, networks, storage volumes, load balancers... within an isolated virtual network on IBM
+    Cloud"
+  reason: Provisioning virtual private cloud networks is cloud/network infrastructure management; the
+    vendor blurb about identity is irrelevant to this spec.
 - tag: API Keys
   spec_file: ibm-api-keys-api-openapi.yml
   capability_id: BC-620.20
@@ -31,24 +84,45 @@ edges:
   evidence: POST /v1/apikeys  createApiKey  Create an API key ... POST /v1/apikeys/{id}/lock  lockApiKey
   reason: IBM Cloud IAM credential lifecycle (create, lock, disable API keys) is identity and access management
     for cloud resources.
-- tag: Service IDs
-  spec_file: ibm-service-ids-api-openapi.yml
-  capability_id: BC-620.20
-  capability_id_l1: BC-620
-  capability_name: Identity & Access Management
+- tag: Clusters
+  spec_file: ibm-clusters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
   confidence: 0.85
-  evidence: POST /v1/serviceids/  createServiceId  Create a service ID
-  reason: Non-human (service) identity lifecycle with associated API keys is core identity and access
-    management.
-- tag: Trusted Profiles
-  spec_file: ibm-trusted-profiles-api-openapi.yml
-  capability_id: BC-620.20
-  capability_id_l1: BC-620
-  capability_name: Identity & Access Management
+  evidence: '"create and manage Kubernetes clusters and worker nodes on IBM Cloud"; operations "Create
+    a cluster", "Delete a cluster"'
+  reason: Provisioning and lifecycle of Kubernetes compute clusters is cloud infrastructure management,
+    not a business-domain capability.
+- tag: Instances
+  spec_file: ibm-instances-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
   confidence: 0.85
-  evidence: POST /v1/profiles  createProfile  Create a trusted profile
-  reason: Trusted profiles are federated identity constructs used to grant access to IBM Cloud resources;
-    lifecycle CRUD maps to identity and access management.
+  evidence: '"programmatically provision and manage virtual server instances, networks, storage volumes";
+    "Create an instance"'
+  reason: Provisioning virtual compute in a VPC is cloud/IT infrastructure management.
+- tag: Volumes
+  spec_file: ibm-volumes-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.82
+  evidence: GET /v1/volumes  listVolumes; "provision and manage virtual server instances, networks, storage
+    volumes"
+  reason: Block storage volumes in the IBM Cloud VPC service — compute/storage infrastructure management.
+    Thin surface (one list operation) so slightly lower confidence.
+- tag: Worker Nodes
+  spec_file: ibm-worker-nodes-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.82
+  evidence: GET /v2/getWorkers  getWorkers  List worker nodes; "create and manage Kubernetes clusters
+    and worker nodes on IBM Cloud"
+  reason: Kubernetes worker node inventory is compute infrastructure management, not workforce ('worker'
+    is a homograph here).
 - tag: Claim Rules
   spec_file: ibm-claim-rules-api-openapi.yml
   capability_id: BC-620.20
@@ -58,13 +132,77 @@ edges:
   evidence: GET /v1/profiles/{profile-id}/rules  listClaimRules  List claim rules for a trusted profile
   reason: Claim rules govern federated identity trust conditions for trusted profiles — an IAM/federation
     configuration capability, not an insurance claim.
-- tag: Tokens
-  spec_file: ibm-tokens-api-openapi.yml
-  capability_id: BC-620.20
-  capability_id_l1: BC-620
-  capability_name: Identity & Access Management
+- tag: Objects
+  spec_file: ibm-objects-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: '"RESTful interface compatible with S3 for storing and retrieving objects in buckets"; "Upload
+    an object"'
+  reason: Cloud object storage operations are IT infrastructure (storage) management.
+- tag: Worker Pools
+  spec_file: ibm-worker-pools-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /v2/getWorkerPools  getWorkerPools  List worker pools; "create and manage Kubernetes clusters
+    and worker nodes"
+  reason: Kubernetes worker pools are compute node groupings — IT infrastructure management; nothing to
+    do with human workers.
+- tag: Subnets
+  spec_file: ibm-subnets-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: GET /v1/subnets listSubnets — "programmatically provision and manage virtual server instances,
+    networks, storage volumes..."
+  reason: Subnet enumeration in a VPC is cloud network infrastructure management.
+- tag: Models
+  spec_file: ibm-models-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: '"List foundation models", "List sentiment models", schema FoundationModelsResponse'
+  reason: Discovery and retrieval of ML/foundation model definitions is AI/ML model lifecycle tooling.
+- tag: Buckets
+  spec_file: ibm-buckets-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
   confidence: 0.7
-  evidence: POST /identity/token  createAccessToken  Create an IAM access token
-  reason: Token issuance is authentication plumbing; it sits inside IAM so a weak mapping is defensible,
-    but it is close to pure technical auth.
-  recovered_from: capability-edges-sweep.json
+  evidence: The IBM Cloud Object Storage API provides a RESTful interface compatible with S3 for storing
+    and retrieving objects in buckets
+  reason: Creating and deleting object-storage buckets is cloud storage infrastructure provisioning, i.e.
+    IT infrastructure management.
+- tag: Embeddings
+  spec_file: ibm-embeddings-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: '"Generate embeddings" via watsonx.ai, schemas EmbeddingsRequest/EmbeddingsResponse'
+  reason: Foundation-model embedding generation is an AI/ML capability; no other candidate fits machine-learning
+    inference.
+- tag: Recognition
+  spec_file: ibm-recognition-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: '"Recognize audio"; "speech-recognition capabilities to produce transcripts of spoken audio"'
+  reason: Speech-to-text inference is an applied AI service capability.
+- tag: Text Generation
+  spec_file: ibm-text-generation-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /ml/v1/text/generation textGeneration — "run text inference, prompt tuning, and other
+    operations on Large Language Models (LLMs)"
+  reason: LLM inference and tokenisation endpoints are the operational surface of AI/ML model consumption,
+    mapping to Artificial Intelligence Management; some ambiguity as this is model usage rather than full
+    MLOps lifecycle.

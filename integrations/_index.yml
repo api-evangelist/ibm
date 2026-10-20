@@ -118,25 +118,6 @@
   source: curated
   status: pending-generation
   arazzo: null
-- slug: ibm-open-geospatial-consortium
-  label: Open Geospatial Consortium
-  partner: ogc
-  partner_name: Open Geospatial Consortium
-  type: register
-  channel: standard-directory
-  evidence: https://portal.ogc.org/public_ogc/compliance/implementing.php?org_match=IBM%20Corporation
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: portal.ogc.org/public_ogc/compliance
-    spec_file: null
-    role: implementation-registration
-    registered_name: IBM Corporation
-    register_id: IBM Corporation
-    detected_by: sweep-geospatial.py
-    detected: '2026-10-14'
-  status: not-a-workflow
-  arazzo: null
 - slug: ibm-github-marketplace-actions
   label: GitHub Marketplace (actions)
   partner: github-actions
@@ -206,346 +187,6 @@
   evidence: https://grafana.com/grafana/plugins/ibm-rmf-app/
   source: edge
   relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-cncf-cloud-native-landscape
-  label: CNCF (Cloud Native Landscape)
-  partner: cncf
-  partner_name: CNCF (Cloud Native Landscape)
-  category: Cloud native landscape
-  type: register
-  channel: standard-directory
-  evidence: https://github.com/cncf/landscape/blob/3a7d378b1824b82e729a453bb03fa6f1e37557e1/landscape.yml
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: CNCF Cloud Native Landscape (github.com/cncf/landscape landscape.yml @3a7d378b18)
-    spec_file: null
-    standard: Cloud Native (CNCF)
-    role: cncf-member (Platinum)
-    registered_name: IBM
-    registered_names:
-    - IBM
-    - IBM Cloud Code Engine
-    - IBM Cloud Container Registry
-    - IBM Cloud Functions
-    - IBM Storage
-    - Red Hat OpenShift on IBM Cloud
-    website: https://www.ibm.com/cloud
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    member_tier: Platinum
-    joined: '2015-11-01'
-    end_user: false
-    cncf_projects: []
-    landscape_categories:
-    - Platform / Certified Kubernetes - Hosted
-    - Provisioning / Container Registry
-    - Runtime / Cloud Native Storage
-    - Serverless / Hosted Platform
-    landscape_entries: 5
-    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries,
-      categories, tier and projects are CONTEXT, never read (breadth is not credit)'
-    detected_by: sweep-cloud-native.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-cncf-kubernetes-certified-service-provider
-  label: CNCF (Kubernetes Certified Service Provider)
-  partner: cncf
-  partner_name: CNCF (Kubernetes Certified Service Provider)
-  category: Kubernetes services
-  type: register
-  channel: standard-directory
-  evidence: https://landscape.cncf.io/?group=special&view-mode=grid
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: CNCF Kubernetes Certified Service Provider (github.com/cncf/landscape landscape.yml Special / Kubernetes
-      Certified Service Provider @3a7d378b18)
-    spec_file: null
-    standard: Kubernetes (KCSP)
-    role: kcsp
-    registered_name: IBM Cloud
-    website: https://www.ibm.com/cloud/kubernetes-service
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    certified_products:
-    - product: Kubernetes Certified Service Provider
-      lapsed: false
-    signal_note: certified_products = ONE entry (the KCSP vetting itself), never a count
-    detected_by: sweep-cloud-native.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-cncf-certified-kubernetes
-  label: CNCF Certified Kubernetes
-  partner: cncf
-  partner_name: CNCF Certified Kubernetes
-  category: Certified Kubernetes
-  type: register
-  channel: standard-directory
-  evidence: https://github.com/cncf/k8s-conformance/tree/85d26a419e7df96137e66817b61cb22a616ce1e9/v1.36/iks
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: CNCF Certified Kubernetes (github.com/cncf/k8s-conformance @85d26a419e)
-    spec_file: null
-    standard: Kubernetes conformance
-    role: certified-kubernetes
-    registered_name: IBM
-    website: https://www.ibm.com/products/kubernetes-service
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    certified_products:
-    - product: hosted
-      newest_version: v1.36
-      lapsed: false
-    versions_certified:
-    - v1.24
-    - v1.25
-    - v1.26
-    - v1.27
-    - v1.28
-    - v1.29
-    - v1.30
-    - v1.31
-    - v1.32
-    - v1.33
-    - v1.34
-    - v1.35
-    - v1.36
-    products:
-    - IBM Cloud Kubernetes Service
-    - Red Hat OpenShift on IBM Cloud
-    current_window: v1.34+ (newest 4 minors in the register)
-    signal_note: certified_products = one entry per product TYPE (distribution/hosted/installer), lapsed when its
-      newest certified minor is outside the current window; products and versions are context, never read
-    detected_by: sweep-cloud-native.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-finops-foundation-focus
-  label: FinOps Foundation (FOCUS)
-  partner: finops-foundation
-  partner_name: FinOps Foundation (FOCUS)
-  category: FOCUS billing data
-  type: register
-  channel: standard-directory
-  evidence: https://focus.finops.org/docs/implementation/data-generators/ibm-cloud/
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: FOCUS data generators (focus.finops.org/data-generators)
-    spec_file: null
-    standard: FOCUS (FinOps Open Cost and Usage Specification)
-    role: focus-data-generator
-    registered_name: IBM Cloud
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    focus_version_supported: '1.2'
-    page_domains:
-      ibm.com: 1
-    signal_note: 'participation only: the version is context, never read'
-    detected_by: sweep-cloud-native.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-openpeppol-certified-service-providers
-  label: OpenPeppol (certified service providers)
-  partner_name: OpenPeppol (certified service providers)
-  category: Peppol service provider
-  type: register
-  channel: standard-directory
-  evidence: https://peppol.org/members/peppol-certified-service-providers/
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
-    spec_file: null
-    standard: Peppol
-    role: peppol-certified-service-provider
-    registered_name: IBM Corporation
-    legal_name: IBM Corporation
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    domain_source: contact email domain
-    peppol_authorities:
-    - OpenPeppol
-    countries:
-    - USA
-    certified_products:
-    - product: Access Point
-      lapsed: false
-    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
-      countries are context, never read
-    detected_by: sweep-einvoicing-tax.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-lf-ai-data-landscape
-  label: LF AI & Data (Landscape)
-  partner: lf-ai-data
-  partner_name: LF AI & Data (Landscape)
-  category: AI & data landscape
-  type: register
-  channel: standard-directory
-  evidence: https://github.com/lfai/landscape/blob/95d361b8abfdd04a8c76bf38a012778d13621b5e/landscape.yml
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: LF AI & Data Landscape (github.com/lfai/landscape landscape.yml @95d361b8ab)
-    spec_file: null
-    standard: LF AI & Data
-    role: lfai-member (Premier)
-    registered_name: International Business Machines Corporation
-    registered_names:
-    - BeeAI
-    - Data-Prep-Kit
-    - Docling
-    - IBM (hosting)
-    - International Business Machines Corporation
-    - Model Asset eXchange (MAX)
-    - PixieDust
-    website: https://ibm.com/
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    member_tier: Premier
-    hosting_company: true
-    lfai_projects:
-    - project: BeeAI
-      maturity: incubating
-    - project: Data-Prep-Kit
-      maturity: incubating
-    - project: Docling
-      maturity: graduated
-    landscape_categories:
-    - Data / Store & Format
-    - Generative AI / Tools
-    - Hosting Companies / Hosting Companies
-    - Machine Learning / Framework
-    - Model / Marketplace
-    - Notebook Environment / Notebook Environment
-    landscape_entries: 6
-    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries,
-      categories, tier and projects are CONTEXT, never read (breadth is not credit)'
-    detected_by: sweep-mlops.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-mlcommons-mlperf
-  label: MLCommons MLPerf
-  partner: mlcommons
-  partner_name: MLCommons MLPerf
-  category: ML benchmark results
-  type: register
-  channel: standard-directory
-  evidence: https://github.com/mlcommons/training_results_v5.0/tree/main/closed/IBM
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: MLCommons MLPerf results (github.com/mlcommons/<family>_results_v<round>, closed/ + open/ submitter
-      directories)
-    spec_file: null
-    standard: MLPerf (MLCommons)
-    role: mlperf-submitter
-    registered_name: IBM
-    register_directories:
-    - IBM
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    identity_source: wikidata Q37156 'IBM' P856 https://www.ibm.com/
-    identity_note: 'MLPerf publishes names only: domain from Wikidata P856 (labelled lookup, Kin 2026-10-15 decision
-      1), then partner_link (domain + name check)'
-    certified_products:
-    - product: MLPerf Storage (closed division)
-      newest_round: v2.0
-      lapsed: false
-    - product: MLPerf Training (closed division)
-      newest_round: v5.0
-      lapsed: true
-    open_division_only: []
-    current_window: each family's newest 2 rounds
-    signal_note: certified_products = one entry per benchmark FAMILY with a closed-division (peer-reviewed, reference-rules)
-      result, lapsed outside the current window; open-division families, rounds and result counts are context, never
-      read
-    detected_by: sweep-mlops.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-fedramp
-  label: FedRAMP
-  partner_name: FedRAMP
-  category: FedRAMP authorization
-  type: contract
-  channel: regulator-register
-  evidence: https://marketplace.fedramp.gov/products/FR2135730387
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
-    standard: FedRAMP
-    spec_file: null
-    role: fedramp-authorized
-    registered_name: IBM
-    register_id: FR2135730387
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    domain_source: website
-    designations:
-    - Compliant
-    packages:
-    - IBM Cloud for Government
-    - IBM Federal HR Cloud
-    - IBM Maximo and TRIRIGA on Cloud for U.S. Federal
-    - MaaS360 Enterprise Mobility Management
-    - SmartCloud for Government
-    service_models:
-    - IaaS
-    - PaaS
-    - SaaS
-    paths:
-    - Agency
-    - JAB
-    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
-      models, paths and leveraging agencies are context, never counted. The register lists current designations
-      only (revoked / expired are removed), so lapsed is always false
-    detected_by: sweep-gov-cloud.py
-    detected: '2026-10-15'
-    certified_products:
-    - product: FedRAMP Moderate
-      impact_level: Moderate
-      lapsed: false
-      latest_authorization: '2022-10-04'
-    - product: FedRAMP High
-      impact_level: High
-      lapsed: false
-      latest_authorization: '2019-11-14'
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-uk-g-cloud-15-digital-marketplace
-  label: UK G-Cloud 15 (Digital Marketplace)
-  partner_name: UK G-Cloud 15 (Digital Marketplace)
-  category: UK public-sector procurement framework
-  type: marketplace
-  marketplace: g-cloud
-  channel: distribution
-  evidence: https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/supplier/92284
-  source: edge
-  relationship: distribution-channel
-  contract_reference:
-    register: UK G-Cloud 15 supplier list (Digital Marketplace)
-    spec_file: null
-    role: g-cloud-supplier
-    registered_name: IBM UNITED KINGDOM LIMITED
-    register_id: '92284'
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    domain_source: contact-email
-    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out
-      of position shares
-    detected_by: sweep-gov-cloud.py
-    detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
 - slug: ibm-cyclonedx-owasp
@@ -715,5 +356,364 @@
       24 months'
     detected_by: sweep-official-sdks.py
     detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-openpeppol-certified-service-providers
+  label: OpenPeppol (certified service providers)
+  partner_name: OpenPeppol (certified service providers)
+  category: Peppol service provider
+  type: register
+  channel: standard-directory
+  evidence: https://peppol.org/members/peppol-certified-service-providers/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
+    spec_file: null
+    standard: Peppol
+    role: peppol-certified-service-provider
+    registered_name: IBM Corporation
+    legal_name: IBM Corporation
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    domain_source: contact email domain
+    peppol_authorities:
+    - OpenPeppol
+    countries:
+    - USA
+    certified_products:
+    - product: Access Point
+      lapsed: false
+    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
+      countries are context, never read
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-open-geospatial-consortium
+  label: Open Geospatial Consortium
+  partner: ogc
+  partner_name: Open Geospatial Consortium
+  type: register
+  channel: standard-directory
+  evidence: https://portal.ogc.org/public_ogc/compliance/implementing.php?org_match=IBM%20Corporation
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: portal.ogc.org/public_ogc/compliance
+    spec_file: null
+    role: implementation-registration
+    registered_name: IBM Corporation
+    register_id: IBM Corporation
+    detected_by: sweep-geospatial.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-fedramp
+  label: FedRAMP
+  partner_name: FedRAMP
+  category: FedRAMP authorization
+  type: contract
+  channel: regulator-register
+  evidence: https://marketplace.fedramp.gov/products/FR2135730387
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
+    standard: FedRAMP
+    spec_file: null
+    role: fedramp-authorized
+    registered_name: IBM
+    register_id: FR2135730387
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    domain_source: website
+    designations:
+    - Compliant
+    packages:
+    - IBM Cloud for Government
+    - IBM Federal HR Cloud
+    - IBM Maximo and TRIRIGA on Cloud for U.S. Federal
+    - MaaS360 Enterprise Mobility Management
+    - SmartCloud for Government
+    service_models:
+    - IaaS
+    - PaaS
+    - SaaS
+    paths:
+    - Agency
+    - JAB
+    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
+      models, paths and leveraging agencies are context, never counted. The register lists current designations
+      only (revoked / expired are removed), so lapsed is always false
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+    certified_products:
+    - product: FedRAMP Moderate
+      impact_level: Moderate
+      lapsed: false
+      latest_authorization: '2022-10-04'
+    - product: FedRAMP High
+      impact_level: High
+      lapsed: false
+      latest_authorization: '2019-11-14'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-uk-g-cloud-15-digital-marketplace
+  label: UK G-Cloud 15 (Digital Marketplace)
+  partner_name: UK G-Cloud 15 (Digital Marketplace)
+  category: UK public-sector procurement framework
+  type: marketplace
+  marketplace: g-cloud
+  channel: distribution
+  evidence: https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/supplier/92284
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: UK G-Cloud 15 supplier list (Digital Marketplace)
+    spec_file: null
+    role: g-cloud-supplier
+    registered_name: IBM UNITED KINGDOM LIMITED
+    register_id: '92284'
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    domain_source: contact-email
+    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out
+      of position shares
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-lf-ai-data-landscape
+  label: LF AI & Data (Landscape)
+  partner: lf-ai-data
+  partner_name: LF AI & Data (Landscape)
+  category: AI & data landscape
+  type: register
+  channel: standard-directory
+  evidence: https://github.com/lfai/landscape/blob/3893e0631e1d12921a9b0ac25ffc78a2ac26239d/landscape.yml
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: LF AI & Data Landscape (github.com/lfai/landscape landscape.yml @3893e0631e)
+    spec_file: null
+    standard: LF AI & Data
+    role: lfai-member (Premier)
+    registered_name: International Business Machines Corporation
+    registered_names:
+    - BeeAI
+    - Data-Prep-Kit
+    - Docling
+    - IBM (hosting)
+    - International Business Machines Corporation
+    - Model Asset eXchange (MAX)
+    - PixieDust
+    website: https://ibm.com/
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    member_tier: Premier
+    hosting_company: true
+    lfai_projects:
+    - project: BeeAI
+      maturity: incubating
+    - project: Data-Prep-Kit
+      maturity: incubating
+    - project: Docling
+      maturity: graduated
+    landscape_categories:
+    - Data / Store & Format
+    - Generative AI / Tools
+    - Hosting Companies / Hosting Companies
+    - Machine Learning / Framework
+    - Model / Marketplace
+    - Notebook Environment / Notebook Environment
+    landscape_entries: 6
+    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries,
+      categories, tier and projects are CONTEXT, never read (breadth is not credit)'
+    detected_by: sweep-mlops.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-mlcommons-mlperf
+  label: MLCommons MLPerf
+  partner: mlcommons
+  partner_name: MLCommons MLPerf
+  category: ML benchmark results
+  type: register
+  channel: standard-directory
+  evidence: https://github.com/mlcommons/training_results_v5.0/tree/main/closed/IBM
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: MLCommons MLPerf results (github.com/mlcommons/<family>_results_v<round>, closed/ + open/ submitter
+      directories)
+    spec_file: null
+    standard: MLPerf (MLCommons)
+    role: mlperf-submitter
+    registered_name: IBM
+    register_directories:
+    - IBM
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    identity_source: wikidata Q37156 'IBM' P856 https://www.ibm.com/
+    identity_note: 'MLPerf publishes names only: domain from Wikidata P856 (labelled lookup, Kin 2026-10-15 decision
+      1), then partner_link (domain + name check)'
+    certified_products:
+    - product: MLPerf Storage (closed division)
+      newest_round: v2.0
+      lapsed: false
+    - product: MLPerf Training (closed division)
+      newest_round: v5.0
+      lapsed: true
+    open_division_only: []
+    current_window: each family's newest 2 rounds
+    signal_note: certified_products = one entry per benchmark FAMILY with a closed-division (peer-reviewed, reference-rules)
+      result, lapsed outside the current window; open-division families, rounds and result counts are context, never
+      read
+    detected_by: sweep-mlops.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-cncf-cloud-native-landscape
+  label: CNCF (Cloud Native Landscape)
+  partner: cncf
+  partner_name: CNCF (Cloud Native Landscape)
+  category: Cloud native landscape
+  type: register
+  channel: standard-directory
+  evidence: https://github.com/cncf/landscape/blob/42dd4cd91dad8ec8558ac02467a43f0805b9957a/landscape.yml
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CNCF Cloud Native Landscape (github.com/cncf/landscape landscape.yml @42dd4cd91d)
+    spec_file: null
+    standard: Cloud Native (CNCF)
+    role: cncf-member (Platinum)
+    registered_name: IBM
+    registered_names:
+    - IBM
+    - IBM Cloud Code Engine
+    - IBM Cloud Container Registry
+    - IBM Cloud Functions
+    - IBM Storage
+    - Red Hat OpenShift on IBM Cloud
+    website: https://www.ibm.com/cloud
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    member_tier: Platinum
+    joined: '2015-11-01'
+    end_user: false
+    cncf_projects: []
+    landscape_categories:
+    - Platform / Certified Kubernetes - Hosted
+    - Provisioning / Container Registry
+    - Runtime / Cloud Native Storage
+    - Serverless / Hosted Platform
+    landscape_entries: 5
+    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries,
+      categories, tier and projects are CONTEXT, never read (breadth is not credit)'
+    detected_by: sweep-cloud-native.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-cncf-kubernetes-certified-service-provider
+  label: CNCF (Kubernetes Certified Service Provider)
+  partner: cncf
+  partner_name: CNCF (Kubernetes Certified Service Provider)
+  category: Kubernetes services
+  type: register
+  channel: standard-directory
+  evidence: https://landscape.cncf.io/?group=special&view-mode=grid
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CNCF Kubernetes Certified Service Provider (github.com/cncf/landscape landscape.yml Special / Kubernetes
+      Certified Service Provider @42dd4cd91d)
+    spec_file: null
+    standard: Kubernetes (KCSP)
+    role: kcsp
+    registered_name: IBM Cloud
+    website: https://www.ibm.com/cloud/kubernetes-service
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    certified_products:
+    - product: Kubernetes Certified Service Provider
+      lapsed: false
+    signal_note: certified_products = ONE entry (the KCSP vetting itself), never a count
+    detected_by: sweep-cloud-native.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-cncf-certified-kubernetes
+  label: CNCF Certified Kubernetes
+  partner: cncf
+  partner_name: CNCF Certified Kubernetes
+  category: Certified Kubernetes
+  type: register
+  channel: standard-directory
+  evidence: https://github.com/cncf/k8s-conformance/tree/621a55d41c23eab137118626e941b72fb8d32f89/v1.36/iks
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CNCF Certified Kubernetes (github.com/cncf/k8s-conformance @621a55d41c)
+    spec_file: null
+    standard: Kubernetes conformance
+    role: certified-kubernetes
+    registered_name: IBM
+    website: https://www.ibm.com/products/kubernetes-service
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    certified_products:
+    - product: hosted
+      newest_version: v1.36
+      lapsed: false
+    versions_certified:
+    - v1.24
+    - v1.25
+    - v1.26
+    - v1.27
+    - v1.28
+    - v1.29
+    - v1.30
+    - v1.31
+    - v1.32
+    - v1.33
+    - v1.34
+    - v1.35
+    - v1.36
+    products:
+    - IBM Cloud Kubernetes Service
+    - Red Hat OpenShift on IBM Cloud
+    current_window: v1.34+ (newest 4 minors in the register)
+    signal_note: certified_products = one entry per product TYPE (distribution/hosted/installer), lapsed when its
+      newest certified minor is outside the current window; products and versions are context, never read
+    detected_by: sweep-cloud-native.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-finops-foundation-focus
+  label: FinOps Foundation (FOCUS)
+  partner: finops-foundation
+  partner_name: FinOps Foundation (FOCUS)
+  category: FOCUS billing data
+  type: register
+  channel: standard-directory
+  evidence: https://focus.finops.org/docs/implementation/data-generators/ibm-cloud/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FOCUS data generators (focus.finops.org/data-generators)
+    spec_file: null
+    standard: FOCUS (FinOps Open Cost and Usage Specification)
+    role: focus-data-generator
+    registered_name: IBM Cloud
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    focus_version_supported: '1.2'
+    page_domains:
+      ibm.com: 1
+    signal_note: 'participation only: the version is context, never read'
+    detected_by: sweep-cloud-native.py
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null

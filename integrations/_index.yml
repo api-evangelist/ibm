@@ -830,3 +830,67 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: ibm-peeringdb-interconnection-register
+  label: PeeringDB (interconnection register)
+  partner_name: PeeringDB (interconnection register)
+  category: network interconnection register
+  type: register
+  channel: standard-directory
+  evidence: https://www.peeringdb.com/net/1613
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: PeeringDB (peeringdb.com/api net, ix, fac, org)
+    standard: null
+    spec_file: null
+    role: peeringdb-facility-operator+network
+    registered_name: IBM Corporation
+    register_id: https://www.peeringdb.com/net/1613
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    asns:
+    - 17390
+    - 36351
+    - 62597
+    info_types:
+    - Content
+    - Enterprise
+    ix_presence: 54
+    exchanges_operated: []
+    facilities_operated: 4
+    signal_note: 'participation only: PeeringDB is self-registered by network operators; ASNs, IX presence and facility
+      counts are context, never counted'
+    detected_by: sweep-network-edge.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-scoop
+  label: Scoop
+  partner_name: Scoop
+  category: official CLI (Scoop)
+  type: register
+  channel: package-registry
+  evidence: https://github.com/ScoopInstaller/Main/blob/master/bucket/ibmcloud-cli.json
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Scoop (public package index)
+    spec_file: null
+    packages:
+    - name: ibmcloud-cli
+      kind: main
+      version: 2.48.0
+      released: null
+      lapsed: false
+      page: https://github.com/ScoopInstaller/Main/blob/master/bucket/ibmcloud-cli.json
+      cli: 'scoop description: The command line client for IBM Cloud'
+      repo_leg: domain:ibm.com
+      publisher_leg: artifact-domain:ibm.com
+      matched_by: domain+name-among-holders
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null

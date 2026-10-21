@@ -93,59 +93,6 @@ edges:
     on value added tasks
   detected_by: sweep-shape-compat.py
   first_seen: '2026-10-13'
-- partner_name: CrowdStrike (own)
-  partner: crowdstrike
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.crowdstrike.com/listings/ibm-security/
-  mirror_of: crowdstrike/integrations/crowdstrike-integration-edges.yml
-  apps:
-  - 'IBM Security: End-to-End Threat Management'
-  - Instana APM for Falcon LogScale
-  listing_count: 2
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-- partner_name: Grafana (own)
-  partner: grafana-com
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://grafana.com/grafana/plugins/ibm-rmf-app/
-  mirror_of: grafana-com/integrations/grafana-com-integration-edges.yml
-  apps:
-  - IBM RMF
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Application
-  badges:
-  - signature:commercial
-- partner_name: Splunk (own)
-  partner: splunk
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://splunkbase.splunk.com/app/7568/
-  mirror_of: splunk/integrations/splunk-integration-edges.yml
-  apps:
-  - IBM Storage Defender App for Splunk
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: app
 - partner_name: CycloneDX (OWASP)
   partner: null
   partner_match: register
@@ -204,23 +151,6 @@ edges:
     detected: '2026-10-18'
   detected_by: sweep-software-supply-chain.py
   first_seen: '2026-10-18'
-- partner_name: Slack (own)
-  partner: slack
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://slack.com/marketplace/A03JXC6JM8S-ibm-video-streaming
-  mirror_of: slack/integrations/slack-integration-edges.yml
-  apps:
-  - IBM Video Streaming
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Slack app
 - partner_name: Maven Central
   partner: maven-central
   partner_match: register
@@ -945,22 +875,141 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-official-clis.py
   first_seen: '2026-10-20'
+- partner_name: CrowdStrike (own)
+  partner: crowdstrike
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.crowdstrike.com/listings/ibm-security/
+  mirror_of: crowdstrike/integrations/crowdstrike-integration-edges.yml
+  apps:
+  - 'IBM Security: End-to-End Threat Management'
+  - Instana APM for Falcon LogScale
+  listing_count: 2
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+- partner_name: Grafana (own)
+  partner: grafana-com
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://grafana.com/grafana/plugins/ibm-rmf-app/
+  mirror_of: grafana-com/integrations/grafana-com-integration-edges.yml
+  apps:
+  - IBM RMF
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Application
+  badges:
+  - signature:commercial
+- partner_name: Splunk (own)
+  partner: splunk
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://splunkbase.splunk.com/app/7568/
+  mirror_of: splunk/integrations/splunk-integration-edges.yml
+  apps:
+  - IBM Storage Defender App for Splunk
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: app
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A03JXC6JM8S-ibm-video-streaming
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - IBM Video Streaming
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
+- partner_name: Eclipse Foundation (open-vsx)
+  partner: eclipse
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: open-vsx
+  evidence: https://open-vsx.org/namespace/IBM
+  mirror_of: eclipse/integrations/eclipse-integration-edges.yml
+  apps:
+  - IBM Z Open Editor
+  - Output Colorizer
+  - IBM Z Open Debug
+  - CL
+  - IBM Bob Premium Package for Z
+  - IBM i Testing
+  - IBM i Project Explorer
+  - IBM Compiled Code Coverage
+  - IBM i Debug
+  - IBM Bob Premium Package for i
+  - IBM Early Development Testing
+  - IBM ADFz Common Component for z/OS
+  - IBM Db2 for z/OS Developer Extension
+  - IBM Fault Analyzer for z/OS
+  - IBM Bob Premium Package for Java Modernization
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: IDE / developer extension marketplace listing
+  badges:
+  - Verified namespace
+- partner_name: JetBrains (jetbrains-marketplace)
+  partner: jetbrains
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: jetbrains-marketplace
+  evidence: https://plugins.jetbrains.com/vendor/ibm
+  mirror_of: jetbrains/integrations/jetbrains-integration-edges.yml
+  apps:
+  - IBM Application Modernization Accelerator Developer Tools
+  - DevOps Code ClearCase
+  - IBM Cloud
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: IDE / developer extension marketplace listing
+  badges:
+  - Verified vendor
 generated: '2026-10-13'
 method: searched
 checked:
 - crowdstrike/integrations/crowdstrike-integration-edges.yml
 - grafana-com/integrations/grafana-com-integration-edges.yml
 - https://api.nuget.org/v3
-- https://cdn.winget.microsoft.com/cache
 - https://cloudsecurityalliance.org/star/registry
 - https://crates.io/api/v1
 - https://cyclonedx.org/tool-center/
 - https://eucoc.cloud/en/public-register/list-of-adherent-services
 - https://focus.finops.org/data-generators/
-- https://formulae.brew.sh/api/cask.json
-- https://formulae.brew.sh/api/formula.json
-- https://github.com/ScoopInstaller/Extras
-- https://github.com/ScoopInstaller/Main
 - https://github.com/cncf/k8s-conformance
 - https://github.com/cncf/landscape
 - https://github.com/kubeflow/website
@@ -969,8 +1018,6 @@ checked:
 - https://github.com/marketplace?type=apps
 - https://github.com/mlcommons
 - https://govramp.org/program-participants
-- https://listings.pcisecuritystandards.org/assessors_and_solutions
-- https://manrs.org/netops/participants/
 - https://marketplace.visualstudio.com/vscode
 - https://peppol.org/members/peppol-certified-service-providers/
 - https://proxy.golang.org
@@ -984,12 +1031,21 @@ checked:
 - https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/suppliers
 - https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees
 - https://www.openchainproject.org/community-of-conformance
-- https://www.peeringdb.com/api/fac
-- https://www.peeringdb.com/api/ix
-- https://www.peeringdb.com/api/net
 - https://www.streamlinedsalestax.org/certified-service-providers/certified-service-providers-list
 - slack/integrations/slack-integration-edges.yml
 - splunk/integrations/splunk-integration-edges.yml
+- https://listings.pcisecuritystandards.org/assessors_and_solutions
+- https://manrs.org/netops/participants/
+- https://www.peeringdb.com/api/fac
+- https://www.peeringdb.com/api/ix
+- https://www.peeringdb.com/api/net
+- https://cdn.winget.microsoft.com/cache
+- https://formulae.brew.sh/api/cask.json
+- https://formulae.brew.sh/api/formula.json
+- https://github.com/ScoopInstaller/Extras
+- https://github.com/ScoopInstaller/Main
+- eclipse/integrations/eclipse-integration-edges.yml
+- jetbrains/integrations/jetbrains-integration-edges.yml
 marketplace_apps: []
 source:
 - https://github.com/marketplace?type=actions

@@ -164,31 +164,6 @@
   relationship: compatible
   status: not-a-workflow
   arazzo: null
-- slug: ibm-crowdstrike-own
-  label: CrowdStrike (own)
-  partner: crowdstrike
-  partner_name: CrowdStrike (own)
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.crowdstrike.com/listings/ibm-security/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-grafana-own
-  label: Grafana (own)
-  partner: grafana-com
-  partner_name: Grafana (own)
-  category: Application
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://grafana.com/grafana/plugins/ibm-rmf-app/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: ibm-cyclonedx-owasp
   label: CycloneDX (OWASP)
   partner_name: CycloneDX (OWASP)
@@ -892,5 +867,56 @@
       lapsed = no release in 24 months or deprecated / disabled by the manager'
     detected_by: sweep-official-clis.py
     detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-crowdstrike-own
+  label: CrowdStrike (own)
+  partner: crowdstrike
+  partner_name: CrowdStrike (own)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.crowdstrike.com/listings/ibm-security/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-grafana-own
+  label: Grafana (own)
+  partner: grafana-com
+  partner_name: Grafana (own)
+  category: Application
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://grafana.com/grafana/plugins/ibm-rmf-app/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-eclipse-foundation-open-vsx
+  label: Eclipse Foundation (open-vsx)
+  partner: eclipse
+  partner_name: Eclipse Foundation (open-vsx)
+  category: IDE / developer extension marketplace listing
+  type: marketplace
+  marketplace: open-vsx
+  channel: partner-built
+  evidence: https://open-vsx.org/namespace/IBM
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-jetbrains-jetbrains-marketplace
+  label: JetBrains (jetbrains-marketplace)
+  partner: jetbrains
+  partner_name: JetBrains (jetbrains-marketplace)
+  category: IDE / developer extension marketplace listing
+  type: marketplace
+  marketplace: jetbrains-marketplace
+  channel: partner-built
+  evidence: https://plugins.jetbrains.com/vendor/ibm
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null

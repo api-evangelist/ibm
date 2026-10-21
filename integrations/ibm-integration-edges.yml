@@ -999,6 +999,29 @@ edges:
   category: IDE / developer extension marketplace listing
   badges:
   - Verified vendor
+- partner_name: Terraform (terraform-registry)
+  partner: terraform
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: terraform-registry
+  evidence: https://registry.terraform.io/providers/IBM/turbonomic
+  mirror_of: terraform/integrations/terraform-integration-edges.yml
+  apps:
+  - IBM/turbonomic
+  - IBM/guardium-data-protection
+  - IBM/gdp-middleware-helper
+  - IBM/ode
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (Terraform official tier)
+  - Verified publisher (GitHub domain-verified organization)
 generated: '2026-10-13'
 method: searched
 checked:
@@ -1046,6 +1069,7 @@ checked:
 - https://github.com/ScoopInstaller/Main
 - eclipse/integrations/eclipse-integration-edges.yml
 - jetbrains/integrations/jetbrains-integration-edges.yml
+- terraform/integrations/terraform-integration-edges.yml
 marketplace_apps: []
 source:
 - https://github.com/marketplace?type=actions

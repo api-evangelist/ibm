@@ -920,3 +920,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: ibm-terraform-terraform-registry
+  label: Terraform (terraform-registry)
+  partner: terraform
+  partner_name: Terraform (terraform-registry)
+  category: infrastructure-as-code provider registry listing
+  type: marketplace
+  marketplace: terraform-registry
+  channel: partner-built
+  evidence: https://registry.terraform.io/providers/IBM/turbonomic
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

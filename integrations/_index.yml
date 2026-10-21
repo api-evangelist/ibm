@@ -933,3 +933,42 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: ibm-cisco-catalyst-center-own
+  label: Cisco Catalyst Center (own)
+  partner: cisco-catalyst-center
+  partner_name: Cisco Catalyst Center (own)
+  category: Monitoring & Performance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.cisco.com/en-US/apps/819266
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-cisco-catalyst-sd-wan-own
+  label: Cisco Catalyst SD-WAN (own)
+  partner: cisco-catalyst-sdwan
+  partner_name: Cisco Catalyst SD-WAN (own)
+  category: Monitoring & Performance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.cisco.com/en-US/apps/819266
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-cisco-meraki-own
+  label: Cisco Meraki (own)
+  partner: cisco-meraki
+  partner_name: Cisco Meraki (own)
+  category: Monitoring & Performance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.cisco.com/en-US/apps/819266
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

@@ -1107,6 +1107,30 @@ edges:
       P856 not contradicting (Kin 2026-10-20 decision 2)
   detected_by: sweep-github-marketplace.py
   first_seen: '2026-10-21'
+- partner_name: GraphQL Foundation (members)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://graphql.org/foundation/members/
+  category: GraphQL standards body membership
+  partner_tier: general
+  contract_reference:
+    register: GraphQL Foundation members (graphql.org/foundation/members; graphql.landscape2.io/data/full.json)
+    standard: GraphQL
+    spec_file: null
+    role: graphql-foundation-member
+    registered_name: International Business Machines Corporation
+    register_id: graphql-foundation-member--general--international-business-machines-corporation-member
+    matched_domain: ibm.com
+    matched_by: domain+verified
+    signal_note: 'participation only: membership level is partner_tier, never counted'
+    detected_by: sweep-graphql-ecosystem.py
+    detected: '2026-10-21'
+  detected_by: sweep-graphql-ecosystem.py
+  first_seen: '2026-10-21'
 generated: '2026-10-13'
 method: searched
 checked:
@@ -1164,6 +1188,11 @@ checked:
 - https://docs.github.com/en/code-security/tutorials/secret-scanning-partner-program
 - https://github.com/partners/technology-partners
 - https://partner.github.com/
+- https://github.com/graphql-kit/graphql-apis
+- https://github.com/graphql/graphql.github.io/tree/source/src/code
+- https://graphql.landscape2.io/data/full.json
+- https://graphql.org/community/tools-and-libraries/
+- https://graphql.org/foundation/members/
 marketplace_apps: []
 source:
 - https://github.com/marketplace?type=actions

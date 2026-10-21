@@ -972,3 +972,26 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: ibm-graphql-foundation-members
+  label: GraphQL Foundation (members)
+  partner_name: GraphQL Foundation (members)
+  category: GraphQL standards body membership
+  type: register
+  channel: standard-directory
+  evidence: https://graphql.org/foundation/members/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: GraphQL Foundation members (graphql.org/foundation/members; graphql.landscape2.io/data/full.json)
+    standard: GraphQL
+    spec_file: null
+    role: graphql-foundation-member
+    registered_name: International Business Machines Corporation
+    register_id: graphql-foundation-member--general--international-business-machines-corporation-member
+    matched_domain: ibm.com
+    matched_by: domain+verified
+    signal_note: 'participation only: membership level is partner_tier, never counted'
+    detected_by: sweep-graphql-ecosystem.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null

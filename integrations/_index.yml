@@ -1599,3 +1599,84 @@
     - IBM(R) Corporation
   status: not-a-workflow
   arazzo: null
+- slug: ibm-openssf-best-practices-badge
+  label: OpenSSF Best Practices Badge
+  partner_name: OpenSSF Best Practices Badge
+  category: OpenSSF Best Practices badge (open-source project security conformance)
+  type: register
+  channel: standard-directory
+  evidence: https://www.bestpractices.dev/en/projects/5763
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: OpenSSF Best Practices badge projects (bestpractices.dev/en/projects.json, paged)
+    standard: OpenSSF Best Practices Badge criteria (formerly CII Best Practices; bestpractices.dev)
+    spec_file: null
+    role: badge-holder
+    registered_name: docling-pipelines
+    matched_by: github-org+name-among-claimants
+    matched_on: ibm
+    certified_products:
+    - product: open-source project
+      product_type: open-source project
+      standard: OpenSSF Best Practices Badge criteria (formerly CII Best Practices; bestpractices.dev)
+      lapsed: false
+      partner_tier: silver
+      projects:
+      - name: docling-pipelines
+        id: 15122
+        url: https://www.bestpractices.dev/en/projects/15122
+        badge_level: silver
+      - name: CRAIG
+        id: 8034
+        url: https://www.bestpractices.dev/en/projects/8034
+        badge_level: passing
+      - name: Cloud Service Management - Cloud Native Way - Tutoria
+        id: 5846
+        url: https://www.bestpractices.dev/en/projects/5846
+        badge_level: passing
+      - name: IBM Cloud Satellite - Sales Enablement Level 3 Demonstration Guide
+        id: 5845
+        url: https://www.bestpractices.dev/en/projects/5845
+        badge_level: passing
+      - name: IBM block storage CSI driver
+        id: 5864
+        url: https://www.bestpractices.dev/en/projects/5864
+        badge_level: passing
+      - name: SalesEnablement-L3-Guidance
+        id: 5849
+        url: https://www.bestpractices.dev/en/projects/5849
+        badge_level: passing
+      - name: ai-privacy-toolkit
+        id: 5836
+        url: https://www.bestpractices.dev/en/projects/5836
+        badge_level: passing
+      - name: aihwkit
+        id: 5856
+        url: https://www.bestpractices.dev/en/projects/5856
+        badge_level: passing
+      - name: alchemy-logging
+        id: 5788
+        url: https://www.bestpractices.dev/en/projects/5788
+        badge_level: passing
+      - name: apiconnect-trawler
+        id: 5829
+        url: https://www.bestpractices.dev/en/projects/5829
+        badge_level: passing
+      - name: aspera-cli
+        id: 5861
+        url: https://www.bestpractices.dev/en/projects/5861
+        badge_level: passing
+      - name: aspera-connect-sdk-js
+        id: 5764
+        url: https://www.bestpractices.dev/en/projects/5764
+        badge_level: passing
+      baseline_levels:
+      - baseline-1
+    signal_note: 'certified_products = ONE entry (product type: open-source project) with the highest CURRENT badge
+      level in partner_tier; a provider whose projects only lost the badge is lapsed: true; project names are context,
+      never counted; in_progress entries are not conformance'
+    detected_by: sweep-openssf-best-practices-badges.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null

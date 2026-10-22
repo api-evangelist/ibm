@@ -1351,3 +1351,117 @@
     identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   status: not-a-workflow
   arazzo: null
+- slug: ibm-ismap
+  label: ISMAP
+  partner_name: ISMAP
+  category: Japan government cloud security assessment (ISMAP)
+  type: contract
+  channel: regulator-register
+  evidence: https://www.ismap.go.jp/csm?id=cloud_service_list
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: ISMAP / ISMAP-LIU cloud service lists (www.ismap.go.jp)
+    standard: ISMAP
+    spec_file: null
+    role: ismap-registered
+    registrations:
+    - register_number: C23-0049-2
+      registration_type: ISMAP
+      service: IBM Cloud IaaS およびPaaS
+      registered_name: International Business Machines Corporation
+      service_url: https://www.ibm.com/jp-ja/cloud
+      matched_domain: ibm.com
+      matched_by: domain+local-verified
+      evidence_url: https://www.ismap.go.jp/csm?id=cloud_service_list
+      scope_of_statement: https://www.ismap.go.jp/sys_attachment.do?sys_id=607a076f83c3f214aa68c6a8beaad3ea
+      hand_verified: International Business Machines Corporation is IBM (ibm.com)
+    - register_number: C25-0097-2
+      registration_type: ISMAP
+      service: IBM Power Virtual Server on IBM Cloud
+      registered_name: International Business Machines Corporation
+      service_url: https://www.ibm.com/jp-ja/products/power-virtual-server
+      matched_domain: ibm.com
+      matched_by: domain+local-verified
+      evidence_url: https://www.ismap.go.jp/csm?id=cloud_service_list
+      scope_of_statement: https://www.ismap.go.jp/sys_attachment.do?sys_id=15a2d2d72bb60710434ff14a6e91bf1a
+      hand_verified: International Business Machines Corporation is IBM (ibm.com)
+    signal_note: certified_products = one entry per ISMAP registration TYPE (ISMAP, ISMAP-LIU), never per service;
+      services are context, never counted. The lists carry current registrations only (a filed renewal keeps a registration
+      valid), so lapsed is always false
+    certified_products:
+    - product: ISMAP
+      standard: ISMAP
+      registration_type: ISMAP
+      lapsed: false
+    detected_by: sweep-japan-ismap-tisax-assessments.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-cve-program-cve-numbering-authorities
+  label: CVE Program (CVE Numbering Authorities)
+  partner_name: CVE Program (CVE Numbering Authorities)
+  category: Vulnerability disclosure (CVE Numbering Authority)
+  type: register
+  channel: standard-directory
+  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/ibm
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
+    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
+    spec_file: null
+    role: cve-numbering-authority
+    registered_name: IBM Corporation
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    cna_id: CNA-2011-0007
+    cna_short_name: ibm
+    cna_types:
+    - Vendor
+    - Open Source
+    cna_roles:
+    - CNA
+    scope: All IBM branded products (IBM will confirm support status and notify researcher).
+    top_level_root: MITRE Corporation
+    root: n/a
+    security_advisories:
+    - https://www.ibm.com/support/pages/bulletin/
+    disclosure_policy:
+    - https://www.ibm.com/security/secure-engineering/report.html
+    country: USA
+    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and
+      publish advisories for its scope); never a count of CVEs
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-first-forum-of-incident-response-and-security-teams
+  label: FIRST (Forum of Incident Response and Security Teams)
+  partner_name: FIRST (Forum of Incident Response and Security Teams)
+  category: Incident response / PSIRT (FIRST member team)
+  type: register
+  channel: standard-directory
+  evidence: https://www.first.org/members/teams/ibm
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FIRST member teams (api.first.org/data/v1/teams, public JSON API)
+    standard: FIRST (Forum of Incident Response and Security Teams) membership
+    spec_file: null
+    role: first-member-team
+    registered_name: IBM
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    teams:
+    - id: ibm
+      team: IBM
+      team_type: PSIRT
+      member_since: February 1, 1996
+      country: US
+    signal_note: FIRST full membership of an incident-response / product-security team = participation; team_type
+      names CSIRT / PSIRT / SOC; never a count
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null

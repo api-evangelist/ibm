@@ -1987,6 +1987,23 @@ edges:
   category: configuration-management content listing (Ansible collection)
   badges:
   - Verified publisher (GitHub domain-verified organization)
+- partner_name: Drupal (own)
+  partner: drupal
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.drupal.org/project/warmer
+  mirror_of: drupal/integrations/drupal-integration-edges.yml
+  apps:
+  - Warmer
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Drupal contributed module
 generated: '2026-10-13'
 method: searched
 checked:
@@ -2079,6 +2096,7 @@ checked:
 - jenkins/integrations/jenkins-integration-edges.yml
 - https://dir.texas.gov/resource-library-item/tx-ramp-certified-cloud-products
 - ansible/integrations/ansible-integration-edges.yml
+- drupal/integrations/drupal-integration-edges.yml
 marketplace_apps: []
 source:
 - https://github.com/marketplace?type=actions

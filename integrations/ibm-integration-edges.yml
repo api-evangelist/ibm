@@ -1737,6 +1737,90 @@ edges:
     detected: '2026-10-22'
   detected_by: sweep-tx-ramp-certified-cloud.py
   first_seen: '2026-10-22'
+- partner_name: Docker Official Images
+  partner: docker-hub
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://hub.docker.com/_/ibm-semeru-runtimes
+  category: Docker Official Images programme (upstream-maintained official container image)
+  contract_reference:
+    register: Docker Official Images (hub.docker.com/v2/repositories/library/ + github.com/docker-library/official-images/library/<image>
+      manifests)
+    standard: Docker Official Images
+    spec_file: null
+    role: official-image-upstream-maintainer
+    registered_name: IBM Runtime Technologies
+    github_org: ibmruntimes
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    identity_leg: org-profile-site
+    images:
+    - ibm-semeru-runtimes
+    - ibmjava
+    certified_products:
+    - product: Docker Official Image
+      product_type: container image
+      standard: Docker Official Images
+      lapsed: false
+    signal_note: 'the image''s GitRepo is owned by this provider''s GitHub organisation (identity: the org''s own
+      profile website or its maintainers'' e-mail domain, held in domain_lookup, name-gated); every update is reviewed
+      by Docker''s docker-library team against the Official Images guidelines. certified_products = ONE entry for
+      the product type; image and pull counts are context, never counted'
+    detected_by: sweep-docker-hub-verified-publishers.py
+    detected: '2026-10-23'
+  detected_by: sweep-docker-hub-verified-publishers.py
+  first_seen: '2026-10-23'
+- partner_name: ServiceNow Store (partner apps)
+  partner: servicenow
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://store.servicenow.com/store/seller/01ea594946576292019a5b94eafbb7f5
+  category: ServiceNow Store partner app / app certification
+  contract_reference:
+    register: ServiceNow Store (store.servicenow.com/store/sitemap_xml -> /store/app/<id> server-rendered pages)
+    standard: ServiceNow Store app certification (ServiceNow Certified App badge)
+    spec_file: null
+    role: servicenow-store-partner
+    registered_name: IBM Consulting - Global
+    register_id: 01ea594946576292019a5b94eafbb7f5
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    identity_source: the listing's own seller website link (no lookup)
+    certified_products:
+    - product: ServiceNow Certified App (scoped_app / integration)
+      product_type: scoped_app / integration
+      standard: ServiceNow Store app certification (ServiceNow Certified App badge)
+      lapsed: false
+      products_sample:
+      - IBM Cloud Pak for AIOps
+      - IBM Instana
+      - IBM Z Discovery
+      - Turbonomic Actions
+      releases:
+      - Zurich
+      - Australia
+      - Brazil
+    products_sample:
+    - IBM Cloud Pak for AIOps
+    - IBM Instana
+    - IBM Z Discovery
+    - Turbonomic Actions
+    signal_note: 'listing alone = standard-participant; certified_products = one entry per Application type the
+      seller holds a ServiceNow Certified App badge for, standard named on each; lapsed: true when none of that
+      type''s certified apps lists either of the two newest release families on the Store; app counts are context,
+      never counted'
+    detected_by: sweep-servicenow-store.py
+    detected: '2026-10-23'
+    other_registrations:
+    - IBM Consulting - US - TPP [3ef78b68dbb20f84bd7ef47e0f9619c1]
+  detected_by: sweep-servicenow-store.py
+  first_seen: '2026-10-23'
 - partner_name: CrowdStrike (own)
   partner: crowdstrike
   partner_match: mirror
@@ -2004,90 +2088,31 @@ edges:
   detected: '2026-10-22'
   detected_by: mirror-platform-listings.py
   category: Drupal contributed module
-- partner_name: Docker Official Images
-  partner: docker-hub
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://hub.docker.com/_/ibm-semeru-runtimes
-  category: Docker Official Images programme (upstream-maintained official container image)
-  contract_reference:
-    register: Docker Official Images (hub.docker.com/v2/repositories/library/ + github.com/docker-library/official-images/library/<image>
-      manifests)
-    standard: Docker Official Images
-    spec_file: null
-    role: official-image-upstream-maintainer
-    registered_name: IBM Runtime Technologies
-    github_org: ibmruntimes
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    identity_leg: org-profile-site
-    images:
-    - ibm-semeru-runtimes
-    - ibmjava
-    certified_products:
-    - product: Docker Official Image
-      product_type: container image
-      standard: Docker Official Images
-      lapsed: false
-    signal_note: 'the image''s GitRepo is owned by this provider''s GitHub organisation (identity: the org''s own
-      profile website or its maintainers'' e-mail domain, held in domain_lookup, name-gated); every update is reviewed
-      by Docker''s docker-library team against the Official Images guidelines. certified_products = ONE entry for
-      the product type; image and pull counts are context, never counted'
-    detected_by: sweep-docker-hub-verified-publishers.py
-    detected: '2026-10-23'
-  detected_by: sweep-docker-hub-verified-publishers.py
-  first_seen: '2026-10-23'
-- partner_name: ServiceNow Store (partner apps)
-  partner: servicenow
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://store.servicenow.com/store/seller/01ea594946576292019a5b94eafbb7f5
-  category: ServiceNow Store partner app / app certification
-  contract_reference:
-    register: ServiceNow Store (store.servicenow.com/store/sitemap_xml -> /store/app/<id> server-rendered pages)
-    standard: ServiceNow Store app certification (ServiceNow Certified App badge)
-    spec_file: null
-    role: servicenow-store-partner
-    registered_name: IBM Consulting - Global
-    register_id: 01ea594946576292019a5b94eafbb7f5
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    identity_source: the listing's own seller website link (no lookup)
-    certified_products:
-    - product: ServiceNow Certified App (scoped_app / integration)
-      product_type: scoped_app / integration
-      standard: ServiceNow Store app certification (ServiceNow Certified App badge)
-      lapsed: false
-      products_sample:
-      - IBM Cloud Pak for AIOps
-      - IBM Instana
-      - IBM Z Discovery
-      - Turbonomic Actions
-      releases:
-      - Zurich
-      - Australia
-      - Brazil
-    products_sample:
-    - IBM Cloud Pak for AIOps
-    - IBM Instana
-    - IBM Z Discovery
-    - Turbonomic Actions
-    signal_note: 'listing alone = standard-participant; certified_products = one entry per Application type the
-      seller holds a ServiceNow Certified App badge for, standard named on each; lapsed: true when none of that
-      type''s certified apps lists either of the two newest release families on the Store; app counts are context,
-      never counted'
-    detected_by: sweep-servicenow-store.py
-    detected: '2026-10-23'
-    other_registrations:
-    - IBM Consulting - US - TPP [3ef78b68dbb20f84bd7ef47e0f9619c1]
-  detected_by: sweep-servicenow-store.py
-  first_seen: '2026-10-23'
+- partner_name: Hugging Face (hugging-face-hub)
+  partner: hugging-face
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: hugging-face-hub
+  evidence: https://huggingface.co/ibm
+  mirror_of: hugging-face/integrations/hugging-face-integration-edges.yml
+  apps:
+  - ibm
+  - ibm/risk-atlas-nexus
+  - ibm/llm-rank-themselves
+  - ibm/benchbench
+  - ibm/JuStRank
+  - ibm/biomed-multi-alignment
+  - ibm/Unitxt
+  listing_count: 2
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Hugging Face Hub datasets
+  badges:
+  - Verified publisher (Hugging Face verified organisation)
 generated: '2026-10-13'
 method: searched
 checked:
@@ -2185,6 +2210,7 @@ checked:
 - https://hub.docker.com/v2/repositories/library/?page_size=100
 - https://store.servicenow.com/store/app/
 - https://store.servicenow.com/store/sitemap_xml
+- hugging-face/integrations/hugging-face-integration-edges.yml
 marketplace_apps: []
 source:
 - https://github.com/marketplace?type=actions

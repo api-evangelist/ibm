@@ -869,109 +869,6 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
-- slug: ibm-crowdstrike-own
-  label: CrowdStrike (own)
-  partner: crowdstrike
-  partner_name: CrowdStrike (own)
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.crowdstrike.com/listings/ibm-security/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-grafana-own
-  label: Grafana (own)
-  partner: grafana-com
-  partner_name: Grafana (own)
-  category: Application
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://grafana.com/grafana/plugins/ibm-rmf-app/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-eclipse-foundation-open-vsx
-  label: Eclipse Foundation (open-vsx)
-  partner: eclipse
-  partner_name: Eclipse Foundation (open-vsx)
-  category: IDE / developer extension marketplace listing
-  type: marketplace
-  marketplace: open-vsx
-  channel: partner-built
-  evidence: https://open-vsx.org/namespace/IBM
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-jetbrains-jetbrains-marketplace
-  label: JetBrains (jetbrains-marketplace)
-  partner: jetbrains
-  partner_name: JetBrains (jetbrains-marketplace)
-  category: IDE / developer extension marketplace listing
-  type: marketplace
-  marketplace: jetbrains-marketplace
-  channel: partner-built
-  evidence: https://plugins.jetbrains.com/vendor/ibm
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-terraform-terraform-registry
-  label: Terraform (terraform-registry)
-  partner: terraform
-  partner_name: Terraform (terraform-registry)
-  category: infrastructure-as-code provider registry listing
-  type: marketplace
-  marketplace: terraform-registry
-  channel: partner-built
-  evidence: https://registry.terraform.io/providers/IBM/turbonomic
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-cisco-catalyst-center-own
-  label: Cisco Catalyst Center (own)
-  partner: cisco-catalyst-center
-  partner_name: Cisco Catalyst Center (own)
-  category: Monitoring & Performance
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.cisco.com/en-US/apps/819266
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-cisco-catalyst-sd-wan-own
-  label: Cisco Catalyst SD-WAN (own)
-  partner: cisco-catalyst-sdwan
-  partner_name: Cisco Catalyst SD-WAN (own)
-  category: Monitoring & Performance
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.cisco.com/en-US/apps/819266
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: ibm-cisco-meraki-own
-  label: Cisco Meraki (own)
-  partner: cisco-meraki
-  partner_name: Cisco Meraki (own)
-  category: Monitoring & Performance
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.cisco.com/en-US/apps/819266
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: ibm-graphql-foundation-members
   label: GraphQL Foundation (members)
   partner_name: GraphQL Foundation (members)
@@ -1669,5 +1566,121 @@
       project lost its badge. badged_projects is context, never counted'
     detected_by: sweep-openssf-best-practices-badges.py
     detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-crowdstrike-own
+  label: CrowdStrike (own)
+  partner: crowdstrike
+  partner_name: CrowdStrike (own)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.crowdstrike.com/listings/ibm-security/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-grafana-own
+  label: Grafana (own)
+  partner: grafana-com
+  partner_name: Grafana (own)
+  category: Application
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://grafana.com/grafana/plugins/ibm-rmf-app/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-eclipse-foundation-open-vsx
+  label: Eclipse Foundation (open-vsx)
+  partner: eclipse
+  partner_name: Eclipse Foundation (open-vsx)
+  category: IDE / developer extension marketplace listing
+  type: marketplace
+  marketplace: open-vsx
+  channel: partner-built
+  evidence: https://open-vsx.org/namespace/IBM
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-jetbrains-jetbrains-marketplace
+  label: JetBrains (jetbrains-marketplace)
+  partner: jetbrains
+  partner_name: JetBrains (jetbrains-marketplace)
+  category: IDE / developer extension marketplace listing
+  type: marketplace
+  marketplace: jetbrains-marketplace
+  channel: partner-built
+  evidence: https://plugins.jetbrains.com/vendor/ibm
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-terraform-terraform-registry
+  label: Terraform (terraform-registry)
+  partner: terraform
+  partner_name: Terraform (terraform-registry)
+  category: infrastructure-as-code provider registry listing
+  type: marketplace
+  marketplace: terraform-registry
+  channel: partner-built
+  evidence: https://registry.terraform.io/providers/IBM/turbonomic
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-cisco-catalyst-center-own
+  label: Cisco Catalyst Center (own)
+  partner: cisco-catalyst-center
+  partner_name: Cisco Catalyst Center (own)
+  category: Monitoring & Performance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.cisco.com/en-US/apps/819266
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-cisco-catalyst-sd-wan-own
+  label: Cisco Catalyst SD-WAN (own)
+  partner: cisco-catalyst-sdwan
+  partner_name: Cisco Catalyst SD-WAN (own)
+  category: Monitoring & Performance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.cisco.com/en-US/apps/819266
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-cisco-meraki-own
+  label: Cisco Meraki (own)
+  partner: cisco-meraki
+  partner_name: Cisco Meraki (own)
+  category: Monitoring & Performance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.cisco.com/en-US/apps/819266
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: ibm-jenkins-own
+  label: Jenkins (own)
+  partner: jenkins
+  partner_name: Jenkins (own)
+  category: Jenkins plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://plugins.jenkins.io/ibm-cloud-devops/
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null

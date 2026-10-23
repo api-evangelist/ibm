@@ -71,9 +71,8 @@ edges:
   degree: declared-unqualified
   evidence: https://github.com/api-evangelist/ibm/blob/main/openapi/ibm-buckets-api-openapi.yml#L4
   evidence_kind: own-contract
-  quote: 'description: The IBM Cloud Object Storage API provides a RESTful interface compatible with S3 for storing
-    and retrieving objects in buckets. It supports features such as multipart uploads, versioning, lifecycle policies,
-    and server-side enc'
+  quote: 'description: The IBM Cloud Object Storage API provides a RESTful interface compatible with S3 for storing and retrieving
+    objects in buckets. It supports features such as multipart uploads, versioning, lifecycle policies, and server-side enc'
   detected_by: sweep-shape-compat.py
   first_seen: '2026-10-13'
 - partner_name: Apache Kafka
@@ -88,9 +87,9 @@ edges:
   evidence: https://www.ibm.com/products/event-streams
   evidence_kind: own-docs
   evidence_file: https://github.com/api-evangelist/ibm/blob/main/evidence/compatibility/ibm-kafka-protocol-1.md
-  quote: Leverage IBM Support for deep technical expertise whenever you need it. Event Streams offers a fully managed
-    Apache Kafka service, ensuring durability, high availability and security and compliance so that you can focus
-    on value added tasks
+  quote: Leverage IBM Support for deep technical expertise whenever you need it. Event Streams offers a fully managed Apache
+    Kafka service, ensuring durability, high availability and security and compliance so that you can focus on value added
+    tasks
   detected_by: sweep-shape-compat.py
   first_seen: '2026-10-13'
 - partner_name: CycloneDX (OWASP)
@@ -115,8 +114,8 @@ edges:
     matched_by: domain+name-among-holders
     availability:
     - COMMERCIAL_LICENSE
-    signal_note: 'participation only: a Tool Center listing means the publisher ships CycloneDX support; tools,
-      capabilities and their count are context, never read (breadth is not credit)'
+    signal_note: 'participation only: a Tool Center listing means the publisher ships CycloneDX support; tools, capabilities
+      and their count are context, never read (breadth is not credit)'
     detected_by: sweep-software-supply-chain.py
     detected: '2026-10-18'
   detected_by: sweep-software-supply-chain.py
@@ -145,8 +144,8 @@ edges:
     in_market_tags:
     - devops
     - security
-    signal_note: 'participation only: SELF-DECLARED conformance of the organisation''s own compliance programme
-      (not a product certification), so no certified_products'
+    signal_note: 'participation only: SELF-DECLARED conformance of the organisation''s own compliance programme (not a product
+      certification), so no certified_products'
     detected_by: sweep-software-supply-chain.py
     detected: '2026-10-18'
   detected_by: sweep-software-supply-chain.py
@@ -175,8 +174,7 @@ edges:
       publisher_leg: groupId:ibm.com
       matched_by: domain+name-among-holders
     current: true
-    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
-      24 months'
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in 24 months'
     detected_by: sweep-official-sdks.py
     detected: '2026-10-18'
   detected_by: sweep-official-sdks.py
@@ -214,8 +212,7 @@ edges:
       publisher_leg: email:ibm.com
       matched_by: domain+name-among-holders
     current: true
-    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
-      24 months'
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in 24 months'
     detected_by: sweep-official-sdks.py
     detected: '2026-10-18'
   detected_by: sweep-official-sdks.py
@@ -253,8 +250,7 @@ edges:
       publisher_leg: email:ibm.com
       matched_by: domain+name-among-holders
     current: true
-    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
-      24 months'
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in 24 months'
     detected_by: sweep-official-sdks.py
     detected: '2026-10-18'
   detected_by: sweep-official-sdks.py
@@ -285,8 +281,8 @@ edges:
     certified_products:
     - product: Access Point
       lapsed: false
-    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
-      countries are context, never read
+    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and countries
+      are context, never read
     detected_by: sweep-einvoicing-tax.py
     detected: '2026-10-19'
   detected_by: sweep-einvoicing-tax.py
@@ -403,9 +399,9 @@ edges:
     paths:
     - Agency
     - JAB
-    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
-      models, paths and leveraging agencies are context, never counted. The register lists current designations
-      only (revoked / expired are removed), so lapsed is always false
+    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service models,
+      paths and leveraging agencies are context, never counted. The register lists current designations only (revoked / expired
+      are removed), so lapsed is always false
     detected_by: sweep-gov-cloud.py
     detected: '2026-10-15'
     certified_products:
@@ -438,8 +434,8 @@ edges:
     matched_domain: ibm.com
     matched_by: domain+name-among-holders
     domain_source: contact-email
-    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out
-      of position shares
+    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out of position
+      shares
     detected_by: sweep-gov-cloud.py
     detected: '2026-10-15'
   detected_by: sweep-gov-cloud.py
@@ -487,8 +483,8 @@ edges:
     - Model / Marketplace
     - Notebook Environment / Notebook Environment
     landscape_entries: 6
-    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries,
-      categories, tier and projects are CONTEXT, never read (breadth is not credit)'
+    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries, categories,
+      tier and projects are CONTEXT, never read (breadth is not credit)'
     detected_by: sweep-mlops.py
     detected: '2026-10-19'
   detected_by: sweep-mlops.py
@@ -503,8 +499,7 @@ edges:
   channel: standard-directory
   relationship: standard-participant
   contract_reference:
-    register: MLCommons MLPerf results (github.com/mlcommons/<family>_results_v<round>, closed/ + open/ submitter
-      directories)
+    register: MLCommons MLPerf results (github.com/mlcommons/<family>_results_v<round>, closed/ + open/ submitter directories)
     spec_file: null
     standard: MLPerf (MLCommons)
     role: mlperf-submitter
@@ -514,8 +509,8 @@ edges:
     matched_domain: ibm.com
     matched_by: domain+name-among-holders
     identity_source: wikidata Q37156 'IBM' P856 https://www.ibm.com/
-    identity_note: 'MLPerf publishes names only: domain from Wikidata P856 (labelled lookup, Kin 2026-10-15 decision
-      1), then partner_link (domain + name check)'
+    identity_note: 'MLPerf publishes names only: domain from Wikidata P856 (labelled lookup, Kin 2026-10-15 decision 1), then
+      partner_link (domain + name check)'
     certified_products:
     - product: MLPerf Storage (closed division)
       newest_round: v2.0
@@ -526,8 +521,7 @@ edges:
     open_division_only: []
     current_window: each family's newest 2 rounds
     signal_note: certified_products = one entry per benchmark FAMILY with a closed-division (peer-reviewed, reference-rules)
-      result, lapsed outside the current window; open-division families, rounds and result counts are context, never
-      read
+      result, lapsed outside the current window; open-division families, rounds and result counts are context, never read
     detected_by: sweep-mlops.py
     detected: '2026-10-19'
   detected_by: sweep-mlops.py
@@ -567,8 +561,8 @@ edges:
     - Runtime / Cloud Native Storage
     - Serverless / Hosted Platform
     landscape_entries: 5
-    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries,
-      categories, tier and projects are CONTEXT, never read (breadth is not credit)'
+    signal_note: 'participation only: a landscape listing is standard-participant evidence, not depth. Entries, categories,
+      tier and projects are CONTEXT, never read (breadth is not credit)'
     detected_by: sweep-cloud-native.py
     detected: '2026-10-19'
   detected_by: sweep-cloud-native.py
@@ -583,8 +577,8 @@ edges:
   channel: standard-directory
   relationship: standard-participant
   contract_reference:
-    register: CNCF Kubernetes Certified Service Provider (github.com/cncf/landscape landscape.yml Special / Kubernetes
-      Certified Service Provider @42dd4cd91d)
+    register: CNCF Kubernetes Certified Service Provider (github.com/cncf/landscape landscape.yml Special / Kubernetes Certified
+      Service Provider @42dd4cd91d)
     spec_file: null
     standard: Kubernetes (KCSP)
     role: kcsp
@@ -640,8 +634,8 @@ edges:
     - IBM Cloud Kubernetes Service
     - Red Hat OpenShift on IBM Cloud
     current_window: v1.34+ (newest 4 minors in the register)
-    signal_note: certified_products = one entry per product TYPE (distribution/hosted/installer), lapsed when its
-      newest certified minor is outside the current window; products and versions are context, never read
+    signal_note: certified_products = one entry per product TYPE (distribution/hosted/installer), lapsed when its newest certified
+      minor is outside the current window; products and versions are context, never read
     detected_by: sweep-cloud-native.py
     detected: '2026-10-19'
   detected_by: sweep-cloud-native.py
@@ -659,8 +653,8 @@ edges:
   evidence_kind: conformance-register
   degree: certified
   report_only: true
-  note: the Kubernetes conformance suite was run against this product and the result merged into the CNCF register
-    (anchor kubernetes)
+  note: the Kubernetes conformance suite was run against this product and the result merged into the CNCF register (anchor
+    kubernetes)
   contract_reference:
     register: CNCF Certified Kubernetes (github.com/cncf/k8s-conformance @621a55d41c)
     spec_file: null
@@ -727,9 +721,9 @@ edges:
     - product: STAR Certification
       lapsed: false
       latest: '2025-11-12'
-    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
-      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
-      = every instance marked (Deprecated) by the registry; service counts never recorded
+    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level 2 / STAR
+      for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed = every instance
+      marked (Deprecated) by the registry; service counts never recorded
     detected_by: sweep-compliance-assurance.py
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
@@ -761,8 +755,8 @@ edges:
     - product: EU Cloud CoC verified declaration of adherence
       lapsed: false
       level: 2
-    signal_note: 'one certified product: adherence verified by the accredited monitoring body (GDPR Art. 41); lapsed
-      when the due date has passed; level is context; services never counted'
+    signal_note: 'one certified product: adherence verified by the accredited monitoring body (GDPR Art. 41); lapsed when
+      the due date has passed; level is context; services never counted'
     detected_by: sweep-compliance-assurance.py
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
@@ -803,10 +797,10 @@ edges:
       lapsed: false
       latest_expiry: '2027-02-28'
       listed: 1
-    signal_note: one certified_products entry per PCI SSC program (Secure Software, PA-DSS, P2PE solution / component
-      / application, 3DS SDK, SPoC, CPoC, MPoC, PTS device, Secure SLC); lapsed = every listed product in that program
-      is past its expiry / reassessment date or marked expired; `listed` is context only. List Access Agreement
-      accepted on Kin's instruction 2026-10-20
+    signal_note: one certified_products entry per PCI SSC program (Secure Software, PA-DSS, P2PE solution / component / application,
+      3DS SDK, SPoC, CPoC, MPoC, PTS device, Secure SLC); lapsed = every listed product in that program is past its expiry
+      / reassessment date or marked expired; `listed` is context only. List Access Agreement accepted on Kin's instruction
+      2026-10-20
     detected_by: sweep-compliance-assurance.py
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
@@ -839,8 +833,8 @@ edges:
     ix_presence: 54
     exchanges_operated: []
     facilities_operated: 4
-    signal_note: 'participation only: PeeringDB is self-registered by network operators; ASNs, IX presence and facility
-      counts are context, never counted'
+    signal_note: 'participation only: PeeringDB is self-registered by network operators; ASNs, IX presence and facility counts
+      are context, never counted'
     detected_by: sweep-network-edge.py
     detected: '2026-10-20'
   detected_by: sweep-network-edge.py
@@ -869,12 +863,751 @@ edges:
       publisher_leg: artifact-domain:ibm.com
       matched_by: domain+name-among-holders
     current: true
-    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
-      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration; lapsed = no
+      release in 24 months or deprecated / disabled by the manager'
     detected_by: sweep-official-clis.py
     detected: '2026-10-20'
   detected_by: sweep-official-clis.py
   first_seen: '2026-10-20'
+- partner_name: GitHub secret scanning partner program
+  partner: github
+  partner_match: register-name
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns#supported-provider-patterns
+  category: GitHub platform partnership (security)
+  contract_reference:
+    register: GitHub secret scanning partner program (docs.github.com supported-secret-scanning-patterns, 'Partner' column
+      = isPublic in the page's own pattern data)
+    standard: GitHub secret scanning partner program
+    spec_file: null
+    role: secret-scanning-partner
+    registered_name: IBM
+    register_id: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns#supported-provider-patterns
+    matched_domain: null
+    matched_by: register-name
+    register_name_note: register-name 'ibm' = ibm; wikidata P856 ibm.com agrees or unheld
+    token_types:
+    - ibm_cloud_iam_key
+    context:
+      push_protection: 0
+      validity_check: 1
+    signal_note: 'participation only: GitHub notifies the provider when its token leaks publicly (the provider runs a verification
+      endpoint for the programme); token types and counts are context, never counted'
+    detected_by: sweep-github-marketplace.py
+    detected: '2026-10-21'
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata P856
+      not contradicting (Kin 2026-10-20 decision 2)
+  detected_by: sweep-github-marketplace.py
+  first_seen: '2026-10-21'
+- partner_name: GraphQL Foundation (members)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://graphql.org/foundation/members/
+  category: GraphQL standards body membership
+  partner_tier: general
+  contract_reference:
+    register: GraphQL Foundation members (graphql.org/foundation/members; graphql.landscape2.io/data/full.json)
+    standard: GraphQL
+    spec_file: null
+    role: graphql-foundation-member
+    registered_name: International Business Machines Corporation
+    register_id: graphql-foundation-member--general--international-business-machines-corporation-member
+    matched_domain: ibm.com
+    matched_by: domain+verified
+    signal_note: 'participation only: membership level is partner_tier, never counted'
+    detected_by: sweep-graphql-ecosystem.py
+    detected: '2026-10-21'
+  detected_by: sweep-graphql-ecosystem.py
+  first_seen: '2026-10-21'
+- partner_name: UK G-Cloud 14 (Digital Marketplace)
+  partner: null
+  partner_match: register
+  type: marketplace
+  marketplace: g-cloud
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/supplier/92284
+  category: UK public-sector procurement framework
+  contract_reference:
+    register: UK G-Cloud 14 supplier list (Digital Marketplace)
+    spec_file: null
+    role: g-cloud-supplier
+    registered_name: IBM UNITED KINGDOM LIMITED
+    register_id: '92284'
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    domain_source: contact-email
+    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out of position
+      shares
+    detected_by: sweep-uk-g-cloud-suppliers.py
+    detected: '2026-10-21'
+  detected_by: sweep-uk-g-cloud-suppliers.py
+  first_seen: '2026-10-21'
+- partner_name: Mozilla Firefox Add-ons (AMO)
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firefox-add-ons
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://addons.mozilla.org/en-US/firefox/addon/ibm-aspera-connect/
+  app: IBM Aspera Connect
+  listing_count: 4
+  category: browser extension (Firefox Add-ons)
+  partner_url: https://addons.mozilla.org/
+  contract_reference:
+    register: 'Firefox Add-ons (addons.mozilla.org public API v5 search: authors, homepage, support_url)'
+    spec_file: null
+    role: firefox-add-on-publisher
+    registered_name: IBM Aspera
+    register_id: https://addons.mozilla.org/api/v5/addons/addon/ibm-aspera-connect/
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    matched_name: IBM Aspera
+    builder: publisher
+    signal_note: ONE edge per provider for the store; listing alone = participation. The AMO author name (builder publisher)
+      or homepage + support_url both on the provider's domain (builder domain-attested) identifies it; extension / user counts
+      are context, never counted. No Mozilla repo in all/*, so no platform-side edge exists to mirror.
+    detected_by: sweep-browser-extension-stores.py
+    detected: '2026-10-21'
+  detected_by: sweep-browser-extension-stores.py
+  first_seen: '2026-10-21'
+  apps:
+  - IBM Aspera Connect
+  - IBM Equal Access Accessibility Checker
+  - IBM RPA Web Recorder
+  - IBM Guardium Exposure Manager
+- partner_name: Common Criteria Portal (CCRA certified products)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.commoncriteriaportal.org/products/
+  category: Common Criteria (ISO/IEC 15408) product certification
+  contract_reference:
+    register: Common Criteria Portal certified products + archived certificates (commoncriteriaportal.org/products/certified_products.csv,
+      certified_products-archived.csv)
+    standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+    spec_file: null
+    role: cc-certified-manufacturer
+    registered_name: IBM Canada Ltd.
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    certified_products:
+    - product: Access Control Devices and Systems
+      product_type: Access Control Devices and Systems
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: true
+      partner_tier: EAL4+,ALC_FLR.3
+      schemes:
+      - DE
+      - US
+    - product: Data Protection
+      product_type: Data Protection
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: true
+      partner_tier: EAL4
+      schemes:
+      - AU
+      - US
+    - product: Databases
+      product_type: Databases
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: true
+      partner_tier: EAL4+,ALC_FLR.1
+      protection_profiles:
+      - DBMS_PPV2.12
+      - OSPP_V2.0
+      - PP_DBMS_BR_V1.2
+      - PP_OS_CA_V1.D
+      schemes:
+      - DE
+      - IT
+      - US
+    - product: Detection Devices and Systems
+      product_type: Detection Devices and Systems
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: true
+      partner_tier: EAL2+,ALC_FLR.2
+      protection_profiles:
+      - PP_IDS_SYS_BR_V1.7
+      schemes:
+      - US
+    - product: Key Management Systems
+      product_type: Key Management Systems
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: true
+      partner_tier: EAL4+,ALC_FLR.1
+      schemes:
+      - DE
+    - product: Network and Network-Related Devices and Systems
+      product_type: Network and Network-Related Devices and Systems
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: true
+      partner_tier: EAL4+,ALC_FLR.3
+      protection_profiles:
+      - CPP_ND_V1.0
+      - CPP_ND_V2.1
+      - CPP_ND_V2.2E
+      - PP_ND_V1.1
+      schemes:
+      - DE
+      - US
+    - product: Operating Systems
+      product_type: Operating Systems
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: false
+      partner_tier: EAL5+,ALC_FLR.3
+      protection_profiles:
+      - EP_SV_V1.0
+      - MOD_SV_V1.1
+      - OSPP_V2.0
+      - PKG_SSH_V1.0
+      - PKG_TLS_V1.1
+      - PP_BASE_VIRTUALIZATION_V1.0
+      schemes:
+      - DE
+      - IT
+    - product: Other Devices and Systems
+      product_type: Other Devices and Systems
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: false
+      partner_tier: EAL5+,ALC_FLR.3,ALC_TAT.3,ATE_FUN.2,AVA_VAN.5
+      protection_profiles:
+      - PKG_TLS_V1.1
+      - PP_APP_V1.4
+      schemes:
+      - DE
+      - IT
+      - US
+    signal_note: 'certified_products = one entry per Common Criteria product CATEGORY held (highest EAL for that category
+      in partner_tier; a category held only among archived certificates is lapsed: true); certificate and product counts are
+      context, never counted'
+    detected_by: sweep-common-criteria-certified-products.py
+    detected: '2026-10-21'
+    identity: wikidata Q1653092 'IBM Canada' P856 http://www.ibm.com/ca/en/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+    other_registrations:
+    - IBM Corporation
+  detected_by: sweep-common-criteria-certified-products.py
+  first_seen: '2026-10-21'
+- partner_name: NIAP Product Compliant List (US CCEVS)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.niap-ccevs.org/Product/PCL.cfm
+  category: NIAP Protection Profile conformance (US Common Criteria scheme)
+  contract_reference:
+    register: NIAP Product Compliant List (niap-ccevs.org/Product/PCL.cfm; public JSON /api/project/product/pcl_products_all/)
+    standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation
+      (CCRA)
+    spec_file: null
+    role: niap-pcl-vendor
+    registered_name: IBM Corporation
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    signal_note: 'certified_products = one entry per NIAP technology type with a Certified (current) or Archived (lapsed:
+      true) PCL product, Protection Profiles named; products In Progress are listing only (in_evaluation), never certified;
+      product counts are context, never counted'
+    detected_by: sweep-common-criteria-certified-products.py
+    detected: '2026-10-21'
+    certified_products:
+    - product: Application Software
+      product_type: Application Software
+      lapsed: false
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - PKG_TLS_V1.1
+      - PP_APP_v1.4
+    - product: DBMS
+      product_type: DBMS
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - None
+      - none
+    - product: Enterprise Security Management
+      product_type: Enterprise Security Management
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - None
+    - product: Miscellaneous
+      product_type: Miscellaneous
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - None
+      - none
+    - product: Multiple Domain Solution
+      product_type: Multiple Domain Solution
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - None
+    - product: Network Device
+      product_type: Network Device
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - CPP_ND_V1.0
+      - CPP_ND_V2.1
+      - CPP_ND_V2.2E
+      - PP_ND_V1.1
+    - product: Network Encryption
+      product_type: Network Encryption
+      lapsed: false
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - PKG_TLS_V1.1
+      - PP_APP_v1.4
+    - product: Network Management
+      product_type: Network Management
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - None
+    - product: Operating System
+      product_type: Operating System
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - PP_OS_CA_V1.d
+      - PP_OS_LS_V1.b
+      - PP_RBAC_V1.0
+    - product: Operating Systems
+      product_type: Operating Systems
+      lapsed: false
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - MOD_SV_V1.1
+      - PKG_SSH_V1.0
+      - PKG_TLS_V1.1
+      - PP_BASE_VIRTUALIZATION_V1.1
+    - product: Secure Messaging
+      product_type: Secure Messaging
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - None
+      - none
+    - product: Sensitive Data Protection
+      product_type: Sensitive Data Protection
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - None
+      - none
+    - product: Web Server
+      product_type: Web Server
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - None
+      - none
+    - product: Wireless Monitoring
+      product_type: Wireless Monitoring
+      lapsed: true
+      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
+        Evaluation (CCRA)
+      protection_profiles:
+      - PP_IDS_SYS_BR_V1.7
+      - PP_IDS_SYS_V1.6
+    in_evaluation:
+    - Operating System
+    identity: wikidata Q37156 'IBM' P856 https://www.ibm.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-common-criteria-certified-products.py
+  first_seen: '2026-10-21'
+- partner_name: US EPA ENERGY STAR
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://data.energystar.gov/d/8wj2-sec8
+  category: ENERGY STAR product certification
+  contract_reference:
+    register: ENERGY STAR Model Index, all currently certified models (data.energystar.gov/resource/8wj2-sec8)
+    standard: ENERGY STAR (US EPA product specifications)
+    spec_file: null
+    role: energy-star-partner
+    registered_name: IBM Corporation
+    register_id: https://data.energystar.gov/d/8wj2-sec8
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    certified_products:
+    - product: Data Center Storage
+      product_type: Data Center Storage
+      lapsed: false
+      brands:
+      - IBM
+      first_certified: '2021-04-06'
+    - product: Enterprise Servers
+      product_type: Enterprise Servers
+      lapsed: false
+      brands:
+      - IBM
+      first_certified: '2024-02-13'
+    connected_product_types: []
+    signal_note: 'certified_products = ONE entry per ENERGY STAR product category with a currently certified model (the Model
+      Index lists current certifications only, so lapsed is False; delisted models drop out); connected: true where the category''s
+      dataset flags connected / network capability for this partner''s models (Smart Thermostats and Connected lighting are
+      connected by definition). Brands are context; model counts are never counted.'
+    detected_by: sweep-energy-star-certified-products.py
+    detected: '2026-10-22'
+    identity: wikidata Q37156 'IBM' P856 https://www.ibm.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-energy-star-certified-products.py
+  first_seen: '2026-10-22'
+- partner_name: ISMAP
+  partner: null
+  partner_match: register
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.ismap.go.jp/csm?id=cloud_service_list
+  category: Japan government cloud security assessment (ISMAP)
+  contract_reference:
+    register: ISMAP / ISMAP-LIU cloud service lists (www.ismap.go.jp)
+    standard: ISMAP
+    spec_file: null
+    role: ismap-registered
+    registrations:
+    - register_number: C23-0049-2
+      registration_type: ISMAP
+      service: IBM Cloud IaaS およびPaaS
+      registered_name: International Business Machines Corporation
+      service_url: https://www.ibm.com/jp-ja/cloud
+      matched_domain: ibm.com
+      matched_by: domain+local-verified
+      evidence_url: https://www.ismap.go.jp/csm?id=cloud_service_list
+      scope_of_statement: https://www.ismap.go.jp/sys_attachment.do?sys_id=607a076f83c3f214aa68c6a8beaad3ea
+      hand_verified: International Business Machines Corporation is IBM (ibm.com)
+    - register_number: C25-0097-2
+      registration_type: ISMAP
+      service: IBM Power Virtual Server on IBM Cloud
+      registered_name: International Business Machines Corporation
+      service_url: https://www.ibm.com/jp-ja/products/power-virtual-server
+      matched_domain: ibm.com
+      matched_by: domain+local-verified
+      evidence_url: https://www.ismap.go.jp/csm?id=cloud_service_list
+      scope_of_statement: https://www.ismap.go.jp/sys_attachment.do?sys_id=15a2d2d72bb60710434ff14a6e91bf1a
+      hand_verified: International Business Machines Corporation is IBM (ibm.com)
+    signal_note: certified_products = one entry per ISMAP registration TYPE (ISMAP, ISMAP-LIU), never per service; services
+      are context, never counted. The lists carry current registrations only (a filed renewal keeps a registration valid),
+      so lapsed is always false
+    certified_products:
+    - product: ISMAP
+      standard: ISMAP
+      registration_type: ISMAP
+      lapsed: false
+    detected_by: sweep-japan-ismap-tisax-assessments.py
+    detected: '2026-10-22'
+  detected_by: sweep-japan-ismap-tisax-assessments.py
+  first_seen: '2026-10-22'
+- partner_name: CVE Program (CVE Numbering Authorities)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/ibm
+  category: Vulnerability disclosure (CVE Numbering Authority)
+  contract_reference:
+    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
+    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
+    spec_file: null
+    role: cve-numbering-authority
+    registered_name: IBM Corporation
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    cna_id: CNA-2011-0007
+    cna_short_name: ibm
+    cna_types:
+    - Vendor
+    - Open Source
+    cna_roles:
+    - CNA
+    scope: All IBM branded products (IBM will confirm support status and notify researcher).
+    top_level_root: MITRE Corporation
+    root: n/a
+    security_advisories:
+    - https://www.ibm.com/support/pages/bulletin/
+    disclosure_policy:
+    - https://www.ibm.com/security/secure-engineering/report.html
+    country: USA
+    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and publish advisories
+      for its scope); never a count of CVEs
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  detected_by: sweep-vulnerability-disclosure-cna.py
+  first_seen: '2026-10-22'
+- partner_name: FIRST (Forum of Incident Response and Security Teams)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.first.org/members/teams/ibm
+  category: Incident response / PSIRT (FIRST member team)
+  contract_reference:
+    register: FIRST member teams (api.first.org/data/v1/teams, public JSON API)
+    standard: FIRST (Forum of Incident Response and Security Teams) membership
+    spec_file: null
+    role: first-member-team
+    registered_name: IBM
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    teams:
+    - id: ibm
+      team: IBM
+      team_type: PSIRT
+      member_since: February 1, 1996
+      country: US
+    signal_note: FIRST full membership of an incident-response / product-security team = participation; team_type names CSIRT
+      / PSIRT / SOC; never a count
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  detected_by: sweep-vulnerability-disclosure-cna.py
+  first_seen: '2026-10-22'
+- partner_name: Red Hat Ecosystem Catalog (certified partners)
+  partner: red-hat
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://catalog.redhat.com/software/containers/search?p=1&vendor_name=IBM%20International%20Service%20Center
+  category: Red Hat OpenShift / RHEL software certification
+  contract_reference:
+    register: 'Red Hat Ecosystem Catalog (catalog.redhat.com/api/containers/v1: repositories, vendors, certified operator
+      bundles)'
+    standard: Red Hat Container Certification (Red Hat Ecosystem Catalog, registry.connect.redhat.com)
+    spec_file: null
+    role: red-hat-certified-partner
+    registered_name: IBM International Service Center
+    register_id: aiu
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    identity_source: the register's own company_url for the vendor (no lookup)
+    certified_products:
+    - product: Red Hat certified container image
+      product_type: container-image
+      standard: Red Hat Container Certification (Red Hat Ecosystem Catalog, registry.connect.redhat.com)
+      lapsed: false
+      repositories_listed: 6
+      products_sample:
+      - aiu/aiu-operator-bundle
+      - aiu/spyre-operator-bundle
+      - ibm-aiu/spyre-operator
+      - ibmaiu/release_2024_08/aiu-operator
+      - ibmaiu/release_2025_03/aiu-operator
+      - ibmaiu/release_2025_05/aiu-operator
+    - product: Red Hat certified OpenShift operator
+      product_type: openshift-operator
+      standard: Red Hat OpenShift Operator Certification (certified-operator-index)
+      lapsed: false
+      operator_packages: 17
+      products_sample:
+      - ibm-application-gateway-operator
+      - ibm-block-csi-operator
+      - ibm-security-verify-access-operator
+      - ibm-storage-odf-operator
+      - open-liberty-certified
+      - runtime-component-operator-certified
+      ocp_versions:
+      - '4.23'
+      - '5.0'
+      - '5.1'
+    signal_note: 'certified_products = one entry per certified product TYPE (container image, OpenShift operator), standard
+      named on each; lapsed: true when no certified item of that type is current (containers: all Deprecated / past EOL /
+      unpublished; operators: absent from the three newest certified-operator indexes); repository and package counts are
+      context, never counted'
+    detected_by: sweep-red-hat-certified-ecosystem.py
+    detected: '2026-10-22'
+    other_registrations:
+    - IBM [docling]
+    - IBM [fdf]
+    - IBM Corporation [ibm]
+    - IBM [mas-accelerators]
+  detected_by: sweep-red-hat-certified-ecosystem.py
+  first_seen: '2026-10-22'
+- partner_name: NIST Cryptographic Module Validation Program (FIPS 140)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search/all
+  category: FIPS 140 cryptographic module validation (NIST / CCCS CMVP)
+  contract_reference:
+    register: 'NIST CMVP validated cryptographic modules (csrc.nist.gov validated-modules search: active + historical) and
+      Modules In Process list'
+    standard: FIPS 140-1 / FIPS 140-2 / FIPS 140-3
+    spec_file: null
+    role: fips-140-validated-vendor
+    registered_name: IBM® Corporation
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    signal_note: 'certified_products = one entry per (FIPS 140 edition, CMVP module type) held; a pair whose certificates
+      are all on the historical list is lapsed: true; Modules In Process are listing only (in_process), never certified; certificate
+      and module counts are context, never counted'
+    detected_by: sweep-nist-cmvp-fips-140-modules.py
+    detected: '2026-10-22'
+    certified_products:
+    - product: FIPS 140-1 Hardware cryptographic module
+      product_type: Hardware
+      standard: FIPS 140-1
+      status: Historical
+      lapsed: true
+      validated: '2003-09-24'
+    - product: FIPS 140-2 Hardware cryptographic module
+      product_type: Hardware
+      standard: FIPS 140-2
+      status: Historical
+      lapsed: true
+      validated: '2025-03-07'
+    - product: FIPS 140-2 Software cryptographic module
+      product_type: Software
+      standard: FIPS 140-2
+      status: Historical
+      lapsed: true
+      validated: '2024-06-05'
+    - product: FIPS 140-2 Software-Hybrid cryptographic module
+      product_type: Software-Hybrid
+      standard: FIPS 140-2
+      status: Historical
+      lapsed: true
+      validated: '2023-09-28'
+    - product: FIPS 140-3 Hardware cryptographic module
+      product_type: Hardware
+      standard: FIPS 140-3
+      status: Active
+      lapsed: false
+      validated: '2025-11-03'
+    - product: FIPS 140-3 Software cryptographic module
+      product_type: Software
+      standard: FIPS 140-3
+      status: Active
+      lapsed: false
+      validated: '2026-08-14'
+    in_process:
+    - FIPS 140-3 (Review (10/14/2026))
+    - FIPS 140-3 (Review (9/17/2026))
+    vendor_country: USA
+    identity_source: register website (CMVP certificate Vendor panel)
+    other_registrations:
+    - IBM
+    - IBM Security
+    - IBM(R) Corporation
+  detected_by: sweep-nist-cmvp-fips-140-modules.py
+  first_seen: '2026-10-22'
+- partner_name: OpenSSF Best Practices Badge (bestpractices.dev)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.bestpractices.dev/en/projects/15122
+  category: OpenSSF Best Practices badge (open-source project security practices)
+  contract_reference:
+    register: OpenSSF Best Practices Badge projects (www.bestpractices.dev/en/projects.json)
+    standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
+    spec_file: null
+    role: badged-project-owner
+    registered_name: docling-pipelines
+    matched_domain: null
+    matched_by: github-org+name-among-claimants
+    certified_products:
+    - product: open-source project
+      product_type: open-source project
+      standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
+      partner_tier: silver
+      lapsed: false
+      badge_date: '2026-10-01'
+    badged_projects:
+    - name: docling-pipelines
+      id: 15122
+      badge: silver
+      url: https://www.bestpractices.dev/en/projects/15122
+    - name: packer-plugin-ibmcloud
+      id: 5763
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/5763
+    - name: aspera-connect-sdk-js
+      id: 5764
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/5764
+    - name: ibm-licensing-operator
+      id: 5784
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/5784
+    - name: ibm-spectrum-scale-bridge-for-grafana
+      id: 5787
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/5787
+    - name: alchemy-logging
+      id: 5788
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/5788
+    - name: mac-ibm-notifications
+      id: 5823
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/5823
+    - name: apiconnect-trawler
+      id: 5829
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/5829
+    - name: qpylib
+      id: 5832
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/5832
+    - name: ai-privacy-toolkit
+      id: 5836
+      badge: passing
+      url: https://www.bestpractices.dev/en/projects/5836
+    signal_note: 'certified_products = ONE entry per provider (product type open-source project): highest current OpenSSF
+      Best Practices badge level in partner_tier, earliest date at that level; lapsed: true when every linked project lost
+      its badge. badged_projects is context, never counted'
+    detected_by: sweep-openssf-best-practices-badges.py
+    detected: '2026-10-22'
+  detected_by: sweep-openssf-best-practices-badges.py
+  first_seen: '2026-10-22'
 - partner_name: CrowdStrike (own)
   partner: crowdstrike
   partner_match: mirror
@@ -1073,747 +1806,25 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: Monitoring & Performance
-- partner_name: GitHub secret scanning partner program
-  partner: github
-  partner_match: register-name
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns#supported-provider-patterns
-  category: GitHub platform partnership (security)
-  contract_reference:
-    register: GitHub secret scanning partner program (docs.github.com supported-secret-scanning-patterns, 'Partner'
-      column = isPublic in the page's own pattern data)
-    standard: GitHub secret scanning partner program
-    spec_file: null
-    role: secret-scanning-partner
-    registered_name: IBM
-    register_id: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns#supported-provider-patterns
-    matched_domain: null
-    matched_by: register-name
-    register_name_note: register-name 'ibm' = ibm; wikidata P856 ibm.com agrees or unheld
-    token_types:
-    - ibm_cloud_iam_key
-    context:
-      push_protection: 0
-      validity_check: 1
-    signal_note: 'participation only: GitHub notifies the provider when its token leaks publicly (the provider runs
-      a verification endpoint for the programme); token types and counts are context, never counted'
-    detected_by: sweep-github-marketplace.py
-    detected: '2026-10-21'
-    identity_source: register-name
-    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
-      P856 not contradicting (Kin 2026-10-20 decision 2)
-  detected_by: sweep-github-marketplace.py
-  first_seen: '2026-10-21'
-- partner_name: GraphQL Foundation (members)
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://graphql.org/foundation/members/
-  category: GraphQL standards body membership
-  partner_tier: general
-  contract_reference:
-    register: GraphQL Foundation members (graphql.org/foundation/members; graphql.landscape2.io/data/full.json)
-    standard: GraphQL
-    spec_file: null
-    role: graphql-foundation-member
-    registered_name: International Business Machines Corporation
-    register_id: graphql-foundation-member--general--international-business-machines-corporation-member
-    matched_domain: ibm.com
-    matched_by: domain+verified
-    signal_note: 'participation only: membership level is partner_tier, never counted'
-    detected_by: sweep-graphql-ecosystem.py
-    detected: '2026-10-21'
-  detected_by: sweep-graphql-ecosystem.py
-  first_seen: '2026-10-21'
-- partner_name: UK G-Cloud 14 (Digital Marketplace)
-  partner: null
-  partner_match: register
+- partner_name: Jenkins (own)
+  partner: jenkins
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
   type: marketplace
-  marketplace: g-cloud
-  channel: distribution
-  relationship: distribution-channel
-  direction: third-party
-  evidence: https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/supplier/92284
-  category: UK public-sector procurement framework
-  contract_reference:
-    register: UK G-Cloud 14 supplier list (Digital Marketplace)
-    spec_file: null
-    role: g-cloud-supplier
-    registered_name: IBM UNITED KINGDOM LIMITED
-    register_id: '92284'
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    domain_source: contact-email
-    signal_note: a framework award is distribution (selling to the public sector), not an integration; kept out
-      of position shares
-    detected_by: sweep-uk-g-cloud-suppliers.py
-    detected: '2026-10-21'
-  detected_by: sweep-uk-g-cloud-suppliers.py
-  first_seen: '2026-10-21'
-- partner_name: Mozilla Firefox Add-ons (AMO)
-  partner: null
-  partner_match: null
-  type: marketplace
-  marketplace: firefox-add-ons
-  channel: partner-built
   relationship: platform-app
   direction: third-party
-  evidence: https://addons.mozilla.org/en-US/firefox/addon/ibm-aspera-connect/
-  app: IBM Aspera Connect
-  listing_count: 4
-  category: browser extension (Firefox Add-ons)
-  partner_url: https://addons.mozilla.org/
-  contract_reference:
-    register: 'Firefox Add-ons (addons.mozilla.org public API v5 search: authors, homepage, support_url)'
-    spec_file: null
-    role: firefox-add-on-publisher
-    registered_name: IBM Aspera
-    register_id: https://addons.mozilla.org/api/v5/addons/addon/ibm-aspera-connect/
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    matched_name: IBM Aspera
-    builder: publisher
-    signal_note: ONE edge per provider for the store; listing alone = participation. The AMO author name (builder
-      publisher) or homepage + support_url both on the provider's domain (builder domain-attested) identifies it;
-      extension / user counts are context, never counted. No Mozilla repo in all/*, so no platform-side edge exists
-      to mirror.
-    detected_by: sweep-browser-extension-stores.py
-    detected: '2026-10-21'
-  detected_by: sweep-browser-extension-stores.py
-  first_seen: '2026-10-21'
+  channel: partner-built
+  marketplace: own
+  evidence: https://plugins.jenkins.io/ibm-cloud-devops/
+  mirror_of: jenkins/integrations/jenkins-integration-edges.yml
   apps:
-  - IBM Aspera Connect
-  - IBM Equal Access Accessibility Checker
-  - IBM RPA Web Recorder
-  - IBM Guardium Exposure Manager
-- partner_name: Common Criteria Portal (CCRA certified products)
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://www.commoncriteriaportal.org/products/
-  category: Common Criteria (ISO/IEC 15408) product certification
-  contract_reference:
-    register: Common Criteria Portal certified products + archived certificates (commoncriteriaportal.org/products/certified_products.csv,
-      certified_products-archived.csv)
-    standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
-    spec_file: null
-    role: cc-certified-manufacturer
-    registered_name: IBM Canada Ltd.
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    certified_products:
-    - product: Access Control Devices and Systems
-      product_type: Access Control Devices and Systems
-      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
-      lapsed: true
-      partner_tier: EAL4+,ALC_FLR.3
-      schemes:
-      - DE
-      - US
-    - product: Data Protection
-      product_type: Data Protection
-      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
-      lapsed: true
-      partner_tier: EAL4
-      schemes:
-      - AU
-      - US
-    - product: Databases
-      product_type: Databases
-      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
-      lapsed: true
-      partner_tier: EAL4+,ALC_FLR.1
-      protection_profiles:
-      - DBMS_PPV2.12
-      - OSPP_V2.0
-      - PP_DBMS_BR_V1.2
-      - PP_OS_CA_V1.D
-      schemes:
-      - DE
-      - IT
-      - US
-    - product: Detection Devices and Systems
-      product_type: Detection Devices and Systems
-      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
-      lapsed: true
-      partner_tier: EAL2+,ALC_FLR.2
-      protection_profiles:
-      - PP_IDS_SYS_BR_V1.7
-      schemes:
-      - US
-    - product: Key Management Systems
-      product_type: Key Management Systems
-      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
-      lapsed: true
-      partner_tier: EAL4+,ALC_FLR.1
-      schemes:
-      - DE
-    - product: Network and Network-Related Devices and Systems
-      product_type: Network and Network-Related Devices and Systems
-      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
-      lapsed: true
-      partner_tier: EAL4+,ALC_FLR.3
-      protection_profiles:
-      - CPP_ND_V1.0
-      - CPP_ND_V2.1
-      - CPP_ND_V2.2E
-      - PP_ND_V1.1
-      schemes:
-      - DE
-      - US
-    - product: Operating Systems
-      product_type: Operating Systems
-      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
-      lapsed: false
-      partner_tier: EAL5+,ALC_FLR.3
-      protection_profiles:
-      - EP_SV_V1.0
-      - MOD_SV_V1.1
-      - OSPP_V2.0
-      - PKG_SSH_V1.0
-      - PKG_TLS_V1.1
-      - PP_BASE_VIRTUALIZATION_V1.0
-      schemes:
-      - DE
-      - IT
-    - product: Other Devices and Systems
-      product_type: Other Devices and Systems
-      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
-      lapsed: false
-      partner_tier: EAL5+,ALC_FLR.3,ALC_TAT.3,ATE_FUN.2,AVA_VAN.5
-      protection_profiles:
-      - PKG_TLS_V1.1
-      - PP_APP_V1.4
-      schemes:
-      - DE
-      - IT
-      - US
-    signal_note: 'certified_products = one entry per Common Criteria product CATEGORY held (highest EAL for that
-      category in partner_tier; a category held only among archived certificates is lapsed: true); certificate and
-      product counts are context, never counted'
-    detected_by: sweep-common-criteria-certified-products.py
-    detected: '2026-10-21'
-    identity: wikidata Q1653092 'IBM Canada' P856 http://www.ibm.com/ca/en/
-    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
-    other_registrations:
-    - IBM Corporation
-  detected_by: sweep-common-criteria-certified-products.py
-  first_seen: '2026-10-21'
-- partner_name: NIAP Product Compliant List (US CCEVS)
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://www.niap-ccevs.org/Product/PCL.cfm
-  category: NIAP Protection Profile conformance (US Common Criteria scheme)
-  contract_reference:
-    register: NIAP Product Compliant List (niap-ccevs.org/Product/PCL.cfm; public JSON /api/project/product/pcl_products_all/)
-    standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology Security
-      Evaluation (CCRA)
-    spec_file: null
-    role: niap-pcl-vendor
-    registered_name: IBM Corporation
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    signal_note: 'certified_products = one entry per NIAP technology type with a Certified (current) or Archived
-      (lapsed: true) PCL product, Protection Profiles named; products In Progress are listing only (in_evaluation),
-      never certified; product counts are context, never counted'
-    detected_by: sweep-common-criteria-certified-products.py
-    detected: '2026-10-21'
-    certified_products:
-    - product: Application Software
-      product_type: Application Software
-      lapsed: false
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - PKG_TLS_V1.1
-      - PP_APP_v1.4
-    - product: DBMS
-      product_type: DBMS
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - None
-      - none
-    - product: Enterprise Security Management
-      product_type: Enterprise Security Management
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - None
-    - product: Miscellaneous
-      product_type: Miscellaneous
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - None
-      - none
-    - product: Multiple Domain Solution
-      product_type: Multiple Domain Solution
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - None
-    - product: Network Device
-      product_type: Network Device
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - CPP_ND_V1.0
-      - CPP_ND_V2.1
-      - CPP_ND_V2.2E
-      - PP_ND_V1.1
-    - product: Network Encryption
-      product_type: Network Encryption
-      lapsed: false
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - PKG_TLS_V1.1
-      - PP_APP_v1.4
-    - product: Network Management
-      product_type: Network Management
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - None
-    - product: Operating System
-      product_type: Operating System
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - PP_OS_CA_V1.d
-      - PP_OS_LS_V1.b
-      - PP_RBAC_V1.0
-    - product: Operating Systems
-      product_type: Operating Systems
-      lapsed: false
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - MOD_SV_V1.1
-      - PKG_SSH_V1.0
-      - PKG_TLS_V1.1
-      - PP_BASE_VIRTUALIZATION_V1.1
-    - product: Secure Messaging
-      product_type: Secure Messaging
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - None
-      - none
-    - product: Sensitive Data Protection
-      product_type: Sensitive Data Protection
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - None
-      - none
-    - product: Web Server
-      product_type: Web Server
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - None
-      - none
-    - product: Wireless Monitoring
-      product_type: Wireless Monitoring
-      lapsed: true
-      standard: NIAP-approved Protection Profiles under ISO/IEC 15408 Common Criteria for Information Technology
-        Security Evaluation (CCRA)
-      protection_profiles:
-      - PP_IDS_SYS_BR_V1.7
-      - PP_IDS_SYS_V1.6
-    in_evaluation:
-    - Operating System
-    identity: wikidata Q37156 'IBM' P856 https://www.ibm.com/
-    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
-  detected_by: sweep-common-criteria-certified-products.py
-  first_seen: '2026-10-21'
-- partner_name: US EPA ENERGY STAR
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://data.energystar.gov/d/8wj2-sec8
-  category: ENERGY STAR product certification
-  contract_reference:
-    register: ENERGY STAR Model Index, all currently certified models (data.energystar.gov/resource/8wj2-sec8)
-    standard: ENERGY STAR (US EPA product specifications)
-    spec_file: null
-    role: energy-star-partner
-    registered_name: IBM Corporation
-    register_id: https://data.energystar.gov/d/8wj2-sec8
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    certified_products:
-    - product: Data Center Storage
-      product_type: Data Center Storage
-      lapsed: false
-      brands:
-      - IBM
-      first_certified: '2021-04-06'
-    - product: Enterprise Servers
-      product_type: Enterprise Servers
-      lapsed: false
-      brands:
-      - IBM
-      first_certified: '2024-02-13'
-    connected_product_types: []
-    signal_note: 'certified_products = ONE entry per ENERGY STAR product category with a currently certified model
-      (the Model Index lists current certifications only, so lapsed is False; delisted models drop out); connected:
-      true where the category''s dataset flags connected / network capability for this partner''s models (Smart
-      Thermostats and Connected lighting are connected by definition). Brands are context; model counts are never
-      counted.'
-    detected_by: sweep-energy-star-certified-products.py
-    detected: '2026-10-22'
-    identity: wikidata Q37156 'IBM' P856 https://www.ibm.com/
-    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
-  detected_by: sweep-energy-star-certified-products.py
-  first_seen: '2026-10-22'
-- partner_name: ISMAP
-  partner: null
-  partner_match: register
-  type: contract
-  channel: regulator-register
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://www.ismap.go.jp/csm?id=cloud_service_list
-  category: Japan government cloud security assessment (ISMAP)
-  contract_reference:
-    register: ISMAP / ISMAP-LIU cloud service lists (www.ismap.go.jp)
-    standard: ISMAP
-    spec_file: null
-    role: ismap-registered
-    registrations:
-    - register_number: C23-0049-2
-      registration_type: ISMAP
-      service: IBM Cloud IaaS およびPaaS
-      registered_name: International Business Machines Corporation
-      service_url: https://www.ibm.com/jp-ja/cloud
-      matched_domain: ibm.com
-      matched_by: domain+local-verified
-      evidence_url: https://www.ismap.go.jp/csm?id=cloud_service_list
-      scope_of_statement: https://www.ismap.go.jp/sys_attachment.do?sys_id=607a076f83c3f214aa68c6a8beaad3ea
-      hand_verified: International Business Machines Corporation is IBM (ibm.com)
-    - register_number: C25-0097-2
-      registration_type: ISMAP
-      service: IBM Power Virtual Server on IBM Cloud
-      registered_name: International Business Machines Corporation
-      service_url: https://www.ibm.com/jp-ja/products/power-virtual-server
-      matched_domain: ibm.com
-      matched_by: domain+local-verified
-      evidence_url: https://www.ismap.go.jp/csm?id=cloud_service_list
-      scope_of_statement: https://www.ismap.go.jp/sys_attachment.do?sys_id=15a2d2d72bb60710434ff14a6e91bf1a
-      hand_verified: International Business Machines Corporation is IBM (ibm.com)
-    signal_note: certified_products = one entry per ISMAP registration TYPE (ISMAP, ISMAP-LIU), never per service;
-      services are context, never counted. The lists carry current registrations only (a filed renewal keeps a registration
-      valid), so lapsed is always false
-    certified_products:
-    - product: ISMAP
-      standard: ISMAP
-      registration_type: ISMAP
-      lapsed: false
-    detected_by: sweep-japan-ismap-tisax-assessments.py
-    detected: '2026-10-22'
-  detected_by: sweep-japan-ismap-tisax-assessments.py
-  first_seen: '2026-10-22'
-- partner_name: CVE Program (CVE Numbering Authorities)
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/ibm
-  category: Vulnerability disclosure (CVE Numbering Authority)
-  contract_reference:
-    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
-    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
-    spec_file: null
-    role: cve-numbering-authority
-    registered_name: IBM Corporation
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    cna_id: CNA-2011-0007
-    cna_short_name: ibm
-    cna_types:
-    - Vendor
-    - Open Source
-    cna_roles:
-    - CNA
-    scope: All IBM branded products (IBM will confirm support status and notify researcher).
-    top_level_root: MITRE Corporation
-    root: n/a
-    security_advisories:
-    - https://www.ibm.com/support/pages/bulletin/
-    disclosure_policy:
-    - https://www.ibm.com/security/secure-engineering/report.html
-    country: USA
-    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and
-      publish advisories for its scope); never a count of CVEs
-    detected_by: sweep-vulnerability-disclosure-cna.py
-    detected: '2026-10-22'
-  detected_by: sweep-vulnerability-disclosure-cna.py
-  first_seen: '2026-10-22'
-- partner_name: FIRST (Forum of Incident Response and Security Teams)
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://www.first.org/members/teams/ibm
-  category: Incident response / PSIRT (FIRST member team)
-  contract_reference:
-    register: FIRST member teams (api.first.org/data/v1/teams, public JSON API)
-    standard: FIRST (Forum of Incident Response and Security Teams) membership
-    spec_file: null
-    role: first-member-team
-    registered_name: IBM
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    teams:
-    - id: ibm
-      team: IBM
-      team_type: PSIRT
-      member_since: February 1, 1996
-      country: US
-    signal_note: FIRST full membership of an incident-response / product-security team = participation; team_type
-      names CSIRT / PSIRT / SOC; never a count
-    detected_by: sweep-vulnerability-disclosure-cna.py
-    detected: '2026-10-22'
-  detected_by: sweep-vulnerability-disclosure-cna.py
-  first_seen: '2026-10-22'
-- partner_name: Red Hat Ecosystem Catalog (certified partners)
-  partner: red-hat
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://catalog.redhat.com/software/containers/search?p=1&vendor_name=IBM%20International%20Service%20Center
-  category: Red Hat OpenShift / RHEL software certification
-  contract_reference:
-    register: 'Red Hat Ecosystem Catalog (catalog.redhat.com/api/containers/v1: repositories, vendors, certified
-      operator bundles)'
-    standard: Red Hat Container Certification (Red Hat Ecosystem Catalog, registry.connect.redhat.com)
-    spec_file: null
-    role: red-hat-certified-partner
-    registered_name: IBM International Service Center
-    register_id: aiu
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    identity_source: the register's own company_url for the vendor (no lookup)
-    certified_products:
-    - product: Red Hat certified container image
-      product_type: container-image
-      standard: Red Hat Container Certification (Red Hat Ecosystem Catalog, registry.connect.redhat.com)
-      lapsed: false
-      repositories_listed: 6
-      products_sample:
-      - aiu/aiu-operator-bundle
-      - aiu/spyre-operator-bundle
-      - ibm-aiu/spyre-operator
-      - ibmaiu/release_2024_08/aiu-operator
-      - ibmaiu/release_2025_03/aiu-operator
-      - ibmaiu/release_2025_05/aiu-operator
-    - product: Red Hat certified OpenShift operator
-      product_type: openshift-operator
-      standard: Red Hat OpenShift Operator Certification (certified-operator-index)
-      lapsed: false
-      operator_packages: 17
-      products_sample:
-      - ibm-application-gateway-operator
-      - ibm-block-csi-operator
-      - ibm-security-verify-access-operator
-      - ibm-storage-odf-operator
-      - open-liberty-certified
-      - runtime-component-operator-certified
-      ocp_versions:
-      - '4.23'
-      - '5.0'
-      - '5.1'
-    signal_note: 'certified_products = one entry per certified product TYPE (container image, OpenShift operator),
-      standard named on each; lapsed: true when no certified item of that type is current (containers: all Deprecated
-      / past EOL / unpublished; operators: absent from the three newest certified-operator indexes); repository
-      and package counts are context, never counted'
-    detected_by: sweep-red-hat-certified-ecosystem.py
-    detected: '2026-10-22'
-    other_registrations:
-    - IBM [docling]
-    - IBM [fdf]
-    - IBM Corporation [ibm]
-    - IBM [mas-accelerators]
-  detected_by: sweep-red-hat-certified-ecosystem.py
-  first_seen: '2026-10-22'
-- partner_name: NIST Cryptographic Module Validation Program (FIPS 140)
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search/all
-  category: FIPS 140 cryptographic module validation (NIST / CCCS CMVP)
-  contract_reference:
-    register: 'NIST CMVP validated cryptographic modules (csrc.nist.gov validated-modules search: active + historical)
-      and Modules In Process list'
-    standard: FIPS 140-1 / FIPS 140-2 / FIPS 140-3
-    spec_file: null
-    role: fips-140-validated-vendor
-    registered_name: IBM® Corporation
-    matched_domain: ibm.com
-    matched_by: domain+name-among-holders
-    signal_note: 'certified_products = one entry per (FIPS 140 edition, CMVP module type) held; a pair whose certificates
-      are all on the historical list is lapsed: true; Modules In Process are listing only (in_process), never certified;
-      certificate and module counts are context, never counted'
-    detected_by: sweep-nist-cmvp-fips-140-modules.py
-    detected: '2026-10-22'
-    certified_products:
-    - product: FIPS 140-1 Hardware cryptographic module
-      product_type: Hardware
-      standard: FIPS 140-1
-      status: Historical
-      lapsed: true
-      validated: '2003-09-24'
-    - product: FIPS 140-2 Hardware cryptographic module
-      product_type: Hardware
-      standard: FIPS 140-2
-      status: Historical
-      lapsed: true
-      validated: '2025-03-07'
-    - product: FIPS 140-2 Software cryptographic module
-      product_type: Software
-      standard: FIPS 140-2
-      status: Historical
-      lapsed: true
-      validated: '2024-06-05'
-    - product: FIPS 140-2 Software-Hybrid cryptographic module
-      product_type: Software-Hybrid
-      standard: FIPS 140-2
-      status: Historical
-      lapsed: true
-      validated: '2023-09-28'
-    - product: FIPS 140-3 Hardware cryptographic module
-      product_type: Hardware
-      standard: FIPS 140-3
-      status: Active
-      lapsed: false
-      validated: '2025-11-03'
-    - product: FIPS 140-3 Software cryptographic module
-      product_type: Software
-      standard: FIPS 140-3
-      status: Active
-      lapsed: false
-      validated: '2026-08-14'
-    in_process:
-    - FIPS 140-3 (Review (10/14/2026))
-    - FIPS 140-3 (Review (9/17/2026))
-    vendor_country: USA
-    identity_source: register website (CMVP certificate Vendor panel)
-    other_registrations:
-    - IBM
-    - IBM Security
-    - IBM(R) Corporation
-  detected_by: sweep-nist-cmvp-fips-140-modules.py
-  first_seen: '2026-10-22'
-- partner_name: OpenSSF Best Practices Badge (bestpractices.dev)
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://www.bestpractices.dev/en/projects/15122
-  category: OpenSSF Best Practices badge (open-source project security practices)
-  contract_reference:
-    register: OpenSSF Best Practices Badge projects (www.bestpractices.dev/en/projects.json)
-    standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
-    spec_file: null
-    role: badged-project-owner
-    registered_name: docling-pipelines
-    matched_domain: null
-    matched_by: github-org+name-among-claimants
-    certified_products:
-    - product: open-source project
-      product_type: open-source project
-      standard: OpenSSF Best Practices Badge criteria (passing / silver / gold)
-      partner_tier: silver
-      lapsed: false
-      badge_date: '2026-10-01'
-    badged_projects:
-    - name: docling-pipelines
-      id: 15122
-      badge: silver
-      url: https://www.bestpractices.dev/en/projects/15122
-    - name: packer-plugin-ibmcloud
-      id: 5763
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/5763
-    - name: aspera-connect-sdk-js
-      id: 5764
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/5764
-    - name: ibm-licensing-operator
-      id: 5784
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/5784
-    - name: ibm-spectrum-scale-bridge-for-grafana
-      id: 5787
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/5787
-    - name: alchemy-logging
-      id: 5788
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/5788
-    - name: mac-ibm-notifications
-      id: 5823
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/5823
-    - name: apiconnect-trawler
-      id: 5829
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/5829
-    - name: qpylib
-      id: 5832
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/5832
-    - name: ai-privacy-toolkit
-      id: 5836
-      badge: passing
-      url: https://www.bestpractices.dev/en/projects/5836
-    signal_note: 'certified_products = ONE entry per provider (product type open-source project): highest current
-      OpenSSF Best Practices badge level in partner_tier, earliest date at that level; lapsed: true when every linked
-      project lost its badge. badged_projects is context, never counted'
-    detected_by: sweep-openssf-best-practices-badges.py
-    detected: '2026-10-22'
-  detected_by: sweep-openssf-best-practices-badges.py
-  first_seen: '2026-10-22'
+  - IBM Cloud DevOps
+  - IBM Cloud DevOps (ibm-cloud-devops)
+  - IBM Continuous Release (ibm-continuous-release)
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Jenkins plugin
 generated: '2026-10-13'
 method: searched
 checked:
@@ -1903,6 +1914,8 @@ checked:
 - https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search?SearchMode=Advanced&Standard=140-2&CertificateStatus=Historical&ValidationYear=0
 - https://www.bestpractices.dev/en/projects.json
 - https://www.bestpractices.dev/en/projects.json?page=N
+- jenkins/integrations/jenkins-integration-edges.yml
+- https://dir.texas.gov/resource-library-item/tx-ramp-certified-cloud-products
 marketplace_apps: []
 source:
 - https://github.com/marketplace?type=actions

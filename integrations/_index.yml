@@ -10,7 +10,9 @@
   use_case: When a new IBM Cloud IAM Service ID is provisioned, automatically open a ServiceNow incident ticket
     so the platform team can audit, classify, and approve the workload identity.
   source: curated
-  status: pending-generation
+  status: not-a-workflow
+  evidence: https://store.servicenow.com/store/seller/01ea594946576292019a5b94eafbb7f5
+  type: register
   arazzo: null
 - slug: ibm-splunk
   label: Stream IBM Cloud IAM policy changes into Splunk
